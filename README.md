@@ -8,17 +8,17 @@ Make more gamy / active:
   Djinn gets restless if 1 hour without Moves API notif so they tells you to bring them for a walk
   "Feed" it with cake, meat, fruit which affect nutrition
 
-"Play Day" serves 2 functions:
+$ "Play Day" serves 2 functions:
   Review each event and alter stats table, etc
   Educate user on their activity lifecycles
 
 
 App Features
-  Scrollable multiple days
+  $ Scrollable multiple days
   More monsterous Djinn
 
 
 Code Features
   walk function to handle nested activities in "place"s
-  Seriously need to normalize data structures on backend
-  also important to add geolocation to all possible data, even double checking Moves data
+  Seriously need to normalize data structures on backend // Replaces need for ^s
+  Very important to add geolocation to all possible data, even double checking Moves data

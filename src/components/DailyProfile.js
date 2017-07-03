@@ -12,13 +12,32 @@ export default class DailyProfile extends Component {
       activeActivity: null,
       stats: this.props.stats
     };
+    //not part of state because these should not be changing and coming from API anyways
+    this.activities = this.createActivitiesList(this.state.segments);
+    
     this.setActiveActivity = this.setActiveActivity.bind(this);  
   }
 
+  createActivitiesList(segs){
+    //returns object of all the days activities
+    // key = unixStartTime, value = activity obj
+    let activityList = {};
+    segs.forEach(seg => {
+      seg.activities
+        ? seg.activities.forEach(act => {
+          const startMs = _formatToUnix(act.startTime);
+          activityList[startMs] = act
+        })
+        : activityList[_formatToUnix(seg.startTime)] = seg;
+    });
+    return activityList;
+  }
+
+
   setActiveActivity(unixTime) {
     //setsState to user selected activity to update animations 
-    console.log('actv', unixTime, this.props.activities[unixTime]);
-    if(unixTime) return this.setState({ activeActivity: this.props.activities[unixTime] });
+    console.log('actv', unixTime, this.activities[unixTime]);
+    if(unixTime) return this.setState({ activeActivity: this.activities[unixTime] });
   }
 
   updateStats({ attr, val }){
@@ -61,28 +80,15 @@ export default class DailyProfile extends Component {
   vizStorySegments(){
     //this is actually returning many activityBars, notfor specified day
     const { segments, date } = this.props.storyline;
-      return (
-        <ActivityBar 
-          key={date} 
-          date={date} 
-          segments={segments}
-          setActiveActivity={this.setActiveActivity}
-        />
-      )  
-    
-    // return this.props.storyline.map(({ date, segments }) => {
-    //   return (
-    //     <ActivityBar 
-    //       key={date} 
-    //       date={date} 
-    //       segments={segments}
-    //       setActiveActivity={this.setActiveActivity}
-    //     />
-    //   )  
-    // })
+    return (
+      <ActivityBar 
+        key={date} 
+        date={date} 
+        segments={segments}
+        setActiveActivity={this.setActiveActivity}
+      />
+    )
   }
-
-
 
   render() {
     return (
