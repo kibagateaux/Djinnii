@@ -10,12 +10,15 @@ Make more gamy / active:
 
 "Play Day" serves 2 functions:
   Review each event and alter stats table, etc
-  Educate user on activity and 
+  Educate user on their activity lifecycles
 
 
+App Features
+  Scrollable multiple days
+  More monsterous Djinn
 
 
-  Code Features
-    walk function to handle nested activities in "place"s
-    Seriously need to normalize data structures on backend
-    also important to add geolocation to all possible data, even double checking Moves data
+Code Features
+  walk function to handle nested activities in "place"s
+  Seriously need to normalize data structures on backend
+  also important to add geolocation to all possible data, even double checking Moves data

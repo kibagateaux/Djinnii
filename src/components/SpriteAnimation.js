@@ -2,13 +2,15 @@ import React from 'react';
 import SpriteAnimation from 'react-native-animated-sprite';
 import { height, width } from '../lib/constants/style';
 
-const sprite = ({ activity, style }) => {
+const Sprite = ({ activity, style }) => {
+  
   const spriteFrames = function(activity) {
     switch(activity){
       case "wlk": return [0,1,2];
       case "run": return [0,2,4];
       case "cyc": return [5,6];
       case "plc": return [2,3,4];
+      case "idl": return [0];
       default:    return [0];
     }
   }(activity);
@@ -37,8 +39,7 @@ const sprite = ({ activity, style }) => {
         alt="Animation depicting your currently selected activity"
       />
   )
-
   return renderSprite(spriteFrames)
 }
 
-export default sprite;
+export default Sprite;

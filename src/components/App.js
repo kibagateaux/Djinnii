@@ -9,15 +9,21 @@ import { _formatToUnix, _durationUnix } from '../lib/helpers';
 
 import Djinn from './Djinn';
 import ActivityBar from './ActivityBar';
+import DailyProfile from './DailyProfile';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
+    const storylineSegments = movesData.storylines[0].segments;
+
     this.state = {
-      segments: movesData.storylines[0].segments,
+      storylines: [...movesData.storylines],
+
+
+      // deprecated, moving to DailyProfile
+      segments: storylineSegments,
       activeActivity: null,
-      playDay: true,
       stats: {
         str: 4,
         int: 8,
@@ -26,8 +32,8 @@ export default class App extends Component {
       }
     };
 
-    // let storylineSegments = movesData.storylines[0].segments;
-    // this.activities = this.createActivitiesList(storylineSegments);
+    this.activities = this.createActivitiesList(storylineSegments);
+    // console.log('struct act', this.activities);
     
     // Bindings
     this.setActiveActivity = this.setActiveActivity.bind(this);
@@ -47,29 +53,13 @@ export default class App extends Component {
 
   setActiveActivity(unixTime) {
     //setsState to user selected activity to update animations 
-    if(unixTime) 
-      return this.setState({ activeActivity: this.activities[unixTime] });
+    console.log('actv', unixTime, this.activities[unixTime]);
+    if(unixTime) return this.setState({ activeActivity: this.activities[unixTime] });
   }
 
 /* 
   * Not using. Not deprecated. Not needed atm
   
-  createActivitiesList(segs){
-    //returns object of all the days activities
-    // key = unixStartTime, value = activity obj
-    let activityList = {};
-    segs.forEach(seg => {
-      seg.activities
-        ? seg.activities.forEach(act => {
-          const startMs = _formatToUnix(act.startTime);
-          activityList[startMs] = act
-        })
-        : activityList[_formatToUnix(seg.startTime)] = seg;
-    });
-
-    return activityList;
-  }
-
     vizDailySummaries(){
     // take activities for each day
     // show total time of activity as portion of day.
@@ -87,6 +77,22 @@ export default class App extends Component {
   }
 
 */
+
+  createActivitiesList(segs){
+    //returns object of all the days activities
+    // key = unixStartTime, value = activity obj
+    let activityList = {};
+    segs.forEach(seg => {
+      seg.activities
+        ? seg.activities.forEach(act => {
+          const startMs = _formatToUnix(act.startTime);
+          activityList[startMs] = act
+        })
+        : activityList[_formatToUnix(seg.startTime)] = seg;
+    });
+    return activityList;
+  }
+
   getData(){
     console.log('getData');
     const data = axios.get("https://localhost:8000/moves/any")
@@ -121,10 +127,10 @@ export default class App extends Component {
 
   playDay(){
     this.state.segments.forEach((act, i, acts) => {
-      const duration = _durationUnix(act.startTime, act.endTime) * 10;
+      const duration = _durationUnix(act.startTime, act.endTime) * 3;
       const func = () => {
         this.adjustStatsForActivity(act);      
-        this.setActiveActivity(act.startTime); 
+        this.setActiveActivity(_formatToUnix(act.startTime)); 
       };
       setTimeout(func, duration);
     })
@@ -132,6 +138,12 @@ export default class App extends Component {
   
   vizStorySegments(){
     const storylines = [ ...movesData.storylines ]; 
+    //this is actually returning many activityBars, notfor specified day
+    console.log('vizsegs', storylines);
+    console.log('vizsegs', storylines[0]);
+    
+
+    
     return storylines.map(({ date, segments }) => {
       return (
         <ActivityBar 
@@ -143,26 +155,45 @@ export default class App extends Component {
       )  
     })
   }
+
+  renderDailyProfiles(){
+    return this.state.storylines.map(story => {
+      console.log('renddaly', story);
+      
+      return (
+        <DailyProfile 
+          key={story.date}
+          activities={this.createActivitiesList(story.segments)}
+          storyline={story}
+          segments={story.segments}
+          stats={{str:4,int:2,agy:5,stm:2}}
+        />
+      )
+    })
+  }
   
   render() {
     return (
-      <View>        
-        <Djinn 
-          activeActivity={this.state.activeActivity}
-          stats={this.state.stats}
-        />
-        <View style={{margin: 100}} />
-        <View>  
-          { this.vizStorySegments() }
-        </View>
+      // <View>        
+      //   <Djinn 
+      //     activeActivity={this.state.activeActivity}
+      //     stats={this.state.stats}
+      //   />
+      //   <View style={{margin: 100}} />
+      //   <View>  
+      //     { this.vizStorySegments() }
+      //   </View>
 
-        <TouchableOpacity onPress={() => this.playDay()}>
-          <Text> Play Day </Text>
-        </TouchableOpacity>
+      //   <TouchableOpacity onPress={() => this.playDay()}>
+      //     <Text> Play Day </Text>
+      //   </TouchableOpacity>
         
-      </View>
-
+      // </View>
+     <View>
+     {this.renderDailyProfiles()}
+     </View>
     )
+
   }
 }
 
