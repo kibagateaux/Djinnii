@@ -7,8 +7,6 @@ import axios from 'axios';
 import movesData from '../lib/data';
 import { _formatToUnix, _durationUnix } from '../lib/helpers';
 
-import Djinn from './Djinn';
-import ActivityBar from './ActivityBar';
 import DailyProfile from './DailyProfile';
 
 export default class App extends Component {
@@ -35,6 +33,19 @@ export default class App extends Component {
       .then(data => { console.log('data', data); return data; })
   }
 
+  normalizedData(){
+    return movesData.storylines.map(day => 
+      day.segments.map(seg => {
+        if(seg.type === 'place' && !Array.isArray(seg.place)){
+          let { lat, lon } = seg.place.location;
+          console.log('normplc', seg, [lat, lon]);
+          const coordinates = [ lat, lon ];
+          seg.place = coordinates
+        }
+        return seg
+      })
+    )
+  }
   renderDailyProfiles(){
     return this.state.storylines.map((story,i) => {
           {/*key={story.date}*/}
@@ -50,6 +61,8 @@ export default class App extends Component {
   }
   
   render() {
+    console.log('app ren', typeof this.normalizedData());
+    console.log('appren', this.normalizedData());
     return (
       <ScrollView>
         {this.renderDailyProfiles()}

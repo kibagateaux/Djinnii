@@ -36,14 +36,13 @@ export default class DailyProfile extends Component {
 
   setActiveActivity(unixTime) {
     //setsState to user selected activity to update animations 
-    console.log('actv', unixTime, this.activities[unixTime]);
     if(unixTime) return this.setState({ activeActivity: this.activities[unixTime] });
   }
 
   updateStats({ attr, val }){
     //updates one stat attr per func call
     const stats = {...this.state.stats};
-    const newStat = { ...stats, [attr]: stats[attr] + val };
+    const newStat = { ...stats, [attr]: parseInt(stats[attr] + val, 10) };
     this.setState({ stats: newStat });
   }
 
@@ -53,6 +52,7 @@ export default class DailyProfile extends Component {
     }
     const activityType = act.activity? act.activity : 'plc';
     const duration = _durationUnix(act.startTime, act.endTime)
+    
     switch(activityType){
       case 'wlk':
         return this.updateStats({ attr: 'int', val: parseFloat(.02) * duration });
@@ -63,7 +63,7 @@ export default class DailyProfile extends Component {
       case 'plc':
         return this.updateStats({ attr: 'str', val: parseFloat(-.01) * duration });
     }
-  } 
+  }
 
 
   playDay(){
@@ -91,6 +91,7 @@ export default class DailyProfile extends Component {
   }
 
   render() {
+    
     return (
       <View>        
 

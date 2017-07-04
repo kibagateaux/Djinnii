@@ -6,15 +6,10 @@ import {
 } from 'react-native';
 import { _formatToUnix, _durationUnix } from '../lib/helpers';
 import { daySecs } from '../lib/constants/time';
-import moment from 'moment';
 
-export default class ActivityBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default ({ setActiveActivity, segments, i }) => {
   // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
-  color(activity) {
+  const colorSelector = (activity) => {
     switch(activity){
       case 'wlk': return 'green';
       case 'cyc': return 'blue';
@@ -26,42 +21,41 @@ export default class ActivityBar extends Component {
     }
   }
 
-  renderBar(segment){
+  const renderBar = (segment) => {
     const { startTime, endTime, activity } = segment;
     const duration = _durationUnix(startTime, endTime);
     const width = (duration * 90) / daySecs; //percentage of activity time over total seconds in day = percentage of screen width
-    const color = activity? this.color(activity): this.color("plc");
+    const color = activity? colorSelector(activity): colorSelector("plc");
 
     return(
       <TouchableWithoutFeedback 
         key={startTime? startTime: calories}
-        onPress={() => this.props.setActiveActivity(_formatToUnix(startTime))} 
+        onPress={() => setActiveActivity(_formatToUnix(startTime))} 
       >
         <View style={[styles.bar, {width: `${width}%`, backgroundColor: color}]}/>
       </TouchableWithoutFeedback>
     )
   }
 
-  renderDailySegments(){
-    return this.props.segments.map(seg => {
+  const renderDailySegments = () => {
+    return segments.map(seg => {
       return (seg.type === "move")
-        ? seg.activities.map(act => this.renderBar(act))
-        : this.renderBar(seg);
+        ? seg.activities.map(act => renderBar(act))
+        : renderBar(seg);
     })
   }
 
   //retrieve storyline for times to place within timeline
 
-  render() {
-    return (
-      <View style={{
-        marginTop: this.props.i * 20, 
-        flexDirection: 'row',
-      }}>
-        { this.renderDailySegments() }
-      </View>
-    )
-  }
+
+  return (
+    <View style={{
+      marginTop: i * 20, 
+      flexDirection: 'row',
+    }}>
+      { renderDailySegments() }
+    </View>
+  )
 }
 
 const styles = {
@@ -70,6 +64,5 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // flexDirection: 'column'
   }
 }

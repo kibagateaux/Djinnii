@@ -7,6 +7,7 @@ import StatsTable from './StatsTable';
 
 export default class Djinn extends Component {
   render() {
+    const { activeActivity, stats } = this.props;
     return (
       <View 
         style={{
@@ -20,16 +21,24 @@ export default class Djinn extends Component {
             height: height/4,
             width: width
           }}
-          activity={this.props.activeActivity
-            ? this.props.activeActivity.activity
-            : "idl" } 
-            style={{
-            }}
+          activity={
+            activeActivity
+              ? activeActivity.activity
+              : "idl" 
+          } 
         />
        
         <StatsTable 
-          
-          stats={{char:this.props.stats}}
+          stats={{
+            characterStats: stats, 
+            healthStats: {
+              hyrdation: '1L/3L',
+              sugar: '40g/8g'
+            },
+            activityStats:{
+              ...activeActivity
+            }
+          }}
         />
 
       </View>

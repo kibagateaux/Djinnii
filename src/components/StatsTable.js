@@ -29,15 +29,10 @@ export default ({ stats }) => {
   const statsColumn = (statCategory) => {
     return Object.keys(statCategory).map(statRow => {
       return (
-        <Text 
-          key={statRow}
-          style={{
-            flexDirection: 'row', 
-            justifyContent: 'flex-end', 
-            width: width/5
-          }}
-        >
-          {statRow}  :  {statCategory[statRow]} 
+        <Text key={statRow} style={{width: 50}}>
+          <Text > {statRow}  : </Text> 
+          
+          <Text> {statCategory[statRow]}           </Text>
         </Text>
       )
     })
@@ -48,22 +43,25 @@ export default ({ stats }) => {
       <Text
         key={i}
         style={{
-          flexDirection: 'column',
-          justifyContent: 'space-around'
+          flexDirection: 'row',
+          width: '30%',
+          alignSelf: 'auto'
         }}> 
-        <Text> {key} </Text>
+        <Text>{key}</Text>
         <Text> {statsColumn(stats[key])} </Text>
       </Text>
     )
   });
 
   return (
-    <Text
+    <View
       style={{
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop: height/4,
+        padding: 10
       }}
     > 
       { statsTable() }
-    </Text>
+    </View>
   )
 }
