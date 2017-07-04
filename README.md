@@ -1,4 +1,4 @@
-Ideas
+Improvements
   How to incorporate dietary habits into game?
     Does how they feed imaginary Djinn reflect how they feed themmselves?
     Ping them at "eating' times and ask to be fed what player is eating, only works if we know theyre eating habits or they follow general pattern
@@ -23,7 +23,11 @@ App Features
   $ Scrollable multiple days
   More monsterous Djinn
 
-  
+  Make it seem more like you are taking care of a pet
+    Add feed function
+
+
+
 Code Features
   walk function to handle nested activities in "place"s
   Seriously need to normalize data structures on backend // Do this in leiu of ^^^
@@ -33,9 +37,32 @@ Code Features
 
 
 
+App Story: 
 
-  This is not supposed to replicate users real life behavior. It is an a fun, educational app that brings to light a variety of life tips, mainly concerning nutrition and fitness while also touching on psychology, meditation, and social aspects of life. 
-  Lets say 
+  **Abstract:** This is not supposed to replicate users real life behavior. It is an a fun, educational app that brings to light a variety of life tips, mainly concerning nutrition and fitness while also touching on psychology, meditation, and social aspects of life. 
+
+App Rules : 
+  Exercise x minutes per week && y days per week (+str, stm, happiness | - )
+  Interact with nature and with other people (+ happiness, int,  | -)
+  Food intake affects stats (+ veg, frt, fat, hyd | - sgr, )
+  Sleep ( +happiness)
+  Resilience? Codify how long they can work out
+  Moderation 
+
+
+  Djinn Stats
+    Financial 
+      Take Mint data 
+      Spending patterns in general and how they correlate with physical patterns (visiting locations, hours sleeping)
+    
+    Mental 
+      Sleep patterns and how they affect nutritional habits, heart rate, etc.
+
+    Nutrition
+
+    Exercise
+
+
 
   User Stories 
   |Name|Use Case|Other UX things|
