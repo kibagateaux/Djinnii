@@ -3,8 +3,9 @@ import SpriteAnimation from 'react-native-animated-sprite';
 import { height, width } from '../lib/constants/style';
 
 const Sprite = ({ activity, style }) => {
+  console.log('spriteactivity', activity);
   
-  const spriteFrames = function(activity) {
+  const spriteFrames = function() {
     switch(activity){
       case "wlk": return [0,1,2];
       case "run": return [0,2,4];
@@ -13,9 +14,9 @@ const Sprite = ({ activity, style }) => {
       case "idl": return [0];
       default:    return [0];
     }
-  }(activity);
+  }();
 
-  const renderSprite = (activity) => (
+  const renderSprite = () => (
       <SpriteAnimation
         sprite={{
           name: activity,
@@ -32,14 +33,14 @@ const Sprite = ({ activity, style }) => {
           animationIndex: spriteFrames
         }}
         loopAnimation        
-        coordinates={{top: 0, left: 0}}
+        coordinates={{top: height / 8, left: width / 4}}
         animationFrameIndex={spriteFrames}
         size={{height: height/5, width: width/2}}
         style={{ ...style }}
         alt="Animation depicting your currently selected activity"
       />
-  )
-  return renderSprite(spriteFrames)
+  );
+  return renderSprite(spriteFrames);
 }
 
 export default Sprite;

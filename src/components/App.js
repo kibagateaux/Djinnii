@@ -1,72 +1,67 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Linking, TouchableOpacity, Image } from 'react-native';
-import * as firebase from 'firebase/app';
-import 'firebase/database';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/auth';
 
-import movesData from '../lib/data';
-import { _formatToUnix, _durationUnix } from '../lib/helpers';
+import DailyProfile from '@containers/DailyProfile.Container';
+import SpriteAnimation from '@containers/SpriteAnimation.Container';
 
-import DailyProfile from './DailyProfile';
+import {normalizeStorylineData} from '@helpers/movesData';
 
 export default class App extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
+    firebase.initializeApp({
+      apiKey: "AIzaSyDN6ZpmqNKMU4sWDG12ypR5Xonu8J5KnYs",
+      authDomain: "djinn-64564.firebaseapp.com",
+      databaseURL: "https://djinn-64564.firebaseio.com",
+      projectId: "djinn-64564",
+      storageBucket: "djinn-64564.appspot.com",
+      messagingSenderId: "831855461146"
+    })
+  }
 
-    this.state = {
-      storylines: [...movesData.storylines]
-    };
+  componentDidMount(){
+    this._updateMovesData();
 
-    // firebase.initializeApp({
-    //   apiKey: "AIzaSyDN6ZpmqNKMU4sWDG12ypR5Xonu8J5KnYs",
-    //   authDomain: "djinn-64564.firebaseapp.com",
-    //   databaseURL: "https://djinn-64564.firebaseio.com",
-    //   projectId: "djinn-64564",
-    //   storageBucket: "djinn-64564.appspot.com",
-    //   messagingSenderId: "831855461146"
-    // });
-}
+  }
 
-  getData(){
-    console.log('getData');
+  _updateMovesData = () => {
+    const recentStories = this._getMovesData();
+    const db = firebase.database();
+    console.log('db', db.root);
+    
+  }
+
+  _getMovesData(){
+    console.log('_getMovesData');
     const data = axios.get("https://localhost:8000/moves/any")
       .then(data => { console.log('data', data); return data; })
   }
 
-  normalizedData(){
-    return movesData.storylines.map(day => 
-      day.segments.map(seg => {
-        if(seg.type === 'place' && !Array.isArray(seg.place)){
-          let { lat, lon } = seg.place.location;
-          console.log('normplc', seg, [lat, lon]);
-          const coordinates = [ lat, lon ];
-          seg.place = coordinates
-        }
-        return seg
-      })
-    )
-  }
   renderDailyProfiles(){
-    return this.state.storylines.map((story,i) => {
-          {/*key={story.date}*/}
+    return this.props.storylines.map((story,i) => {
+      // key=story.date with real data
       return (
-        <DailyProfile 
-          key={i}
-          storyline={story}
-          segments={story.segments}
-          stats={{str:4,int:2,agy:5,stm:2}}
-        />
+        <DailyProfile key={i} storyline={story}/>
       )
     })
   }
   
   render() {
-    console.log('app ren', typeof this.normalizedData());
-    console.log('appren', this.normalizedData());
+    const {activeActivity} = this.props;
     return (
-      <ScrollView>
-        {this.renderDailyProfiles()}
-      </ScrollView>
+      <View style={{flex:1}}> 
+        <View style={{flex: 1}} />      
+        <SpriteAnimation
+            activity={activeActivity.activity}
+          />
+        <ScrollView style={{flex: 7}}>
+          {this.renderDailyProfiles()}
+        </ScrollView>
+      </View>
     )
 
   }

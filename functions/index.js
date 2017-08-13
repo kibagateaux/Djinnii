@@ -1,0 +1,1 @@
+'use strict';var functions=require('firebase-functions');var admin=require('firebase-admin');admin.initializeApp(functions.config().firebase);var src=require('./src');exports.addMovesStoryline=src.database.addMovesStoryline(functions,admin);

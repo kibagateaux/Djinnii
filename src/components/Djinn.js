@@ -4,10 +4,12 @@ import { height, width } from '../lib/constants/style';
 
 import SpriteAnimation from './SpriteAnimation';
 import StatsTable from './StatsTable';
+import FoodTable from './FoodTable';
 
 export default class Djinn extends Component {
   render() {
-    const { activeActivity, stats } = this.props;
+    const { activeActivity, stats, updateStats } = this.props;
+    
     return (
       <View 
         style={{
@@ -16,31 +18,7 @@ export default class Djinn extends Component {
           margin: width/20
         }}
       >
-        <SpriteAnimation 
-          style={{
-            height: height/4,
-            width: width
-          }}
-          activity={
-            activeActivity
-              ? activeActivity.activity
-              : "idl" 
-          } 
-        />
-       
-        <StatsTable 
-          stats={{
-            characterStats: stats, 
-            healthStats: {
-              hyrdation: '1L/3L',
-              sugar: '40g/8g'
-            },
-            activityStats:{
-              ...activeActivity
-            }
-          }}
-        />
-
+        <StatsTable stats={stats} />
       </View>
     )
   }

@@ -26,11 +26,10 @@ export default ({ setActiveActivity, segments, i }) => {
     const duration = _durationUnix(startTime, endTime);
     const width = (duration * 90) / daySecs; //percentage of activity time over total seconds in day = percentage of screen width
     const color = activity? colorSelector(activity): colorSelector("plc");
-
     return(
       <TouchableWithoutFeedback 
         key={startTime? startTime: calories}
-        onPress={() => setActiveActivity(_formatToUnix(startTime))} 
+        onPress={() => setActiveActivity(segment)} 
       >
         <View style={[styles.bar, {width: `${width}%`, backgroundColor: color}]}/>
       </TouchableWithoutFeedback>

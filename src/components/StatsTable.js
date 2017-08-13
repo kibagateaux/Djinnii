@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { height, width } from '../lib/constants/style';
 
-export default ({ stats }) => {
+export default ({ stats, listedStats }) => {
   /* Example stats object
   const stats = {
     charStats: {
@@ -32,7 +32,7 @@ export default ({ stats }) => {
         <Text key={statRow} style={{width: 50}}>
           <Text > {statRow}  : </Text> 
           
-          <Text> {statCategory[statRow]}           </Text>
+          <Text> {(typeof statCategory[statRow] === 'object')? null :  statCategory[statRow]} </Text>
         </Text>
       )
     })
@@ -57,7 +57,7 @@ export default ({ stats }) => {
     <View
       style={{
         flexDirection: 'row',
-        marginTop: height/4,
+        flex: 3,
         padding: 10
       }}
     > 
