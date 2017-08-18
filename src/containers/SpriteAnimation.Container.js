@@ -1,7 +1,7 @@
 
-import SpriteAnimation from '../components/SpriteAnimation';
-import {updateStats} from '../actions/stats';
-import {setActiveActivity} from '../actions/activities';
+import SpriteAnimation from '@components/SpriteAnimation/SpriteAnimation';
+import {updateStats} from '@actions/stats';
+import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => ({

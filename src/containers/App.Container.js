@@ -1,6 +1,6 @@
-import App from '../components/App';
-import {updateStats} from '../actions/stats';
-import {setActiveActivity} from '../actions/activities';
+import App from '@components/App/App';
+import {updateStats} from '@actions/stats';
+import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => ({

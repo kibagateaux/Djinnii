@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import StatsTable from '../components/StatsTable';
+import StatsTable from '@components/StatsTable/StatsTable';
 
 const mapStateToProps = ({stats}) => {
   return {stats};

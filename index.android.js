@@ -6,6 +6,7 @@
 
 
 import { AppRegistry } from 'react-native';
-import App from './src/components/App';
+import Base from './src/Base';
 
-AppRegistry.registerComponent('djinnrn', () => App);
+
+AppRegistry.registerComponent('djinnrn', () => Base);

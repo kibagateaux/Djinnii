@@ -1,6 +1,6 @@
-import DailyProfile from '../components/DailyProfile';
-import {updateStats} from '../actions/stats';
-import {setActiveActivity} from '../actions/activities';
+import DailyProfile from '@components/DailyProfile/DailyProfile';
+import {updateStats} from '@actions/stats';
+import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
 
 const mapStateToProps = ({stats, activities}) => {

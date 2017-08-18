@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
-import Djinn from './Djinn';
-import ActivityBar from './ActivityBar';
-import { _formatToUnix, _durationUnix } from '../lib/helpers';
+import Djinn from '@containers/Djinn.Container';
+import ActivityBar from '@components/ActivityBar/ActivityBar';
+import { _formatToUnix, _durationUnix, statsAfterActivity } from '@lib/helpers';
 
 export default class DailyProfile extends Component {
 
   adjustStatsForActivity(act){
-    const updateStats = this.props.updateStats;
+    const {stats, updateStats} = this.props;
 
     if(Array.isArray(act.activities)){
       return act.activities.forEach(act => this.adjustStatsForActivity(act));
     }
-    const activityType = act.activity? act.activity : 'plc';
+    const activityType = act.activity? act.activity : act.activity = 'plc';
     const duration = _durationUnix(act.startTime, act.endTime)
-    
-    switch(activityType){
-      case 'wlk':
-        return updateStats({int: parseFloat(.02) * duration });
-      case 'run':
-        return updateStats({agy: parseFloat(.02) * duration });
-      case 'cyc':
-        return updateStats({stm: parseFloat(.02) * duration });
-      case 'plc':
-        return updateStats({str: parseFloat(-.01) * duration });
-    }
+
+    /* these should be removed from PlayDay*/
+    const updatedStats = statsAfterActivity(act, stats);
+    return updateStats(updatedStats);
   }
 
 
@@ -39,7 +32,7 @@ export default class DailyProfile extends Component {
     })
   }
 
-  vizStorySegments(){
+  vizStorySegments(){ 
     const { segments, date, key } = this.props.storyline;
     return (
       <ActivityBar 

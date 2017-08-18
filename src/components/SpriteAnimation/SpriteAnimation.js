@@ -1,6 +1,6 @@
 import React from 'react';
 import SpriteAnimation from 'react-native-animated-sprite';
-import { height, width } from '../lib/constants/style';
+import { height, width } from '@lib/constants/style';
 
 const Sprite = ({ activity, style }) => {
   console.log('spriteactivity', activity);
@@ -23,21 +23,21 @@ const Sprite = ({ activity, style }) => {
           size: {height: height/5, width: width/2},
           animationTypes: ["run", "wlk", "cyc"],
           frames: [
-            require("../lib/images/runSprite0.png"),
-            require("../lib/images/runSprite1.png"),
-            require("../lib/images/runSprite2.png"),
-            require("../lib/images/runSprite3.png"),
-            require("../lib/images/runSprite4.png"),
-            require("../lib/images/runSprite5.png"),
+            require("@lib/images/runSprite0.png"),
+            require("@lib/images/runSprite1.png"),
+            require("@lib/images/runSprite2.png"),
+            require("@lib/images/runSprite3.png"),
+            require("@lib/images/runSprite4.png"),
+            require("@lib/images/runSprite5.png"),
           ],
           animationIndex: spriteFrames
         }}
         loopAnimation        
-        coordinates={{top: height / 8, left: width / 4}}
+        coordinates={{top: 0, left: 0}}
         animationFrameIndex={spriteFrames}
         size={{height: height/5, width: width/2}}
         style={{ ...style }}
-        alt="Animation depicting your currently selected activity"
+        alt="Djinii enacting your currently selected activity"
       />
   );
   return renderSprite(spriteFrames);

@@ -4,8 +4,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { _formatToUnix, _durationUnix } from '../lib/helpers';
-import { daySecs } from '../lib/constants/time';
+import { _formatToUnix, _durationUnix } from '@lib/helpers';
+import { daySecs } from '@lib/constants/time';
 
 export default ({ setActiveActivity, segments, i }) => {
   // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
