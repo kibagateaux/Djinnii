@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "allowJs": true,
+        "allowJS": true,
         "allowSyntheticDefaultImports": true
     },
     "exclude": [

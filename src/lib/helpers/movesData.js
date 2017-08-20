@@ -7,21 +7,15 @@ export const normalizeStorylineData = (storylines) => {
 
 const normalizedData = (stories) => {
   // should take all day segments and return flat object
-  console.log('norm data stories', stories);
-  
-  const days = stories.map((day) => 
+  const week = stories.map((day) => 
     day.segments.map(seg => {
       return (Array.isArray(seg.activities)) ? 
         [...seg.activities] : seg;
     })
   );
 
-  console.log('nrom dat day', days);
-  
-
-  return days.reduce((timeline, day) => {
+  return week.reduce((timeline, day) => {
     const normalizedDay = day.reduce((day, act) => {
-      if(!act.activity) act.activity = 'idl';
       return Array.isArray(act) ? 
         [...day, ...act] : [...day, act]
       });
@@ -38,7 +32,10 @@ const createActivitiesList = (stories) => {
   let activityList = {};
   normData.forEach((activity) => {
     const unixStartTime = _formatToUnix(activity.startTime);
-    if(!activity.activity) activity.activity = 'idl';
+    if(!activity.activity) activity.activity = 'plc';
+    
+    // activity.startTime = _formatToUnix(activity.startTime);
+    // activity.endTime = _formatToUnix(activity.endTime);
     activityList[unixStartTime] = activity;
   });
   return activityList;

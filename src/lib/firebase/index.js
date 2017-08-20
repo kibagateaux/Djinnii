@@ -1,4 +1,7 @@
 import * as firebase from 'firebase';
+import * as _database from './database';
+import * as _auth from './auth';
+
 firebase.initializeApp({
   apiKey: "AIzaSyDN6ZpmqNKMU4sWDG12ypR5Xonu8J5KnYs",
   authDomain: "djinn-64564.firebaseapp.com",
@@ -8,11 +11,6 @@ firebase.initializeApp({
   messagingSenderId: "831855461146"
 });
 
-export const signInAnon = () => firebase.auth().signInAnonymously()
-  .catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-  });
-
+export const signInAnon = _auth.signInAnon(firebase);
+export const getStatsAtTime = _database.getStatsAtTime(firebase);
+export const setFirebaseStats = _database.setFirebaseStats(firebase);

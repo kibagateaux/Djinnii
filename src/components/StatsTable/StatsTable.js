@@ -1,20 +1,26 @@
 import React from 'react';
 import { Text, ScrollView } from 'react-native';
 import { height, width } from '@lib/constants/style';
+import styles from './styles';
 
 export default ({ stats }) => {
 
   const statsColumn = (statCategory) => {
+    // console.log('stat Clmn', statCategory);
+    
     return Object.keys(statCategory).map(statRow => {
-      // parse number to only show first 2 decimals on screen
-      const stat = statCategory[statRow];
-
+      // console.log('stat row', statRow);
       
+      const stat = statCategory[statRow];
+      statFloat = String.toString(stat).includes(".") ?
+        /(^\d*\.\d+?)/.exec(stat) : stat
+      
+        // console.log('stat tabl float', statFloat);
+      if(typeof statRow ==='object' || typeof statFloat === 'object') return;
       return (
-        <Text key={statRow}>
-          <Text > {statRow}  : </Text> 
-          
-          <Text> {(typeof statCategory[statRow] === 'object') ? null : stat} </Text>
+        <Text style={styles.statRow} key={statRow}>
+          <Text style={styles.statText}> {statRow}  : </Text> 
+          <Text style={styles.statText}> {statFloat} </Text>
         </Text>
       )
     })
@@ -34,11 +40,7 @@ export default ({ stats }) => {
   // });
 
   return (
-    <ScrollView
-      style={{
-        padding: 10
-      }}
-    > 
+    <ScrollView style={styles.container}> 
       { statsColumn(stats) }
     </ScrollView>
   )

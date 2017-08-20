@@ -1,4 +1,4 @@
-import {_durationUnix} from '@lib/helpers/time';
+import {_formatToUnix, _durationUnix} from '@lib/helpers/time';
 
 export const statsToActivityMapping = {
   'wlk': {int: 0.000002, agy: -0.000001, stm: 0.000001},
@@ -10,18 +10,14 @@ export const statsToActivityMapping = {
 }
 
 export const statsAfterActivity = (targetActivity, stats) => {
-  // takes activity obj - {startTime, endTime, type, etc.} and returns complete updated stats object
   const {activity, startTime, endTime} = targetActivity;
   const statMultiplier = statsToActivityMapping[activity];
-  
+
   updatedStats = Object.keys(statMultiplier).map((stat) => {
     const duration =  _durationUnix(startTime, endTime);
     const update = statMultiplier[stat] * duration;
     return {[stat]: stats[stat] + update}
   }).reduce((stats, next) => ({...stats, ...next}), {})
-  
-  const finalStats = {...stats, ...updatedStats};
-  console.log('final stat', stats, finalStats);
-  
-  return finalStats;
+  const unixStartTime = _formatToUnix(startTime);
+  return {[unixStartTime]: {...stats, ...updatedStats}};
 }

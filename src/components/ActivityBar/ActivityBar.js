@@ -4,10 +4,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { _formatToUnix, _durationUnix } from '@lib/helpers';
-import { daySecs } from '@lib/constants/time';
+import { _formatToUnix, _durationUnix } from '@helpers/time';
+import { daySecs } from '@constants/time';
 
-export default ({ setActiveActivity, segments, i }) => {
+export default ({ setActiveActivity, segments, stats }) => {
   // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
   const colorSelector = (activity) => {
     switch(activity){
@@ -25,7 +25,8 @@ export default ({ setActiveActivity, segments, i }) => {
     const { startTime, endTime, activity } = segment;
     const duration = _durationUnix(startTime, endTime);
     const width = (duration * 90) / daySecs; //percentage of activity time over total seconds in day = percentage of screen width
-    const color = activity? colorSelector(activity): colorSelector("plc");
+    const color = activity ? colorSelector(activity) : colorSelector("plc"); //still needed because segments are not normalized only activities
+
     return(
       <TouchableWithoutFeedback 
         key={startTime? startTime: calories}
@@ -49,7 +50,6 @@ export default ({ setActiveActivity, segments, i }) => {
 
   return (
     <View style={{
-      marginTop: i * 20, 
       flexDirection: 'row',
     }}>
       { renderDailySegments() }

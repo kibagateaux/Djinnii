@@ -1,13 +1,19 @@
 import { StyleSheet } from 'react-native';
 import { height, width } from '@lib/constants/style';
 
+
 export default StyleSheet.create({
-  container: {
+  btnContainer: {
     flex: 1,
-    marginBottom: width / 10,
-    marginTop: width / 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: 'gold'
-  }
+    justifyContent: 'space-between',
+  },
+  dailyBtn: {
+    flex: 1,
+    backgroundColor: 'gold',
+  },
+  btnText: {
+    textAlign: 'center',
+    
+  },
 })

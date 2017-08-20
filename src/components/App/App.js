@@ -6,7 +6,7 @@ import SpriteAnimation from '@containers/SpriteAnimation.Container';
 import Djinn from '@containers/Djinn.Container';
 import {normalizeStorylineData} from '@helpers/movesData';
 import {signInAnon} from '@lib/firebase';
-
+import styles from './styles';
 
 export default class App extends Component {
   constructor(props){
@@ -15,7 +15,7 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    this._updateMovesData();
+    // this._updateMovesData();
   }
 
   _updateMovesData = async () => {
@@ -26,11 +26,11 @@ export default class App extends Component {
 
     const storylines = this._getMovesData();
     console.log('recent stories', storylines);
-    axios.post('https://us-central1-djinn-64564.cloudfunctions.net/addMovesStoryline', {
+    const data = await axios.post('https://us-central1-djinn-64564.cloudfunctions.net/addMovesStoryline', {
       uid: 0,
       storylines
-    }).then((res) => { console.log('goog cld res', res);
     })
+
   }
 
   _getMovesData = async () => {
@@ -48,12 +48,13 @@ export default class App extends Component {
   }
   
   render() {
+    console.log('rerender', this.props);
+    
     const {activeActivity} = this.props;
     return (
-      <View style={{flex:1}}> 
+      <View style={styles.container}> 
         <Djinn />
-        {/* <SpriteAnimation /> */}
-        <ScrollView style={{flex: 7}}>
+        <ScrollView>
           {this.renderDailyProfiles()}
         </ScrollView>
       </View>
