@@ -4,16 +4,13 @@ import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
 export default ({ activeStats }) => {
-  console.log('stat table', activeStats);
+  console.log('stat tabl', activeStats);
   
   const statsColumn = (statCategory) => {
-    
     return Object.keys(statCategory).map(statRow => {
-      
       const stat = statCategory[statRow];
       statFloat = String.toString(stat).includes(".") ?
         /(^\d*\.\d+?)/.exec(stat) : stat
-      
       if(typeof statRow ==='object' || typeof statFloat === 'object') return;
       return (
         <Text style={styles.statRow} key={statRow}>
@@ -23,19 +20,6 @@ export default ({ activeStats }) => {
       )
     })
   };
-
-  //deprecated when data structure normalized
-  // const statsTable = () => Object.keys(stats).map((key,i) => {
-  //   return (
-  //     <View
-  //       key={i}
-  //       style={{
-  //       }}> 
-  //       <Text>{key}</Text>
-  //       <Text> {statsColumn(stats[key])} </Text>
-  //     </View>
-  //   )
-  // });
 
   return (
     <ScrollView style={styles.container}> 
