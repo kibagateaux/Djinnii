@@ -3,15 +3,21 @@ import {
   SET_ACTIVE_ACTIVITY
 } from '@actions/actionNames';
 import {statsAfterActivity} from '@helpers/stats';
-// const initStats = ((stats) => {
-//   return Object.keys(stats);
-// })
-const INITIAL_STATE = {
-  str:4,
-  int:2,
-  agy:5,
-  stm:2
-};
+import {activities} from '@constants/movesData';
+
+const INITIAL_STATE = Object.keys(activities).reduce((timeline, key) => {
+  const history = Object.keys(timeline);
+  const lastInHistory = history[history.length - 1];
+  let lastStats = timeline[lastInHistory] || {};
+
+  const stats = activities[key].activities.reduce((statsHistory, act) => { 
+    const nextStats = statsAfterActivity(act, lastStats);
+    lastStats = nextStats;
+    return {...statsHistory, [act.startTime]: nextStats};
+  }, {});
+  
+  return {...timeline, ...stats};
+}, {});
 
 /* TODO 
   Build function that will take initial actions and build from all past activities

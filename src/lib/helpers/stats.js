@@ -10,14 +10,14 @@ export const statsToActivityMapping = {
 }
 
 export const statsAfterActivity = (targetActivity, stats) => {
-  const {activity, startTime, endTime} = targetActivity;
+  if(!targetActivity || !stats) throw Error("Need target activity and stats object to calculate stats after activity");
+  const {activity, startTime, endTime, duration} = targetActivity;
   const statMultiplier = statsToActivityMapping[activity];
+  updatedStats = Object.keys(statMultiplier).reduce((update, stat) => {
+    const updateStats = statMultiplier[stat] * duration;
+    currentStat = update[stat] || 0;
+    return {...update, [stat]: currentStat + updateStats}
+  }, stats);
 
-  updatedStats = Object.keys(statMultiplier).map((stat) => {
-    const duration =  _durationUnix(startTime, endTime);
-    const update = statMultiplier[stat] * duration;
-    return {[stat]: stats[stat] + update}
-  }).reduce((stats, next) => ({...stats, ...next}), {})
-  const unixStartTime = _formatToUnix(startTime);
-  return {[unixStartTime]: {...stats, ...updatedStats}};
+  return {...stats, ...updatedStats};
 }
