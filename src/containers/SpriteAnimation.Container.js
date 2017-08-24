@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => ({
   style: ownProps.style,
-  activity: state.activities.activeActivity.activity
+  activeActivity: state.activities.activeActivity
 });
 
 export default connect(mapStateToProps)(SpriteAnimation);

@@ -15,27 +15,28 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    // this._updateMovesData();
+    this._updateMovesData();
   }
 
   _updateMovesData = async () => {
     // for renewing access token until coded
     // const res = await axios.get("https://localhost:3000/");
+    const storylines = await this._getMovesData();
+    // const res = await axios.post('https://us-central1-djinn-64564.cloudfunctions.net/addMovesStoryline', {
+    //   uid: 0,
+    //   storylines
+    // })
+
+    console.log('_upd moves', storylines);
+    
     // console.log('auth url', res.data);
     // Linking.openURL(res.data);
-
-    const storylines = this._getMovesData();
-    console.log('recent stories', storylines);
-    const data = await axios.post('https://us-central1-djinn-64564.cloudfunctions.net/addMovesStoryline', {
-      uid: 0,
-      storylines
-    })
-
   }
 
   _getMovesData = async () => {
-    console.log('_getMovesData');
-    const data = await axios.get("https://localhost:3000/moves/storylines");
+    const data = await axios.get("https://localhost:5000/djinn-64564/us-central1/getNewStorysFromMoves");
+    console.log('_getMovesData', data);
+    return data;
   }
 
   renderDailyProfiles(){

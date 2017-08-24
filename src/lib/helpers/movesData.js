@@ -1,42 +1,58 @@
-import {_formatToUnix} from '@lib/helpers/time';
+import {
+  _formatToUnix,
+  _durationUnix,
+  _getTimesInUnix
+} from '@lib/helpers/time';
 
 export const normalizeStorylineData = (storylines) => {
-  return createActivitiesList(storylines);
+  return normalizedData(storylines);
+  
 }
 
 
 const normalizedData = (stories) => {
   // should take all day segments and return flat object
-  const week = stories.map((day) => 
-    day.segments.map(seg => {
-      return (Array.isArray(seg.activities)) ? 
-        [...seg.activities] : seg;
-    })
-  );
-
-  return week.reduce((timeline, day) => {
-    const normalizedDay = day.reduce((day, act) => {
-      return Array.isArray(act) ? 
-        [...day, ...act] : [...day, act]
-      });
-    return [...timeline, ...normalizedDay];
-  }, {});
+  return stories.map((day) => {
+    const normSeg = day.segments.map(seg => {
+      const {startTime, endTime, type} = seg;
+      const segmentTime = _getTimesInUnix(startTime, endTime);
+      const activities = normalizeActivities(seg.activities);
+      segmentActivity = activities.length > 0 ? activities[0].activity : 'idl';
+      const meta = {type:seg.type, ...segmentTime, activity: segmentActivity};
+      const normData = {
+        meta,
+        activities
+      }
+      return seg.type === 'place' ? {...seg.place,  ...normData} : normData;
+    });
+    day.segments = normSeg;
+    return {...day, segments: normSeg};
+  });
+}
   
-};
 
-const createActivitiesList = (stories) => {
+const normalizeActivities = (acts) => {
+  return acts ? acts.map(act => {
+    const time = _getTimesInUnix(act.startTime, act.endTime);
+    const normAct = {
+      ...act,
+      ...time,
+    }
+    return normAct;
+  }) : [];
+}
+
+
+export const createActivitiesList = (stories) => {
   // returns object of all the days activities
   // key = unixStartTime, value = activity obj
-  const normData = normalizedData(stories);
-
   let activityList = {};
-  normData.forEach((activity) => {
-    const unixStartTime = _formatToUnix(activity.startTime);
-    if(!activity.activity) activity.activity = 'plc';
-    
-    // activity.startTime = _formatToUnix(activity.startTime);
-    // activity.endTime = _formatToUnix(activity.endTime);
-    activityList[unixStartTime] = activity;
+  stories.map((day) => {
+    return day.segments.map((activity) => {
+      const startTime = activity.meta.startTime
+      activityList[startTime] = activity;
+    })
   });
   return activityList;
 };
+

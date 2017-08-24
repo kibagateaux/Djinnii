@@ -1,13 +1,14 @@
-import movesData from '../lib/movesData';
 import {_formatToUnix} from '@lib/helpers/time';
-import {normalizeStorylineData} from '@lib/helpers/movesData';
+import movesData from '@lib/movesData';
 import {
   SET_ACTIVE_ACTIVITY
 } from '@actions/actionNames';
 
+console.log('act red', movesData);
+
 const INITIAL_STATE = {
   storylines: movesData.storylines,
-  activities: normalizeStorylineData(movesData.storylines),
+  activities: movesData.activities,
   get activeActivity(){return this.activities[Object.keys(this.activities)[0]]}
 };
 

@@ -2,7 +2,10 @@ import {
   UPDATE_STATS,
   SET_ACTIVE_ACTIVITY
 } from '@actions/actionNames';
-
+import {statsAfterActivity} from '@helpers/stats';
+// const initStats = ((stats) => {
+//   return Object.keys(stats);
+// })
 const INITIAL_STATE = {
   str:4,
   int:2,
@@ -17,16 +20,19 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, {type, payload}) => {
   switch(type){
-    case UPDATE_STATS: 
+    case UPDATE_STATS: {
       return {...state, ...payload};
-    case SET_ACTIVE_ACTIVITY:
+    }
+      case SET_ACTIVE_ACTIVITY: {
       return {...state, activeStats: state[payload]}; //payload is timestamp // not problem now but what if stats get to 100s?
-      /* 
+    } /* 
       Overwrites state completely because this is a snapshot of the person at time of activity
       Will this get troublesome constantly shifting between past, present, and future stats? 
       Can always do an API call or currentStats and activeStats be different reducers
       Current and active sound too similar - diffirentiator? 
       */
-    default: return state;
+    default: {
+      return state
+    };
   }
 };

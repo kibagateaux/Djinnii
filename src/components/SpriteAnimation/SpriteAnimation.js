@@ -4,11 +4,11 @@ import SpriteAnimation from 'react-native-animated-sprite';
 import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
-const Sprite = ({ activity, style }) => {
-  console.log('spriteactivity', activity);
+const Sprite = ({ activeActivity, style }) => {
+  console.log('spriteactiveActivity', activeActivity);
   
   const spriteFrames = function() {
-    switch(activity){
+    switch(activeActivity.meta.activity){
       case "wlk": return [0,1,2];
       case "run": return [0,2,4];
       case "cyc": return [5,6];
@@ -21,7 +21,7 @@ const Sprite = ({ activity, style }) => {
   const renderSprite = () => (
       <SpriteAnimation
         sprite={{
-          name: activity,
+          name: activeActivity,
           size: {height: height/5, width: 2 * width/3},
           animationTypes: ["run", "wlk", "cyc"],
           frames: [

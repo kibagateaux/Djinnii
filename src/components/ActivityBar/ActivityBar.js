@@ -11,6 +11,8 @@ export default ({ setActiveActivity, segments, stats }) => {
   // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
   const colorSelector = (activity) => {
     switch(activity){
+      case 'move': return 'green';
+      case 'place': return 'black';
       case 'wlk': return 'green';
       case 'cyc': return 'blue';
       case 'run': return 'pink';
@@ -22,14 +24,13 @@ export default ({ setActiveActivity, segments, stats }) => {
   }
 
   const renderBar = (segment) => {
-    const { startTime, endTime, activity } = segment;
-    const duration = _durationUnix(startTime, endTime);
+    const { startTime, endTime, duration } = segment.meta || segment;
     const width = (duration * 90) / daySecs; //percentage of activity time over total seconds in day = percentage of screen width
-    const color = activity ? colorSelector(activity) : colorSelector("plc"); //still needed because segments are not normalized only activities
-
+    
+    const color = segment.meta ? colorSelector(segment.meta.type) : colorSelector(segment.activity); //still needed because segments are not normalized only activities
     return(
       <TouchableWithoutFeedback 
-        key={startTime? startTime: calories}
+        key={startTime || endTime || duration}
         onPress={() => setActiveActivity(segment)} 
       >
         <View style={[styles.bar, {width: `${width}%`, backgroundColor: color}]}/>

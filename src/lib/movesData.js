@@ -1,4 +1,4 @@
-export default {
+const incomingData = {
   data: [ 
     { date: '20170612', summary: 0, caloriesIdle: 1796 },
     { date: '20170613', summary: 1, caloriesIdle: 1796 },
@@ -1298,4 +1298,17 @@ export default {
   ]
 }
 
-  
+import {normalizeStorylineData, createActivitiesList} from '@lib/helpers/movesData';
+
+const normStories = normalizeStorylineData(incomingData.storylines);
+const activities = createActivitiesList(normStories);
+
+export default {
+  storylines: normStories,
+  activities
+};
+
+
+
+
+
