@@ -1,5 +1,6 @@
 /* Acitivities */
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
+export const SET_ACTIVE_SEGMENT = 'SET_ACTIVE_SEGMENT';
 
 
 /* Stats */

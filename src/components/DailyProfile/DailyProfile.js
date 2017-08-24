@@ -9,11 +9,13 @@ import { statsAfterActivity } from '@helpers/stats';
 
 export default (props) => {
   const {
+    activities,
     stats,
     goals,
     storyline,
     displayDailyGoals,
     setActiveActivity,
+    setActiveSegment,
     toggleDailyGoalsDisplay,
     updateStats
   } = props;
@@ -77,7 +79,9 @@ export default (props) => {
         key={key} 
         date={date} 
         segments={segments}
+        activities={activities}
         setActiveActivity={setActiveActivity}
+        setActiveSegment={setActiveSegment}
         stats={stats}
       />
     )

@@ -7,7 +7,7 @@ import {
 import { _formatToUnix, _durationUnix } from '@helpers/time';
 import { daySecs } from '@constants/time';
 
-export default ({ setActiveActivity, segments, stats }) => {
+export default ({ setActiveActivity, setActiveSegment, segments, stats, activities }) => {
   // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
   const colorSelector = (activity) => {
     switch(activity){
@@ -23,15 +23,17 @@ export default ({ setActiveActivity, segments, stats }) => {
     }
   }
 
-  const renderBar = (segment) => {
+  const renderSegmentBar = (segment, onPress) => {
     const { startTime, endTime, duration } = segment.meta || segment;
     const width = (duration * 90) / daySecs; //percentage of activity time over total seconds in day = percentage of screen width
-    
-    const color = segment.meta ? colorSelector(segment.meta.type) : colorSelector(segment.activity); //still needed because segments are not normalized only activities
+    const type = segment.meta ? segment.meta.type : segment.activity ? segment.activity : 'idl';
+    const color = colorSelector(type);  //still needed because segments are not normalized only activities
+    const firstActivityTime = (segment.activities > 0) ? segment.activies[0].startTime : null;
+      // if there were no activities then there is nothing under activities to match it too, thus still need setActivity vs. setSegment
     return(
       <TouchableWithoutFeedback 
-        key={startTime || endTime || duration}
-        onPress={() => setActiveActivity(segment)} 
+        key={startTime * duration}
+        onPress={() => onPress(startTime, firstActivityTime)} 
       >
         <View style={[styles.bar, {width: `${width}%`, backgroundColor: color}]}/>
       </TouchableWithoutFeedback>
@@ -39,21 +41,47 @@ export default ({ setActiveActivity, segments, stats }) => {
   }
 
   const renderDailySegments = () => {
-    return segments.map(seg => {
-      return (seg.type === "move")
-        ? seg.activities.map(act => renderBar(act))
-        : renderBar(seg);
+    return segments.map((seg) => {
+      const onPress = (segStart, actStart) => {
+        actStart ? setActiveActivity(actStart) : setActiveSegment(seg);
+      };
+
+     return (seg.activies > 0)
+        ? seg.activities.map(act => renderSegmentBar(act, setActiveActivity))
+        : renderSegmentBar(seg, setActiveActivity);
+    });
+  }
+      
+
+  // take actual activies and fill null time with idle blocks, keeping 
+  // half screen width because does not accomodate 12am to first act or last act to 12am
+  const renderDailyActivities = () => {
+    return Object.keys(activities).map((act) => {
+      return renderSegmentBar(activities[act], setActiveActivity)
     })
   }
+  
+  
+// endTime of last bar and startTime of next bar to fill inbetween
+const getFillerSpace = (endTime, startTime) => {
+  console.log('rend filler', startTime - endTime);
+  const filler = {
+    startTime: endTime,
+    endTime: startTime,
+    duration: startTime - endTime,
+    type: 'idl',
+    onPress: () => console.log("idl segment selected")
+  };
 
-  //retrieve storyline for times to place within timeline
-
+  return renderSegmentBar(filler);
+}
 
   return (
     <View style={{
       flexDirection: 'row',
     }}>
-      { renderDailySegments() }
+    {/* {renderDailySegments()} */}
+      { renderDailyActivities() }
     </View>
   )
 }

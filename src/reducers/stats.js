@@ -1,36 +1,39 @@
 import {
   UPDATE_STATS,
-  SET_ACTIVE_ACTIVITY
+  SET_ACTIVE_ACTIVITY,
+  SET_ACTIVE_SEGMENT
 } from '@actions/actionNames';
 import {statsAfterActivity} from '@helpers/stats';
 import {activities} from '@constants/movesData';
+console.log('stat red acts', activities);
 
-const INITIAL_STATE = Object.keys(activities).reduce((timeline, key) => {
+const initStats = () => Object.keys(activities)
+.reduce((timeline, key) => {
   const history = Object.keys(timeline);
   const lastInHistory = history[history.length - 1];
-  let lastStats = timeline[lastInHistory] || {};
-
-  const stats = activities[key].activities.reduce((statsHistory, act) => { 
-    const nextStats = statsAfterActivity(act, lastStats);
-    lastStats = nextStats;
-    return {...statsHistory, [act.startTime]: nextStats};
-  }, {});
-  
-  return {...timeline, ...stats};
+  const lastStats = timeline[lastInHistory] || {};
+  const thisAct = activities[key];
+  const thisStats = statsAfterActivity(thisAct, lastStats);
+  return {...timeline, [thisAct.startTime]: thisStats};
 }, {});
 
+const INITIAL_STATE = initStats();
+
+console.log('stat red init', INITIAL_STATE);
+
 /* TODO 
-  Build function that will take initial actions and build from all past activities
-  Important so those that exercise a lot feel they aren't starting from zero + cool intro to app watching it play out
+
 */
 
 export default (state = INITIAL_STATE, {type, payload}) => {
+  const lastStat = state[Object.keys(state)[Object.keys(state).length - 1]]
   switch(type){
     case UPDATE_STATS: {
       return {...state, ...payload};
     }
       case SET_ACTIVE_ACTIVITY: {
-      return {...state, activeStats: state[payload]}; //payload is timestamp // not problem now but what if stats get to 100s?
+      console.log('stat red set act ', payload, state[payload]);
+      return {...state, activeStats: state[payload] || lastStat}; //payload is timestamp // not problem now but what if stats get to 100s?
     } /* 
       Overwrites state completely because this is a snapshot of the person at time of activity
       Will this get troublesome constantly shifting between past, present, and future stats? 
@@ -42,3 +45,4 @@ export default (state = INITIAL_STATE, {type, payload}) => {
     };
   }
 };
+

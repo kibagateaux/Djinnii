@@ -3,19 +3,17 @@ import { Text, ScrollView } from 'react-native';
 import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
-export default ({ stats }) => {
-
+export default ({ activeStats }) => {
+  console.log('stat table', activeStats);
+  
   const statsColumn = (statCategory) => {
-    // console.log('stat Clmn', statCategory);
     
     return Object.keys(statCategory).map(statRow => {
-      // console.log('stat row', statRow);
       
       const stat = statCategory[statRow];
       statFloat = String.toString(stat).includes(".") ?
         /(^\d*\.\d+?)/.exec(stat) : stat
       
-        // console.log('stat tabl float', statFloat);
       if(typeof statRow ==='object' || typeof statFloat === 'object') return;
       return (
         <Text style={styles.statRow} key={statRow}>
@@ -41,7 +39,7 @@ export default ({ stats }) => {
 
   return (
     <ScrollView style={styles.container}> 
-      { statsColumn(stats) }
+      { activeStats ? statsColumn(activeStats) : null }
     </ScrollView>
   )
 }

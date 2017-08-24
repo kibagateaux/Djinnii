@@ -42,17 +42,41 @@ const normalizeActivities = (acts) => {
   }) : [];
 }
 
+const addFillerSpace = (activityList) => {
+  let completeList = {}
+  Object.keys(activityList).reduce((last, next) => {
+    const lastAct = activityList[last]; const nextAct = activityList[next];
+    (lastAct.endTime !== nextAct.startTime + 1)
+      ? completeList[lastAct.endTime + 1] = {
+          startTime: lastAct.endTime + 1,
+          endTime: nextAct.startTime - 1,
+          duration: nextAct.startTime - lastAct.endTime,
+          activity: 'idl',
+        } 
+      : null
+    return next;
+  });
+  return completeList
+};
 
 export const createActivitiesList = (stories) => {
   // returns object of all the days activities
   // key = unixStartTime, value = activity obj
   let activityList = {};
   stories.map((day) => {
-    return day.segments.map((activity) => {
-      const startTime = activity.meta.startTime
-      activityList[startTime] = activity;
-    })
+    day.segments.map((seg) => {
+      seg.activities.map((act) => {
+        const startTime = act.startTime
+        activityList[startTime] = act;  
+      });
+    });
   });
-  return activityList;
+  const fillerActs = addFillerSpace(activityList);
+  
+  const l2 = Object.keys(fillerActs).length, l = Object.keys(activityList).length, l3 = Object.keys({...fillerActs, activityList}).length;
+  console.log('crt act list', l, l2);
+  console.log('filler', fillerActs, activityList);
+  
+  return {...activityList, ...fillerActs};
 };
 

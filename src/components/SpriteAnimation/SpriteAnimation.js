@@ -5,10 +5,8 @@ import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
 const Sprite = ({ activeActivity, style }) => {
-  console.log('spriteactiveActivity', activeActivity);
-  
   const spriteFrames = function() {
-    switch(activeActivity.meta.activity){
+    switch(activeActivity.activity){
       case "wlk": return [0,1,2];
       case "run": return [0,2,4];
       case "cyc": return [5,6];
@@ -21,7 +19,7 @@ const Sprite = ({ activeActivity, style }) => {
   const renderSprite = () => (
       <SpriteAnimation
         sprite={{
-          name: activeActivity,
+          name: activeActivity.activity,
           size: {height: height/5, width: 2 * width/3},
           animationTypes: ["run", "wlk", "cyc"],
           frames: [

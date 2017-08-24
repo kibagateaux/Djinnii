@@ -27,8 +27,6 @@ export default class App extends Component {
     //   storylines
     // })
 
-    console.log('_upd moves', storylines);
-    
     // console.log('auth url', res.data);
     // Linking.openURL(res.data);
   }
@@ -49,9 +47,6 @@ export default class App extends Component {
   }
   
   render() {
-    console.log('rerender', this.props);
-    
-    const {activeActivity} = this.props;
     return (
       <View style={styles.container}> 
         <Djinn />
