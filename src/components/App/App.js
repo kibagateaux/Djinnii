@@ -15,7 +15,7 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    this._updateMovesData();
+    // this._updateMovesData();
   }
 
   _updateMovesData = async () => {

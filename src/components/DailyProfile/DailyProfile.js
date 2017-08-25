@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import Djinn from '@containers/Djinn.Container';
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import DailyButtons from '@components/DailyButtons/DailyButtons';
-import { _durationUnix } from '@helpers/time';
-import { getStatsAtTime } from '@lib/firebase';
-import { statsAfterActivity } from '@helpers/stats';
-
+import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
+import {getStatsAtTime} from '@lib/firebase';
+import {statsAfterActivity} from '@helpers/stats';
 export default (props) => {
   const {
     activities,
@@ -17,16 +16,16 @@ export default (props) => {
     setActiveActivity,
     setActiveSegment,
     toggleDailyGoalsDisplay,
-    updateStats
+    setDisplayStats
   } = props;
 
   // deprecated in favor of firebase single source
   // this allows for reliable data when replaying days, centralized calculations, etc
   // lowkey necessary if firebase isn't functioning
       // if pure function then shouldn't matter so good backup if offline
-  // const updateStatsForActivity = (act) => {
+  // const setDisplayStatsForActivity = (act) => {
   //   if(Array.isArray(act.activities)){
-  //     return act.activities.forEach(act => updateStatsForActivity(act));
+  //     return act.activities.forEach(act => setDisplayStatsForActivity(act));
   //   }
   //   /* these should be removed from PlayDay to allow continuity*/
   //   return statsAfterActivity(act, stats);
@@ -40,27 +39,26 @@ export default (props) => {
     // update redux displaydStats
     // pull in stats from first startTime -> again what if none?
     // then run play day
-
-    const dayStartTime = storyline.segments[0].startTime;
-    const firebaseStats = await getStatsAtTime(0, dayStartTime);
-    const stats = firebaseStats.val() ?
-      firebaseStats.val() :
-      // stats[dayStartTime] ? 
-      stats[dayStartTime]; // : // will never work because redux store does not use timestamps
-      // else pull last available stat and go from there 
-        // const times = Object.keys(stats); const lastAct = stats[times[times.length - 1]]
-
+    
+    const dayStartTime = storyline.segments[0].meta.startTime;
+    const firstStamp = _getFirstMSInDay(dayStartTime);
+    const firstAct = _getFirstTimestampInDay(firstStamp, stats);
+    const firstStatsObj = firstAct[Object.keys(firstAct)[0]];
     const uid = 0;
     
-    updateStats(stats, uid, false); // reset stats for day
-    storyline.segments.forEach((act, i, acts) => {
-      const duration = _durationUnix(act.startTime, act.endTime) * 3;
+    console.log('play day', firstAct, firstStatsObj);
+    
+    setDisplayStats(firstStatsObj); // diplay first stats for day
+    Object.keys(activities).forEach((time, i, arr) => {
+      const act = activities[time];
+      const nextAct = activities[arr[i+1]];
+      if(!nextAct || !nextAct.startTime) return; // make nextAct displayFunc  
+      const {duration, startTime} = act;
       const func = () => {
-        const sequentialStat = statsAfterActivity(act, stats)
-        updateStats(sequentialStat, uid, false);
-        setActiveActivity(act);
+        const sequentialStat = statsAfterActivity(act, stats[time]) // incase stat does not exist yet, this will also overwrite a more recent stat update if there
+        setActiveActivity(act.startTime);
       };
-      setTimeout(func, duration);
+      setTimeout(func, duration / 100);
     })
   }
 
@@ -99,7 +97,7 @@ export default (props) => {
           { vizStorySegments() }
         </View>
 
-        <TouchableOpacity onPress={() => playDay()}>
+        <TouchableOpacity>
           <DailyButtons playDay={playDay} />
         </TouchableOpacity>
 

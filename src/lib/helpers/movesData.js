@@ -1,7 +1,8 @@
 import {
   _formatToUnix,
   _durationUnix,
-  _getTimesInUnix
+  _getTimesInUnix,
+  _sortByTime
 } from '@lib/helpers/time';
 
 export const normalizeStorylineData = (storylines) => {
@@ -46,11 +47,14 @@ const addFillerSpace = (activityList) => {
   let completeList = {}
   Object.keys(activityList).reduce((last, next) => {
     const lastAct = activityList[last]; const nextAct = activityList[next];
-    (lastAct.endTime !== nextAct.startTime + 1)
-      ? completeList[lastAct.endTime + 1] = {
-          startTime: lastAct.endTime + 1,
-          endTime: nextAct.startTime - 1,
-          duration: nextAct.startTime - lastAct.endTime,
+    const endTime = lastAct.endTime || lastAct.meta.endTime;
+    const startTime = nextAct.startTime || nextAct.meta.startTime;
+
+    (endTime !== startTime + 1)
+      ? completeList[endTime + 1] = {
+          startTime: endTime + 1,
+          endTime: startTime - 1,
+          duration: startTime - endTime,
           activity: 'idl',
         } 
       : null
@@ -72,11 +76,8 @@ export const createActivitiesList = (stories) => {
     });
   });
   const fillerActs = addFillerSpace(activityList);
-  
-  const l2 = Object.keys(fillerActs).length, l = Object.keys(activityList).length, l3 = Object.keys({...fillerActs, activityList}).length;
-  console.log('crt act list', l, l2);
-  console.log('filler', fillerActs, activityList);
-  
-  return {...activityList, ...fillerActs};
+  const organizedCompleteList = _sortByTime({...fillerActs, ...activityList});
+  return organizedCompleteList;
+  // organized by time? Expression or reality!?!?
 };
 

@@ -1,5 +1,5 @@
 import DailyProfile from '@components/DailyProfile/DailyProfile';
-import { updateStats } from '@actions/stats';
+import { setDisplayStats } from '@actions/stats';
 import { setActiveActivity, setActiveSegment } from '@actions/activities';
 import { connect } from 'react-redux';
 
@@ -12,8 +12,8 @@ const mapStateToProps = ({ stats, activities }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateStats: (statsUpdate, startTime, uid) => 
-    dispatch(updateStats(statsUpdate, startTime, uid)),
+  setDisplayStats: (statsUpdate) => 
+    dispatch(setDisplayStats(statsUpdate)),
   setActiveActivity: (timeStamp, uid) => {
     dispatch(setActiveActivity(timeStamp, uid))
   },
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DailyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(DailyProfile); 

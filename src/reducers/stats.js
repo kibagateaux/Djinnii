@@ -1,11 +1,10 @@
 import {
   UPDATE_STATS,
   SET_ACTIVE_ACTIVITY,
-  SET_ACTIVE_SEGMENT
+  SET_DISPLAY_STATS,
 } from '@actions/actionNames';
 import {statsAfterActivity} from '@helpers/stats';
 import {activities} from '@constants/movesData';
-console.log('stat red acts', activities);
 
 const initStats = () => Object.keys(activities)
 .reduce((timeline, key) => {
@@ -27,21 +26,18 @@ const INITIAL_STATE = {...initialStats, activeStats: lastStat};
 
 export default (state = INITIAL_STATE, {type, payload}) => {
   const lastStat = state[Object.keys(state)[Object.keys(state).length - 1]]
-  console.log('stat red last', lastStat, payload, type);
-  
   switch(type){
     case UPDATE_STATS: {
       return {...state, ...payload};
     }
-      case SET_ACTIVE_ACTIVITY: {
-      console.log('stat red set act ', payload, state[payload]);
-      return {...state, activeStats: state[payload]}; //payload is timestamp // not problem now but what if stats get to 100s?
-    } /* 
-      Overwrites state completely because this is a snapshot of the person at time of activity
-      Will this get troublesome constantly shifting between past, present, and future stats? 
-      Can always do an API call or currentStats and activeStats be different reducers
-      Current and active sound too similar - diffirentiator? 
-      */
+    case SET_ACTIVE_ACTIVITY: {
+      console.log('stat red set act', state[payload]);
+      
+      return {...state, activeStats: state[payload]};
+    }
+    case SET_DISPLAY_STATS: {
+      return {...state, activeStats: payload}; //does not use timestamp because presuably we will show predictive stats.
+    }
     default: {
       return state
     };

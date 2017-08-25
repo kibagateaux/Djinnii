@@ -11,7 +11,6 @@ export const updateStats = (statsUpdate, uid, updateCloud = false) => {
   const time = Object.keys(statsUpdate)[0];
   const stats = statsUpdate[time];
 
-  console.log('upd stats', stats);
   
   if(updateCloud) { // so unauthed users dont have to update store
     console.log('pre firebase update', statsUpdate, stats);
