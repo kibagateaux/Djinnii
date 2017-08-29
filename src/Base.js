@@ -9,9 +9,12 @@ import reducers from './reducers';
 const storeMiddleware = applyMiddleware(reduxThunk, reduxLogger)(createStore);
 const store = storeMiddleware(reducers);
 
+
+import SignUp from '@screens/auth/SignUp';
+
 export default (props) => (
   <Provider store={store}>
-    <App />
+    <SignUp />
   </Provider>
 );
 

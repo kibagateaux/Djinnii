@@ -8,7 +8,8 @@
     "compile-firebase-functions": "babel 'functionsES8' --out-dir 'functions' --presets=es2015 --copy-files --ignore 'node_modules'",
     "precompile-firebase-functions": "rimraf functions",
     "postcompile-firebase-functions": "cd functions && yarn",
-    "deploy-firebase": "yarn run compile-firebase-functions && firebase deploy"
+    "deploy-firebase": "yarn run compile-firebase-functions && firebase deploy",
+    "host-firebase": "yarn run compile-firebase-functions && firebase serve --only functions,hosting"    
   },
   "dependencies": {
     "axios": "^0.16.2",
