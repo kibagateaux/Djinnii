@@ -5,13 +5,11 @@ import DailyProfile from '@containers/DailyProfile.Container';
 import SpriteAnimation from '@containers/SpriteAnimation.Container';
 import Djinn from '@containers/Djinn.Container';
 import {normalizeStorylineData} from '@helpers/movesData';
-import {signInAnon} from '@lib/firebase';
 import styles from './styles';
 
 export default class App extends Component {
   constructor(props){
     super(props);
-    signInAnon();
   }
 
   componentDidMount(){

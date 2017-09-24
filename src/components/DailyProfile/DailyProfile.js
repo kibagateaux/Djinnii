@@ -4,7 +4,6 @@ import Djinn from '@containers/Djinn.Container';
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import DailyButtons from '@components/DailyButtons/DailyButtons';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
-import {getStatsAtTime} from '@lib/firebase';
 import {statsAfterActivity} from '@helpers/stats';
 export default (props) => {
   const {

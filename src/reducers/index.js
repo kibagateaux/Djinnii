@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux';
-import statsReducer from './stats';
-import djinnReducer from './djinn';
-import activitiesReducer from './activities';
-
+import stats from './stats';
+import djinn from './djinn';
+import activities from './activities';
+import user from './user';
 
 export default combineReducers({
-  djinn: djinnReducer,
-  activities: activitiesReducer,
-  stats: statsReducer
-})
+  djinn,
+  activities,
+  stats,
+  user
+});

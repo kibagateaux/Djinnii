@@ -25,7 +25,7 @@ export default ({ setActiveActivity, setActiveSegment, segments, stats, activiti
 
   const renderSegmentBar = (segment, onPress) => {
     const { startTime, endTime, duration } = segment.meta || segment;
-    const width = (duration * 90) / dayInMicroSecs; //percentage of activity time over total seconds in day = percentage of screen width
+    const width = (duration * 180) / dayInMicroSecs; //percentage of activity time over total seconds in day = percentage of screen width
     const type = segment.meta ? segment.meta.type : segment.activity ? segment.activity : 'idl';
     const color = colorSelector(type);  //still needed because segments are not normalized only activities
     const firstActivityTime = (segment.activities > 0) ? segment.activies[0].startTime : null;
