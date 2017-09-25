@@ -6,8 +6,13 @@ export const SET_ACTIVE_SEGMENT = 'SET_ACTIVE_SEGMENT';
 /* Stats */
 export const UPDATE_STATS = 'UPDATE_STATS';
 export const SET_DISPLAY_STATS = 'SET_DISPLAY_STATS';
+export const UPDATE_LOCAL_STATS = 'UPDATE_LOCAL_STATS';
 
 /* Djinn */
 
 /* Goals */
 export const TOGGLE_DAILY_GOALS_DISPLAY = 'TOGGLE_DAILY_GOALS_DISPLAY';
+
+
+/* User */
+export const SWITCH_LOCAL_GAME_MODE = 'SWITCH_LOCAL_GAME_MODE';

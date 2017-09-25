@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
-import Djinn from '@containers/Djinn.Container';
+import Djinn from '@containers/Djinn';
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import DailyButtons from '@components/DailyButtons/DailyButtons';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';

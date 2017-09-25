@@ -5,7 +5,7 @@ import {
   Text,
   TextInput,
   Image,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import {
   MKTextField,
@@ -119,12 +119,12 @@ class SignUp extends React.Component {
               onChangeText={password => this.setState({ password })}
             />
           </View>
-            <TouchableHighlight style={styles.signupButton} onPress={this.handleSignUp}>
+            <TouchableOpacity style={styles.signupButton} onPress={this.handleSignUp}>
               <Text> SIGNUP </Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.loginButton} onPress={this.props.navigateToLogin}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginButton} onPress={this.props.navigateToLogin}>
               <Text> Go to login </Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           {this.state.showMFAPrompt &&
             <MFAPrompt
               onValidate={this.handleMFAValidate}

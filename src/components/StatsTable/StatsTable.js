@@ -10,7 +10,7 @@ export default ({ activeStats }) => {
     return Object.keys(statCategory).map(statRow => {
       const stat = statCategory[statRow];
       statFloat = String.toString(stat).includes(".") ?
-        /(^\d*\.\d+?)/.exec(stat) : stat
+        /(^\d*\.\d?)/.exec(stat) : stat
       if(typeof statRow ==='object' || typeof statFloat === 'object') return;
       return (
         <Text style={styles.statRow} key={statRow}>
