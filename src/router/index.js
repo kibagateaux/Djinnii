@@ -1,5 +1,5 @@
 import React from 'react';
-import * as scenes from './scenes';
+import scenes from './scenes';
 import {
   Router,
   Lightbox,
@@ -11,15 +11,10 @@ import {
 import App from '@containers/App.Container';
 
 export default () => (
-  <Router>
+  <Router scenes={scenes}>
     <Overlay>
       <Lightbox>
-        <Stack>
-          {scenes.AuthFlow}
-          <Stack hideNavBar>
-            <Scene key="home" component={App} />
-          </Stack>
-        </Stack>
+
       </Lightbox>
     </Overlay>
   </Router>

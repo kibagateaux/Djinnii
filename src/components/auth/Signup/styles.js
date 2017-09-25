@@ -8,14 +8,27 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
-    paddingVertical: height * 0.06,
-    paddingHorizontal: width * 0.03
-
+    backgroundColor: 'purple',
   },
   formContainer: {
-
-    justifyContent: 'space-around',
-    // paddingVertical: height * 0.06
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    flex: 1,
+    // padding: height / 20
   },
+  inputContainer: {
+  },
+  inputStyles: {
+    margin: height / 20
+  },
+  errorMessage: {
+    color: 'red',
+  },
+  loginButton: {
+    justifyContent: 'flex-start'
+  },
+  signupButton: {
+    paddingBottom: height / 20
+  }
 });

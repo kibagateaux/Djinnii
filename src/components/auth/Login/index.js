@@ -34,10 +34,11 @@ class LogIn extends PureComponent {
    doLogin = async () => {
     const {auth} = this.props;
     const {username, password} = this.state;
+    const awsPhoneNumber = '+1' + username
     let showMFAPrompt = false;
     let session = null;
     attemptLogin = new Promise((resolve, reject) => {
-      auth.handleSignIn(username, password, auth.loginCallbackFactory({
+      auth.handleSignIn(awsPhoneNumber, password, auth.loginCallbackFactory({
         onSuccess(result) {
           console.log('loginCallbacks.onSuccess', result);
           session = result;

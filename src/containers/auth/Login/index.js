@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   navigateToSignup: () => dispatch(navigateTo(SIGNUP)),
-  navigateToHome: () => dispatch(navigateTo(HOME))
+  navigateToHome: () => dispatch(navigateTo(HOME, {type: 'reset'}))
 });
 
 export default connect(null, mapDispatchToProps)(Login)
