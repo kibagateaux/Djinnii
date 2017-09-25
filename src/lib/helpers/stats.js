@@ -1,4 +1,7 @@
 import {_formatToUnix, _durationUnix} from '@lib/helpers/time';
+import {AsyncStorage} from 'react-native';
+import {LOCAL_STATS} from '@constants/asyncStorage';
+
 
 export const statsToActivityMapping = {
   'wlk': {int: 0.000002, agy: -0.000001, stm: 0.000001},
@@ -30,15 +33,18 @@ const localActivityMapping = {
 }
 
 export const localStatsAfterActivity = (activity, stats) => {
-  console.log('lcl stat aft act', activity, stats);
   if(!activity || !stats) throw Error("Need target activity and stats object to calculate stats after activity");
   const statIncrement = localActivityMapping[activity];
   const updatedStats = Object.keys(statIncrement).reduce((update, stat) => {
     const statUpdate = statIncrement[stat];
     const currentStat = update[stat] || 0;
-    console.log('updating: ' + stat, 'current - upate', currentStat, statUpdate)
     return {...update, [stat]: currentStat + statUpdate}
   }, stats);
-  console.log('updstats aft lcl', updatedStats)
   return {...stats, ...updatedStats};
 }
+
+export const getLocalStats = () => AsyncStorage
+    .getItem(LOCAL_STATS)
+    .then((data) => JSON.parse(data))
+    .catch((err) => console.log('get local stats err', err));
+
