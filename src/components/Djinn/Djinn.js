@@ -11,11 +11,14 @@ export default (props) => {
     <View style={styles.container}>
       <SpriteAnimation />
       <StatsTable />
-      <TouchableOpacity onPress={props.switchLocalGameMode}>
-        <Text> 
-          {props.localMode ? 'Enter SvöldLånd' : 'Enter DübLånd'}
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.switchButton}
+          onPress={props.switchLocalGameMode}
+        >
+          <Text> 
+            {props.localMode ? 'Enter SvöldLånd' : 'Enter DübLånd'}
+          </Text>
+        </TouchableOpacity>
     </View>
   )
 }

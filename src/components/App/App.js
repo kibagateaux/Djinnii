@@ -8,13 +8,31 @@ import Djinn from '@containers/Djinn';
 import ActionButton from '@components/common/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
-import {localStatsAfterActivity} from '@helpers/stats';
+import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 
 import styles from './styles';
 
 export default class App extends Component {
   constructor(props){
     super(props);
+  }
+  //initializes UI for game mode
+  async componentWillMount() {
+    const {
+      updateLocalStats,
+      setDisplayStats,
+      localStats,
+      lastLiveStats,
+      localMode
+    } = this.props;
+    
+    const lastLocalStats = await getLocalStats();
+    // instantiate local stats so not overwritten on first press. 
+    updateLocalStats(lastLocalStats);
+    localMode ?
+      updateLocalStats(lastLocalStats) :
+      setDisplayStats(lastLiveStats);
+    
   }
 
   componentDidMount(){
@@ -51,7 +69,6 @@ export default class App extends Component {
 
   _renderLocalGame = () => {
     const {updateLocalStats, localStats} = this.props;
-    console.log('rend local', localStats);
     const actions= [
       {action: 'Dance',
        onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
@@ -62,16 +79,25 @@ export default class App extends Component {
       {action: 'Eat',
        onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))},
     ];
-
-    return actions.map(({action, onPress}) => 
-      <ActionButton key={action} buttonText={action} onPress={onPress} />)
+    const actionButtons = actions.map(({action, onPress}) => 
+      <ActionButton 
+        key={action}
+        style={styles.localActionButtons}
+        buttonText={action}
+        onPress={onPress}
+      />)
+    
+    return (
+      <View style={styles.localActionButtonContainer}>
+        {actionButtons}
+      </View>
+    )
   }
 
-  _renderDjinniiPanel = () => {
-    const {localMode} = this.props;
-    console.log('app local mode?', localMode)
-    return localMode ? this._renderLocalGame() : this._renderDailyProfiles();
-  }
+  _renderDjinniiPanel = () =>
+    this.props.localMode ?
+      this._renderLocalGame() :
+      this._renderDailyProfiles();
   
   render() {
     return (

@@ -9,5 +9,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: 'gold'
+  },
+  switchButton: {
+    position: 'absolute',
+    height: height / 20,
+    top: height / 2.5
   }
 })

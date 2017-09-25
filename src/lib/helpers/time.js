@@ -9,7 +9,9 @@ export const  _getTimesInUnix = (start, end) => ({
   endTime:  _formatToUnix(end),
   duration: _durationUnix(start, end)
 });
-export const _sortByTime = (obj) => Object.keys(obj).sort((x, y) => x - y).reduce((a, b) => ({...a, [b]: obj[b]}), {});
+export const _sortByTime = (obj) => Object.keys(obj)
+  .sort((x, y) => x - y)
+  .reduce((a, b) => (isNaN(b) ? a : {...a, [b]: obj[b]}), {});
 
 // First MS at GMT not local time - add second param local or moment prob has implicit way
 export const _getFirstMSInDay = (timeMS) => moment(moment(timeMS).format("YYYY-MM-DD 00:00:00.000")).valueOf();
@@ -41,3 +43,5 @@ export const _filterObjByDay = (time, obj) => {
 export const _filterObjBetweenTimes = (startTime, endTime, obj) => 
   Object.keys(obj).filter((time) => (time > startTime && time < endTime))
     .reduce((timeline, time) => ({...timeline, [time]: obj[time]}), {});
+
+export const _findLastTime = (data) => Object.keys(_sortByTime(data))[0];
