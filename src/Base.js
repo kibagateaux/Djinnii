@@ -6,7 +6,7 @@ import reduxLogger from 'redux-logger';
 import reducers from './reducers';
 import Router from './router';
 
-import App from '@containers/App.Container';
+import App from '@containers/App';
 
 const storeMiddleware = applyMiddleware(reduxThunk, reduxLogger)(createStore);
 const store = storeMiddleware(reducers);

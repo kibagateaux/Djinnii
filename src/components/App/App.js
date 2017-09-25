@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { ScrollView, View, TouchableOpacity, Linking } from 'react-native';
 import axios from 'axios';
-import DailyProfile from '@containers/DailyProfile.Container';
-import SpriteAnimation from '@containers/SpriteAnimation.Container';
-import Djinn from '@containers/Djinn.Container';
+
+import DailyProfile from '@containers/DailyProfile';
+import SpriteAnimation from '@containers/SpriteAnimation';
+import Djinn from '@containers/Djinn';
+import ActionButton from '@components/common/ActionButton';
+
 import {normalizeStorylineData} from '@helpers/movesData';
+import {localStatsAfterActivity} from '@helpers/stats';
+
 import styles from './styles';
 
 export default class App extends Component {
@@ -35,7 +40,7 @@ export default class App extends Component {
     return data;
   }
 
-  renderDailyProfiles(){
+  _renderDailyProfiles = () => {
     return this.props.storylines.map((story,i) => {
       // key=story.date with real data
       return (
@@ -43,13 +48,37 @@ export default class App extends Component {
       )
     })
   }
+
+  _renderLocalGame = () => {
+    const {updateLocalStats, localStats} = this.props;
+    console.log('rend local', localStats);
+    const actions= [
+      {action: 'Dance',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
+      {action: 'Run',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('run', localStats)))},
+      {action: 'Sleep',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
+      {action: 'Eat',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))},
+    ];
+
+    return actions.map(({action, onPress}) => 
+      <ActionButton key={action} buttonText={action} onPress={onPress} />)
+  }
+
+  _renderDjinniiPanel = () => {
+    const {localMode} = this.props;
+    console.log('app local mode?', localMode)
+    return localMode ? this._renderLocalGame() : this._renderDailyProfiles();
+  }
   
   render() {
     return (
       <View style={styles.container}> 
         <Djinn />
         <ScrollView>
-          {this.renderDailyProfiles()}
+          {this._renderDjinniiPanel()}
         </ScrollView>
       </View>
     )

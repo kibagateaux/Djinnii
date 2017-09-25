@@ -4,7 +4,7 @@ import {
   Text,
   ActivityIndicator,
   Modal,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import {
   MKTextField,
@@ -170,23 +170,23 @@ class LogIn extends PureComponent {
             value={password}
           />
           
-          <TouchableHighlight
+          <TouchableOpacity
             style={styles.signIn}
             onPress={this.handleLogInClick}
             activeOpacity={1}
           >
             <Text> SIGN IN </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={this.props.navigateToHome}
           >
             <Text> Forgot your password? </Text>
-          </TouchableHighlight>
-          <TouchableHighlight
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={this.props.navigateToSignup}
           >
             <Text> Create Account! </Text>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     );

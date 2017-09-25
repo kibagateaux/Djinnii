@@ -8,7 +8,6 @@ import {
   Modal,
   Stack // wtf does stack do?
 } from 'react-native-router-flux';
-import App from '@containers/App.Container';
 
 export default () => (
   <Router scenes={scenes}>

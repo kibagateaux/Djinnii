@@ -1,20 +1,21 @@
-import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
-import { height, width } from '@constants/style';
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-import SpriteAnimation from '@containers/SpriteAnimation.Container';
-import StatsTable from '@containers/StatsTable.Container';
+import SpriteAnimation from '@containers/SpriteAnimation';
+import StatsTable from '@containers/StatsTable';
 import FoodTable from '@components/FoodTable/FoodTable';
 import styles from './styles';
 
-export default class Djinn extends PureComponent {
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <SpriteAnimation />
-        <StatsTable/>
-      </View>
-    )
-  }
+export default (props) => {
+  return (
+    <View style={styles.container}>
+      <SpriteAnimation />
+      <StatsTable />
+      <TouchableOpacity onPress={props.switchLocalGameMode}>
+        <Text> 
+          {props.localMode ? 'Enter SvöldLånd' : 'Enter DübLånd'}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
