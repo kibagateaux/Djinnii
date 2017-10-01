@@ -6,6 +6,7 @@ import {
 } from '@actions/stats';
 import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
+import {navigateTo} from '@actions/navigation/navigateTo';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   activeActivity: activities.activeActivity,
@@ -16,6 +17,8 @@ const mapStateToProps = ({stats, activities, user}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+  navigateToLogin: () => dispatch(navigateTo('login')),
   updateStats: (statsMap) => dispatch(updateStats(statsMap)),
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),
   setActiveActivity: (activity) => dispatch(setActiveActivity(activity)),

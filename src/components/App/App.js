@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, TouchableOpacity, Linking } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage } from 'react-native';
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
@@ -9,6 +9,11 @@ import ActionButton from '@components/common/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
+
+import {navigateTo} from '@actions/navigation/navigateTo';
+import {viewLocalStorage} from '@helpers/asyncStorage';
+import {Auth} from '@lib/Auth';
+import {updateStats} from '@actions/stats';
 
 import styles from './styles';
 
@@ -67,17 +72,26 @@ export default class App extends Component {
     })
   }
 
+
+
   _renderLocalGame = () => {
     const {updateLocalStats, localStats} = this.props;
     const actions= [
-      {action: 'Dance',
-       onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
-      {action: 'Run',
-       onPress: () => (updateLocalStats(localStatsAfterActivity('run', localStats)))},
+      {action: 'Login',
+      onPress: () => this.props.dispatch(navigateTo('login'))},
+      //  onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
+      {action: 'User',
+       onPress: () => (console.log('current user', Auth.getCurrentUser()))},
       {action: 'Sleep',
        onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
-      {action: 'Eat',
-       onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))},
+      {action: 'Local Data',
+       onPress: () => {
+         AsyncStorage.getItem('COGNITO_USER_PROFILE')
+          .then((data) => {
+            updateStats('3b844f5f-fccb-4783-b009-82352b782a4c')
+          })
+        }
+      }
     ];
     const actionButtons = actions.map(({action, onPress}) => 
       <ActionButton 

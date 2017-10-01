@@ -36,10 +36,26 @@ class SignUp extends React.Component {
     this.handleMFASuccess = this.handleMFASuccess.bind(this);
     this.handleMFACancel = this.handleMFACancel.bind(this);
   }
+  
+   validateFields = () => {
+    const {password, phoneNumber} = this.state;
+    const validPassword = password.length > 7;
+    const validNumber = this.validatePhoneNumber(phoneNumber);
+    const numberMessage = validNumber ? 'Please enter a proper US number e.g. 342-624-8971' : '';
+    const passwordMessage = validPassword ? 'Passwords must be longer than 8 characters' : '';
+    const errorMessage = numberMessage + passwordMessage;
+    if(errorMessage.length > 0) {
+      console.log('err msg', errorMessage);
+      this.setState({errorMessage});
+    } else {
+      console.log('signup handled', );
+      handleSignUp();
+    }
+  };
 
-   handleSignUp = async () => {
+  handleSignUp = async () => {
     this.setState({ errorMessage: '' });    
-    const { username, password, email, phoneNumber } = this.state;
+    const {password, phoneNumber} = this.state;    
     const awsPhoneNumber = '+1' + phoneNumber;
     const startSignup = new Promise((resolve, reject) => {
       Auth.handleNewCustomerRegistration(awsPhoneNumber, password, email, awsPhoneNumber, (err, result) => {
@@ -53,7 +69,8 @@ class SignUp extends React.Component {
 
     startSignup
       .then((result) => {
-        this.setState({...this.baseState, showMFAPrompt: true});
+        this.setState({...this.baseState});
+        console.log('onsignup', this.props.onSignUp);
         this.props.onSignUp();
       })
       .catch((err) => {
@@ -92,7 +109,7 @@ class SignUp extends React.Component {
     this.props.navigateToLogin();
   }
 
-  checkPhonePattern = (phone) => /\d{10}$/.test(phone);
+  validatePhoneNumber = (phone) => /\d{10}$/.test(phone);
 
   render() {
     return (
@@ -113,13 +130,12 @@ class SignUp extends React.Component {
               underlineColorAndroid="purple"
               placeholder="Enter your Password"
               returnKeyType="next"
-              onSubmitEditing={() => { this.refs.email.refs.emailInput.focus() }}
               secureTextEntry
               value={this.state.password}
               onChangeText={password => this.setState({ password })}
             />
           </View>
-            <TouchableOpacity style={styles.signupButton} onPress={this.handleSignUp}>
+            <TouchableOpacity style={styles.signupButton} onPress={this.validateFields}>
               <Text> SIGNUP </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.loginButton} onPress={this.props.navigateToLogin}>

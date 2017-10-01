@@ -14,6 +14,7 @@
 		"react-native": "0.48.3",
 		"react-native-animated-sprite": "^0.11.1",
 		"react-native-aws-cognito-js": "^0.0.7",
+		"react-native-dotenv": "^0.1.0",
 		"react-native-material-kit": "^0.4.1",
 		"react-native-prompt": "^1.0.0",
 		"react-native-router-flux": "^4.0.0-beta.21",
