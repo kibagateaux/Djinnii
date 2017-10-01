@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import SpriteAnimation from '@components/common/SpriteAnimation';
+import Sprite from '@components/common/Sprite/Sprite';
 import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
@@ -26,7 +26,7 @@ const DjinniiSprite = ({activeActivity, style}) => {
 
   return (
     <View style={styles.container}>
-      <SpriteAnimation 
+      <Sprite 
         loop
         frames={frames} 
         frameSelector={frameSelector}

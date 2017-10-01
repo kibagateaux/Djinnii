@@ -4,7 +4,11 @@ const actionButtonSize = width / 4;
 export default StyleSheet.create({
   icon: {
     position: 'absolute',
-    flexDirection: "row",
-    justifyContent: 'center'
-  }
+    bottom: actionButtonSize / 10
+    // flexDirection: "row",
+    // justifyContent: 'center'
+  },
+  sprite: {
+    
+  },
 });
