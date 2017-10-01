@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
 import Djinn from '@containers/Djinn';
-import ActionButton from '@components/common/ActionButton';
+import ActionButton from '@components/common/ActionButton/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
@@ -101,6 +101,7 @@ export default class App extends Component {
         onPress={onPress}
         primaryColor
         icon={icon}
+        Icon={<Image />}
       />)
     
     return (

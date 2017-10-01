@@ -8,15 +8,23 @@ export default (props) => {
     primaryColor,
     onPress,
     icon,
-    sprite,
+    Icon,
+    Sprite,
     style
   } = props;
+
   const backgroundColor = primaryColor ? MKColor.Yellow : MKColor.Purple;
-  // if a sprite return sprite otherwise if icon return icon else return null
+  
+  const renderIcon = () => (
+    typeof icon === 'string' && (<Text style={styles.icon}> {icon} </Text>) ||
+    typeof icon === 'object' && (<Icon style={syles.icon}/>) ||
+    null
+  );
+
   return (
     <MKButton style={[{backgroundColor}, style]} onPress={onPress}>
       <Text> {buttonText} </Text>
-      {icon && <Text style={styles.icon}> {icon} </Text>}
+      {Sprite ? <Sprite style={styles.sprite} /> : renderIcon()}
     </MKButton>
   )
 }
