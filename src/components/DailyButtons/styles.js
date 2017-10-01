@@ -9,11 +9,13 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   dailyBtn: {
-    flex: 1,
+    width: width / 3,
     backgroundColor: 'gold',
+    shadowColor: 'black',
+    shadowRadius: 20,
+    shadowOpacity: 2,
   },
   btnText: {
     textAlign: 'center',
-    
   },
 })

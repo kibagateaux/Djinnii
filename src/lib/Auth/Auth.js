@@ -7,11 +7,22 @@ import {
   CognitoUserSession,
   CognitoIdToken,
 } from 'react-native-aws-cognito-js';
-
+import {AWS_ACCESS_KEY, AWS_SECRET_KEY} from 'react-native-dotenv';
 import awsmobile from '../../../aws-config.json';
 import {AsyncStorage as LocalStorage} from 'react-native';
+import {
+  CURRENT_COGNITO_SESSION,
+  IS_LOGGED_IN,
+  AWS_CREDENTIALS,
+  COGNITO_USER_PROFILE
+} from '@constants/asyncStorage';
 
-(!AWS.config.region && AWS.config.update({region:'us-east-1'}));
+AWS.config.update({
+  accessKeyId: AWS_ACCESS_KEY,
+  secretAccessKey: AWS_SECRET_KEY,
+  region:'us-east-1'
+});
+
 const userPool = new CognitoUserPool({
   UserPoolId: awsmobile.CognitoUserPool.Default.PoolId,
   ClientId: awsmobile.CognitoUserPool.Default.AppClientId,
@@ -99,18 +110,19 @@ const setCredentials = function setCredentials(credentials) {
         secretAccessKey,
         sessionToken,
       };
-      LocalStorage.setItem('awsCredentials', JSON.stringify(awsCredentials));
 
+      LocalStorage.setItem(AWS_CREDENTIALS, JSON.stringify(awsCredentials));
+      console.log('set lcoal aws cred', awsCredentials);
       resolve(awsCredentials);
     });
   });
 };
 
 const getCredentials = async function getCredentials(session, callbacks, ctx) {
-  LocalStorage.setItem('currSession', JSON.stringify(session));
+  LocalStorage.setItem(CURRENT_COGNITO_SESSION, JSON.stringify(session));
   await setCredentials(getCognitoCredentials(session));
-
-  LocalStorage.setItem('isLoggedIn', 'true');
+console.log('set cog cred', session, true);
+  LocalStorage.setItem(IS_LOGGED_IN, 'true');
   callbacks.onSuccess.call(ctx, session);
 };
 
@@ -127,9 +139,10 @@ const loginCallbackFactory = function loginCallbackFactory(callbacks, ctx) {
       callbacks.onFailure.call(ctx, displayError);
     },
 
-    mfaRequired: (codeDeliveryDetails) => {
-      callbacks.mfaRequired.call(ctx);
-    }
+    // MFA not required with Lambda autoconfirm ... I think
+    // mfaRequired: (codeDeliveryDetails) => {
+    //   callbacks.mfaRequired.call(ctx);
+    // }
   }
 }
 
@@ -141,9 +154,10 @@ function handleSignIn(username, password, callbacks) {
   cognitoUser = new CognitoUser({
     Username: username,
     Pool: userPool,
-  }); 
+  });
   console.log('handle sign in', {username, password}, authenticationDetails, cognitoUser);
-  console.log('sign in cb', callbacks)
+  LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoUser));
+  console.log('save sign in user', cognitoUser)
   cognitoUser.authenticateUser(authenticationDetails, callbacks);
 }
 
@@ -268,7 +282,7 @@ function getSessionFromTokens(sessionTokens) {
  * SignOut methods *
  *****************/
 function handleSignOut() {
-  const currSessionKeys = JSON.parse(LocalStorage.getItem('currSession'));
+  const currSessionKeys = JSON.parse(LocalStorage.getItem(CURRENT_COGNITO_SESSION));
 
   const currSession = getSessionFromTokens(currSessionKeys);
   const cognitoCredentials = getCognitoCredentials(currSession);
@@ -280,8 +294,8 @@ function handleSignOut() {
 
   cognitoUser.signOut();
 
-  LocalStorage.removeItem('awsCredentials');
-  LocalStorage.setItem('isLoggedIn', 'false');
+  LocalStorage.removeItem(AWS_CREDENTIALS);
+  LocalStorage.setItem(IS_LOGGED_IN, 'false');
 }
 
 function getCurrentUser() {
@@ -295,7 +309,6 @@ function getCurrentUser() {
 
 function getSignInUserSession(callback) {
   const user = getCurrentUser();
-
   if (user) {
     user.getSession((err, res) => {
       getCredentials(res, { onSuccess: () => null });
@@ -305,16 +318,15 @@ function getSignInUserSession(callback) {
     return;
   }
 
-  console.log('Setting unauth credentials');
   setCredentials(new AWS.CognitoIdentityCredentials({
     IdentityPoolId: awsmobile.CredentialsProvider.CognitoIdentity.Default.PoolId,
   }));
-  LocalStorage.setItem('isLoggedIn', 'false');
+  LocalStorage.setItem(IS_LOGGED_IN, 'false');
   callback();
 }
 
 function isSignedIn() {
-  return !!LocalStorage.getItem('isLoggedIn');
+  return !!LocalStorage.getItem(IS_LOGGED_IN);
 }
 
 export {

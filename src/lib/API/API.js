@@ -1,7 +1,7 @@
 import axios from 'axios';
 import aws4 from 'aws4-react-native';
 
-import LocalStorage from '../LocalStorage';
+import {AsyncStorage as LocalStorage} from 'react-native';
 
 export default {
 

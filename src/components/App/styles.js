@@ -1,21 +1,27 @@
 import {StyleSheet, Dimensions} from 'react-native';
 const {height, width} = Dimensions.get('window');
-const actionButtonSize = width / 3;
+const actionButtonSize = width / 4;
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'purple'
   },
   localActionButtonContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     flex: 1,
+    justifyContent: 'flex-start',
     // alignItems: 'center'
   },
   localActionButtons: {
     height: actionButtonSize,
     width: actionButtonSize,
-    flex: 2
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOpacity: 2,
+    alignItems: 'center',
+    marginHorizontal: actionButtonSize / 10,
+    
     // justifyContent: 'space-around',
     // padding: actionButtonSize / 2
   }
