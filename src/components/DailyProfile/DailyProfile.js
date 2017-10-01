@@ -2,7 +2,6 @@ import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import Djinn from '@containers/Djinn';
 import ActivityBar from '@components/ActivityBar/ActivityBar';
-import DailyButtons from '@components/DailyButtons/DailyButtons';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 export default (props) => {
@@ -95,10 +94,6 @@ export default (props) => {
         <View>  
           { vizStorySegments() }
         </View>
-
-        <TouchableOpacity>
-          <DailyButtons playDay={playDay} />
-        </TouchableOpacity>
 
       </View>
     )

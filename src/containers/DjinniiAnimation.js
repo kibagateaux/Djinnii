@@ -1,5 +1,5 @@
 
-import SpriteAnimation from '@components/SpriteAnimation/SpriteAnimation';
+import DjinniiAnimation from '@components/DjinniiAnimation/DjinniiAnimation';
 import {updateStats} from '@actions/stats';
 import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
@@ -9,4 +9,4 @@ const mapStateToProps = (state, ownProps) => ({
   activeActivity: state.activities.activeActivity
 });
 
-export default connect(mapStateToProps)(SpriteAnimation);
+export default connect(mapStateToProps)(DjinniiAnimation);
