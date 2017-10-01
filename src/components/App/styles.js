@@ -10,7 +10,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-around',
     // alignItems: 'center'
   },
   localActionButtons: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 2,
     alignItems: 'center',
-    marginHorizontal: actionButtonSize / 10,
+    margin: actionButtonSize / 10,
     
     // justifyContent: 'space-around',
     // padding: actionButtonSize / 2

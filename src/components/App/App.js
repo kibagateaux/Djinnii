@@ -3,7 +3,6 @@ import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage } from 'react
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
-import SpriteAnimation from '@containers/SpriteAnimation';
 import Djinn from '@containers/Djinn';
 import ActionButton from '@components/common/ActionButton';
 
@@ -83,6 +82,7 @@ export default class App extends Component {
       {action: 'User',
        onPress: () => (console.log('current user', Auth.getCurrentUser()))},
       {action: 'Sleep',
+        icon: "😴💤",
        onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
       {action: 'Local Data',
        onPress: () => {
@@ -93,12 +93,14 @@ export default class App extends Component {
         }
       }
     ];
-    const actionButtons = actions.map(({action, onPress}) => 
-      <ActionButton 
+    const actionButtons = actions.map(({action, onPress, icon}) => 
+      <ActionButton
         key={action}
         style={styles.localActionButtons}
         buttonText={action}
         onPress={onPress}
+        primaryColor
+        icon={icon}
       />)
     
     return (
@@ -108,7 +110,7 @@ export default class App extends Component {
     )
   }
 
-  _renderDjinniiPanel = () =>
+  _renderLowerPanel = () =>
     this.props.localMode ?
       this._renderLocalGame() :
       this._renderDailyProfiles();
@@ -118,7 +120,7 @@ export default class App extends Component {
       <View style={styles.container}> 
         <Djinn />
         <ScrollView>
-          {this._renderDjinniiPanel()}
+          {this._renderLowerPanel()}
         </ScrollView>
       </View>
     )
