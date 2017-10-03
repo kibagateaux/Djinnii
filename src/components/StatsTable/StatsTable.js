@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
-import { Text, ScrollView } from 'react-native';
-import { height, width } from '@lib/constants/style';
+import {Text, ScrollView, Animated} from 'react-native';
+import {height, width} from '@lib/constants/style';
 import styles from './styles';
 
+const AnimatedText = Animated.createAnimatedComponent(Text);
 export default class extends PureComponent {
   constructor(props){
     super(props);
@@ -37,11 +38,17 @@ export default class extends PureComponent {
       return (
         <Text style={styles.statRow} key={statRow}>
           <Text style={styles.statText}>{statRow}:  </Text> 
-          <Text style={styles.statText}> {statFloat} {difference} </Text>
+          <Text style={styles.statText}>
+            {statFloat}
+            <AnimatedText>
+              {difference}
+            </AnimatedText>
+          </Text>
         </Text>
       )
     })
   };
+
 
   render() {
     const {activeStats} = this.props
