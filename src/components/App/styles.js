@@ -7,11 +7,10 @@ export default StyleSheet.create({
     backgroundColor: 'purple'
   },
   localActionButtonContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     flex: 1,
     justifyContent: 'space-around',
-    // alignItems: 'center'
   },
   localActionButtons: {
     height: actionButtonSize,
@@ -21,8 +20,5 @@ export default StyleSheet.create({
     shadowOpacity: 2,
     alignItems: 'center',
     margin: actionButtonSize / 10,
-    
-    // justifyContent: 'space-around',
-    // padding: actionButtonSize / 2
   }
 })

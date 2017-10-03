@@ -63,12 +63,17 @@ export default class App extends Component {
   }
 
   _renderDailyProfiles = () => {
-    return this.props.storylines.map((story,i) => {
+    const profiles = this.props.storylines.map((story,i) => {
       // key=story.date with real data
       return (
         <DailyProfile key={i} storyline={story}/>
       )
-    })
+    });
+  return (
+    <ScrollView>
+      {profiles}
+    </ScrollView>
+  )
   }
 
 
@@ -105,9 +110,11 @@ export default class App extends Component {
       />)
     
     return (
-      <View style={styles.localActionButtonContainer}>
-        {actionButtons}
-      </View>
+      <ScrollView horizontal style={styles.localGameContainer}>
+        <View style={styles.localActionButtonContainer}>
+          {actionButtons}
+        </View>
+      </ScrollView>
     )
   }
 
@@ -120,9 +127,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}> 
         <Djinn />
-        <ScrollView>
-          {this._renderLowerPanel()}
-        </ScrollView>
+        {this._renderLowerPanel()}
       </View>
     )
 
