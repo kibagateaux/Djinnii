@@ -6,12 +6,16 @@ import FoodTable from '@components/FoodTable/FoodTable';
 import styles from './styles';
 
 import axios from 'axios';
+import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
+
 
 export default (props) => {
-  const testingFunc = () => {
-    const a = axios.get("https://lcnyvgmw79.execute-api.us-east-1.amazonaws.com/dev/init-auth");
-    const b = a.then(b => b).catch(b => b);
-    console.log('test moves rt', a, b);
+  const testingFunc = async () => {
+    const mob = await Linking.canOpenURL(movesAuthInitDeepLink);
+    const web = await Linking.canOpenURL(movesAuthInitHttps);
+    const movesAuthLink = mob ? movesAuthInitDeepLink : movesAuthInitHttps;
+    console.log('moves links ', mob, web, movesAuthLink);
+    Linking.openURL(movesAuthLink);
   }
   return (
     <View style={styles.container}>

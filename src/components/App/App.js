@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
+import React, {Component} from 'react';
+import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
@@ -13,6 +13,8 @@ import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {Auth} from '@lib/Auth';
 import {updateStats} from '@actions/stats';
+import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
+
 
 import styles from './styles';
 
