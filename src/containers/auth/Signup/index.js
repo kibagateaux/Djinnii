@@ -7,8 +7,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  navigateToLogin: () => dispatch(navigateTo(LOGIN)),
-  navigateToHome: () => dispatch(navigateTo(HOME))
+  navigateToLogin: () => dispatch(navigateTo(LOGIN))
 });
 
 export default connect(null, mapDispatchToProps)(Signup)

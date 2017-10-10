@@ -66,7 +66,8 @@ class SignUp extends React.Component {
       .then((result) => {
         this.setState({...this.baseState});
         console.log('onsignup', this.props.onSignUp);
-        this.props.onSignUp();
+        this.props.navigateToLogin();
+        // TODO auto sign in
       })
       .catch((err) => {
         console.log('err signup', err);
