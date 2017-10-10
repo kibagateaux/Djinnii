@@ -11,11 +11,22 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <react-native-branch/RNBranch.h>
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  // Uncomment this line to use the test key instead of the live one.
+  // [RNBranch useTestInstance]
+  Branch *branch = [RNBranch getInstance];
+  [branch initSessionWithLaunchOptions:launchOptions isReferrable:YES andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
+    // route the user based on what's in params
+  }];
+
+
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
@@ -32,6 +43,35 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+// Branch.io openURL, continueUserActivity, and didReceiveRemoteNotifications functions
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  
+    BOOL branchHandled =
+    [[Branch getInstance]
+     application:application
+     openURL:url
+     sourceApplication:sourceApplication
+     annotation:annotation];
+    
+    if (!branchHandled) {
+      // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+    }
+    if (![RNBranch.branch application:app openURL:url options:options]) {
+      // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
+  BOOL handledByBranch = [[Branch getInstance] continueUserActivity:userActivity];
+  
+  return handledByBranch;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  [[Branch getInstance] handlePushNotification:userInfo];
 }
 
 @end

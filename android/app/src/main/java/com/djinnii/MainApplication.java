@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.branch.rnbranch.RNBranchPackage;
+import io.branch.referral.Branch;
 import com.airlabsinc.RNAWSCognitoPackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
 import com.facebook.react.ReactNativeHost;
@@ -41,6 +42,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    Branch.getAutoInstance(this);
     SoLoader.init(this, /* native exopackage */ false);
   }
 }
