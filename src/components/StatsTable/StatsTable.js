@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, ScrollView, Animated} from 'react-native';
 import {height, width} from '@lib/constants/style';
+import FadingView from '@components/common/animations/fadingView';
 import styles from './styles';
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -25,6 +26,19 @@ export default class extends PureComponent {
     }
   }
 
+  _makeDifferenceScoreBoard = (diff) => (
+    <Text>
+      <FadingView
+        style={styles.statTextContainer}
+        toOpacity={0.8}
+        fadeIndelay={0}
+        fadeOutDelay={100}
+      >
+        <Text> {diff} </Text>
+      </FadingView>
+    </Text>
+  )
+
   _renderStatsColumn = (statCategory) => {
     return Object.keys(statCategory).map(statRow => {
       const stat = statCategory[statRow];
@@ -39,10 +53,7 @@ export default class extends PureComponent {
         <Text style={styles.statRow} key={statRow}>
           <Text style={styles.statText}>{statRow}:  </Text> 
           <Text style={styles.statText}>
-            {statFloat}
-            <AnimatedText>
-              {difference}
-            </AnimatedText>
+            {statFloat} {this._makeDifferenceScoreBoard(difference)}
           </Text>
         </Text>
       )

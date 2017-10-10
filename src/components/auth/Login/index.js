@@ -126,8 +126,6 @@ class LogIn extends PureComponent {
       username,
       password
     } = this.state;
-    console.log('log rend err msg', errorMessage);
-    
     return (
       <View style={styles.loginContainer}>
         {showMFAPrompt &&

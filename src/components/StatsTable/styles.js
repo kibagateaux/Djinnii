@@ -12,5 +12,9 @@ export default StyleSheet.create({
   statText: {
     fontWeight: fontWeight.normal,
     fontSize: fontSize.normal
+  },
+  statTextContainer: {
+    height: height / 30,
+    width: width / 30
   }
 })

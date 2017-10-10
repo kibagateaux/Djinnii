@@ -187,11 +187,7 @@ function checkRegistrationError(error) {
 
 function handleNewCustomerRegistration(username, password, email, phone, registerCallBack) {
   const attributeList = [];
-  
-  if (email && email.Value) {
-    const attributeEmail = new CognitoUserAttribute(email);
-    attributeList.push(attributeEmail);
-  }
+
   if (phone && phone.Value) {
     const attributePhone = new CognitoUserAttribute(phone);
     attributeList.push(attributePhone);

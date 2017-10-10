@@ -28,28 +28,23 @@ class SignUp extends React.Component {
       phoneNumber: '',
       errorMessage: 'Sign up with just a phone number and password',
     };
-
     this.baseState = this.state;
-
-    this.handleSignUp = this.handleSignUp.bind(this);
-    this.handleMFAValidate = this.handleMFAValidate.bind(this);
-    this.handleMFASuccess = this.handleMFASuccess.bind(this);
-    this.handleMFACancel = this.handleMFACancel.bind(this);
   }
   
    validateFields = () => {
     const {password, phoneNumber} = this.state;
     const validPassword = password.length > 7;
     const validNumber = this.validatePhoneNumber(phoneNumber);
-    const numberMessage = validNumber ? 'Please enter a proper US number e.g. 342-624-8971' : '';
-    const passwordMessage = validPassword ? 'Passwords must be longer than 8 characters' : '';
+    console.log('val sign field', password, validPassword,  phoneNumber, validNumber);
+    const numberMessage = validNumber ? '' : ' Please enter a proper US number e.g. 342-624-8971 ';
+    const passwordMessage = validPassword ? '' : ' Passwords must be longer than 8 characters ';
     const errorMessage = numberMessage + passwordMessage;
     if(errorMessage.length > 0) {
       console.log('err msg', errorMessage);
       this.setState({errorMessage});
     } else {
-      console.log('signup handled', );
-      handleSignUp();
+      console.log('signup handled');
+      this.handleSignUp();
     }
   };
 
@@ -58,7 +53,7 @@ class SignUp extends React.Component {
     const {password, phoneNumber} = this.state;    
     const awsPhoneNumber = '+1' + phoneNumber;
     const startSignup = new Promise((resolve, reject) => {
-      Auth.handleNewCustomerRegistration(awsPhoneNumber, password, email, awsPhoneNumber, (err, result) => {
+      Auth.handleNewCustomerRegistration(awsPhoneNumber, password, null, awsPhoneNumber, (err, result) => {
         if (err) {
           reject(err);
           return;
