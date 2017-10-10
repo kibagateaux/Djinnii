@@ -155,10 +155,19 @@ function handleSignIn(username, password, callbacks) {
     Username: username,
     Pool: userPool,
   });
-  console.log('handle sign in', {username, password}, authenticationDetails, cognitoUser);
-  LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoUser));
+  console.log('handle sign in', {username, password}, authenticationDetails);
   console.log('save sign in user', cognitoUser)
+  const cognitoData = {
+    username,
+    Session,
+    randomPassword,
+    deviceKey,
+    deviceGroupKey,
+    signInUserSession
+  } = cognitoUser;
   cognitoUser.authenticateUser(authenticationDetails, callbacks);
+  // find out where username gets converted from phone to hash and save to local storage
+  LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoData));
 }
 
 function sendMFAVerificationCode(code, callbacks, ctx) {

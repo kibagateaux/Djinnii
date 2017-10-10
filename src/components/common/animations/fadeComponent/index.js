@@ -16,6 +16,7 @@ export default class FadingView extends Component {
    */
   constructor(props) {
     super(props);
+    console.log('fade comp const', props);
     this.state = {
       opacity: new Animated.Value(0)
     };
@@ -27,10 +28,8 @@ export default class FadingView extends Component {
    * @return {undefined}
    */
   componentDidMount() {
-    this.fadeInAnimation()
-      .then(this.fadeOutAnimation)
-      .catch((err) => console.log("error fade in view", err));
-    
+    this.fadeInAnimation();
+    this.fadeOutAnimation();
   }
 
   /**
@@ -40,15 +39,14 @@ export default class FadingView extends Component {
    */
   fadeInAnimation = () => {
     const {duration, toOpacity, fadeInDelay} = this.props;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Animated.timing(
-        this.state.opacity,
-        {
-          toValue: toOpacity,
-          duration: duration,
-        }
-      ).start(), fadeInDelay))
-    });
+    console.log('fad in', toOpacity, duration, fadeInDelay);
+    setTimeout(() => Animated.timing(
+      this.state.opacity,
+      {
+        toValue: toOpacity,
+        duration: duration,
+      }
+    ).start(), fadeInDelay)
   }
 
   /**
@@ -58,15 +56,14 @@ export default class FadingView extends Component {
    */
   fadeOutAnimation = () => {
     const {duration, fadeOutDelay} = this.props;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Animated.timing(
-        this.state.opacity,
-        {
-          toValue: 0,
-          duration: duration,
-        }
-      ).start(), fadeOutDelay))
-    });
+    console.log('fad out', duration, fadeOutDelay);
+    setTimeout(() => Animated.timing(
+      this.state.opacity,
+      {
+        toValue: 0,
+        duration: duration,
+      }
+    ).start(), fadeOutDelay);
   }
 
   /**
@@ -75,8 +72,9 @@ export default class FadingView extends Component {
    * @return {undefined}
    */
   render() {
+    const {AnimatedComponent} = this.props;
     return (
-      <Animated.View
+      <AnimatedComponent
         style={[
           {
             opacity: this.state.opacity,
@@ -86,7 +84,7 @@ export default class FadingView extends Component {
         ]}
       >
         {this.props.children}
-      </Animated.View>
+      </AnimatedComponent>
     );
   }
 }

@@ -7,15 +7,16 @@ import styles from './styles';
 
 import axios from 'axios';
 import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
-
+import {fakeDynamoRequest, fakeDynamoGet} from '@lib/DynamoDB';
 
 export default (props) => {
   const testingFunc = async () => {
-    const mob = await Linking.canOpenURL(movesAuthInitDeepLink);
-    const web = await Linking.canOpenURL(movesAuthInitHttps);
-    const movesAuthLink = mob ? movesAuthInitDeepLink : movesAuthInitHttps;
-    console.log('moves links ', mob, web, movesAuthLink);
-    Linking.openURL(movesAuthLink);
+    fakeDynamoRequest("blah");
+    // const mob = await Linking.canOpenURL(movesAuthInitDeepLink);
+    // const web = await Linking.canOpenURL(movesAuthInitHttps);
+    // const movesAuthLink = mob ? movesAuthInitDeepLink : movesAuthInitHttps;
+    // console.log('moves links ', mob, web, movesAuthLink);
+    // Linking.openURL(movesAuthLink);
   }
   return (
     <View style={styles.container}>
