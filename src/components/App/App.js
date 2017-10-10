@@ -81,21 +81,16 @@ export default class App extends Component {
   _renderLocalGame = () => {
     const {updateLocalStats, localStats} = this.props;
     const actions= [
-      {action: 'Login',
-      onPress: () => this.props.dispatch(navigateTo('login'))},
+      {action: 'Run',
+      onPress: () => (updateLocalStats(localStatsAfterActivity('run', localStats)))},
       //  onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
-      {action: 'User',
-       onPress: () => (console.log('current user', Auth.getCurrentUser()))},
+      {action: 'Dance',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
       {action: 'Sleep',
         icon: "😴💤",
        onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
-      {action: 'Local Data',
-       onPress: () => {
-         AsyncStorage.getItem('COGNITO_USER_PROFILE')
-          .then((data) => {
-            updateStats('3b844f5f-fccb-4783-b009-82352b782a4c')
-          })
-        }
+      {action: 'Eat',
+       onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))
       }
     ];
     const actionButtons = actions.map(({action, onPress, icon}) => 
