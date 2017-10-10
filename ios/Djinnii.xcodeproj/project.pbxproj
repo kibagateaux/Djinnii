@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -39,7 +38,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BE83DB8F21964376B286982C /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF06FEA662847D8ACC97C11 /* libRCTMaterialKit.a */; };
-		DE6BA8F332FD4501A4C63F63 /* libreact-native-branch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4A48D1005245B78338DF4E /* libreact-native-branch.a */; };
+		048C8185E6914433899DB276 /* libreact-native-branch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 518372DCBE234BB7B1DF9426 /* libreact-native-branch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,13 +118,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNAWSCognito;
-		};
-		0FBE4E5C1F8D398E007497EA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F2D05B5F415947A0A94A5998 /* RNBranch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B3A3CC361C5B0A070016AC52;
-			remoteInfo = RNBranch;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -326,9 +318,9 @@
 		84FDC391511146EC8091DBB8 /* RCTMaterialKit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTMaterialKit.xcodeproj; path = "../node_modules/react-native-material-kit/iOS/RCTMaterialKit.xcodeproj"; sourceTree = "<group>"; };
 		9A5F0D5A7C4D44CF9D00FF9D /* RNAWSCognito.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAWSCognito.xcodeproj; path = "../node_modules/react-native-aws-cognito-js/ios/RNAWSCognito.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		BD4A48D1005245B78338DF4E /* libreact-native-branch.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libreact-native-branch.a"; sourceTree = "<group>"; };
 		E999D605C0D844A8A00DC27B /* libRNAWSCognito.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAWSCognito.a; sourceTree = "<group>"; };
-		F2D05B5F415947A0A94A5998 /* RNBranch.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
+		053BF80A08BC425A915DE058 /* RNBranch.xcodeproj */ = {isa = PBXFileReference; name = "RNBranch.xcodeproj"; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		518372DCBE234BB7B1DF9426 /* libreact-native-branch.a */ = {isa = PBXFileReference; name = "libreact-native-branch.a"; path = "libreact-native-branch.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,7 +351,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				BE83DB8F21964376B286982C /* libRCTMaterialKit.a in Frameworks */,
 				74039C9494FB4D0AB2BA72CC /* libRNAWSCognito.a in Frameworks */,
-				DE6BA8F332FD4501A4C63F63 /* libreact-native-branch.a in Frameworks */,
+				048C8185E6914433899DB276 /* libreact-native-branch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,14 +447,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0FBE4E2E1F8D398D007497EA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0FBE4E5D1F8D398E007497EA /* libreact-native-branch.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,7 +533,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				84FDC391511146EC8091DBB8 /* RCTMaterialKit.xcodeproj */,
 				9A5F0D5A7C4D44CF9D00FF9D /* RNAWSCognito.xcodeproj */,
-				F2D05B5F415947A0A94A5998 /* RNBranch.xcodeproj */,
+				053BF80A08BC425A915DE058 /* RNBranch.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -770,10 +754,6 @@
 				{
 					ProductGroup = 0FBE4E2C1F8D398D007497EA /* Products */;
 					ProjectRef = 9A5F0D5A7C4D44CF9D00FF9D /* RNAWSCognito.xcodeproj */;
-				},
-				{
-					ProductGroup = 0FBE4E2E1F8D398D007497EA /* Products */;
-					ProjectRef = F2D05B5F415947A0A94A5998 /* RNBranch.xcodeproj */;
 				},
 			);
 			projectRoot = "";

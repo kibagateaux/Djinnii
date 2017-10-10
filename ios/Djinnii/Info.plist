@@ -14,7 +14,7 @@
     <dict>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>djinniidownload</string>
+        <string>djinnii</string>
       </array>
     </dict>
   </array>
