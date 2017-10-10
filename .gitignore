@@ -43,7 +43,6 @@ buck-out/
 
 # security
 #
-*.env
 app/my-release-key.keystore
 
 # fastlane
