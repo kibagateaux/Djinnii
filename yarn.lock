@@ -3632,6 +3632,10 @@ react-native-aws-cognito-js@^0.0.7:
   dependencies:
     aws-sdk "*"
 
+react-native-branch@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.1.0.tgz#3159979451000fd46ccbc68cfb472f706948490e"
+
 react-native-button@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-2.1.0.tgz#a39e23292922afeea4f7be141dd43e18f1b51876"
