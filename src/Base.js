@@ -1,16 +1,10 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reduxThunk from 'redux-thunk';
-import reduxLogger from 'redux-logger';
-import reducers from './reducers';
-import Router from './router';
-
+import {Provider} from 'react-redux';
+import store from './store/';
+import Router from './router/';
 import App from '@containers/App';
 
-const storeMiddleware = applyMiddleware(reduxThunk, reduxLogger)(createStore);
-const store = storeMiddleware(reducers);
-
+console.log('base', store, Router, App);
 
 
 export default (props) => (

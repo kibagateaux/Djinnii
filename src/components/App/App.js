@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
-import {_handleBranchRouting} from '@lib/helpers/analytics';
+import {_handleBranchRouting} from '@lib/analytics';
 
 
 import DailyProfile from '@containers/DailyProfile';
@@ -23,10 +23,8 @@ import styles from './styles';
 export default class App extends Component {
   constructor(props){
     super(props);
-
-    branch.subscribe(_handleBranchRouting);
-
-    
+    console.log('capp const', props, branch.subscribe, branch.getFirstReferringParams());
+    branch.subscribe((event) => _handleBranchRouting(event));
   }
   //initializes UI for game mode
   async componentWillMount() {
@@ -44,7 +42,20 @@ export default class App extends Component {
     localMode ?
       updateLocalStats(lastLocalStats) :
       setDisplayStats(lastLiveStats);
-    
+  }
+
+  componentWillUnmount() {
+    console.log('app unmount', );
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const modeChange = this.props.localMode !== nextProps.localMode;
+    const newStats = (
+      this.props.localStats !== nextProps.localStats || 
+      this.props.lastLiveStats !== nextProps.lastLiveStats
+    );
+    console.log('app shld upd', modeChange || newStats, modeChange, newStats);
+    return (modeChange || newStats) ? true : false;
   }
 
   componentDidMount(){

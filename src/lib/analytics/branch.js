@@ -15,10 +15,17 @@ export const _generateShortUrl = async () => {
   return await branchObj.generateShortUrl()
 };
 
-export const _handleBranchRouting = ({params, error}) => {
+export const _handleBranchRouting = async ({params, error}) => {
   if (error) {
     console.log('error handling branch rout', error);
   } else {
+    if (params['is_first_session']) {
+      return 'route'
+    }
+    if (params['+clicked_branch_link']){
+      return 'route'
+    }
+    const incomingParams = await branch.getFirstReferringParams()
     console.log('branch rout param', params);
   }
-}
+};

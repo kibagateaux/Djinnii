@@ -8,9 +8,10 @@ import {
 } from '@screens';
 
 export default Actions.create(
-  <Scene key="index">
+  <Scene key="app">
+    <Scene initial hideNavBar key="index" component={App} />  
     <Scene hideNavBar key='login' title='Login Screen' component={LoginScreen} />
-    <Scene initial hideNavBar key="home" component={App} />  
     <Scene hideNavBar key='signup' title='Signup Screen' component={SignupScreen} />
   </Scene>
 );
+ 
