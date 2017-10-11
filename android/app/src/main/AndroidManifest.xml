@@ -16,25 +16,7 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
-       
-      <activity
-        android:name=".SplashActivity"
-        android:label="Splash Screen"
-        android:launchMode="singleTask"
-        android:screenOrientation="portrait">
-        <intent-filter>
-          <action android:name="android.intent.action.MAIN" />
-          <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
 
-        <intent-filter>
-          <data android:scheme="djinnii" android:host="open" />
-          <action android:name="android.intent.action.VIEW" />
-          <category android:name="android.intent.category.DEFAULT" />
-          <category android:name="android.intent.category.BROWSABLE" />
-        </intent-filter>
-      </activity>
-        
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -49,7 +31,34 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+
+        <intent-filter>
+            <data android:scheme="djinnii" />
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+        </intent-filter>
+
+        <intent-filter android:autoVerify="true">
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" android:host="djinnii.app.link" />
+        </intent-filter>
       </activity>
+
+      <activity
+        android:name=".SplashActivity"
+        android:label="Splash Screen"
+        android:launchMode="singleTask"
+        android:screenOrientation="portrait">
+        <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+          <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+        
+      
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 
       <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_ferGe3jr3cchY9a7oliQRmgaDBciMb93" />
@@ -57,9 +66,9 @@
       <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
 
       <receiver android:name="io.branch.referral.InstallListener" android:exported="true">
-      <intent-filter>
-        <action android:name="com.android.vending.INSTALL_REFERRER" />
-      </intent-filter>
+        <intent-filter>
+          <action android:name="com.android.vending.INSTALL_REFERRER" />
+        </intent-filter>
       </receiver>
 
     </application>
