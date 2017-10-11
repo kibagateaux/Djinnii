@@ -10,11 +10,5 @@ import {
 } from 'react-native-router-flux';
 
 export default () => (
-  <Router scenes={scenes}>
-    <Overlay>
-      <Lightbox>
-
-      </Lightbox>
-    </Overlay>
-  </Router>
+  <Router scenes={scenes} />
 )

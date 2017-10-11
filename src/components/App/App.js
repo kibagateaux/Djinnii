@@ -24,7 +24,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     console.log('capp const', props, branch.subscribe, branch.getFirstReferringParams());
-    branch.subscribe((event) => _handleBranchRouting(event));
+    branch.subscribe(_handleBranchRouting);
   }
   //initializes UI for game mode
   async componentWillMount() {

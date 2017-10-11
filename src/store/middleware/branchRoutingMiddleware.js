@@ -5,6 +5,7 @@ import {
   _handleBranchRouting,
 } from '@lib/analytics/branch';
 
-export const branchRoutingMiddleWare = (store) => (next) => {
+export const branchRoutingMiddleWare = (store) => (next) => (action) => {
   console.log('branch middwer', store, next);
+  return next(action);
 };

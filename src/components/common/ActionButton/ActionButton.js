@@ -23,6 +23,7 @@ export default (props) => {
 
   return (
     <MKButton style={[{backgroundColor}, style]} onPress={onPress}>
+      {props.children}
       <Text> {buttonText} </Text>
       {Sprite ? <Sprite style={styles.sprite} /> : renderIcon()}
     </MKButton>
