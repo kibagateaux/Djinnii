@@ -79,6 +79,8 @@ App Rules :
   |Name|Use Case|Other UX things|
   |_________|____________|___________|
   |Cherbroni Myerson| Started using it school through his gym class. She and her friends picked up on it and use it outside of school when playing in the park and at basketball practice| **blah blah blah**|
+
+
 TODOS:
 ------
 

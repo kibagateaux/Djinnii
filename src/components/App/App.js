@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
+=======
+import React, {Component} from 'react';
+import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
+>>>>>>> master
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
@@ -13,6 +18,11 @@ import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {Auth} from '@lib/Auth';
 import {updateStats} from '@actions/stats';
+<<<<<<< HEAD
+=======
+import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
+
+>>>>>>> master
 
 import styles from './styles';
 
@@ -81,6 +91,7 @@ export default class App extends Component {
   _renderLocalGame = () => {
     const {updateLocalStats, localStats} = this.props;
     const actions= [
+<<<<<<< HEAD
       {action: 'Run',
       onPress: () => (updateLocalStats(localStatsAfterActivity('run', localStats)))},
       //  onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
@@ -91,6 +102,23 @@ export default class App extends Component {
        onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
       {action: 'Eat',
        onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))
+=======
+      {action: 'Login',
+      onPress: () => this.props.dispatch(navigateTo('login'))},
+      //  onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
+      {action: 'User',
+       onPress: () => (console.log('current user', Auth.getCurrentUser()))},
+      {action: 'Sleep',
+        icon: "😴💤",
+       onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
+      {action: 'Local Data',
+       onPress: () => {
+         AsyncStorage.getItem('COGNITO_USER_PROFILE')
+          .then((data) => {
+            updateStats('3b844f5f-fccb-4783-b009-82352b782a4c')
+          })
+        }
+>>>>>>> master
       }
     ];
     const actionButtons = actions.map(({action, onPress, icon}) => 

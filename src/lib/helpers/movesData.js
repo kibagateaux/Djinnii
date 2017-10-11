@@ -4,12 +4,13 @@ import {
   _getTimesInUnix,
   _sortByTime
 } from '@lib/helpers/time';
-
+import {MOVES_API_KEY} from 'react-native-dotenv'
 export const normalizeStorylineData = (storylines) => {
   return normalizedData(storylines);
-  
 }
 
+export const movesAuthInitDeepLink =  `moves://app/authorize?client_id=${MOVES_API_KEY}&scope=activity,location`;
+export const movesAuthInitHttps = `https://api.moves-app.com/oauth/v1/authorize?response_type=code&client_id=${MOVES_API_KEY}&scope=activity,location`;
 
 const normalizedData = (stories) => {
   // should take all day segments and return flat object

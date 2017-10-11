@@ -89,7 +89,7 @@ const getCognitoCredentials = function getCognitoCredentials(session) {
       [loginCred]: session.getIdToken().getJwtToken(),
     },
   };
-
+  console.log('get cog creds', cognitoParams);
   return new AWS.CognitoIdentityCredentials(cognitoParams);
 };
 
@@ -112,7 +112,7 @@ const setCredentials = function setCredentials(credentials) {
       };
 
       LocalStorage.setItem(AWS_CREDENTIALS, JSON.stringify(awsCredentials));
-      console.log('set lcoal aws cred', awsCredentials);
+      console.log('set lcl aws cred', awsCredentials);
       resolve(awsCredentials);
     });
   });
@@ -121,7 +121,7 @@ const setCredentials = function setCredentials(credentials) {
 const getCredentials = async function getCredentials(session, callbacks, ctx) {
   LocalStorage.setItem(CURRENT_COGNITO_SESSION, JSON.stringify(session));
   await setCredentials(getCognitoCredentials(session));
-console.log('set cog cred', session, true);
+  console.log('set cog cred', session, ctx);
   LocalStorage.setItem(IS_LOGGED_IN, 'true');
   callbacks.onSuccess.call(ctx, session);
 };
@@ -155,10 +155,19 @@ function handleSignIn(username, password, callbacks) {
     Username: username,
     Pool: userPool,
   });
-  console.log('handle sign in', {username, password}, authenticationDetails, cognitoUser);
-  LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoUser));
-  console.log('save sign in user', cognitoUser)
+  console.log('handle sign in', {username, password}, authenticationDetails);
+  const cognitoData = {
+    username,
+    Session,
+    randomPassword,
+    deviceKey,
+    deviceGroupKey,
+    signInUserSession
+  } = cognitoUser;
   cognitoUser.authenticateUser(authenticationDetails, callbacks);
+  console.log('save sign in user', cognitoData)
+  // find out where username gets converted from phone to hash and save to local storage
+  LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoData));
 }
 
 function sendMFAVerificationCode(code, callbacks, ctx) {
@@ -188,10 +197,10 @@ function checkRegistrationError(error) {
 function handleNewCustomerRegistration(username, password, email, phone, registerCallBack) {
   const attributeList = [];
   
-  if (email && email.Value) {
-    const attributeEmail = new CognitoUserAttribute(email);
-    attributeList.push(attributeEmail);
-  }
+  // if (email && email.Value) {
+  //   const attributeEmail = new CognitoUserAttribute(email);
+  //   attributeList.push(attributeEmail);
+  // }
   if (phone && phone.Value) {
     const attributePhone = new CognitoUserAttribute(phone);
     attributeList.push(attributePhone);

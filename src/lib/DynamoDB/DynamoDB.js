@@ -1,9 +1,9 @@
 import AWS from 'aws-sdk';
 import {AWS_ACCESS_KEY, AWS_SECRET_KEY} from 'react-native-dotenv';
-import {COGNITO_USER} from '@constants/asyncStorage';
+import {COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {AsyncStorage} from 'react-native';
 import {Auth} from '@lib/Auth';
-const creds = () => AsyncStorage.getItem(COGNITO_USER)
+const creds = async () => await AsyncStorage.getItem(COGNITO_USER_PROFILE)
   .then((data) => JSON.parse(data))
   .then((data) => data);
 
@@ -13,7 +13,7 @@ AWS.config.update({
   region:'us-east-1'
 });
 
-const StatsDB = new AWS.DynamoDB.DocumentClient({
+const DB = new AWS.DynamoDB.DocumentClient({
   apiVersion: '2012-08-10'
 });
 
@@ -21,13 +21,12 @@ const statsTable = "djinii-mobilehub-1897344653-stats";
 
 const params = (username) => ({
   RequestItems: {
-    statsTable: [
+    [statsTable]: [
       {
         PutRequest: {
           Item: {
             userId: username,
             time: 135235231241,
-            time: 135235231241, 
             strength: 141, 
             intelligence: 124
           }
@@ -60,34 +59,39 @@ const params = (username) => ({
 });
 
 export const fakeDynamoRequest = (username) => {
-  StatsDB.batchWrite(params(username), function(err, data) {
+  console.log('dyn cred', creds());
+  DB.batchWrite(params(username), function(err, data) {
     if (err) console.log('Error writing to DB', err, err.stack); // an error occurred
     else     console.log('Wrote To DB!!!!', data);           // successful response
     /*
-    data = {
-    }
+      data = {
+      }
     */
   });
 };
 
 
-const getParams = (username) => ({
+const getParams = {
   RequestItems: {
-    statsTable: {
+    [statsTable]: {
       Keys: [
         {
-           HashKey: username,
-           NumberRangeKey: 1
+           userId: "hjgyh",
+           time: 1
         }
+      ],
+      AttributesToGet: [
+        'strength',
+        /* more items */
       ]
     },
   }
-});
+};
 
 export const fakeDynamoGet = (username) => {
-  StatsDB.batchGet(params(username), function(err, data) {
+  DB.batchGet(getParams, function(err, data) {
     if (err) console.log('Error writing to DB', err, err.stack); // an error occurred
-    else     console.log('Wrote To DB!!!!', data);           // successful response
+    else     console.log('Got DB', data);           // successful response
     /*
     data = {
     }
