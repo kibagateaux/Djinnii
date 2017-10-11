@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
+import branch from 'react-native-branch';
+import {_handleBranchRouting} from '@lib/helpers/analytics';
+
 
 import DailyProfile from '@containers/DailyProfile';
 import HomeProfile from '@containers/HomeProfile';
@@ -8,7 +11,6 @@ import ActionButton from '@components/common/ActionButton/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
-
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {Auth} from '@lib/Auth';
@@ -21,6 +23,10 @@ import styles from './styles';
 export default class App extends Component {
   constructor(props){
     super(props);
+
+    branch.subscribe(_handleBranchRouting);
+
+    
   }
   //initializes UI for game mode
   async componentWillMount() {
