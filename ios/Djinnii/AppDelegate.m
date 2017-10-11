@@ -21,10 +21,8 @@
   
   // Uncomment this line to use the test key instead of the live one.
   // [RNBranch useTestInstance]
-  Branch *branch = [RNBranch getInstance];
-  [branch initSessionWithLaunchOptions:launchOptions isReferrable:YES andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
-    // route the user based on what's in params
-  }];
+  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
+  // route the user based on what's in params
 
 
   NSURL *jsCodeLocation;
@@ -47,17 +45,6 @@
 
 // Branch.io openURL, continueUserActivity, and didReceiveRemoteNotifications functions
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  
-    BOOL branchHandled =
-    [[Branch getInstance]
-     application:application
-     openURL:url
-     sourceApplication:sourceApplication
-     annotation:annotation];
-    
-    if (!branchHandled) {
-      // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
-    }
     if (![RNBranch.branch application:app openURL:url options:options]) {
       // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
