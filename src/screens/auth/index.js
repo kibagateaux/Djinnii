@@ -1,3 +1,4 @@
 import LoginScreen from './Login';
 import SignupScreen from './Signup';
-export {LoginScreen, SignupScreen};
+import OAuthScreen from './OAuth'
+export {LoginScreen, SignupScreen, OAuthScreen};

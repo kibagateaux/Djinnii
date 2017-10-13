@@ -23,10 +23,11 @@ import styles from './styles';
 export default class App extends Component {
   constructor(props){
     super(props);
-    console.log('capp const', props, branch.subscribe, branch.getFirstReferringParams());
+    console.log('capp const', branch.subscribe, branch.getFirstReferringParams().then(data => data));
     branch.subscribe(_handleBranchRouting);
   }
-  //initializes UI for game mode
+
+  // initializes UI for selected game mode
   async componentWillMount() {
     const {
       updateLocalStats,

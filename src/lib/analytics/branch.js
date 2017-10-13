@@ -26,6 +26,7 @@ export const _handleBranchRouting = async ({params, error}) => {
       return 'route'
     }
     const incomingParams = await branch.getFirstReferringParams()
+    
     console.log('branch rout param', params, incomingParams);
   }
 };

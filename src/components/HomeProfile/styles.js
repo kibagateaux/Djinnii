@@ -22,5 +22,8 @@ export default StyleSheet.create({
     position: 'absolute',
     height: height / 20,
     top: height / 2.5
+  },
+  djinnii: {
+    flex: 2
   }
 })

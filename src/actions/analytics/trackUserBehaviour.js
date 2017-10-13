@@ -1,3 +1,5 @@
 
 import {analytics} from '@lib/analytics';
-export default {}
+export const trackUserBehaviour = (eventData) => {
+  analytics.track(eventData);
+}

@@ -5,19 +5,23 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
-import ActionButton from '@components/ActionButton/ActionButton';
-export default class extends Component {
-  costructor(props) {
+import ActionButton from '@components/common/ActionButton/ActionButton';
+import {Auth, WithAuth} from '@lib/Auth';
+
+class OAuth extends Component {
+  constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
-
   }
 
   render() {
-    const {appName, appImage, description} = this.props;
+    const {
+      appName,
+      appImage,
+      description,
+      onMainButtonPress,
+      onAltButtonPress
+    } = this.props;
+
     return (
       <View>
         <View style={styles.header}>
@@ -29,16 +33,21 @@ export default class extends Component {
           <ActionButton
             buttonText="Install App"
             primaryColor
+            onPress={onMainButtonPress}
           />
           <ActionButton
             buttonText="See Permissions"
+            onPress={onAltButtonPress}
           />
         </View>
         
       </View>
-    )
+    );
   }
 }
 
+
+console.log('oauth', OAuth);
+export default WithAuth(OAuth);
 // default background, centered card with app name,
 // and which permissions and why the app will help.

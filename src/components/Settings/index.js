@@ -14,11 +14,24 @@ export default class extends Component {
     }
   }
 
+  _getSettingsList = () => ([
+    {
+      label: "Integrations",
+      onPress: () => this.props.navigateToIntegrations({})
+    },
+    {
+      label: "Moves",
+      onPress: () => this.props.navigateToOAuth({
+        appName:"Moves",
+        description: "Helps us track movement and exercise like running and biking",
+      })
+    }
+  ])
+
   render() {
-    const {cards, cardStyle} = this.props;
     return (
       <View style={styles.settingsContainer}>
-        <CardList cards={cards} style={cardStyle}/>
+        <CardList cards={this._getSettingsList()} style={styles.cardStyle}/>
       </View>    
     );
   }
