@@ -21,9 +21,13 @@ export default StyleSheet.create({
   switchButton: {
     position: 'absolute',
     height: height / 20,
-    top: height / 2.5
+    bottom: height / 25
   },
   djinnii: {
     flex: 2
+  },
+  actionButton: {
+    fontWeight: "700"
+
   }
 })

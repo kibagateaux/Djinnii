@@ -4,9 +4,6 @@ import store from './store/';
 import Router from './router/';
 import App from '@containers/App';
 
-console.log('base', store, Router, App);
-
-
 export default (props) => (
   <Provider store={store}>
     <Router />

@@ -7,7 +7,10 @@ import {
 } from 'react-native';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 import {Auth, WithAuth} from '@lib/Auth';
+import styles from './styles';
 
+// default background, centered card with app name,
+// and which permissions and why the app will help.
 class OAuth extends Component {
   constructor(props) {
     super(props);
@@ -23,10 +26,10 @@ class OAuth extends Component {
     } = this.props;
 
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={appimage} />
-          <Text style={styles.appName}> {appNme} </Text>
+          <Image source={appImage} />
+          <Text style={styles.appName}> {appName} </Text>
           <Text> {description} </Text>
         </View>
         <View style={styles.buttonContainer}>
@@ -46,8 +49,5 @@ class OAuth extends Component {
   }
 }
 
-
-console.log('oauth', OAuth);
 export default WithAuth(OAuth);
-// default background, centered card with app name,
-// and which permissions and why the app will help.
+

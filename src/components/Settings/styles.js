@@ -3,7 +3,13 @@ const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   settingsContainer: {
-    flexDirection: 'row',
+    flex: 1,
+    // position: 'absolute',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  cardStyle: {
+
   }
 });

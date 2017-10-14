@@ -3,7 +3,6 @@ import {
   View,
 } from 'react-native';
 import CardList from '@components/common/Cards/CardList';
-
 import styles from './styles';
 
 export default class extends Component {
@@ -26,13 +25,13 @@ export default class extends Component {
         description: "Helps us track movement and exercise like running and biking",
       })
     }
-  ])
+  ]);
 
   render() {
     return (
       <View style={styles.settingsContainer}>
         <CardList cards={this._getSettingsList()} style={styles.cardStyle}/>
-      </View>    
+      </View>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   View,
+  Linking
 } from 'react-native';
 import Settings from '@containers/Settings';
 
@@ -24,6 +25,8 @@ export default class extends Component {
       onPress: () => this.props.navigateToOAuth({
         appName:"Moves",
         description: "Helps us track movement and exercise like running and biking",
+        onMainButtonPress: () => Linking.openURL("moves://"),
+        onAltButtonPress: this.props.navigateToIntegrations
       })
     }
   ])
