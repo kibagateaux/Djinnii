@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {
   View,
 } from 'react-native';
+import {Linking} from 'react-native';
 import CardList from '@components/common/Cards/CardList';
 import styles from './styles';
+import {movesAuthLink} from '@lib/helpers/movesData';
 
 export default class extends Component {
   constructor(props) {
@@ -22,7 +24,9 @@ export default class extends Component {
       label: "Moves",
       onPress: () => this.props.navigateToOAuth({
         appName:"Moves",
-        description: "Helps us track movement and exercise like running and biking",
+        description: "blahb lasfb;a jafkna j",
+        onMainButtonPress: () => Linking.openURL(movesAuthLink),
+        onAltButtonPress: () => this.props.navigateToIntegrations()
       })
     }
   ]);

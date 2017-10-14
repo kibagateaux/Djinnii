@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import Settings from '@containers/Settings';
 import styles from './styles';
+import {movesAuthLink} from '@lib/helpers/movesData';
 
 export default class extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class extends Component {
     }
   }
 
-  _getSettingsList = () => ([
+  _getSettingsList = async () => ([
     {
       label: "Integrations",
       onPress: () => this.props.navigateToIntegrations({})
@@ -23,9 +24,12 @@ export default class extends Component {
       label: "Moves",
       onPress: () => this.props.navigateToOAuth({
         appName:"Moves",
-        description: "Helps us track movement and exercise like running and biking",
-        onMainButtonPress: () => Linking.openURL("moves://"),
-        onAltButtonPress: this.props.navigateToIntegrations
+        description: "blahb lasfb;a jafkna j",
+        onMainButtonPress: () => {
+          console.log('moves auth press', await movesAuthLink.then(blah => blah));
+          Linking.openURL(await movesAuthLink)
+        },
+        onAltButtonPress: () => this.props.navigateToIntegrations()
       })
     }
   ])

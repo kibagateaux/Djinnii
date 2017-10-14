@@ -10,44 +10,40 @@ import {Auth, WithAuth} from '@lib/Auth';
 import styles from './styles';
 
 // default background, centered card with app name,
-// and which permissions and why the app will help.
-class OAuth extends Component {
-  constructor(props) {
-    super(props);
-  }
+// and which permi ssions and why the app will help.
+export default (props) => {
+  const {
+    appName,
+    appImage,
+    description,
+    onMainButtonPress,
+    onAltButtonPress
+  } = props;
 
-  render() {
-    const {
-      appName,
-      appImage,
-      description,
-      onMainButtonPress,
-      onAltButtonPress
-    } = this.props;
-
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
+      <View style={styles.contentContainer}>
         <View style={styles.header}>
           <Image source={appImage} />
           <Text style={styles.appName}> {appName} </Text>
-          <Text> {description} </Text>
+          <Text style={styles.description}> {description} </Text>
         </View>
         <View style={styles.buttonContainer}>
           <ActionButton
+            style={styles.actionButton}          
             buttonText="Install App"
             primaryColor
             onPress={onMainButtonPress}
           />
           <ActionButton
+            style={styles.actionButton}
             buttonText="See Permissions"
             onPress={onAltButtonPress}
           />
         </View>
-        
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
-export default WithAuth(OAuth);
 

@@ -4,6 +4,7 @@ import {
   _getTimesInUnix,
   _sortByTime
 } from '@lib/helpers/time';
+import {Linking} from 'react-native';
 import {MOVES_API_KEY} from 'react-native-dotenv'
 export const normalizeStorylineData = (storylines) => {
   return normalizedData(storylines);
@@ -11,6 +12,9 @@ export const normalizeStorylineData = (storylines) => {
 
 export const movesAuthInitDeepLink =  `moves://app/authorize?client_id=${MOVES_API_KEY}&scope=activity,location`;
 export const movesAuthInitHttps = `https://api.moves-app.com/oauth/v1/authorize?response_type=code&client_id=${MOVES_API_KEY}&scope=activity,location`;
+const canDeepLink = Linking.canOpenURL('moves://app').then((res) => res);
+const _getMovesAuthLink = canDeepLink ? movesAuthInitDeepLink : movesAuthInitHttps; // replace null with link to app store
+export const movesAuthLink = movesAuthInitHttps;
 
 const normalizedData = (stories) => {
   // should take all day segments and return flat object

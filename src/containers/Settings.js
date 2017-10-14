@@ -17,7 +17,7 @@ mapStateToProps = (state) => {
 };
 
 mapDispatchToProps = (dispatch) => ({
-  navigateToOAuth: () => dispatch(navigateTo(OAUTH))
+  navigateToOAuth: (options) => dispatch(navigateTo(OAUTH, options))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
