@@ -2,26 +2,42 @@ import React from 'react';
 import {
   View,
   Text,
-  FlatList
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import {getTheme} from 'react-native-material-kit';
+import styles from './styles';
 
 export default (props) => {
 
-  const _renderCard = (item, humphrey) => {
+  const _renderCards = () => {
+    const {cards} = props;
     const theme = getTheme();
-    console.log('card list', item, humphrey, theme);
-    return (
-      <View style={[styles.cardContainer, theme.cardStyle]}>
+    return cards ? cards.map((item) => (
+      <TouchableOpacity
+        key={item.label}
+        style={styles.cardContainer}
+        /* style={[theme.cardStyle, styles.cardContainer]} */
+        onPress={item.onPress}
+      >
         {(false && <View style={[styles.cardImage, theme.cardImageStyle]} />)}
-      </View>
-    );
+        <Text 
+          style={styles.label}
+          /* style={[theme.cardTitleStyle, styles.label]} */
+        >
+          {item.label}
+        </Text>
+      </TouchableOpacity>
+    )) : null;
   };
 
   return (
-    <FlatList
-      data={props.cards}
-      renderItem={_renderCard}
-    />
+    <ScrollView
+      style={styles.listContainer}
+      showsVerticalScrollIndicator
+      showsHorizontalScrollIndicator
+    >
+      {_renderCards()}
+    </ScrollView>
   )
 }
