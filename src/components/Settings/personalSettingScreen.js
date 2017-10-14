@@ -4,7 +4,6 @@ import {
   Linking
 } from 'react-native';
 import Settings from '@containers/Settings';
-
 import styles from './styles';
 
 export default class extends Component {
