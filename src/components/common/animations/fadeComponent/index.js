@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Animated} from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import styles from '../styles';
 
 export default class FadingView extends Component {
@@ -28,8 +29,10 @@ export default class FadingView extends Component {
    * @return {undefined}
    */
   componentDidMount() {
-    this.fadeInAnimation();
-    this.fadeOutAnimation();
+    Animated.sequence([
+      this.fadeInAnimation(),
+      this.fadeOutAnimation()
+    ])
   }
 
   /**
@@ -40,13 +43,15 @@ export default class FadingView extends Component {
   fadeInAnimation = () => {
     const {duration, toOpacity, fadeInDelay} = this.props;
     console.log('fad in', toOpacity, duration, fadeInDelay);
-    setTimeout(() => Animated.timing(
+    return Animated.timing(
       this.state.opacity,
       {
         toValue: toOpacity,
         duration: duration,
+        delay: fadeInDelay,
+        useNativeDriver: true
       }
-    ).start(), fadeInDelay)
+    ).start();
   }
 
   /**
@@ -57,13 +62,15 @@ export default class FadingView extends Component {
   fadeOutAnimation = () => {
     const {duration, fadeOutDelay} = this.props;
     console.log('fad out', duration, fadeOutDelay);
-    setTimeout(() => Animated.timing(
+    return Animated.timing(
       this.state.opacity,
       {
         toValue: 0,
         duration: duration,
+        delay: fadeOutDelay,
+        useNativeDriver: true
       }
-    ).start(), fadeOutDelay);
+    ).start();
   }
 
   /**

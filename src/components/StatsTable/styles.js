@@ -7,7 +7,8 @@ export default StyleSheet.create({
     padding: width / 50
   },
   statRow: {
-    margin: width / 200
+    margin: width / 200,
+    overflow: 'hidden',
   },
   statText: {
     fontWeight: fontWeight.normal,

@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {Text, ScrollView, Animated} from 'react-native';
+import {Text, ScrollView, Animated, Easing} from 'react-native';
 import {height, width} from '@lib/constants/style';
 import FadeComponent from '@components/common/animations/fadeComponent';
 import styles from './styles';
@@ -30,10 +30,11 @@ export default class extends PureComponent {
     <FadeComponent
       AnimatedComponent={Animated.Text}
       style={styles.statTextContainer}
-      duration={200}
-      toOpacity={0.8}
+      duration={800}
+      toOpacity={0.3}
       fadeInDelay={0}
       fadeOutDelay={1000}
+      easing={Easing.linear}
     >
       {diff}
     </FadeComponent>
