@@ -1,4 +1,5 @@
-(Website)[https://kibagateaux/github.io/Djinnii]
+https://kibagateaux.github.io/Djinnii/
+
 Ideas : 
   How to incorporate dietary habits into game?
     Does how they feed imaginary Djinn reflect how they feed themmselves?
