@@ -37,6 +37,12 @@ nav ul.right {
   background: rgba(255,255,255,0.1);
 }
 
+.parallax-text-container {
+  align-self: flex-start;
+  padding: 5%;
+}
+
 .parallax-text {
-  width: 50%;
+  width: 70%;
+  margin: auto;
 }
