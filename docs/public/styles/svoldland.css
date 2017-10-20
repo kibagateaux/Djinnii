@@ -7,3 +7,13 @@
   height: inherit;
   width: auto;
 }
+
+#parralax-image-1,
+#parralax-image-2,
+#parralax-image-3 {
+  height: 50%;
+  width: auto;
+}
+nav ul li {
+  color: purple;
+}
