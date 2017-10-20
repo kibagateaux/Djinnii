@@ -37,9 +37,6 @@ nav ul.right {
   background: rgba(255,255,255,0.1);
 }
 
-
-.row.center{
-  top: 10%;
-  position: absolute;
-  left: 30%;
+.parallax-text {
+  width: 50%;
 }
