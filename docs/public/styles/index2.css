@@ -1,0 +1,18 @@
+.section-image {
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.info-cards-container {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.info-card {
+  height: 40vh;
+  width: auto;
+}
