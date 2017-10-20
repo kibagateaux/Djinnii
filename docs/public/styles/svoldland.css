@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: purple;
 }
 
 #logo-container {
@@ -37,7 +38,8 @@ nav ul.right {
 }
 
 
-.parallax-text-top-cent{
+.row.center{
   top: 10%;
   position: absolute;
+  left: 30%;
 }
