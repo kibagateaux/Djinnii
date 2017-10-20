@@ -1,0 +1,9 @@
+#logo-container {
+  height: inherit;
+  width: 15%;
+}
+
+#nav-logo-image {
+  height: inherit;
+  width: auto;
+}
