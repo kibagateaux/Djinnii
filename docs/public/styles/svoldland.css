@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 #logo-container {
   height: inherit;
   width: 15%;
@@ -6,6 +10,18 @@
 #nav-logo-image {
   height: inherit;
   width: auto;
+}
+
+nav ul.right {
+  padding-right: 5%;
+}
+
+.nav-link {
+  background-color: gold;
+  /* padding: 0.5%; */
+}
+.nav-link a {
+  color: black;
 }
 
 #initial-action-button {
@@ -17,12 +33,9 @@
 #parallax-image-3 {
   height: 150%;
   width: auto;
+  background: rgba(255,255,255,0.1);
 }
 
-
-.nav-link {
-  color: purple;
-}
 
 .parallax-text-top-cent{
   top: 10%;
