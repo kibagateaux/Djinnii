@@ -8,6 +8,10 @@
   width: auto;
 }
 
+#initial-action-button {
+  color: black;
+}
+
 #parallax-image-1,
 #parallax-image-2,
 #parallax-image-3 {
@@ -16,6 +20,6 @@
 }
 
 
-nav ul li {
+nav > ul > li {
   color: purple;
 }
