@@ -20,6 +20,11 @@
 }
 
 
-nav > ul > li {
+.nav-link {
   color: purple;
+}
+
+.parallax-text-top-cent{
+  top: 10%;
+  position: absolute;
 }
