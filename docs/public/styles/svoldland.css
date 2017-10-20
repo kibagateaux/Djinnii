@@ -8,12 +8,20 @@
   width: auto;
 }
 
-#parralax-image-1,
-#parralax-image-2,
-#parralax-image-3 {
-  height: 50%;
+.parallax-container {
+  height: 100vh !important;
+}
+#parallax-image-1,
+#parallax-image-2 {
+  height: 200vh;
   width: auto;
 }
+
+#parallax-image-3 {
+  height: 300vh;
+}
+
+
 nav ul li {
   color: purple;
 }

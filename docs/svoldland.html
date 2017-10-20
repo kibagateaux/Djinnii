@@ -9,36 +9,36 @@
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+    
+    <!-- CSS  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  
-  <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="public/styles/svoldland.css">
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script src="public/js/index.js"></script>  
 </head>
 <body>
   <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="/Djinnii" class="brand-logo">
-          <img id="nav-logo-image" src="public/images/branding/logos/Djinnii_logo_basic.png">
-      </a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Djinnii</a></li>
-        <li><a href="svoldland.html">Svoldland</a></li>
-        <li><a href="app.html">App</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="stories.html">Stories</a></li>
-      </ul>
+    <a id="logo-container" href="/Djinnii" class="brand-logo">
+        <img id="nav-logo-image" src="public/images/branding/logos/Djinnii_logo_basic.png">
+    </a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#">Djinnii</a></li>
+      <li><a href="svoldland.html">Svoldland</a></li>
+      <li><a href="app.html">App</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="stories.html">Stories</a></li>
+    </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Djinnii</a></li>
-        <li><a href="svoldland.html">Svoldland</a></li>
-        <li><a href="app.html">App</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="stories.html">Stories</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="#">Djinnii</a></li>
+      <li><a href="svoldland.html">Svoldland</a></li>
+      <li><a href="app.html">App</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="stories.html">Stories</a></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </nav>
 
   <div id="index-banner" class="parallax-container">
@@ -56,7 +56,9 @@
 
       </div>
     </div>
-    <div class="parallax"><img src="public/images/scenery/winter_mountains.jpg" alt="Beautiful winter scenery in Svoldland"></div>
+    <div class="parallax">
+      <img id="parallax-image-1" src="public/images/scenery/winter_mountains.jpg" alt="Beautiful winter scenery in Svoldland">
+    </div>
   </div>
 
 
@@ -105,7 +107,9 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="public/images/djinnii/Djinnjoven.jpeg" alt="A Djinnii character found in Svoldland"></div>
+    <div class="parallax">
+      <img id="parallax-image-2" src="public/images/djinnii/winter_tree_alley.jpeg" alt="A Djinnii character found in Svoldland">
+    </div>
   </div>
 
   <div class="container">
@@ -131,7 +135,9 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="public/images/scenery/winter_tree_alley.jpg" alt="Beautiful scenery of snowy forest in Svoldland"></div>
+    <div class="parallax">
+      <img id="parallax-image-3" src="public/images/scenery/Djinnjoven.jpg" alt="Beautiful scenery of snowy forest in Svoldland">
+    </div>
   </div>
 
   <footer class="page-footer teal">
@@ -140,7 +146,6 @@
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
           <p class="grey-text text-lighten-4">A team of creative technologist specializing in software prototyping, data visualitzation, and digital health care products.</p>
-          <p> Made with <3 in NYC by Kiba Gateaux</p>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Settings</h5>
@@ -164,7 +169,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made with <3 in NYC by Kiba Gateaux
       </div>
     </div>
   </footer>
