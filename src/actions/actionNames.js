@@ -1,6 +1,12 @@
-/* Acitivities */
+/* Activities */
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
 export const SET_ACTIVE_SEGMENT = 'SET_ACTIVE_SEGMENT';
+
+/* Analytics */
+export const TRACK_NAVIGATION = 'TRACK_NAVIGATION';
+export const TRACK_USER_BEHAVIOUR = 'TRACK_USER_BEHAVIOUR';
+export const IDENTIFY_SEGMENT_USER = 'IDENTIFY_SEGMENT_USER';
+
 
 
 /* Stats */

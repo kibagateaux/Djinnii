@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
-import {_handleBranchRouting} from '@lib/analytics';
+// import {_handleBranchRouting} from '@lib/analytics';
 
 
 import DailyProfile from '@containers/DailyProfile';
@@ -24,7 +24,10 @@ export default class App extends Component {
   constructor(props){
     super(props);
     console.log('capp const', branch.subscribe, branch.getFirstReferringParams().then(data => data));
-    branch.subscribe(_handleBranchRouting);
+    branch.subscribe();
+    props.identifyUser({
+      userId: '0'
+    });
   }
 
   // initializes UI for selected game mode
@@ -99,19 +102,38 @@ export default class App extends Component {
 
 
   _renderLocalGame = () => {
-    const {updateLocalStats, localStats} = this.props;
+    const {
+      updateLocalStats,
+      localStats,
+      trackUserBehaviour
+    } = this.props;
+
+    const onActivityPress = (activity) => {
+      userId = '0';
+      const eventData = {
+        userId,
+        event: 'Action Pressed',
+        properties: {
+          name: activity,
+          stats: localStats,
+        }
+      };
+      return () => {
+        trackUserBehaviour(eventData);      
+        updateLocalStats(localStatsAfterActivity(activity, localStats))
+      }
+    }
     const actions= [
       {action: 'Run',
-      onPress: () => (updateLocalStats(localStatsAfterActivity('run', localStats)))},
-      //  onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
+      onPress: onActivityPress('run')},
+      //  onPress: onPress(''),
       {action: 'Dance',
-       onPress: () => (updateLocalStats(localStatsAfterActivity('dance', localStats)))},
+       onPress: onActivityPress('dance')},
       {action: 'Sleep',
-        icon: "😴💤",
-       onPress: () => (updateLocalStats(localStatsAfterActivity('sleep', localStats)))},
+       icon: "😴💤",
+       onPress: onActivityPress('sleep')},
       {action: 'Eat',
-       onPress: () => (updateLocalStats(localStatsAfterActivity('eat', localStats)))
-      }
+       onPress: onActivityPress('eat')}
     ];
     const actionButtons = actions.map(({action, onPress, icon}) => 
       <ActionButton

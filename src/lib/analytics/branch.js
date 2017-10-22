@@ -1,4 +1,4 @@
-import branch from 'react-native-branch';
+// import branch from 'react-native-branch';
 import {trackUserBehaviour, trackNavigation} from '@lib/analytics/';
 
 const defaultBranchObject = {
@@ -6,16 +6,16 @@ const defaultBranchObject = {
 }
 
 
-export const _createBranchUniversalObject = async (name, data) =>
+export const _createBranchUniversalObject = (branch) => async (name, data) =>
   await branch.createBranchUniversalObject(name, data)
 
 
-export const _generateShortUrl = async () => {
+export const _generateShortUrl = (branch) => async () => {
   const branchObj = await _createBranchUniversalObject('abc', defaultBranchObject)
   return await branchObj.generateShortUrl()
 };
 
-export const _handleBranchRouting = async ({params, error}) => {
+export const _handleBranchRouting = (branch) => async ({params, error}) => {
   if (error) {
     console.log('error handling branch rout', error);
   } else {
