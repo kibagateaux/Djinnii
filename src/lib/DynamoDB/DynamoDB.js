@@ -4,6 +4,15 @@ import {COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {AsyncStorage} from 'react-native';
 import {Auth} from '@lib/Auth';
 
+// connect to local DB if running offline
+// https://github.com/serverless/examples/blob/master/aws-node-rest-api-with-dynamodb-and-offline/todos/dynamodb.js
+// if (process.env.IS_OFFLINE) {
+//   options = {
+//     region: 'localhost',
+//     endpoint: 'http://localhost:8000',
+//   };
+// }
+
 const creds = async () => await AsyncStorage.getItem(COGNITO_USER_PROFILE)
   .then((data) => JSON.parse(data))
   .then((data) => data);
