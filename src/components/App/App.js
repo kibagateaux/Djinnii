@@ -24,7 +24,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     console.log('capp const', branch.subscribe, branch.getFirstReferringParams().then(data => data));
-    branch.subscribe((e, b) => console.log('brnch e,b', e,b));
+    branch.subscribe(props.handleBranchRouting);
     props.identifyUser({
       userId: '0'
     });

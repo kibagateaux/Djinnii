@@ -5,7 +5,7 @@ import App from '@containers/App';
 import {
   LoginScreen,
   SignupScreen,
-  SettingsScreen,
+  PersonalSettingsScreen,
   OAuthScreen
 } from '@screens';
 
@@ -22,7 +22,7 @@ export default Actions.create(
     <Scene hideNavBar key="index" component={App} />  
     <Scene hideNavBar key={LOGIN} title='Login Screen' component={LoginScreen} />
     <Scene hideNavBar key={SIGNUP} title='Signup Screen' component={SignupScreen} />
-    <Scene hideNavBar key={SETTINGS} title='Settings Screen' component={SettingsScreen} />
+    <Scene hideNavBar key={SETTINGS} title='Settings Screen' component={PersonalSettingsScreen} />
     <Scene hideNavBar key={OAUTH} title="Portal for integrating other apps" component={OAuthScreen} />
   </Scene>
 );

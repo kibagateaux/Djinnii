@@ -9,9 +9,10 @@ import {getTheme} from 'react-native-material-kit';
 import styles from './styles';
 
 export default (props) => {
-
+console.log('card list', props);
   const _renderCards = () => {
     const {cards} = props;
+    console.log('rend card list', cards);
     const theme = getTheme();
     return cards ? cards.map((item) => (
       <TouchableOpacity

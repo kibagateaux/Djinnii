@@ -1,3 +1,3 @@
-import SettingsScreen from '@containers/Settings';
-import PersonalSettingsScreen from '@containers/Settings';
+import SettingsScreen from '@containers/settings';
+import PersonalSettingsScreen from '@containers/settings/PersonalSettings';
 export  {SettingsScreen, PersonalSettingsScreen};
