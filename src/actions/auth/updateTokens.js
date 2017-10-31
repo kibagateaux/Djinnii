@@ -1,9 +1,10 @@
 import {UPDATE_OAUTH_TOKENS} from '@actions/actionNames';
-import help from '@constants/database';
-import DB from '@lib/DynamoDB';
+import {tables} from '@constants/database';
+import * as DB from '@lib/DynamoDB';
 
-export const updateTokens = (table, tokenObj) => {
-  DB.post(table, [tokenObj])
+export const updateTokens = (tokenObj) => {
+  console.log('upd tok db', DB, tokenObj, tables);
+  DB.post(tables.tokens, [tokenObj])
   return {
     type: UPDATE_OAUTH_TOKENS
   }
