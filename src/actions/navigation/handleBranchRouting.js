@@ -24,17 +24,17 @@ export const handleBranchRouting = ({params, error}) =>
       }
 
       // else if not branch link
-      const [_, __, resource, item, id] = resources = ((params['+non_branch_link'] && params['+non_branch_link'].split('/')) || []);
-      const url = {resource, item, id}
-      console.log('url parse', resource, id);
-      const routeForResource = ((resource) => {
-        switch(resource){
+      const [_, __, service, resource, id] = resources = ((params['+non_branch_link'] && params['+non_branch_link'].split('/')) || []);
+      const url = {service, resource, id}
+      console.log('url parse', service, id);
+      const routeForResource = ((service) => {
+        switch(service){
           case 'auth': {
             dispatch(branchRouter.auth(params, url));
           }
         }
-      })(resource);
-      dispatch(branchRouter.auth(params, url));
+      })(service);
+      // dispatch(branchRouter.auth(params, url));
       
       const incomingParams = await branch.getFirstReferringParams()
       // navigateTo(routes.HOME, {type: 'reset'});
