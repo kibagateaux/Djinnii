@@ -55,13 +55,12 @@ const normalizeActivities = (acts, seg) => {
 
 const addFillerSpace = (activityList) => {
   let completeList = {}
-  let place = {};
-  Object.keys(activityList).reduce((last, next) => {
-    const lastAct = activityList[last]; const nextAct = activityList[next];
-    const endTime = lastAct.endTime || lastAct.meta.endTime;
-    const startTime = nextAct.startTime || nextAct.meta.startTime;
-    console.log('filler place', activityList[next], place);
-    if(activityList[next].segment) activityList[next].segment.place ? place = activityList[next].segment.place : place = place;
+  const activityTimes = Object.keys(activityList)
+  activityTimes.reduce((last, next) => {
+    const endTime = activityList[last.time].endTime;
+    const startTime = activityList[next].startTime;
+    const place = (activityList[next].segment.place || last.place); // if new place update, else use last place
+    
     (endTime !== startTime + 1)
       ? completeList[endTime + 1] = {
           startTime: endTime + 1, // start right after last act
@@ -76,8 +75,9 @@ const addFillerSpace = (activityList) => {
           }
         }
       : null
-    return next;
-  });
+    return {time: next, place};
+  }, 
+  {time: activityTimes[0], place: activityList[activityTimes[0]].segment.place}); // starter obj
   return completeList
 };
 

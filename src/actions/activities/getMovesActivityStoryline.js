@@ -20,7 +20,7 @@ export const getMovesActivityStoryline = (dispatch) => {
         const list = createActivitiesList(norms);
         // normalize data
         // update redux store
-        console.log('post moves get', response.data, norms, list);
+        console.log('post moves get', response.data, list);
       })
   })
 };
