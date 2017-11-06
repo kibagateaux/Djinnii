@@ -42,6 +42,7 @@ export const handleBranchRouting = ({params, error}) =>
       // dispatch(branchRouter.auth(params, url));
       
       const incomingParams = await branch.getFirstReferringParams()
+      // si de nada
       // navigateTo(routes.HOME, {type: 'reset'});
     }
   };

@@ -58,13 +58,14 @@ export default class App extends Component {
 
   // initializes UI for selected game mode
   async componentWillMount(e) {
-    console.log('com did unmount', e);
+    console.log('com did mount', e);
     const {
       updateLocalStats,
       setDisplayStats,
       localStats,
       lastLiveStats,
-      localMode
+      localMode,
+      getMovesActivityStoryline
     } = this.props;
     const lastLocalStats = await getLocalStats();
     // instantiate local stats so not overwritten on first press. 
@@ -74,7 +75,7 @@ export default class App extends Component {
       setDisplayStats(lastLiveStats);
   }
 
-  componentWillUnmounte() {
+  componentWillUnmount(e) {
     console.log('app unmount', e);
     (this.branchUnsubcription && this.branchUnsubcription());    
     
@@ -133,7 +134,8 @@ export default class App extends Component {
     const {
       updateLocalStats,
       localStats,
-      trackUserBehaviour
+      trackUserBehaviour,
+      getMovesActivityStoryline
     } = this.props;
 
     const onActivityPress = (activity) => {
@@ -153,7 +155,7 @@ export default class App extends Component {
     }
     const actions= [
       {action: 'Run',
-      onPress: onActivityPress('run')},
+      onPress: getMovesActivityStoryline},
       //  onPress: onPress(''),
       {action: 'Dance',
        onPress: onActivityPress('dance')},

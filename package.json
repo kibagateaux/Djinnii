@@ -4,14 +4,14 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+		"test": "jest",
+		"npm-clean": "rm -rf node_modules/ && rm -fr $TMPDIR/react-* && watchman watch-del-all && yarn install && npm start -- --reset-cache"
 	},
 	"dependencies": {
 		"analytics-react-native": "^1.1.0",
 		"aws-sdk": "^2.120.0",
 		"axios": "^0.16.2",
 		"moment": "^2.18.1",
-		"moves": "^0.0.2",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.3",
 		"react-native-animatable": "^1.2.4",
@@ -20,6 +20,7 @@
 		"react-native-branch": "^2.1.0",
 		"react-native-dotenv": "^0.1.0",
 		"react-native-material-kit": "^0.4.1",
+		"react-native-moves-api": "kibagateaux/node-moves",
 		"react-native-prompt": "^1.0.0",
 		"react-native-router-flux": "^4.0.0-beta.21",
 		"react-native-vector-icons": "^4.4.2",
