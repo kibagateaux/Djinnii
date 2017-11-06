@@ -13,8 +13,8 @@ export const statsToActivityMapping = {
 }
 
 export const statsAfterActivity = (targetActivity, stats) => {
-  if(!targetActivity || !stats) throw Error("Need target activity and stats object to calculate stats after activity");
-  const {activity, startTime, endTime, duration} = targetActivity || targetActivity.meta;
+  if(!targetActivity || !stats) throw Error("Need both target activity and stats object to calculate stats after activity");
+  const {activity, startTime, endTime, duration} = targetActivity;
   const statMultiplier = statsToActivityMapping[activity];
   const updatedStats = Object.keys(statMultiplier).reduce((update, stat) => {
     const statUpdate = statMultiplier[stat] * duration;

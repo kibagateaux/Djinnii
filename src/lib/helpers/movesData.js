@@ -43,7 +43,7 @@ const normalizeActivities = (acts, seg) => {
     const normAct = {
       ...act,
       ...actTimes,
-      segment: {
+      activityGroup: {
         ...segTimes,
         type: seg.type,
         place: seg.place || null
@@ -59,7 +59,7 @@ const addFillerSpace = (activityList) => {
   activityTimes.reduce((last, next) => {
     const endTime = activityList[last.time].endTime;
     const startTime = activityList[next].startTime;
-    const place = (activityList[next].segment.place || last.place); // if new place update, else use last place
+    const place = (activityList[next].activityGroup.place || last.place); // if new place update, else use last place
     
     (endTime !== startTime + 1)
       ? completeList[endTime + 1] = {
@@ -68,7 +68,7 @@ const addFillerSpace = (activityList) => {
           duration: startTime - endTime,
           activity: 'idl',
           place,
-          segment: {
+          activityGroup: {
             type: 'filler',
             startTime: endTime + 1,
             endTime: startTime - 1
@@ -77,7 +77,7 @@ const addFillerSpace = (activityList) => {
       : null
     return {time: next, place};
   }, 
-  {time: activityTimes[0], place: activityList[activityTimes[0]].segment.place}); // starter obj
+  {time: activityTimes[0], place: activityList[activityTimes[0]].activityGroup.place}); // starter obj
   return completeList
 };
 
@@ -95,7 +95,7 @@ export const createActivitiesList = (stories) => {
   });
   const fillerActs = addFillerSpace(activityList);
   const organizedCompleteList = _sortByTime({...fillerActs, ...activityList});
-  return organizedCompleteList;
   // organized by time? Expression or reality!?!?
+  return organizedCompleteList;
 };
 
