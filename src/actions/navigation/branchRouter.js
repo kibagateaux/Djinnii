@@ -17,23 +17,18 @@ const awsCreds = AsyncStorage.getItem(AWS_CREDENTIALS).then(d => JSON.parse(d));
 const authRouter = (req, url) => async (dispatch) => {
   console.log('auth router', req, url);
   console.log('auth storage', cognitoProfile, isLoggedIn, awsCreds);
-  const regex = /.*access_token=(\w*).*refresh_token=(\w*)/.exec(url.id || url.resource);
-  const access_token = regex ? regex[1] : 'a';
-  const refresh_token = regex ? regex[2] : 'b';
-  console.log('auth router tokens', regex, access_token, refresh_token);
-  return cognitoProfile.then((user) => {
-    console.log('cog prof', user, req);
-    return (user && access_token) ? 
-      dispatch(updateTokens({
-        userId: user.username,
-        [req.url.resource]: {access_token, refresh_token},
-        provider: req.url.resource
-      })) :
-      {error: "You must be logged in to integrate other apps"};
-  });
-  
-  // save tokens to db with cognitoProfileId > url.provider > {tokens} 
-  // updateTokens(urlProvider, tokens)
+  const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*)/;
+  console.log('tok regex', tokenRegex.test(url));
+  // if(tokenRegex.test(url)) {
+    const tokens = tokenRegex.exec(url)
+    const access_token = tokens ? tokens[1] : 'a';
+    const refresh_token = tokens ? tokens[2] : 'b';
+    console.log('auth router tokens', tokens);
+    console.log('auth router dispatch', dispatch);
+    // updateTokens({userId: url.service, [req.url.resource]: {access_token, refresh_token}, provider: req.url.resource});
+    dispatch(updateTokens({userId: url.service, [url.resource]: {access_token, refresh_token}, provider: url.resource}))
+    // save tokens to db with cognitoProfileId > url.provider > {tokens} 
+  // }
 }
 
 const branchRouter = {

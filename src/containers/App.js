@@ -10,6 +10,7 @@ import {identifyUser} from '@actions/analytics/identifyUser';
 import {handleBranchRouting} from '@actions/navigation/handleBranchRouting';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
+import {updateTokens} from '@actions/auth/updateTokens';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   activeActivity: activities.activeActivity,
@@ -21,6 +22,7 @@ const mapStateToProps = ({stats, activities, user}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleBranchRouting: (event) => dispatch(handleBranchRouting(event)),
+  updateTokens: (id, tokens) => dispatch(updateTokens(id, tokens)),
   identifyUser: (userData) => dispatch(identifyUser(userData)),
   navigateToLogin: () => dispatch(navigateTo('login')),
   updateStats: (statsMap) => dispatch(updateStats(statsMap)),

@@ -23,15 +23,42 @@ import styles from './styles';
 export default class App extends Component {
   constructor(props){
     super(props);
-    console.log('capp const', branch.subscribe, branch.getFirstReferringParams().then(data => data));
-    branch.subscribe(props.handleBranchRouting);
+    // branch.subscribe(props.handleBranchRouting);
+    this.branchUnsubcription = branch.subscribe(({params, error}) => {
+      console.log('branch params err', params, error);
+      const url = params['+url'] || params['+non_branch_link'];
+      const userId = '0';
+      console.log('handle routes', url);
+      if(params['+non_branch_link']) {
+          console.log('auth', resource, userId, access_token); 
+        const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*).*/;
+        const tokens = tokenRegex.exec(url);
+        const access_token = tokens ? tokens[1] : 'a';
+        const refresh_token = tokens ? tokens[2] : 'b';    
+        const [_, __, service, resource, id] = resources = ((params['+non_branch_link'] && params['+non_branch_link'].split('/')) || []);
+        console.log('non branch link', service + '/' + resource + '/' + id);
+        if(service === 'auth'){
+          const tokenObj = {
+            [resource]: {
+              access_token,
+              refresh_token
+            }
+          };
+          console.log('auth', resources, userId, tokenObj);          
+          props.updateTokens(userId, tokenObj);
+        }
+      }
+      
+    });
+
     props.identifyUser({
       userId: '0'
     });
   }
 
   // initializes UI for selected game mode
-  async componentWillMount() {
+  async componentWillMount(e) {
+    console.log('com did unmount', e);
     const {
       updateLocalStats,
       setDisplayStats,
@@ -39,7 +66,6 @@ export default class App extends Component {
       lastLiveStats,
       localMode
     } = this.props;
-    
     const lastLocalStats = await getLocalStats();
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);
@@ -48,8 +74,10 @@ export default class App extends Component {
       setDisplayStats(lastLiveStats);
   }
 
-  componentWillUnmount() {
-    console.log('app unmount', );
+  componentWillUnmounte() {
+    console.log('app unmount', e);
+    (this.branchUnsubcription && this.branchUnsubcription());    
+    
   }
 
   shouldComponentUpdate(nextProps) {

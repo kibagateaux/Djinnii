@@ -26,10 +26,15 @@ export const handleBranchRouting = ({params, error}) =>
       // else if not branch link
       const [_, __, service, resource, id] = resources = ((params['+non_branch_link'] && params['+non_branch_link'].split('/')) || []);
       const url = {service, resource, id}
-      console.log('url parse', service, id);
-      const routeForResource = ((service) => {
+      console.log('url parse', service, resource, id);
+      const routeForService = ((service) => {
         switch(service){
           case 'auth': {
+            const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*)/;
+            const tokens = tokenRegex.exec(url)
+            const access_token = tokens ? tokens[1] : 'a';
+            const refresh_token = tokens ? tokens[2] : 'b';
+            dispatch(updateTokens({userId: url.service, [url.resource]: {access_token, refresh_token}, provider: url.resource}));
             dispatch(branchRouter.auth(params, url));
           }
         }
