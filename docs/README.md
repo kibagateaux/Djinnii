@@ -1,5 +1,10 @@
 https://kibagateaux.github.io/Djinnii/
 
+If getting undisclosed packaging error it is probably from "react-native-moves-api" custom package
+https://github.com/kibagateaux/node-moves
+
+
+
 Ideas : 
   How to incorporate dietary habits into game?
     Does how they feed imaginary Djinn reflect how they feed themmselves?

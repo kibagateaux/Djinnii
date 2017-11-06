@@ -68,6 +68,7 @@ export default class App extends Component {
       getMovesActivityStoryline
     } = this.props;
     const lastLocalStats = await getLocalStats();
+    getMovesActivityStoryline()
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);
     localMode ?

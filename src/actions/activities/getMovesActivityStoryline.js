@@ -2,6 +2,7 @@ import {AsyncStorage} from 'react-native';
 import {TOKEN_STORAGE} from '@constants/asyncStorage';
 import {MOVES_API_KEY} from 'react-native-dotenv';
 import Moves from 'react-native-moves-api';
+import {normalizeStorylineData, createActivitiesList} from '@lib/helpers/movesData';
 
 export const getMovesActivityStoryline = (dispatch) => {
   AsyncStorage.getItem(TOKEN_STORAGE).then((tokenStore) => {
@@ -14,8 +15,12 @@ export const getMovesActivityStoryline = (dispatch) => {
       refresh_token
     });
     moves.get('/user/storyline/daily?pastDays=7&trackPoints=true')
-      .then((data) => {
-        console.log('post moves get', data);
+      .then((response) => {
+        const norms = normalizeStorylineData(response.data);
+        const list = createActivitiesList(norms);
+        // normalize data
+        // update redux store
+        console.log('post moves get', response.data, norms, list);
       })
   })
 };
