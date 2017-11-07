@@ -2,7 +2,7 @@ import {_formatToUnix, _durationUnix} from '@lib/helpers/time';
 import {AsyncStorage} from 'react-native';
 import {LOCAL_STATS} from '@constants/asyncStorage';
 
-
+// update to v1.1 api full length activity
 export const statsToActivityMapping = {
   'walking': {int: 0.000002, agy: -0.000001, stm: 0.000001},
   'transport': {int: 0.000001, str: 0.000002, stm: -0.000002},
@@ -41,10 +41,4 @@ export const localStatsAfterActivity = (activity, stats) => {
     return {...update, [stat]: currentStat + statUpdate}
   }, stats);
   return {...stats, ...updatedStats};
-}
-
-export const getLocalStats = () => AsyncStorage
-    .getItem(LOCAL_STATS)
-    .then((data) => JSON.parse(data))
-    .catch((err) => console.log('get local stats err', err));
-
+};

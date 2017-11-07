@@ -11,6 +11,5 @@ export const viewLocalStorage = () => {
         })
       ), {})
     });
-  
   dumpRaw().then(data => console.log(data));
 }

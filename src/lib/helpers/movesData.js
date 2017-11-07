@@ -7,8 +7,6 @@ import {
 import {Linking} from 'react-native';
 import {MOVES_API_KEY} from 'react-native-dotenv';
 
-
-
 export const movesAuthInitDeepLink =  `moves://app/authorize?client_id=${MOVES_API_KEY}&scope=activity,location`;
 export const movesAuthInitHttps = `https://api.moves-app.com/oauth/v1/authorize?response_type=code&client_id=${MOVES_API_KEY}&scope=activity+location`;
 const canDeepLink = Linking.canOpenURL('moves://app').then((res) => res);
@@ -22,6 +20,7 @@ export const normalizeStorylineData = (stories) => {
       const {startTime, endTime, type} = seg;
       const segmentTime = _getTimesInUnix(startTime, endTime);
       const activities = normalizeActivities(seg.activities, seg);
+      console.log('norm story', activities);
       segmentActivity = activities.length > 0 ? activities[0].activity : 'idl';
       const meta = {type:seg.type, ...segmentTime, activity: segmentActivity};
       const normData = {
@@ -30,14 +29,14 @@ export const normalizeStorylineData = (stories) => {
       }
       return seg.type === 'place' ? {...normData, place: seg.place} : normData;
     });
+    console.log('norm story day', day.segments, normSeg);
     return {...day, segments: normSeg};
   });
 }
   
 
-const normalizeActivities = (acts, seg) => {
-
-  return acts ? acts.map(act => {
+const normalizeActivities = (acts, seg) =>
+  acts ? acts.map(act => {
     const actTimes = _getTimesInUnix(act.startTime, act.endTime);
     segTimes = _getTimesInUnix(seg.startTime, seg.endTime);
     const normAct = {
@@ -51,7 +50,6 @@ const normalizeActivities = (acts, seg) => {
     }
     return normAct;
   }) : [];
-}
 
 const addFillerSpace = (activityList) => {
   let completeList = {}
@@ -59,7 +57,9 @@ const addFillerSpace = (activityList) => {
   activityTimes.reduce((last, next) => {
     const endTime = activityList[last.time].endTime;
     const startTime = activityList[next].startTime;
-    const place = (activityList[next].activityGroup.place || last.place); // if new place update, else use last place
+
+    // if new place update, else use last place
+    const place = (activityList[next].activityGroup.place || last.place);
     
     (endTime !== startTime + 1)
       ? completeList[endTime + 1] = {

@@ -1,6 +1,9 @@
-import {Scene, Actions} from 'react-native-router-flux';
-
 import React from 'react';
+import {
+  Scene,
+  Actions
+} from 'react-native-router-flux';
+
 import App from '@containers/App';
 import {
   LoginScreen,

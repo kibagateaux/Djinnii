@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {updateTokens} from '@actions/auth/updateTokens';
 import {getMovesActivityStoryline} from '@actions/activities/getMovesActivityStoryline';
+import {getLocalStats} from '@actions/stats/getLocalStats';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   activeActivity: activities.activeActivity,
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   identifyUser: (userData) => dispatch(identifyUser(userData)),
   navigateToLogin: () => dispatch(navigateTo('login')),
   updateStats: (statsMap) => dispatch(updateStats(statsMap)),
+  getLocalStats: () => dispatch(getLocalStats()),
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),
   setActiveActivity: (activity) => dispatch(setActiveActivity(activity)),
   updateLocalStats: (statsMap) => dispatch(updateLocalStats(statsMap)),

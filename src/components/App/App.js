@@ -10,7 +10,7 @@ import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
-import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
+import {localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {Auth} from '@lib/Auth';
@@ -28,9 +28,9 @@ export default class App extends Component {
       console.log('branch params err', params, error);
       const url = params['+url'] || params['+non_branch_link'];
       const userId = '0';
-      console.log('handle routes', url);
+      console.log('deepl link url', url);
       if(params['+non_branch_link']) {
-          console.log('auth', resource, userId, access_token); 
+        console.log('auth', resource, userId, access_token); 
         const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*).*/;
         const tokens = tokenRegex.exec(url);
         const access_token = tokens ? tokens[1] : 'a';
@@ -48,7 +48,6 @@ export default class App extends Component {
           props.updateTokens(userId, tokenObj);
         }
       }
-      
     });
 
     props.identifyUser({
@@ -58,8 +57,8 @@ export default class App extends Component {
 
   // initializes UI for selected game mode
   async componentWillMount(e) {
-    console.log('com did mount', e);
     const {
+      getLocalStats,
       updateLocalStats,
       setDisplayStats,
       localStats,
@@ -77,23 +76,7 @@ export default class App extends Component {
   }
 
   componentWillUnmount(e) {
-    console.log('app unmount', e);
     (this.branchUnsubcription && this.branchUnsubcription());    
-    
-  }
-
-  shouldComponentUpdate(nextProps) {
-    const modeChange = this.props.localMode !== nextProps.localMode;
-    const newStats = (
-      this.props.localStats !== nextProps.localStats || 
-      this.props.lastLiveStats !== nextProps.lastLiveStats
-    );
-    console.log('app shld upd', modeChange || newStats, modeChange, newStats);
-    return (modeChange || newStats) ? true : false;
-  }
-
-  componentDidMount(){
-    // this._updateMovesData();
   }
 
   _renderDailyProfiles = () => {
@@ -109,7 +92,6 @@ export default class App extends Component {
     </ScrollView>
   )
   }
-
 
 
   _renderLocalGame = () => {

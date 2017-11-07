@@ -25,18 +25,18 @@ export const branchRouter = {
   auth: authRouter
 }
 
-// export const _handleBranchRouting = (branch) => async ({params, error}) => {
-//   if (error) {
-//     console.log('error handling branch rout', error);
-//   } else {
-//     if (params['is_first_session']) {
-//       return 'route'
-//     }
-//     if (params['+clicked_branch_link']){
-//       return 'route'
-//     }
-//     const incomingParams = await branch.getFirstReferringParams()
+export const _handleBranchRouting = (branch) => async ({params, error}) => {
+  if (error) {
+    console.log('error handling branch rout', error);
+  } else {
+    if (params['is_first_session']) {
+      return 'route'
+    }
+    if (params['+clicked_branch_link']){
+      return 'route'
+    }
+    const incomingParams = await branch.getFirstReferringParams()
     
-//     console.log('branch rout param', params, incomingParams);
-//   }
-// };
+    console.log('branch rout param', params, incomingParams);
+  }
+};
