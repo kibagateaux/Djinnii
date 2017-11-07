@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
-import {Auth} from '@lib/Auth';
+import Auth from '@lib/Auth';
+import WithAuth from '@components/auth/WithAuth';
 
 /**
  * @param {Component} WrappedComponent 
@@ -66,4 +67,3 @@ export default (WrappedComponent) => {
     }
   }
 }
-

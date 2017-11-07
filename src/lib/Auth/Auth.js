@@ -118,6 +118,8 @@ const setCredentials = function setCredentials(credentials) {
   });
 };
 
+
+// can refactor and remove this whole function to remove
 const getCredentials = async function getCredentials(session, callbacks, ctx) {
   LocalStorage.setItem(CURRENT_COGNITO_SESSION, JSON.stringify(session));
   await setCredentials(getCognitoCredentials(session));

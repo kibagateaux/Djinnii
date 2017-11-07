@@ -15,12 +15,13 @@ export const movesAuthLink = _getMovesAuthLink();
 
 export const normalizeStorylineData = (stories) => {
   // should take all day segments and return flat object
+  console.log('work on normalizing storylines for redux store');
   return stories.map((day) => {
     const normSeg = day.segments.map(seg => {
       const {startTime, endTime, type} = seg;
       const segmentTime = _getTimesInUnix(startTime, endTime);
       const activities = normalizeActivities(seg.activities, seg);
-      console.log('norm story', activities);
+      // console.log('norm story', activities);
       segmentActivity = activities.length > 0 ? activities[0].activity : 'idl';
       const meta = {type:seg.type, ...segmentTime, activity: segmentActivity};
       const normData = {
@@ -29,7 +30,7 @@ export const normalizeStorylineData = (stories) => {
       }
       return seg.type === 'place' ? {...normData, place: seg.place} : normData;
     });
-    console.log('norm story day', day.segments, normSeg);
+    // console.log('norm story day', day.segments, normSeg);
     return {...day, segments: normSeg};
   });
 }

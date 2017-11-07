@@ -13,7 +13,6 @@ import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
-import {Auth} from '@lib/Auth';
 import {updateStats} from '@actions/stats';
 import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
 
@@ -67,7 +66,6 @@ export default class App extends Component {
     } = this.props;
     const lastLocalStats = await getLocalStats();
 
-    console.log('last locla st', lastLocalStats);
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);
     localMode ?
