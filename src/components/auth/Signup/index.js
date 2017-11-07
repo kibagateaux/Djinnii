@@ -13,7 +13,9 @@ import {
 } from 'react-native-material-kit';
 
 import MFAPrompt from '@lib/Auth/MFAPrompt';
-import {Auth, WithAuth} from '@lib/Auth';
+import Auth from '@lib/Auth';
+import WithAuth from '@lib/Auth/WithAuth';
+
 import styles from './styles';
 
 class SignUp extends React.Component {

@@ -10,7 +10,7 @@ import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
-import {localStatsAfterActivity} from '@helpers/stats';
+import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {Auth} from '@lib/Auth';
@@ -58,7 +58,6 @@ export default class App extends Component {
   // initializes UI for selected game mode
   async componentWillMount(e) {
     const {
-      getLocalStats,
       updateLocalStats,
       setDisplayStats,
       localStats,
@@ -68,6 +67,7 @@ export default class App extends Component {
     } = this.props;
     const lastLocalStats = await getLocalStats();
 
+    console.log('last locla st', lastLocalStats);
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);
     localMode ?

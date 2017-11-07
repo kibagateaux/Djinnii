@@ -12,11 +12,11 @@ import {
 } from 'react-native-material-kit';
 
 import MFAPrompt from '@lib/Auth/MFAPrompt';
-import {WithAuth} from '@lib/Auth';
+import WithAuth from '@lib/Auth/WithAuth';
 import styles, {inputStyles} from './styles';
 
 
-class LogIn extends PureComponent {
+class Login extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -191,4 +191,4 @@ class LogIn extends PureComponent {
 }
 
 
-export default WithAuth(LogIn);
+export default WithAuth(Login);
