@@ -14,7 +14,8 @@ import {
   CURRENT_COGNITO_SESSION,
   IS_LOGGED_IN,
   AWS_CREDENTIALS,
-  COGNITO_USER_PROFILE
+  COGNITO_USER_PROFILE,
+  COGNITO_ID
 } from '@constants/asyncStorage';
 
 AWS.config.update({
@@ -167,7 +168,8 @@ function handleSignIn(username, password, callbacks) {
     signInUserSession
   } = cognitoUser;
   cognitoUser.authenticateUser(authenticationDetails, callbacks);
-  console.log('save sign in user', cognitoData)
+  
+  console.log('save sign in user', cognitoData);
   // find out where username gets converted from phone to hash and save to local storage
   LocalStorage.setItem(COGNITO_USER_PROFILE, JSON.stringify(cognitoData));
 }

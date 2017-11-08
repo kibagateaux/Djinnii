@@ -17,7 +17,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  saveCognitoProfile: (profile) => dispatch(saveCognitoProfile(profile)),
   navigateToSignup: () => dispatch(navigateTo(SIGNUP)),
   navigateToHome: () => dispatch(navigateTo(HOME, {type: 'reset'})),
   // initAuth: () => dispatch(initAuth()),

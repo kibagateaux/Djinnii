@@ -16,7 +16,6 @@ import {viewLocalStorage} from '@helpers/asyncStorage';
 import {updateStats} from '@actions/stats';
 import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
 
-
 import styles from './styles';
 
 export default class App extends Component {
@@ -26,10 +25,9 @@ export default class App extends Component {
     this.branchUnsubcription = branch.subscribe(({params, error}) => {
       console.log('branch params err', params, error);
       const url = params['+url'] || params['+non_branch_link'];
-      const userId = '0';
       console.log('deepl link url', url);
       if(params['+non_branch_link']) {
-        console.log('auth', resource, userId, access_token); 
+        console.log('auth', resource, access_token); 
         const tokenRegex = /.*access_token=(\w*).*refresh_token=(\w*).*/;
         const tokens = tokenRegex.exec(url);
         const access_token = tokens ? tokens[1] : 'a';
@@ -43,8 +41,8 @@ export default class App extends Component {
               refresh_token
             }
           };
-          console.log('auth', resources, userId, tokenObj);          
-          props.updateTokens(userId, tokenObj);
+          console.log('auth', resource, tokenObj);          
+          props.updateTokens(tokenObj);
         }
       }
     });
@@ -120,7 +118,7 @@ export default class App extends Component {
       onPress: getMovesActivityStoryline},
       //  onPress: onPress(''),
       {action: 'Dance',
-       onPress: onActivityPress('dance')},
+       onPress: viewLocalStorage},
       {action: 'Sleep',
        icon: "😴💤",
        onPress: onActivityPress('sleep')},

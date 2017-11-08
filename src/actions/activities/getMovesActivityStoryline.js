@@ -1,5 +1,5 @@
 import {AsyncStorage} from 'react-native';
-import {TOKEN_STORAGE} from '@constants/asyncStorage';
+import {TOKEN_STORAGE, COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {MOVES_API_KEY} from 'react-native-dotenv';
 import Moves from 'react-native-moves-api';
 import {normalizeStorylineData, createActivitiesList} from '@lib/helpers/movesData';

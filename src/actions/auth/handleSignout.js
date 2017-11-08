@@ -29,8 +29,5 @@ export const handleSignout = () => (dispatch, getStore) => {
   AWS.config.credentials = cognitoCredentials;
 
   cognitoUser.signOut();
-
-  AsyncStorage.removeItem(AWS_CREDENTIALS);
-  AsyncStorage.setItem(IS_LOGGED_IN, 'false');
   dispatch(signoutUser())
 };

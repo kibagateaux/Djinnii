@@ -69,7 +69,6 @@ class Login extends PureComponent {
         errorMessage: null
       });
       this.props.navigateToHome();
-      this.props.saveCognitoProfile();
     })
     .catch((err) => {
      console.log('login err', err)
