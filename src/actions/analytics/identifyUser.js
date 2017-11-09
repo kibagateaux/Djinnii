@@ -5,8 +5,7 @@ import uuid from 'uuid';
 export const identifyUser = (userData) => {
   if(!userData.userId && !userData.anonymousId)
     throw new Error("Must pass object containing userId or anonymousId to identifyUser action");
-  const idEvent = analytics.identify(userData);
-  console.log('id user', idEvent);
+  analytics.identify(userData);
   return {
     type: IDENTIFY_SEGMENT_USER,
     payload: userData

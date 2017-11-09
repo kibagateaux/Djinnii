@@ -1,5 +1,3 @@
-import {_formatToUnix} from '@lib/helpers/time';
-import {storylines, activities} from '@constants/movesData';
 import {
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_SEGMENT,
@@ -7,9 +5,9 @@ import {
 } from '@actions/actionNames';
 
 const INITIAL_STATE = {
-  storylines: storylines,
-  activities: activities,
-  get activeActivity(){return this.activities[Object.keys(this.activities)[0]]}
+  storylines: [],
+  activities: {},
+  activeActivity: {},
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {

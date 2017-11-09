@@ -17,38 +17,50 @@ export const movesAuthLink = movesAuthInitHttps;
 export const normalizeStorylineData = (stories) =>
 // should take all day segments and return flat object
   stories.map((day) => {
+    const {date, calories, lastUpdate, summary} = day
     const normSeg = day.segments.map(seg => {
       const {startTime, endTime, type} = seg;
       const segmentTime = _getTimesInUnix(startTime, endTime);
-      const activities = normalizeActivities(seg.activities, seg);
+      const activities = normalizeActivities(seg);
+
       // console.log('norm story', activities);
-      segmentActivity = activities.length > 0 ? activities[0].activity : 'idl';
-      const meta = {type:seg.type, ...segmentTime, activity: segmentActivity};
-      const normData = {
-        meta,
-        activities
-      }
-      return seg.type === 'place' ? 
-        {...normData, place: {type: seg.place.type, id: seg.place.id, ...seg.place.location}}
-        : normData;
+      // segmentActivity = activities.length > 0 ? activities[0].activity : 'idl';
+      // const meta = {type:seg.type, ...segmentTime, activity: segmentActivity};
+      // const normData = {
+      //   meta,
+      //   activities
+      // }
+
+      // normalize track points so timestamp is key for lat/long
+      return activities
     });
-    const date = _getFirstMSInDay(_formatToUnix(day.date));
-    const lastUpdate = _formatToUnix(day.lastUpdate);
-    return {...day, date, lastUpdate, activityGroups: normSeg};
+    const unixDate = _getFirstMSInDay(_formatToUnix(date));
+    const unixLastUpdate = _formatToUnix(lastUpdate);
+    return {date, lastUpdate, summary, activityGroups: normSeg};
   });
   
 
-const normalizeActivities = (acts, seg) =>
-  acts ? acts.map(act => {
+const normalizeMovesAPILocation = (place) => 
+  place ? {id: place.id, ...place.location, type: place.type } : null
+
+const normalizeMovesAPITrackingPoints = (activity) => 
+  activity.trackingPoints ? 
+    activity.trackingPoints.map(({time, lat, lon}) => {
+      const trackTime = _formatToUnix(time);
+      return {[time]: {lat, lon}}}) : null;
+
+const normalizeActivities = (seg) =>
+  seg.activities ? seg.activities.map(act => {
     const actTimes = _getTimesInUnix(act.startTime, act.endTime);
     segTimes = _getTimesInUnix(seg.startTime, seg.endTime);
     const normAct = {
       ...act,
       ...actTimes,
+      trackingPoints: normalizeMovesAPITrackingPoints(act),
       activityGroup: {
         ...segTimes,
         type: seg.type,
-        place: seg.place || null
+        place: normalizeMovesAPILocation(seg.place)
       }
     }
     return normAct;

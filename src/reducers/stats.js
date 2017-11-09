@@ -5,9 +5,8 @@ import {
   UPDATE_LOCAL_STATS,
   SWITCH_LOCAL_GAME_MODE
 } from '@actions/actionNames';
-import {statsAfterActivity} from '@helpers/stats';
-import {activities} from '@constants/movesData';
 
+/* Mock data for testing and dev
 const initStats = () => Object.keys(activities)
 .reduce((timeline, key) => {
   const history = Object.keys(timeline);
@@ -20,11 +19,11 @@ const initStats = () => Object.keys(activities)
 
 const initialStats = initStats();
 const lastStat = initialStats[Object.keys(initialStats)[Object.keys(initialStats).length - 1]]
+*/ 
 const INITIAL_STATE = {
-  ...initialStats,
-  activeStats: lastStat,
-  lastLiveStats: lastStat,
-  localStats: {}
+  activeStats: {},
+  lastLiveStats: {},
+  localStats: {},
 };
 
 /* TODO 
