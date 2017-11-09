@@ -11,12 +11,6 @@ import {
 } from 'react-native-dotenv';
 
 import awsmobile from '../../../aws-config.json';
-import {
-  CURRENT_COGNITO_SESSION,
-  IS_LOGGED_IN,
-  AWS_CREDENTIALS,
-  COGNITO_USER_PROFILE
-} from '@constants/asyncStorage';
 
 AWS.config.update({
   accessKeyId: AWS_ACCESS_KEY_ID,
@@ -24,13 +18,12 @@ AWS.config.update({
   region:'us-east-1'
 });
 
-export const LAMBDA_CLIENT = new Lambda({region: 'us-east-1'});
-
 export const DYNAMO_TABLES = {
   activities: "djinii-mobilehub-1897344653-Activities",
   stats: "djinii-mobilehub-1897344653-stats",
   location: "djinii-mobilehub-1897344653-Locations",
   tokens: "djinii-mobilehub-1897344653-Tokens",
+  activities: "djinii-mobilehub-1897344653-Activities",
 };
 
 export const COGNITO_USER_POOL = new CognitoUserPool({

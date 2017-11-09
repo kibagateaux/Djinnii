@@ -14,14 +14,9 @@ const canDeepLink = Linking.canOpenURL('moves://app').then((res) => res);
 const _getMovesAuthLink = () => canDeepLink ? movesAuthInitDeepLink : movesAuthInitHttps; // replace null with link to app store
 export const movesAuthLink = movesAuthInitHttps;
 
-export const normalizeStorylineData = (stories) => {
-  // should take all day segments and return flat object
-  console.log('work on normalizing storylines for redux store');
-
-  // :date by first timestamp in day
-  // lastUpdate by timstamp
-  // activityGroup
-  return stories.map((day) => {
+export const normalizeStorylineData = (stories) =>
+// should take all day segments and return flat object
+  stories.map((day) => {
     const normSeg = day.segments.map(seg => {
       const {startTime, endTime, type} = seg;
       const segmentTime = _getTimesInUnix(startTime, endTime);
@@ -33,17 +28,14 @@ export const normalizeStorylineData = (stories) => {
         meta,
         activities
       }
-      return seg.type === 'place' ? {...normData, place: seg.place} : normData;
+      return seg.type === 'place' ? 
+        {...normData, place: {type: seg.place.type, id: seg.place.id, ...seg.place.location}}
+        : normData;
     });
-    console.log('norm storyline day', day);
     const date = _getFirstMSInDay(_formatToUnix(day.date));
     const lastUpdate = _formatToUnix(day.lastUpdate);
-    console.log('norm storyline times', date, lastUpdate);
-    console.log('norm story day', day.segments , normSeg);
-
     return {...day, date, lastUpdate, activityGroups: normSeg};
   });
-}
   
 
 const normalizeActivities = (acts, seg) =>
@@ -65,6 +57,7 @@ const normalizeActivities = (acts, seg) =>
 const addFillerSpace = (activityList) => {
   let completeList = {}
   const activityTimes = Object.keys(activityList)
+  // to make FP make last<Array> and take last[0].time instead
   activityTimes.reduce((last, next) => {
     const endTime = activityList[last.time].endTime;
     const startTime = activityList[next].startTime;

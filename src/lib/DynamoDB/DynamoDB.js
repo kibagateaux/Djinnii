@@ -7,6 +7,7 @@ import {AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY} from 'react-native-dotenv';
 import {COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {AsyncStorage} from 'react-native';
 import {Auth} from '@lib/Auth';
+import {DYNAMO_TABLES} from '@constants/AWS';
 
 // connect to local DB if running offline
 // https://github.com/serverless/examples/blob/master/aws-node-rest-api-with-dynamodb-and-offline/todos/dynamodb.js
@@ -18,8 +19,7 @@ import {Auth} from '@lib/Auth';
 // }
 
 const creds = async () => await AsyncStorage.getItem(COGNITO_USER_PROFILE)
-  .then((data) => JSON.parse(data))
-  .then((data) => data);
+  .then(JSON.parse)
 
 AWS.config.update({
   accessKeyId: AWS_ACCESS_KEY_ID,
