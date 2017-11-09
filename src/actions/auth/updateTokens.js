@@ -5,11 +5,10 @@ import {getCognitoCredentials} from '@lib/Auth';
 import {tables} from '@constants/database';
 import * as DB from '@lib/DynamoDB';
 
-export const updateTokens = (tokenObj) => { // tokenObj e.g. {moves: {access_token, refresh_token}}
+export const updateTokens = async (tokenObj) => { // tokenObj e.g. {moves: {access_token, refresh_token}}
   const profile = await AsyncStorage.getItem(COGNITO_USER_PROFILE)
   if(profile && tokenObj) {
     AsyncStorage.getItem(TOKEN_STORAGE).then((tokenStorage) => {
-      
       const tokens = JSON.parse(tokenStorage);
       const updatedTokens = {...tokens, ...tokenObj};
       AsyncStorage.setItem(TOKEN_STORAGE, JSON.stringify(updatedTokens))
@@ -22,9 +21,12 @@ export const updateTokens = (tokenObj) => { // tokenObj e.g. {moves: {access_tok
           console.log('error updating token to db', error);
         })
     });
-    return {
-      type: UPDATE_OAUTH_TOKENS,
-      payload: tokenObj
-    }
+    
+    // why does this return a Promise?
+    // return {
+    //   type: UPDATE_OAUTH_TOKENS,
+    //   payload: tokenObj
+    // }
+
   }
 }

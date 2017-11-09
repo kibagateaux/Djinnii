@@ -13,6 +13,10 @@ import {navigateTo} from '@actions/navigation/navigateTo';
 import {updateTokens} from '@actions/auth/updateTokens';
 import {getMovesActivityStoryline} from '@actions/activities/getMovesActivityStoryline';
 import {getLocalStats} from '@actions/stats/getLocalStats';
+import {
+  LOGIN,
+  INTEGRATIONS
+} from '@constants/routes';
 
 const mapStateToProps = ({stats, activities, user}) => ({
   activeActivity: activities.activeActivity,
@@ -20,6 +24,7 @@ const mapStateToProps = ({stats, activities, user}) => ({
   lastLiveStats: stats.lastLiveStats,
   localStats: stats.localStats,
   localMode : user.localMode,
+  user
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,7 +32,8 @@ const mapDispatchToProps = (dispatch) => ({
   updateTokens: (id, tokens) => dispatch(updateTokens(id, tokens)),
   getMovesActivityStoryline: () => getMovesActivityStoryline(dispatch),
   identifyUser: (userData) => dispatch(identifyUser(userData)),
-  navigateToLogin: () => dispatch(navigateTo('login')),
+  navigateToLogin: () => dispatch(navigateTo(LOGIN)),
+  navigateToIntegrations: () => dispatch(navigateTo(INTEGRATIONS)),
   updateStats: (statsMap) => dispatch(updateStats(statsMap)),
   getLocalStats: () => dispatch(getLocalStats()),
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),

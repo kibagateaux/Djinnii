@@ -20,7 +20,7 @@
 		"react-native-branch": "^2.1.0",
 		"react-native-dotenv": "^0.1.0",
 		"react-native-material-kit": "^0.4.1",
-		"react-native-moves-api": "kibagateaux/node-moves",
+		"react-native-moves-api": "github:kibagateaux/iso-moves-api",
 		"react-native-prompt": "^1.0.0",
 		"react-native-router-flux": "^4.0.0-beta.21",
 		"react-native-vector-icons": "^4.4.2",
@@ -28,7 +28,8 @@
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",
 		"redux-logger": "^3.0.6",
-		"redux-thunk": "^2.2.0"
+		"redux-thunk": "^2.2.0",
+		"uuid": "^3.1.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.0.2",

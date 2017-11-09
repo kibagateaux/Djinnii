@@ -2,8 +2,10 @@
 import moment from 'moment';
 import {dayInMicroSecs}  from '@constants/time';
 const twoDigitChunk = /{d, 2}/;
-const _formatToUnix = dateString => moment(dateString).valueOf()
-const _durationUnix = (start, end) => ( _formatToUnix(end) - _formatToUnix(start));
+
+export const _formatToUnix = dateString => moment(dateString).valueOf()
+export const _durationUnix = (start, end) => ( _formatToUnix(end) - _formatToUnix(start));
+
 export const  _getTimesInUnix = (start, end) => ({
   startTime: _formatToUnix(start),
   endTime:  _formatToUnix(end),
@@ -14,11 +16,12 @@ export const _sortByTime = (obj) => Object.keys(obj)
   .sort((x, y) => x - y)
   .reduce((a, b) => (isNaN(b) ? a : {...a, [b]: obj[b]}), {});
 
-// First MS at GMT not local time - add second param localRegion or moment prob has way
-export const _getFirstMSInDay = (timeMS) => 
+export const _getFirstMSInDay = (timeMS) =>
+  // First MS at GMT not local time - add second param localRegion or moment prob has way
+  // coerce timeMS to first MS of that day 00:00 and return MS value
   moment(moment(timeMS).format("YYYY-MM-DD 00:00:00.000")).valueOf();
 
-export const _getFirstTimestampInDay = (time, obj) => {
+export const _getFirstActivityInDay = (time, obj) => {
   const startTime = _getFirstMSInDay(time);
   const endTime = startTime + dayInMicroSecs;
   const sortedActs = _sortByTime(obj);

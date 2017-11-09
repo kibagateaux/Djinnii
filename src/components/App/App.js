@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
+import uuid from 'uuid';
+
 // import {_handleBranchRouting} from '@lib/analytics';
 
 
 import DailyProfile from '@containers/DailyProfile';
 import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
+import EmptyFiller from '@components/common/EmptyFiller';
 
 import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
@@ -46,10 +49,12 @@ export default class App extends Component {
         }
       }
     });
+    
+    const trackingId = props.user.userId ? 
+      {userId: props.user.userId} : {anonymousId: uuid.v4()}
+    const trackingData = {...trackingId, traits: {...props.user}};
 
-    props.identifyUser({
-      userId: '0'
-    });
+    props.identifyUser(trackingData);
   }
 
   // initializes UI for selected game mode
@@ -76,12 +81,15 @@ export default class App extends Component {
   }
 
   _renderDailyProfiles = () => {
-    const profiles = this.props.storylines.map((story,i) => {
+    const {storylines, navigateToIntegrations} = this.props
+    const profiles = this.props.storylines ? this.props.storylines.map((story,i) =>
       // key=story.date with real data
-      return (
-        <DailyProfile key={i} storyline={story}/>
-      )
-    });
+      <DailyProfile key={i} storyline={story}/>) : 
+      <EmptyFiller
+        mainText="To train your Jinni connect your favorite activity tracking app"
+        mainButtonText="Connect Apps"
+        maingButtonFunc={navigateToIntegrations}
+      />
   return (
     <ScrollView>
       {profiles}

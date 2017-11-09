@@ -36,17 +36,16 @@ class Login extends PureComponent {
     const {username, password} = this.state;
     const awsPhoneNumber = '+1' + username
     let showMFAPrompt = false;
-    let session = null;
+    // let session = null;
     attemptLogin = new Promise((resolve, reject) => {
-      auth.handleSignIn(awsPhoneNumber, password, auth.loginCallbackFactory({
-        onSuccess(result) {
-          console.log('loginCallbacks.onSuccess', result);
-          session = result;
-          resolve(session);
+      const user = auth.handleSignIn(awsPhoneNumber, password, auth.loginCallbackFactory({
+        onSuccess(session) {
+          console.log('loginCallbacks.onSuccess', session);
+          // resolve(session);
         },
         onFailure(exception) {
           console.log('loginCallbacks.onFailure', exception);
-          reject(exception);
+          // reject(exception);
         },
         newPasswordRequired(data) {
           console.log('loginCallbacks.newPasswordRequired', data);
@@ -57,13 +56,15 @@ class Login extends PureComponent {
           resolve({showMFAPrompt: true});
         },
       }, this));
+      resolve(user);
     })
     attemptLogin
-    .then((session) => {
-      // session.showMFAPrompt && 
-      console.log('login succ sess', session);
+    .then((userData) => {
+      // session.showMFAPrompt && formerly
+      console.log('login succ sess', userData);
+      this.props.updateUser({userId: userData.username})
       this.setState({
-        session,
+        userData,
         showMFAPrompt,
         showActivityIndicator: false,
         errorMessage: null

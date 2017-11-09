@@ -2,7 +2,8 @@ import {
   _formatToUnix,
   _durationUnix,
   _getTimesInUnix,
-  _sortByTime
+  _sortByTime,
+  _getFirstMSInDay
 } from '@lib/helpers/time';
 import {Linking} from 'react-native';
 import {MOVES_API_KEY} from 'react-native-dotenv';
@@ -11,11 +12,15 @@ export const movesAuthInitDeepLink =  `moves://app/authorize?client_id=${MOVES_A
 export const movesAuthInitHttps = `https://api.moves-app.com/oauth/v1/authorize?response_type=code&client_id=${MOVES_API_KEY}&scope=activity+location`;
 const canDeepLink = Linking.canOpenURL('moves://app').then((res) => res);
 const _getMovesAuthLink = () => canDeepLink ? movesAuthInitDeepLink : movesAuthInitHttps; // replace null with link to app store
-export const movesAuthLink = _getMovesAuthLink();
+export const movesAuthLink = movesAuthInitHttps;
 
 export const normalizeStorylineData = (stories) => {
   // should take all day segments and return flat object
   console.log('work on normalizing storylines for redux store');
+
+  // :date by first timestamp in day
+  // lastUpdate by timstamp
+  // activityGroup
   return stories.map((day) => {
     const normSeg = day.segments.map(seg => {
       const {startTime, endTime, type} = seg;
@@ -30,8 +35,13 @@ export const normalizeStorylineData = (stories) => {
       }
       return seg.type === 'place' ? {...normData, place: seg.place} : normData;
     });
-    // console.log('norm story day', day.segments, normSeg);
-    return {...day, segments: normSeg};
+    console.log('norm storyline day', day);
+    const date = _getFirstMSInDay(_formatToUnix(day.date));
+    const lastUpdate = _formatToUnix(day.lastUpdate);
+    console.log('norm storyline times', date, lastUpdate);
+    console.log('norm story day', day.segments , normSeg);
+
+    return {...day, date, lastUpdate, activityGroups: normSeg};
   });
 }
   
@@ -87,7 +97,7 @@ export const createActivitiesList = (stories) => {
   // key = unixStartTime, value = activity obj
   let activityList = {};
   stories.map((day) => {
-    day.segments.map((seg) => {
+    day.activityGroups.map((seg) => {
       seg.activities.map((act) => {
         const startTime = act.startTime
         activityList[startTime] = act;  
