@@ -2,7 +2,7 @@ import {AsyncStorage} from 'react-native';
 import {UPDATE_OAUTH_TOKENS} from '@actions/actionNames';
 import {TOKEN_STORAGE, COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {getCognitoCredentials} from '@lib/Auth';
-import {tables} from '@constants/database';
+import {tables} from '@constants/AWS';
 import * as DB from '@lib/DynamoDB';
 
 export const updateTokens = async (tokenObj) => { // tokenObj e.g. {moves: {access_token, refresh_token}}

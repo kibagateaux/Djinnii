@@ -1,7 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
 import SpriteAnimation from 'react-native-animated-sprite';
-import { height, width } from '@lib/constants/style';
 import styles from './styles';
 
 export default (props) => {
@@ -11,6 +10,8 @@ export default (props) => {
   * style: <StyleSheet.Object> optional style override
   */
   const {
+    height,
+    width,
     frames,
     frameSelector,
     conditional,
@@ -23,17 +24,18 @@ export default (props) => {
   const renderSprite = () => (
       <SpriteAnimation
         sprite={{
-          size: {height: height/5, width: 2 * width/3},
+          // size: {height, width},
           frames: frames,
           animationIndex: spriteFrames
         }}
         loopAnimation={loop}
         coordinates={{top: (style && style.top) || 0 , left:  (style && style.left) || 0 }}
         animationFrameIndex={spriteFrames}
-        size={{height: height/3, width: 2 * width/3}}
+        size={{height, width}}
         style={{...style}}
         alt={alt}
       />
   );
+  console.log('rend sprite heigh', height, width);
   return renderSprite(spriteFrames)
 }

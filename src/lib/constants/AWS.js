@@ -5,9 +5,10 @@ import {
 import {
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
-  // DYNAMO_DB_STATS_TABLE,
-  // DYNAMO_DB_LOCATION_TABLE,
-  // DYNAMO_DB_TOKENS_TABLE,
+  DYNAMO_DB_STATS_TABLE,
+  DYNAMO_DB_LOCATION_TABLE,
+  DYNAMO_DB_TOKENS_TABLE,
+  DYNAMO_DB_ACTIVITIES_TABLE
 } from 'react-native-dotenv';
 
 import awsmobile from '../../../aws-config.json';
@@ -19,11 +20,10 @@ AWS.config.update({
 });
 
 export const DYNAMO_TABLES = {
-  activities: "djinii-mobilehub-1897344653-Activities",
-  stats: "djinii-mobilehub-1897344653-stats",
-  location: "djinii-mobilehub-1897344653-Locations",
-  tokens: "djinii-mobilehub-1897344653-Tokens",
-  activities: "djinii-mobilehub-1897344653-Activities",
+  stats: DYNAMO_DB_STATS_TABLE,
+  location: DYNAMO_DB_LOCATION_TABLE,
+  tokens: DYNAMO_DB_TOKENS_TABLE,
+  activities: DYNAMO_DB_ACTIVITIES_TABLE,
 };
 
 export const COGNITO_USER_POOL = new CognitoUserPool({

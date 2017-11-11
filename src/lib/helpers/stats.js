@@ -1,6 +1,10 @@
 import {_formatToUnix, _durationUnix} from '@lib/helpers/time';
 import {AsyncStorage} from 'react-native';
 import {LOCAL_STATS} from '@constants/asyncStorage';
+import {
+  statsToActivityMapping,
+  localActivityMapping
+} from '@constants/stats';
 
 export const getLocalStats = () =>
   AsyncStorage.getItem(LOCAL_STATS)
@@ -28,14 +32,6 @@ export const statsAfterActivity = (targetActivity, stats) => {
   }, stats);
   return {...stats, ...updatedStats};
 };
-
-
-const localActivityMapping = {
-  'run': {stm: 2, agy: 1},
-  'dance': {str: 1, agy: 2, int: -1},
-  'sleep': {stm: -2, str: -1, int: 3},
-  'eat': {stm: 2, agy: -1}
-}
 
 export const localStatsAfterActivity = (activity, stats) => {
   if(!activity || !stats) throw Error("Need target activity and stats object to calculate stats after activity");
