@@ -33,6 +33,7 @@ App Features :
 
   Make it seem more like you are taking care of a pet
     Add feed function
+  Proactive nudging. If it needs to run it will display/push notification running to motivate you
 
 
 
@@ -54,9 +55,11 @@ App Description :
   ^fck that **Abstract 2.0** This app is at it's purest an "Abstraction of Self". It will be your mirror image in every meaningful way while still being it's own person. It is a friend,
   an advisor, a mom, everything it needs to be in order to help you perform better.
 
+**WHY**
   Teaches growth mindset to create positive feedback cycles between different aspects of your life. Based on scientific (sleep impacts, screen time) and behavioural design studies (nudge principles, gamification, intrinsic motivation).
 
-  Djinn Stats 
+
+  **Djinn Stats Model**
   Financial 
     Take Mint data 
     Spending patterns in general and how they correlate with physical patterns (visiting locations, hours sleeping)
