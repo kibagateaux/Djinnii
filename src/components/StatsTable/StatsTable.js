@@ -48,11 +48,12 @@ export default class extends PureComponent {
       const difference = (statDiff && statDiff !== 0) ?
         `${statDiff < 0 ? '-' : '+'} ${Math.abs(statDiff)}` :
         null;
+        console.log('stat difference', difference);
       return (
         <Text style={styles.statRow} key={statRow}>
           <Text style={styles.statText}>{statRow}:  </Text> 
           <Text style={styles.statText}>
-            {statFloat} {this._makeDifferenceScoreBoard(difference)}
+            {statFloat} {difference}
           </Text>
         </Text>
       )
