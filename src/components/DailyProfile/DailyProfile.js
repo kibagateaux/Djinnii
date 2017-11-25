@@ -1,43 +1,63 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
-import Djinn from '@containers/Djinn';
+import axios from 'axios';
+
+import {DB} from '@lib/DynamoDB';
+import {LAMBDA_CLIENT, DYNAMO_TABLES} from '@constants/AWS';
+
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
-export default (props) => {
-  const {
-    activities,
-    stats,
-    goals,
-    storyline,
-    displayDailyGoals,
-    setActiveActivity,
-    setActiveSegment,
-    toggleDailyGoalsDisplay,
-    setDisplayStats
-  } = props;
+import styles from './styles';
+export default class extends PureComponent {
+  
+  constructor(props) {
+    super(props);
+    var lambdaParams = {
+      FunctionName: "jinni-dev-getMovesStoryline", 
+      InvocationType: "RequestResponse", 
+      LogType: "None", 
+     };
+    // LAMBDA_CLIENT.invoke(params, (error, data) => {
+    //   console.log('invoke', error, data);
+    //   const userId = "+13472418464"
+      // const queryParams = {
+      //   TableName: DYNAMO_TABLES.activities,
+      //   ScanFilter: {
+      //     userId: {
+      //       ComparisonOperator: "EQ",
+      //       AttributeValueList: ["+13472418464"]
+      //     }
+      //   }
+      // };
+      // DB.scan(queryParams, (error, result) => {
+      //   if(!error && result.Items) {
+      //     const activityList = result.Items.reduce((list, item) => ({
+      //       ...list, [item.startTime]: item
+      //     }));
+      //     this.props.updateActivityList(activityList);
+      //   }
+      //   console.log('db res', error, result);
+      //   // this.props.updateActivitiesList(result)
+      // })
+    // })  
+  }
 
-  // deprecated in favor of firebase single source
-  // this allows for reliable data when replaying days, centralized calculations, etc
-  // lowkey necessary if firebase isn't functioning
-      // if pure function then shouldn't matter so good backup if offline
-  // const setDisplayStatsForActivity = (act) => {
-  //   if(Array.isArray(act.activities)){
-  //     return act.activities.forEach(act => setDisplayStatsForActivity(act));
-  //   }
-  //   /* these should be removed from PlayDay to allow continuity*/
-  //   return statsAfterActivity(act, stats);
-  // }
-
-
-
-  const playDay = async () => {
-    
-    
+  playDay = async () => {
+    const {
+      activities,
+      stats,
+      goals,
+      storyline,
+      displayDailyGoals,
+      setActiveActivity,
+      setActiveSegment,
+      toggleDailyGoalsDisplay,
+      setDisplayStats
+    } = this.props;
     // update redux displaydStats
     // pull in stats from first startTime -> again what if none?
     // then run play day
-    
     const dayStartTime = storyline.segments[0].meta.startTime;
     const firstStamp = _getFirstMSInDay(dayStartTime);
     const firstAct = _getFirstTimestampInDay(firstStamp, stats);
@@ -60,7 +80,8 @@ export default (props) => {
     })
   }
 
-  const _renderDailyGoals = () => {
+  renderDailyGoals = () => {
+    const {goals} = this.props;
     return goals.map((goal) => {
       <View key={goal.id}>
         <Text> {goal.text} </Text>
@@ -68,33 +89,46 @@ export default (props) => {
     })
   }
 
-  const vizStorySegments = () => { 
+  vizStorySegments = () => { 
+    const {
+      activities,
+      stats,
+      goals,
+      storyline,
+      displayDailyGoals,
+      setActiveActivity,
+      setActiveSegment,
+      toggleDailyGoalsDisplay,
+      setDisplayStats
+    } = this.props;
     const { segments, date, key } = storyline;
     return (
-      <ActivityBar 
-        key={key} 
-        date={date} 
-        segments={segments}
-        activities={activities}
-        setActiveActivity={setActiveActivity}
-        setActiveSegment={setActiveSegment}
-        stats={stats}
-      />
-    )
-  }
-
-  const toggleShowGoals = (date) => {
-    toggleDailyGoalsDisplay(true);
-  }
-
-    return (
-      <View>        
-
-        {}
-        <View>  
-          { vizStorySegments() }
-        </View>
-
+      <View style={styles.dailyProfileContainer}>
+        <ActivityBar 
+          key={key} 
+          date={date} 
+          segments={segments}
+          activities={activities}
+          setActiveActivity={setActiveActivity}
+          setActiveSegment={setActiveSegment}
+          stats={stats}
+        />
       </View>
     )
+  }
+
+  toggleShowGoals = (date) => {
+    const {goals} = this.props
+    this.setState({showGoals: true, goals: goals[date]});
+  }
+
+  render() {
+    return (
+      <View>        
+        <View>  
+          { this.vizStorySegments() }
+        </View>
+      </View>
+    )
+  }
 }

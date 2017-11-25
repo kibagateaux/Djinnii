@@ -7,7 +7,7 @@ import {
   CognitoUserSession,
   CognitoIdToken,
 } from 'react-native-aws-cognito-js';
-import {AWS_ACCESS_KEY, AWS_SECRET_KEY} from 'react-native-dotenv';
+import {AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} from 'react-native-dotenv';
 import awsmobile from '../../../aws-config.json';
 import {AsyncStorage as LocalStorage} from 'react-native';
 import {
@@ -18,8 +18,8 @@ import {
 } from '@constants/asyncStorage';
 
 AWS.config.update({
-  accessKeyId: AWS_ACCESS_KEY,
-  secretAccessKey: AWS_SECRET_KEY,
+  accessKeyId: AWS_ACCESS_KEY_ID,
+  secretAccessKey: AWS_SECRET_ACCESS_KEY,
   region:'us-east-1'
 });
 
