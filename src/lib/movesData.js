@@ -1,5 +1,5 @@
 export const incomingData = {
-  data: [ 
+  data: [
     { date: '20170612', summary: 0, caloriesIdle: 1796 },
     { date: '20170613', summary: 1, caloriesIdle: 1796 },
     { date: '20170614', summary: 2, caloriesIdle: 1796 },
@@ -8,42 +8,42 @@ export const incomingData = {
     { date: '20170617', summary: 5, caloriesIdle: 1796 },
     { date: '20170618', summary: null, caloriesIdle: 1796 } 
   ],
-  summaries: [ 
+  summaries: [
     [ { 
-      activity: 'wlk',
+      activity: 'walking',
       duration: 8168,
       distance: 12037,
       steps: 15515,
       calories: 750 } ],
-    [ { activity: 'wlk',
+    [ { activity: 'walking',
         duration: 14129,
         distance: 16477,
         steps: 26405,
         calories: 1027 },
-      { activity: 'cyc', duration: 3459, distance: 9991, calories: 291 } ],
-    [ { activity: 'wlk',
+      { activity: 'cycling', duration: 3459, distance: 9991, calories: 291 } ],
+    [ { activity: 'walking',
         duration: 9555,
         distance: 10578,
         steps: 17106,
         calories: 660 } ],
-    [ { activity: 'wlk',
+    [ { activity: 'walking',
         duration: 8401,
         distance: 10479,
         steps: 15188,
         calories: 653 },
       { activity: 'cyc', duration: 713, distance: 672, calories: 25 },
-      { activity: 'run',
+      { activity: 'running',
         duration: 1720,
         distance: 4980,
         steps: 4094,
         calories: 375 } ],
-    [ { activity: 'wlk',
+    [ { activity: 'walking',
         duration: 6837,
         distance: 8837,
         steps: 11749,
         calories: 551 },
       { activity: 'cyc', duration: 397, distance: 1691, calories: 47 } ],
-    [ { activity: 'wlk',
+    [ { activity: 'walking',
         duration: 4208,
         distance: 5468,
         steps: 6524,
@@ -72,7 +72,7 @@ export const incomingData = {
     endTime: "20170618T130356Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T123909Z",
         endTime: "20170618T130356Z",
         duration: 1487,
@@ -96,7 +96,7 @@ export const incomingData = {
   },
   activities: [
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T130357Z",
     endTime: "20170618T131117Z",
     duration: 440,
@@ -105,7 +105,7 @@ export const incomingData = {
     calories: 31
     },
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T142800Z",
     endTime: "20170618T142914Z",
     duration: 74,
@@ -121,7 +121,7 @@ export const incomingData = {
     endTime: "20170618T195316Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T194912Z",
         endTime: "20170618T195316Z",
         duration: 244,
@@ -145,7 +145,7 @@ export const incomingData = {
   },
   activities: [
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T195317Z",
       endTime: "20170618T195959Z",
       duration: 402,
@@ -154,7 +154,7 @@ export const incomingData = {
       calories: 28
     },
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T200149Z",
       endTime: "20170618T200218Z",
       duration: 29,
@@ -170,7 +170,7 @@ export const incomingData = {
   endTime: "20170618T201101Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T200503Z",
   endTime: "20170618T201101Z",
   duration: 358,
@@ -194,7 +194,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T201248Z",
   endTime: "20170618T201334Z",
   duration: 46,
@@ -203,7 +203,7 @@ export const incomingData = {
   calories: 2
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T220750Z",
   endTime: "20170618T221420Z",
   duration: 390,
@@ -219,7 +219,7 @@ export const incomingData = {
   endTime: "20170618T224354Z",
   activities: [
   {
-  activity: "trp",
+  activity: "transport",
   startTime: "20170618T223038Z",
   endTime: "20170618T224354Z",
   duration: 796,
@@ -241,7 +241,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T224842Z",
   endTime: "20170618T224922Z",
   duration: 40,
@@ -265,7 +265,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011458Z",
   endTime: "20170619T011544Z",
   duration: 46,
@@ -281,7 +281,7 @@ export const incomingData = {
   endTime: "20170619T013912Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011806Z",
   endTime: "20170619T013912Z",
   duration: 1266,
@@ -310,7 +310,7 @@ export const incomingData = {
   endTime: "20170619T020840Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T015837Z",
   endTime: "20170619T020840Z",
   duration: 603,
@@ -339,7 +339,7 @@ export const incomingData = {
   endTime: "20170619T021737Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021104Z",
   endTime: "20170619T021737Z",
   duration: 393,
@@ -363,7 +363,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021929Z",
   endTime: "20170619T022009Z",
   duration: 40,
@@ -379,7 +379,7 @@ export const incomingData = {
   endTime: "20170619T023854Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023455Z",
   endTime: "20170619T023854Z",
   duration: 239,
@@ -403,7 +403,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023855Z",
   endTime: "20170619T024343Z",
   duration: 288,
@@ -427,7 +427,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T025517Z",
   endTime: "20170619T025540Z",
   duration: 23,
@@ -436,7 +436,7 @@ export const incomingData = {
   calories: 1
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T031051Z",
   endTime: "20170619T031440Z",
   duration: 229,
@@ -452,7 +452,7 @@ export const incomingData = {
   endTime: "20170619T041418Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T034824Z",
   endTime: "20170619T035959Z",
   duration: 695,
@@ -487,7 +487,7 @@ export const incomingData = {
     endTime: "20170618T130356Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T123909Z",
         endTime: "20170618T130356Z",
         duration: 1487,
@@ -511,7 +511,7 @@ export const incomingData = {
   },
   activities: [
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T130357Z",
     endTime: "20170618T131117Z",
     duration: 440,
@@ -520,7 +520,7 @@ export const incomingData = {
     calories: 31
     },
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T142800Z",
     endTime: "20170618T142914Z",
     duration: 74,
@@ -536,7 +536,7 @@ export const incomingData = {
     endTime: "20170618T195316Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T194912Z",
         endTime: "20170618T195316Z",
         duration: 244,
@@ -560,7 +560,7 @@ export const incomingData = {
   },
   activities: [
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T195317Z",
       endTime: "20170618T195959Z",
       duration: 402,
@@ -569,7 +569,7 @@ export const incomingData = {
       calories: 28
     },
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T200149Z",
       endTime: "20170618T200218Z",
       duration: 29,
@@ -585,7 +585,7 @@ export const incomingData = {
   endTime: "20170618T201101Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T200503Z",
   endTime: "20170618T201101Z",
   duration: 358,
@@ -609,7 +609,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T201248Z",
   endTime: "20170618T201334Z",
   duration: 46,
@@ -618,7 +618,7 @@ export const incomingData = {
   calories: 2
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T220750Z",
   endTime: "20170618T221420Z",
   duration: 390,
@@ -634,7 +634,7 @@ export const incomingData = {
   endTime: "20170618T224354Z",
   activities: [
   {
-  activity: "trp",
+  activity: "transport",
   startTime: "20170618T223038Z",
   endTime: "20170618T224354Z",
   duration: 796,
@@ -656,7 +656,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T224842Z",
   endTime: "20170618T224922Z",
   duration: 40,
@@ -680,7 +680,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011458Z",
   endTime: "20170619T011544Z",
   duration: 46,
@@ -696,7 +696,7 @@ export const incomingData = {
   endTime: "20170619T013912Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011806Z",
   endTime: "20170619T013912Z",
   duration: 1266,
@@ -725,7 +725,7 @@ export const incomingData = {
   endTime: "20170619T020840Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T015837Z",
   endTime: "20170619T020840Z",
   duration: 603,
@@ -754,7 +754,7 @@ export const incomingData = {
   endTime: "20170619T021737Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021104Z",
   endTime: "20170619T021737Z",
   duration: 393,
@@ -778,7 +778,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021929Z",
   endTime: "20170619T022009Z",
   duration: 40,
@@ -794,7 +794,7 @@ export const incomingData = {
   endTime: "20170619T023854Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023455Z",
   endTime: "20170619T023854Z",
   duration: 239,
@@ -818,7 +818,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023855Z",
   endTime: "20170619T024343Z",
   duration: 288,
@@ -842,7 +842,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T025517Z",
   endTime: "20170619T025540Z",
   duration: 23,
@@ -851,7 +851,7 @@ export const incomingData = {
   calories: 1
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T031051Z",
   endTime: "20170619T031440Z",
   duration: 229,
@@ -867,7 +867,7 @@ export const incomingData = {
   endTime: "20170619T041418Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T034824Z",
   endTime: "20170619T035959Z",
   duration: 695,
@@ -902,7 +902,7 @@ export const incomingData = {
     endTime: "20170618T130356Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T123909Z",
         endTime: "20170618T130356Z",
         duration: 1487,
@@ -926,7 +926,7 @@ export const incomingData = {
   },
   activities: [
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T130357Z",
     endTime: "20170618T131117Z",
     duration: 440,
@@ -935,7 +935,7 @@ export const incomingData = {
     calories: 31
     },
     {
-    activity: "wlk",
+    activity: "walking",
     startTime: "20170618T142800Z",
     endTime: "20170618T142914Z",
     duration: 74,
@@ -951,7 +951,7 @@ export const incomingData = {
     endTime: "20170618T195316Z",
     activities: [
       {
-        activity: "wlk",
+        activity: "walking",
         startTime: "20170618T194912Z",
         endTime: "20170618T195316Z",
         duration: 244,
@@ -975,7 +975,7 @@ export const incomingData = {
   },
   activities: [
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T195317Z",
       endTime: "20170618T195959Z",
       duration: 402,
@@ -984,7 +984,7 @@ export const incomingData = {
       calories: 28
     },
     {
-      activity: "wlk",
+      activity: "walking",
       startTime: "20170618T200149Z",
       endTime: "20170618T200218Z",
       duration: 29,
@@ -1000,7 +1000,7 @@ export const incomingData = {
   endTime: "20170618T201101Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T200503Z",
   endTime: "20170618T201101Z",
   duration: 358,
@@ -1024,7 +1024,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T201248Z",
   endTime: "20170618T201334Z",
   duration: 46,
@@ -1033,7 +1033,7 @@ export const incomingData = {
   calories: 2
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T220750Z",
   endTime: "20170618T221420Z",
   duration: 390,
@@ -1049,7 +1049,7 @@ export const incomingData = {
   endTime: "20170618T224354Z",
   activities: [
   {
-  activity: "trp",
+  activity: "transport",
   startTime: "20170618T223038Z",
   endTime: "20170618T224354Z",
   duration: 796,
@@ -1071,7 +1071,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170618T224842Z",
   endTime: "20170618T224922Z",
   duration: 40,
@@ -1095,7 +1095,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011458Z",
   endTime: "20170619T011544Z",
   duration: 46,
@@ -1111,7 +1111,7 @@ export const incomingData = {
   endTime: "20170619T013912Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T011806Z",
   endTime: "20170619T013912Z",
   duration: 1266,
@@ -1140,7 +1140,7 @@ export const incomingData = {
   endTime: "20170619T020840Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T015837Z",
   endTime: "20170619T020840Z",
   duration: 603,
@@ -1169,7 +1169,7 @@ export const incomingData = {
   endTime: "20170619T021737Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021104Z",
   endTime: "20170619T021737Z",
   duration: 393,
@@ -1193,7 +1193,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T021929Z",
   endTime: "20170619T022009Z",
   duration: 40,
@@ -1209,7 +1209,7 @@ export const incomingData = {
   endTime: "20170619T023854Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023455Z",
   endTime: "20170619T023854Z",
   duration: 239,
@@ -1233,7 +1233,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T023855Z",
   endTime: "20170619T024343Z",
   duration: 288,
@@ -1257,7 +1257,7 @@ export const incomingData = {
   },
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T025517Z",
   endTime: "20170619T025540Z",
   duration: 23,
@@ -1266,7 +1266,7 @@ export const incomingData = {
   calories: 1
   },
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T031051Z",
   endTime: "20170619T031440Z",
   duration: 229,
@@ -1282,7 +1282,7 @@ export const incomingData = {
   endTime: "20170619T041418Z",
   activities: [
   {
-  activity: "wlk",
+  activity: "walking",
   startTime: "20170619T034824Z",
   endTime: "20170619T035959Z",
   duration: 695,

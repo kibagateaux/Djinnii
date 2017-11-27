@@ -13,10 +13,10 @@ export default ({ setActiveActivity, setActiveSegment, segments, stats, activiti
     switch(activity){
       case 'move': return 'green';
       case 'place': return 'black';
-      case 'wlk': return 'green';
-      case 'cyc': return 'blue';
-      case 'run': return 'pink';
-      case 'trp': return 'yellow';
+      case 'walking': return 'green';
+      case 'cycling': return 'blue';
+      case 'running': return 'pink';
+      case 'transport': return 'yellow';
       case 'plc': return 'black';
       case 'idl': return 'red';
       default: return 'red';

@@ -14,7 +14,9 @@ const initStats = () => Object.keys(activities)
   const lastInHistory = history[history.length - 1];
   const lastStats = timeline[lastInHistory] || {};
   const thisAct = activities[key];
+  console.log("init stats", history, thisAct);
   const thisStats = statsAfterActivity(thisAct, lastStats);
+  console.log("stats", thisStats);
   return {...timeline, [thisAct.startTime]: thisStats};
 }, {});
 

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Djinn from '@components/Djinn/Djinn';
+import HomeProfile from '@components/HomeProfile/HomeProfile';
 import {switchLocalGameMode} from '@actions/user';
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
   switchLocalGameMode: (bool) => dispatch(switchLocalGameMode(bool))  
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Djinn);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeProfile);

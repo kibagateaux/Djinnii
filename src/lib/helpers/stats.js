@@ -4,10 +4,10 @@ import {LOCAL_STATS} from '@constants/asyncStorage';
 
 
 export const statsToActivityMapping = {
-  'wlk': {int: 0.000002, agy: -0.000001, stm: 0.000001},
-  'trp': {int: 0.000001, str: 0.000002, stm: -0.000002},
+  'walking': {int: 0.000002, agy: -0.000001, stm: 0.000001},
+  'transport': {int: 0.000001, str: 0.000002, stm: -0.000002},
   'plc': {int: 0.000002, str: -0.000001, agy: -0.000001},
-  'cyc': {str: 0.000001, agy: 0.000002, stm: 0.000002},
+  'cycling': {str: 0.000001, agy: 0.000002, stm: 0.000002},
   'idl': {int: -0.000001, str: -0.000002, stm: -0.000002},
   //etc
 }

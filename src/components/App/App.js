@@ -3,7 +3,7 @@ import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 
 import axios from 'axios';
 
 import DailyProfile from '@containers/DailyProfile';
-import Djinn from '@containers/Djinn';
+import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 
 import {normalizeStorylineData} from '@helpers/movesData';
@@ -123,7 +123,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}> 
-        <Djinn />
+        <HomeProfile />
         {this._renderLowerPanel()}
       </View>
     )

@@ -1,5 +1,5 @@
 
-import DjinniiAnimation from '@components/DjinniiAnimation/DjinniiAnimation';
+import Avatar from '@components/Avatar/Avatar';
 import {updateStats} from '@actions/stats';
 import {setActiveActivity} from '@actions/activities';
 import {connect} from 'react-redux';
@@ -9,4 +9,4 @@ const mapStateToProps = (state, ownProps) => ({
   activeActivity: state.activities.activeActivity
 });
 
-export default connect(mapStateToProps)(DjinniiAnimation);
+export default connect(mapStateToProps)(Avatar);

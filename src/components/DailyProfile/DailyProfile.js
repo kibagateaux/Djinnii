@@ -9,6 +9,8 @@ import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
+
+
 export default class extends PureComponent {
   
   constructor(props) {
@@ -55,6 +57,7 @@ export default class extends PureComponent {
       toggleDailyGoalsDisplay,
       setDisplayStats
     } = this.props;
+    
     // update redux displaydStats
     // pull in stats from first startTime -> again what if none?
     // then run play day
@@ -62,7 +65,6 @@ export default class extends PureComponent {
     const firstStamp = _getFirstMSInDay(dayStartTime);
     const firstAct = _getFirstTimestampInDay(firstStamp, stats);
     const firstStatsObj = firstAct[Object.keys(firstAct)[0]];
-    const uid = 0;
     
     console.log('play day', firstAct, firstStatsObj);
     
