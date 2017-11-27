@@ -25,6 +25,11 @@
 # Branch.io
 -dontwarn io.branch.**
 
+# GIF Support
+-keep class com.facebook.imagepipeline.animated.factory.AnimatedFactoryImpl {
+  public AnimatedFactoryImpl(com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, com.facebook.imagepipeline.core.ExecutorSupplier);
+}
+
 # Keep our interfaces so they can be used by other ProGuard rules.
 # See http://sourceforge.net/p/proguard/bugs/466/
 -keep,allowobfuscation @interface com.facebook.proguard.annotations.DoNotStrip
