@@ -11,16 +11,6 @@ export const getLocalStats = () =>
     .then((stats) => JSON.parse(stats))
     .catch((err) => {console.log('get local stats er', err); return null;});
 
-// update to v1.1 api full length activity
-export const statsToActivityMapping = {
-  'walking': {int: 0.000002, agy: -0.000001, stm: 0.000001},
-  'transport': {int: 0.000001, str: 0.000002, stm: -0.000002},
-  'plc': {int: 0.000002, str: -0.000001, agy: -0.000001},
-  'cycling': {str: 0.000001, agy: 0.000002, stm: 0.000002},
-  'idl': {int: -0.000001, str: -0.000002, stm: -0.000002},
-  //etc
-}
-
 export const statsAfterActivity = (targetActivity, stats) => {
   if(!targetActivity || !stats) throw Error("Need both target activity and stats object to calculate stats after activity");
   const {activity, startTime, endTime, duration} = targetActivity;

@@ -12,12 +12,10 @@ import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 import EmptyFiller from '@components/common/EmptyFiller';
 
-import {normalizeStorylineData} from '@helpers/movesData';
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {viewLocalStorage} from '@helpers/asyncStorage';
 import {updateStats} from '@actions/stats';
-import {movesAuthInitDeepLink, movesAuthInitHttps} from '@lib/helpers/movesData';
 
 import styles from './styles';
 
@@ -65,7 +63,6 @@ export default class App extends Component {
       localStats,
       lastLiveStats,
       localMode,
-      getMovesActivityStoryline
     } = this.props;
     const lastLocalStats = await getLocalStats();
 
@@ -103,7 +100,6 @@ export default class App extends Component {
       updateLocalStats,
       localStats,
       trackUserBehaviour,
-      getMovesActivityStoryline
     } = this.props;
 
     const onActivityPress = (activity) => {
@@ -123,7 +119,7 @@ export default class App extends Component {
     }
     const actions= [
       {action: 'Run',
-      onPress: getMovesActivityStoryline},
+      onPress: onActivityPress('run')},
       //  onPress: onPress(''),
       {action: 'Dance',
        onPress: viewLocalStorage},

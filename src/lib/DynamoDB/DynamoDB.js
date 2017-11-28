@@ -1,9 +1,5 @@
 import AWS from 'aws-sdk';
-<<<<<<< HEAD
 import {AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} from 'react-native-dotenv';
-=======
-import {AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY} from 'react-native-dotenv';
->>>>>>> updates dynamodb tokens on oauth redirect
 import {COGNITO_USER_PROFILE} from '@constants/asyncStorage';
 import {AsyncStorage} from 'react-native';
 import {Auth} from '@lib/Auth';

@@ -11,7 +11,6 @@ import {handleBranchRouting} from '@actions/navigation/handleBranchRouting';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {updateTokens} from '@actions/auth/updateTokens';
-import {getMovesActivityStoryline} from '@actions/activities/getMovesActivityStoryline';
 import {getLocalStats} from '@actions/stats/getLocalStats';
 import {
   LOGIN,
@@ -30,7 +29,6 @@ const mapStateToProps = ({stats, activities, user}) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleBranchRouting: (event) => dispatch(handleBranchRouting(event)),
   updateTokens: (id, tokens) => dispatch(updateTokens(id, tokens)),
-  getMovesActivityStoryline: () => getMovesActivityStoryline(dispatch),
   identifyUser: (userData) => dispatch(identifyUser(userData)),
   navigateToLogin: () => dispatch(navigateTo(LOGIN)),
   navigateToIntegrations: () => dispatch(navigateTo(INTEGRATIONS)),

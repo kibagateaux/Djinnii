@@ -1,5 +1,5 @@
 import {
-  TOGGLE_LOCAL_GAME_MODE
+  TOGGLE_LOCAL_GAME_MODE,
   UPDATE_USER
 } from '@actions/actionNames';
 
