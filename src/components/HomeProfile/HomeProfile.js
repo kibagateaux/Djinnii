@@ -8,8 +8,12 @@ import styles from './styles';
 export default (props) => {
   return (
     <View style={styles.container}>
-      <Avatar />
-      <StatsTable />
+      <View style={styles.avatarContainer}>
+        <Avatar />
+      </View>
+      <View style={styles.statsContainer}>
+        <StatsTable />
+      </View>
         <TouchableOpacity 
           style={styles.switchButton}
           onPress={props.switchLocalGameMode}

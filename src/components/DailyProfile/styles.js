@@ -3,6 +3,6 @@ const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   dailyProfileContainer: {
-    margin: 50
+    margin: height / 50
   }
 });

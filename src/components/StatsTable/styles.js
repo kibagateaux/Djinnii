@@ -15,6 +15,6 @@ export default StyleSheet.create({
   },
   statTextContainer: {
     height: height / 30,
-    width: width / 30
+    // width: width / 30
   }
 })
