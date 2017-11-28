@@ -40,19 +40,18 @@ export default class extends PureComponent {
   )
 
   _renderStatsColumn = (statCategory) => {
+    const toInt = (n) => n ? String(n).split(".")[0] : null;
     return Object.keys(statCategory).map(statRow => {
-      const stat = statCategory[statRow];
-      const statFloat = String.toString(stat).includes(".") ?
-        /(^\d*\.\d?)/.exec(stat) : stat
+      const stat = toInt(statCategory[statRow]);
       const statDiff = this.state.statDifference[statRow];
       const difference = (statDiff && statDiff !== 0) ?
-        `${statDiff < 0 ? '-' : '+'} ${Math.abs(statDiff)}` :
-        null;
+        `${statDiff < 0 ? '-' : '+'} ${Math.abs(statDiff)}` : null;
+      const diff = toInt(difference);
       return (
         <Text style={styles.statRow} key={statRow}>
           <Text style={styles.statText}> {statRow}:  </Text> 
           <Text style={styles.statText}>
-            {statFloat} {difference}
+            {stat} {diff}
           </Text>
         </Text>
       )
