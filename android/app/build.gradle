@@ -145,6 +145,7 @@ android {
 
 dependencies {
     compile project(':react-native-branch')
+    compile project(':react-native-vector-icons')
     compile project(':react-native-aws-cognito-js')
     compile project(':react-native-material-kit')
     compile fileTree(dir: "libs", include: ["*.jar"])

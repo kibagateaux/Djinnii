@@ -10,7 +10,7 @@ export default StyleSheet.create({
     marginTop: width / 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: 'gold'
+    backgroundColor: 'white'
   },
   avatarContainer: {
     flex: 3

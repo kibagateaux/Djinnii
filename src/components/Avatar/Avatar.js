@@ -1,10 +1,18 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import Video from 'react-native-video'
-import { height, width } from '@lib/constants/style';
+
+import Icon from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
-export default ({activeActivity, style}) => {
+export default (props) => {
+  const {
+    activeActivity,
+    style,
+    navigateToSettings,
+    switchLocalGameMode
+  } = props;
+  
   const avatarSelector = (activity) => {
     switch(activity) {
       case "running":         return {type: "gif", src:require("@media/GIFS/running-bebo.gif")};
@@ -18,12 +26,26 @@ export default ({activeActivity, style}) => {
   };
 
   const medium = avatarSelector(activeActivity.activity);
-  console.log('gif', activeActivity, medium.src);
+
+  // Avatar layering Schema top -> down
+  // switch mode + settings buttons
+  // item
+  // avatar
+  // environment
+  
   return (
     <View style={styles.container}>
       {(medium.type === "video") ?
         <Video /> :
         <Image source={medium.src} style={styles.avatar}/>}
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={} style={styles.icon}>
+          <Icon name="settings"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={} style={styles.icon}>>
+          <Icon name="repeat" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

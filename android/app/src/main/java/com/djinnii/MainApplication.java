@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.branch.rnbranch.RNBranchPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import io.branch.referral.Branch;
 import com.airlabsinc.RNAWSCognitoPackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNBranchPackage(),
+            new VectorIconsPackage(),
             new RNAWSCognitoPackage(),
             new ReactMaterialKitPackage()
       );

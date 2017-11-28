@@ -1,48 +1,56 @@
 import React, {PureComponent} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
 import axios from 'axios';
 
 import {DB} from '@lib/DynamoDB';
 import {LAMBDA_CLIENT, DYNAMO_TABLES} from '@constants/AWS';
+import {COGNITO_ID} from '@constants/asyncStorage';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
-
-
 export default class extends PureComponent {
   
   constructor(props) {
     super(props);
-    var lambdaParams = {
-      FunctionName: "jinni-dev-getMovesStoryline", 
-      InvocationType: "RequestResponse", 
-      LogType: "None", 
-     };
-    // LAMBDA_CLIENT.invoke(params, (error, data) => {
+  
+  }
+
+  async componentDidMount() {
+    const id = await AsyncStorage.getItem(COGNITO_ID);
+    const data = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${id || 0}`);
+    console.log('aws res', data);
+    // const lambdaParams = {
+    //   FunctionName: "jinni-integrations-dev-getMovesStorylineData", 
+    //   InvocationType: "RequestResponse", 
+    //   LogType: "None", 
+    //  };
+
+
+    // LAMBDA_CLIENT.invoke(lambdaParams, (error, data) => {
     //   console.log('invoke', error, data);
     //   const userId = "+13472418464"
-      // const queryParams = {
-      //   TableName: DYNAMO_TABLES.activities,
-      //   ScanFilter: {
-      //     userId: {
-      //       ComparisonOperator: "EQ",
-      //       AttributeValueList: ["+13472418464"]
-      //     }
-      //   }
-      // };
-      // DB.scan(queryParams, (error, result) => {
-      //   if(!error && result.Items) {
-      //     const activityList = result.Items.reduce((list, item) => ({
-      //       ...list, [item.startTime]: item
-      //     }));
-      //     this.props.updateActivityList(activityList);
-      //   }
-      //   console.log('db res', error, result);
-      //   // this.props.updateActivitiesList(result)
-      // })
-    // })  
+    //   const queryParams = {
+    //     TableName: DYNAMO_TABLES.activities,
+    //     ScanFilter: {
+    //       userId: {
+    //         ComparisonOperator: "EQ",
+    //         AttributeValueList: ["+13472418464"]
+    //       }
+    //     }
+    //   };
+    //   DB.scan(queryParams, (error, result) => {
+    //     if(!error && result.Items) {
+    //       const activityList = result.Items.reduce((list, item) => ({
+    //         ...list, [item.startTime]: item
+    //       }));
+    //       this.props.updateActivityList(activityList);
+    //     }
+    //     console.log('db res', error, result);
+    //     // this.props.updateActivitiesList(result)
+    //   });
+    // });
   }
 
   playDay = async () => {

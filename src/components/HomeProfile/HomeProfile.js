@@ -14,14 +14,6 @@ export default (props) => {
       <View style={styles.statsContainer}>
         <StatsTable />
       </View>
-        <TouchableOpacity 
-          style={styles.switchButton}
-          onPress={props.switchLocalGameMode}
-        >
-          <Text> 
-            {props.localMode ? 'Enter SvöldLånd' : 'Enter DübLånd'}
-          </Text>
-        </TouchableOpacity>
     </View>
   )
 }
