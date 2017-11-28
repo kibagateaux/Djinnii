@@ -1,2 +1,2 @@
-export * from './switchLocalGameMode';
+export * from './toggleLocalGameMode';
 export * from './updateLocalGameMode';

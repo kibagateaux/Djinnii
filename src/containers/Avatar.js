@@ -17,4 +17,4 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateLocalGameMode: () => dispatch(updateLocalGameMode())
 })
-export default connect(mapStateToProps)(Avatar);
+export default connect(mapStateToProps, mapDispatchToProps)(Avatar);

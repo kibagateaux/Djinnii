@@ -1,4 +1,3 @@
-import {SWITCH_LOCAL_GAME_MODE} from '@actions/actionNames';
 import {toggleLocalGameMode} from '@actions/user';
 import {updateLocalStats, setDisplayStats} from '@actions/stats';
 import {_findLastTime} from '@helpers/time';
@@ -11,6 +10,7 @@ export const updateLocalGameMode = () => (
       stats,
       user: {localMode}
     } = getStore();
+    console.log('update game mode', localMode);
     dispatch(toggleLocalGameMode(!localMode));
     if(localMode) { // if next mode is not local
       const lastStatTime = _findLastTime(stats);
@@ -20,7 +20,5 @@ export const updateLocalGameMode = () => (
       const parsedStats = JSON.parse(lastLocalStats);
       dispatch(updateLocalStats(parsedStats))
     }
-
-
   }
 )

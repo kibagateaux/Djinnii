@@ -18,39 +18,9 @@ export default class extends PureComponent {
   }
 
   async componentDidMount() {
-    const id = await AsyncStorage.getItem(COGNITO_ID);
-    const data = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${id || 0}`);
-    console.log('aws res', data);
-    // const lambdaParams = {
-    //   FunctionName: "jinni-integrations-dev-getMovesStorylineData", 
-    //   InvocationType: "RequestResponse", 
-    //   LogType: "None", 
-    //  };
-
-
-    // LAMBDA_CLIENT.invoke(lambdaParams, (error, data) => {
-    //   console.log('invoke', error, data);
-    //   const userId = "+13472418464"
-    //   const queryParams = {
-    //     TableName: DYNAMO_TABLES.activities,
-    //     ScanFilter: {
-    //       userId: {
-    //         ComparisonOperator: "EQ",
-    //         AttributeValueList: ["+13472418464"]
-    //       }
-    //     }
-    //   };
-    //   DB.scan(queryParams, (error, result) => {
-    //     if(!error && result.Items) {
-    //       const activityList = result.Items.reduce((list, item) => ({
-    //         ...list, [item.startTime]: item
-    //       }));
-    //       this.props.updateActivityList(activityList);
-    //     }
-    //     console.log('db res', error, result);
-    //     // this.props.updateActivitiesList(result)
-    //   });
-    // });
+    // const id = await AsyncStorage.getItem(COGNITO_ID);
+    // const data = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${id || 0}`);
+    // console.log('aws res', data);
   }
 
   playDay = async () => {
@@ -135,7 +105,7 @@ export default class extends PureComponent {
   render() {
     return (
       <View>        
-        <View>  
+        <View>
           { this.vizStorySegments() }
         </View>
       </View>

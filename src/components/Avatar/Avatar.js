@@ -10,9 +10,9 @@ export default (props) => {
     activeActivity,
     style,
     navigateToSettings,
-    switchLocalGameMode
+    updateLocalGameMode
   } = props;
-  
+
   const avatarSelector = (activity) => {
     switch(activity) {
       case "running":         return {type: "gif", src:require("@media/GIFS/running-bebo.gif")};
@@ -35,15 +35,17 @@ export default (props) => {
   
   return (
     <View style={styles.container}>
+      
       {(medium.type === "video") ?
         <Video /> :
         <Image source={medium.src} style={styles.avatar}/>}
+
       <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={} style={styles.icon}>
-          <Icon name="settings"/>
+        <TouchableOpacity>
+          <Icon name="settings" size={24} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={} style={styles.icon}>>
-          <Icon name="repeat" />
+        <TouchableOpacity onPress={() => {console.log('press swtich'); updateLocalGameMode()}}>
+          <Icon name="repeat" size={24}/>
         </TouchableOpacity>
       </View>
     </View>
