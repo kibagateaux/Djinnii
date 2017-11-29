@@ -41,7 +41,7 @@ export default (props) => {
         <Image source={medium.src} style={styles.avatar}/>}
 
       <View style={styles.iconContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={navigateToSettings}>
           <Icon name="settings" size={24} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {console.log('press swtich'); updateLocalGameMode()}}>

@@ -9,9 +9,9 @@ import store from './store/';
 import Router from './router/';
 import App from '@containers/App';
 
-export default withAuthenticator((props) => (
+export default (props) => (
   <Provider store={store}>
     <Router />
   </Provider>
-));
+);
 
