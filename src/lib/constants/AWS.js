@@ -27,7 +27,7 @@ export const DYNAMO_TABLES = {
 };
 
 export const COGNITO_USER_POOL = new CognitoUserPool({
-  UserPoolId: awsmobile.CognitoUserPool.Default.PoolId,
-  ClientId: awsmobile.CognitoUserPool.Default.AppClientId,
-  ClientSecret: awsmobile.CognitoUserPool.Default.AppClientSecret
+  UserPoolId: awsmobile.CognitoUserPool.PoolId,
+  ClientId: awsmobile.CognitoUserPool.AppClientId,
+  ClientSecret: awsmobile.CognitoUserPool.AppClientSecret
 });

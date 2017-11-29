@@ -3,39 +3,26 @@
   "Version":"1.0",
   "CredentialsProvider": {
     "CognitoIdentity": {
-      "Default": {
-        "PoolId":"us-east-1:bd9721cf-a06c-416f-bf28-ca2513b2cb77",
-        "Region":"us-east-1"
-        }
+      "PoolId":"us-east-1:bd9721cf-a06c-416f-bf28-ca2513b2cb77",
+      "Region":"us-east-1"
       }
     },
   "IdentityManager": {
-    "Default": {
-
-    }
   },
   "CognitoUserPool": {
-    "Default": {
-      "PoolId":"us-east-1_GOnN25mkh",
-      "AppClientId":"7oe4l1sdeeuovohn5o8h0nm2t7",
-      "Region":"us-east-1"
-      }
+    "PoolId":"us-east-1_GOnN25mkh",
+    "AppClientId":"7oe4l1sdeeuovohn5o8h0nm2t7",
+    "Region":"us-east-1"
     },
   "DynamoDBObjectMapper": {
-    "Default": {
-      "Region":"us-east-1"
-    }
+    "Region":"us-east-1"
   },
   "PinpointAnalytics": {
-    "Default": {
-      "AppId":"f73d81b75b8f467c8fa9ecd5f334fc25",
-      "Region":"us-east-1"
-    }
+    "AppId":"f73d81b75b8f467c8fa9ecd5f334fc25",
+    "Region":"us-east-1"
   },
   "PinpointTargeting": {
-    "Default": {
-      "Region":"us-east-1"
-    }
+    "Region":"us-east-1"
   },
   "FacebookSignIn": {
     "AppId":"1774283112871368"

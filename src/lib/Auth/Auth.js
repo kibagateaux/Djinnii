@@ -25,9 +25,9 @@ AWS.config.update({
 });
 
 const userPool = new CognitoUserPool({
-  UserPoolId: awsmobile.CognitoUserPool.Default.PoolId,
-  ClientId: awsmobile.CognitoUserPool.Default.AppClientId,
-  ClientSecret: awsmobile.CognitoUserPool.Default.AppClientSecret
+  UserPoolId: awsmobile.CognitoUserPool.PoolId,
+  ClientId: awsmobile.CognitoUserPool.AppClientId,
+  ClientSecret: awsmobile.CognitoUserPool.AppClientSecret
 });
 
 let cognitoUser = null;
@@ -37,9 +37,9 @@ let cognitoUser = null;
  **********************/
 const init = async function syncCognitoStorage() {
   const userPool = new CognitoUserPool({
-    UserPoolId: awsmobile.CognitoUserPool.Default.PoolId, // Your user pool id here
-    ClientId: awsmobile.CognitoUserPool.Default.AppClientId, // Your client id here
-    ClientSecret: awsmobile.CognitoUserPool.Default.AppClientSecret
+    UserPoolId: awsmobile.CognitoUserPool.PoolId, // Your user pool id here
+    ClientId: awsmobile.CognitoUserPool.AppClientId, // Your client id here
+    ClientSecret: awsmobile.CognitoUserPool.AppClientSecret
   });
   
   await new Promise((resolve, reject) => userPool.storage.sync((e, r) => (e ? reject(e) : resolve(r))));
@@ -82,10 +82,10 @@ function check(error) {
 }
 
 const getCognitoCredentials = function getCognitoCredentials(session) {
-  const loginCred = `cognito-idp.${awsmobile.CognitoUserPool.Default.Region}.amazonaws.com/${awsmobile.CognitoUserPool.Default.PoolId}`;
+  const loginCred = `cognito-idp.${awsmobile.CognitoUserPool.Region}.amazonaws.com/${awsmobile.CognitoUserPool.PoolId}`;
 
   const cognitoParams = {
-    IdentityPoolId: awsmobile.CredentialsProvider.CognitoIdentity.Default.PoolId,
+    IdentityPoolId: awsmobile.CredentialsProvider.CognitoIdentity.PoolId,
     Logins: {
       [loginCred]: session.getIdToken().getJwtToken(),
     },
@@ -314,8 +314,8 @@ function handleSignOut() {
 
 function getCurrentUser() {
   const userPool = new CognitoUserPool({
-    UserPoolId: awsmobile.CognitoUserPool.Default.PoolId, // Your user pool id here
-    ClientId: awsmobile.CognitoUserPool.Default.AppClientId, // Your client id here
+    UserPoolId: awsmobile.CognitoUserPool.PoolId, // Your user pool id here
+    ClientId: awsmobile.CognitoUserPool.AppClientId, // Your client id here
   });
 
   return userPool.getCurrentUser();
@@ -333,7 +333,7 @@ function getSignInUserSession(callback) {
   }
 
   setCredentials(new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: awsmobile.CredentialsProvider.CognitoIdentity.Default.PoolId,
+    IdentityPoolId: awsmobile.CredentialsProvider.CognitoIdentity.PoolId,
   }));
   LocalStorage.setItem(IS_LOGGED_IN, 'false');
   callback();
