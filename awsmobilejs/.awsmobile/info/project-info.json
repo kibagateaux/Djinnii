@@ -1,0 +1,22 @@
+{
+	"ProjectName": "djinnii-react-native",
+	"ProjectPath": "/Users/kiba/code/djinnii-react-native",
+	"SourceDir": "src",
+	"DistributionDir": "dist",
+	"BuildCommand": "npm run-script build",
+	"StartCommand": "npm run-script start",
+	"InitializationTime": "2017-11-29-08-53-20",
+	"LastConfigurationTime": "2017-11-29-08-54-00",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendFormat": "yml",
+	"BackendLastBuildTime": "",
+	"BackendLastUpdateTime": "",
+	"BackendLastUpdateSuccessful": false,
+	"BackendProjectID": "8f780637-d8ae-478e-a8fd-24ef901a4d74",
+	"BackendProjectName": "Djinii",
+	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/8f780637-d8ae-478e-a8fd-24ef901a4d74/build",
+	"BackendProjectCreationTime": "2017-09-18T14:33:00.378Z",
+	"BackendProjectLastUpdatedTime": "2017-11-29T13:48:18.142Z"
+}

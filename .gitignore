@@ -56,3 +56,7 @@ app/my-release-key.keystore
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+#awsmobilejs
+awsmobilejs/.awsmobile/backend-build
+awsmobilejs/\#current-backend-info
