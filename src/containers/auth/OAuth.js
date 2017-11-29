@@ -1,4 +1,4 @@
-import OAuth from '@components/auth/OAuth/index.js';
+import OAuth from '@components/auth/OAuth/OAuth';
 import {connect} from 'react-redux';
 import {saveCognitoProfile} from '@actions/auth/saveCognitoProfile';
 import {navigateTo} from '@actions/navigation/navigateTo';

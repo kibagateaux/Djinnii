@@ -1,4 +1,4 @@
-import Login from '@components/auth/Login';
+import Login from '@components/auth/Login/Login';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {HOME, SIGNUP} from '@constants/routes';

@@ -1,4 +1,4 @@
-import Signup from '@components/auth/Signup';
+import Signup from '@components/auth/Signup/Signup';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {HOME, LOGIN} from '@constants/routes';
