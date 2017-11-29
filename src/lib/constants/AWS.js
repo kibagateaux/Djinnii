@@ -11,6 +11,9 @@ import {
   DYNAMO_DB_ACTIVITIES_TABLE
 } from 'react-native-dotenv';
 
+import awsExports from '../../aws-exports';
+export const AWS_CONFIG = awsExports;
+
 import awsmobile from '../../../aws-config.json';
 
 AWS.config.update({
