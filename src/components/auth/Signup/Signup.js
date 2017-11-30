@@ -33,7 +33,6 @@ export default class SignUp extends React.Component {
     const {password, phoneNumber} = this.state;
     const validPassword = password.length > 7;
     const validNumber = checkPhoneNumberLength(phoneNumber);
-    console.log('val sign field', password, validPassword,  phoneNumber, validNumber);
     const numberMessage = validNumber ? '' : ' Please enter a proper US number e.g. 342-624-8971 ';
     const passwordMessage = validPassword ? '' : ' Passwords must be longer than 8 characters ';
     const errorMessage = numberMessage + passwordMessage;
@@ -49,6 +48,7 @@ export default class SignUp extends React.Component {
     Auth.signUp(username, password, email, number)
       .then((user) => {
         console.log("signup user", user);
+        this.props.navigateToLogin();
       })
       .catch((error) => {
         console.log("signup error", error)
