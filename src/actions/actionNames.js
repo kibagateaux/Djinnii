@@ -30,3 +30,7 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const SIGN_IN_USER = 'SIGN_IN_USER';
 export const SIGN_OUT_USER = 'SIGN_OUT_USER';
 export const GET_COGNITO_PROFILE = 'GET_COGNITO_PROFILE';
+
+/* Days */
+export const UPDATE_DAYS = 'UPDATE_DAYS';
+

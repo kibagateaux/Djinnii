@@ -1,1312 +1,361 @@
-export const incomingData = {
-  data: [
-    { date: '20170612', summary: 0, caloriesIdle: 1796 },
-    { date: '20170613', summary: 1, caloriesIdle: 1796 },
-    { date: '20170614', summary: 2, caloriesIdle: 1796 },
-    { date: '20170615', summary: 3, caloriesIdle: 1796 },
-    { date: '20170616', summary: 4, caloriesIdle: 1796 },
-    { date: '20170617', summary: 5, caloriesIdle: 1796 },
-    { date: '20170618', summary: null, caloriesIdle: 1796 } 
-  ],
-  summaries: [
-    [ { 
-      activity: 'walking',
-      duration: 8168,
-      distance: 12037,
-      steps: 15515,
-      calories: 750 } ],
-    [ { activity: 'walking',
-        duration: 14129,
-        distance: 16477,
-        steps: 26405,
-        calories: 1027 },
-      { activity: 'cycling', duration: 3459, distance: 9991, calories: 291 } ],
-    [ { activity: 'walking',
-        duration: 9555,
-        distance: 10578,
-        steps: 17106,
-        calories: 660 } ],
-    [ { activity: 'walking',
-        duration: 8401,
-        distance: 10479,
-        steps: 15188,
-        calories: 653 },
-      { activity: 'cyc', duration: 713, distance: 672, calories: 25 },
-      { activity: 'running',
-        duration: 1720,
-        distance: 4980,
-        steps: 4094,
-        calories: 375 } ],
-    [ { activity: 'walking',
-        duration: 6837,
-        distance: 8837,
-        steps: 11749,
-        calories: 551 },
-      { activity: 'cyc', duration: 397, distance: 1691, calories: 47 } ],
-    [ { activity: 'walking',
-        duration: 4208,
-        distance: 5468,
-        steps: 6524,
-        calories: 341 } ],
-    null ],
-  storylines: [
+export default [
   {
-    date: "20170618",
-    segments: [
-  {
-    type: "place",
-    startTime: "20170618T010650Z",
-    endTime: "20170618T123909Z",
-    place: {
-      id: 644368445,
-      type: "unknown",
-      location: {
-        lat: 40.657214,
-        lon: -73.960366
-      }
-    }
-  },
-  {
-    type: "move",
-    startTime: "20170618T123909Z",
-    endTime: "20170618T130356Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T123909Z",
-        endTime: "20170618T130356Z",
-        duration: 1487,
-        distance: 2697,
-        steps: 3031,
-        calories: 168
-      }
-    ]
-  },
-  {
-    type: "place",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T194912Z",
-    place: {
-      id: 661385686,
-      type: "unknown",
-      location: {
-        lat: 40.669696,
-        lon: -73.979065
-    }
-  },
-  activities: [
-    {
-    activity: "walking",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T131117Z",
-    duration: 440,
-    distance: 495,
-    steps: 661,
-    calories: 31
+    activities: {
+      1511522016000: {activity: "walking", group: "walking", manual: false, startTime: 1511522016000, endTime: 1511522051000},
+      1511522051001: {startTime: 1511522051001, endTime: 1511522318999, duration: 268000, activity: "idl", place: {}},
+      1511522319000: {activity: "transport", group: "transport", manual: false, startTime: 1511522319000, endTime: 1511523153000},
+      1511523153001: {startTime: 1511523153001, endTime: 1511523256999, duration: 104000, activity: "idl", place: {}},
+      1511523257000: {activity: "walking", group: "walking", manual: false, startTime: 1511523257000, endTime: 1511523320000},
+      1511523320001: {startTime: 1511523320001, endTime: 1511524534999, duration: 1215000, activity: "idl", place: {}},
+      1511524535000: {activity: "transport", group: "transport", manual: false, startTime: 1511524535000, endTime: 1511534737000},
+      1511534737000: {activity: "walking", group: "walking", manual: false, startTime: 1511534737000, endTime: 1511534992000},
+      1511534737001: {startTime: 1511534737001, endTime: 1511534736999, duration: 0, activity: "idl", place: {}},
+      1511534992001: {startTime: 1511534992001, endTime: 1511535033999, duration: 42000, activity: "idl", place: {}},
+      1511535034000: {activity: "walking", group: "walking", manual: false, startTime: 1511535034000, endTime: 1511535304000},
+      1511535304001: {startTime: 1511535304001, endTime: 1511536708999, duration: 1405000, activity: "idl", place: {}},
+      1511536709000: {activity: "walking", group: "walking", manual: false, startTime: 1511536709000, endTime: 1511536812000},
+      1511536812001: {startTime: 1511536812001, endTime: 1511536938999, duration: 127000, activity: "idl", place: {}},
+      1511536939000: {activity: "walking", group: "walking", manual: false, startTime: 1511536939000, endTime: 1511537241000},
+      1511537241001: {startTime: 1511537241001, endTime: 1511537241999, duration: 1000, activity: "idl", place: {}},
+      1511537242000: {activity: "transport", group: "transport", manual: false, startTime: 1511537242000, endTime: 1511537470000},
+      1511537470000: {activity: "walking", group: "walking", manual: false, startTime: 1511537470000, endTime: 1511537767000},
+      1511537470001: {startTime: 1511537470001, endTime: 1511537469999, duration: 0, activity: "idl", place: {}},
+      1511537767001: {startTime: 1511537767001, endTime: 1511537767999, duration: 1000, activity: "idl", place: {}},
+      1511537768000: {activity: "transport", group: "transport", manual: false, startTime: 1511537768000, endTime: 1511539208000},
+      1511539208000: {activity: "walking", group: "walking", manual: false, startTime: 1511539208000, endTime: 1511539578000},
+      1511539208001: {startTime: 1511539208001, endTime: 1511539207999, duration: 0, activity: "idl", place: {}},
     },
-    {
-    activity: "walking",
-    startTime: "20170618T142800Z",
-    endTime: "20170618T142914Z",
-    duration: 74,
-    distance: 53,
-    steps: 107,
-    calories: 3
-    }
-    ]
+    date: 1511481600000,
+    lastUpdate: 1511581059000,
+    locations: {
+      1511522319000: {lat: 41.306098, lon: -72.264348, time: 1511522319000},
+      1511523019000: {lat: 41.300773, lon: -72.376132, time: 1511523019000},
+      1511523035000: {lat: 41.300714, lon: -72.376214, time: 1511523035000},
+      1511523089000: {lat: 41.300714, lon: -72.376214, time: 1511523089000},
+      1511523153000: {lat: 41.300372, lon: -72.37756, time: 1511523153000},
+      1511524535000: {lat: 41.300372, lon: -72.37756, time: 1511524535000},
+      1511524597000: {lat: 41.300312, lon: -72.379267, time: 1511524597000},
+      1511524799000: {lat: 41.290418, lon: -72.425445, time: 1511524799000},
+      1511524800000: {lat: 41.290417, lon: -72.425447, time: 1511524800000},
+      1511525035000: {lat: 41.278963, lon: -72.478907, time: 1511525035000},
+      1511525478000: {lat: 41.283742, lon: -72.591744, time: 1511525478000},
+      1511525498000: {lat: 41.28357, lon: -72.596006, time: 1511525498000},
+      1511525774000: {lat: 41.282095, lon: -72.640172, time: 1511525774000},
+      1511526043000: {lat: 41.273915, lon: -72.683033, time: 1511526043000},
+      1511526060000: {lat: 41.272903, lon: -72.687338, time: 1511526060000},
+      1511526325000: {lat: 41.27471, lon: -72.782027, time: 1511526325000},
+      1511526343000: {lat: 41.274265, lon: -72.789038, time: 1511526343000},
+      1511526575000: {lat: 41.274973, lon: -72.823706, time: 1511526575000},
+      1511526795000: {lat: 41.295313, lon: -72.880581, time: 1511526795000},
+      1511526812000: {lat: 41.299891, lon: -72.879794, time: 1511526812000},
+      1511527049000: {lat: 41.313296, lon: -72.906469, time: 1511527049000},
+      1511527066000: {lat: 41.311752, lon: -72.908925, time: 1511527066000},
+      1511527346000: {lat: 41.303252, lon: -72.92276, time: 1511527346000},
+      1511527612000: {lat: 41.298023, lon: -72.92544, time: 1511527612000},
+      1511527629000: {lat: 41.297774, lon: -72.925527, time: 1511527629000},
+      1511527886000: {lat: 41.273083, lon: -72.958759, time: 1511527886000},
+      1511527902000: {lat: 41.271645, lon: -72.961746, time: 1511527902000},
+      1511528027000: {lat: 41.261474, lon: -72.979751, time: 1511528027000},
+      1511528166000: {lat: 41.242768, lon: -73.003637, time: 1511528166000},
+      1511528399000: {lat: 41.224485, lon: -73.053898, time: 1511528399000},
+      1511528400000: {lat: 41.224484, lon: -73.0539, time: 1511528400000},
+      1511528422000: {lat: 41.22272, lon: -73.058748, time: 1511528422000},
+      1511528438000: {lat: 41.22227, lon: -73.060131, time: 1511528438000},
+      1511528647000: {lat: 41.208499, lon: -73.098253, time: 1511528647000},
+      1511528664000: {lat: 41.207425, lon: -73.102213, time: 1511528664000},
+      1511528897000: {lat: 41.190382, lon: -73.137384, time: 1511528897000},
+      1511528913000: {lat: 41.187801, lon: -73.141092, time: 1511528913000},
+      1511529179000: {lat: 41.180479, lon: -73.187155, time: 1511529179000},
+      1511529196000: {lat: 41.178658, lon: -73.187001, time: 1511529196000},
+      1511529464000: {lat: 41.166279, lon: -73.221072, time: 1511529464000},
+      1511529488000: {lat: 41.165116, lon: -73.228651, time: 1511529488000},
+      1511529749000: {lat: 41.142269, lon: -73.26027, time: 1511529749000},
+      1511530023000: {lat: 41.122492, lon: -73.315196, time: 1511530023000},
+      1511530043000: {lat: 41.12265, lon: -73.314968, time: 1511530043000},
+      1511530257000: {lat: 41.11955, lon: -73.36453, time: 1511530257000},
+      1511530717000: {lat: 41.095859, lon: -73.421888, time: 1511530717000},
+      1511530983000: {lat: 41.076624, lon: -73.447261, time: 1511530983000},
+      1511531002000: {lat: 41.076782, lon: -73.448511, time: 1511531002000},
+      1511531497000: {lat: 41.056731, lon: -73.522934, time: 1511531497000},
+      1511531531000: {lat: 41.052942, lon: -73.528195, time: 1511531531000},
+      1511531548000: {lat: 41.051306, lon: -73.530659, time: 1511531548000},
+      1511531820000: {lat: 41.036897, lon: -73.55542, time: 1511531820000},
+      1511531999000: {lat: 41.030714, lon: -73.592178, time: 1511531999000},
+      1511532000000: {lat: 41.030713, lon: -73.59218, time: 1511532000000},
+      1511532055000: {lat: 41.028824, lon: -73.603412, time: 1511532055000},
+      1511532325000: {lat: 41.003655, lon: -73.66212, time: 1511532325000},
+      1511532344000: {lat: 41.000384, lon: -73.664959, time: 1511532344000},
+      1511532591000: {lat: 40.968961, lon: -73.716026, time: 1511532591000},
+      1511532614000: {lat: 40.966067, lon: -73.722177, time: 1511532614000},
+      1511532844000: {lat: 40.921034, lon: -73.77652, time: 1511532844000},
+      1511532862000: {lat: 40.918166, lon: -73.778717, time: 1511532862000},
+      1511532880000: {lat: 40.915428, lon: -73.780861, time: 1511532880000},
+      1511533083000: {lat: 40.911698, lon: -73.827742, time: 1511533083000},
+      1511533361000: {lat: 40.891893, lon: -73.865168, time: 1511533361000},
+      1511533378000: {lat: 40.888528, lon: -73.866768, time: 1511533378000},
+      1511533642000: {lat: 40.834739, lon: -73.906852, time: 1511533642000},
+      1511533659000: {lat: 40.832064, lon: -73.908457, time: 1511533659000},
+      1511533921000: {lat: 40.807258, lon: -73.937615, time: 1511533921000},
+      1511533937000: {lat: 40.805631, lon: -73.938512, time: 1511533937000},
+      1511534632000: {lat: 40.753999, lon: -73.976092, time: 1511534632000},
+      1511534703000: {lat: 40.753999, lon: -73.976092, time: 1511534703000},
+      1511534737000: {lat: 40.753539, lon: -73.976278, time: 1511534737000},
+      1511534852000: {lat: 40.752493, lon: -73.976649, time: 1511534852000},
+      1511534868000: {lat: 40.752488, lon: -73.97656, time: 1511534868000},
+      1511534992000: {lat: 40.752261, lon: -73.976208, time: 1511534992000},
+      1511536939000: {lat: 40.752261, lon: -73.976208, time: 1511536939000},
+      1511537145000: {lat: 40.751832, lon: -73.978165, time: 1511537145000},
+      1511537242000: {lat: 40.751058, lon: -73.978768, time: 1511537242000},
+      1511537470000: {lat: 40.737337, lon: -73.989444, time: 1511537470000},
+      1511537588000: {lat: 40.736017, lon: -73.990472, time: 1511537588000},
+      1511537768000: {lat: 40.735094, lon: -73.990647, time: 1511537768000},
+      1511537802000: {lat: 40.734545, lon: -73.990657, time: 1511537802000},
+      1511538334000: {lat: 40.706829, lon: -74.001955, time: 1511538334000},
+      1511539199000: {lat: 40.662305, lon: -73.962283, time: 1511539199000},
+      1511539200000: {lat: 40.662305, lon: -73.962283, time: 1511539200000},
+      1511539208000: {lat: 40.661879, lon: -73.961904, time: 1511539208000},
+      1511539347000: {lat: 40.660719, lon: -73.960868, time: 1511539347000},
+      1511539366000: {lat: 40.660494, lon: -73.960634, time: 1511539366000},
+      1511539578000: {lat: 40.65764, lon: -73.961013, time: 1511539578000}
+    } 
+  },
+  {
+    activities: {
+      1511640948000:  {activity: "walking", group: "walking", manual: false, startTime: 1511640948000, endTime: 1511640967000},
+      1511640967001:  {startTime: 1511640967001, endTime: 1511647987999, duration: 7021000, activity: "idl", place: {}},
+      1511647988000:  {activity: "walking", group: "walking", manual: false, startTime: 1511647988000, endTime: 1511649419000},
+      1511649419001:  {startTime: 1511649419001, endTime: 1511659803999, duration: 10385000, activity: "idl", place: {}},
+      1511659804000:  {activity: "walking", group: "walking", manual: false, startTime: 1511659804000, endTime: 1511659864000},
+      1511659864001:  {startTime: 1511659864001, endTime: 1511664597999, duration: 4734000, activity: "idl", place: {}},
+      1511664598000:  {activity: "walking", group: "walking", manual: false, startTime: 1511664598000, endTime: 1511664627000},
+      1511664627001:  {startTime: 1511664627001, endTime: 1511664939999, duration: 313000, activity: "idl", place: {}},
+      1511664940000:  {activity: "walking", group: "walking", manual: false, startTime: 1511664940000, endTime: 1511668170000},
     },
-    {
-    type: "move",
-    startTime: "20170618T194912Z",
-    endTime: "20170618T195316Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T194912Z",
-        endTime: "20170618T195316Z",
-        duration: 244,
-        distance: 382,
-        steps: 328,
-        calories: 24
-      }
-    ]
-  },
-    {
-    type: "place",
-    startTime: "20170618T195317Z",
-    endTime: "20170618T200503Z",
-    place: {
-      id: 661385687,
-      type: "unknown",
-      location: {
-        lat: 40.672278,
-        lon: -73.977078
-    }
-  },
-  activities: [
-    {
-      activity: "walking",
-      startTime: "20170618T195317Z",
-      endTime: "20170618T195959Z",
-      duration: 402,
-      distance: 456,
-      steps: 608,
-      calories: 28
+    date:  1511568000000,
+    lastUpdate:  1511753599000,
+    locations: {
+      1511647988000:  {lat: 40.65764, lon: -73.961013, time: 1511647988000},
+      1511648021000:  {lat: 40.657796, lon: -73.960896, time: 1511648021000},
+      1511648237000:  {lat: 40.655579, lon: -73.959961, time: 1511648237000},
+      1511648479000:  {lat: 40.65236, lon: -73.961466, time: 1511648479000},
+      1511648498000:  {lat: 40.652009, lon: -73.961537, time: 1511648498000},
+      1511648736000:  {lat: 40.647927, lon: -73.960714, time: 1511648736000},
+      1511648754000:  {lat: 40.647675, lon: -73.960693, time: 1511648754000},
+      1511649024000:  {lat: 40.643065, lon: -73.959781, time: 1511649024000},
+      1511649053000:  {lat: 40.64261, lon: -73.959664, time: 1511649053000},
+      1511649272000:  {lat: 40.640239, lon: -73.962005, time: 1511649272000},
+      1511649300000:  {lat: 40.63994, lon: -73.962168, time: 1511649300000},
+      1511649419000:  {lat: 40.639924, lon: -73.961999, time: 1511649419000},
+      1511664940000:  {lat: 40.639924, lon: -73.961999, time: 1511664940000},
+      1511665199000:  {lat: 40.644221, lon: -73.962977, time: 1511665199000},
+      1511665200000:  {lat: 40.644221, lon: -73.962977, time: 1511665200000},
+      1511665206000:  {lat: 40.644321, lon: -73.963, time: 1511665206000},
+      1511665222000:  {lat: 40.644601, lon: -73.963026, time: 1511665222000},
+      1511665475000:  {lat: 40.647982, lon: -73.962727, time: 1511665475000},
+      1511665494000:  {lat: 40.648232, lon: -73.962805, time: 1511665494000},
+      1511665774000:  {lat: 40.651002, lon: -73.964772, time: 1511665774000},
+      1511666028000:  {lat: 40.652942, lon: -73.968071, time: 1511666028000},
+      1511666269000:  {lat: 40.652508, lon: -73.972732, time: 1511666269000},
+      1511666289000:  {lat: 40.653003, lon: -73.971947, time: 1511666289000},
+      1511666560000:  {lat: 40.656789, lon: -73.97309, time: 1511666560000},
+      1511666700000:  {lat: 40.657936, lon: -73.973748, time: 1511666700000},
+      1511667109000:  {lat: 40.662118, lon: -73.972287, time: 1511667109000},
+      1511667125000:  {lat: 40.66224, lon: -73.972227, time: 1511667125000},
+      1511667249000:  {lat: 40.662069, lon: -73.970509, time: 1511667249000},
+      1511667387000:  {lat: 40.661744, lon: -73.967432, time: 1511667387000},
+      1511667403000:  {lat: 40.661712, lon: -73.967188, time: 1511667403000},
+      1511667628000:  {lat: 40.659936, lon: -73.964903, time: 1511667628000},
+      1511667651000:  {lat: 40.6598, lon: -73.964655, time: 1511667651000},
+      1511667911000:  {lat: 40.660286, lon: -73.960453, time: 1511667911000},
+      1511667930000:  {lat: 40.660054, lon: -73.960566, time: 1511667930000},
+      1511668170000:  {lat: 40.65764, lon: -73.961013, time: 1511668170000}
     },
-    {
-      activity: "walking",
-      startTime: "20170618T200149Z",
-      endTime: "20170618T200218Z",
-      duration: 29,
-      distance: 25,
-      steps: 50,
-      calories: 2
-    }
-    ]
   },
   {
-  type: "move",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  duration: 358,
-  distance: 471,
-  steps: 791,
-  calories: 29
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T201102Z",
-  endTime: "20170618T223038Z",
-  place: {
-  id: 661385686,
-  type: "unknown",
-  location: {
-  lat: 40.669696,
-  lon: -73.979065
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T201248Z",
-  endTime: "20170618T201334Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  },
-  {
-  activity: "walking",
-  startTime: "20170618T220750Z",
-  endTime: "20170618T221420Z",
-  duration: 390,
-  distance: 436,
-  steps: 581,
-  calories: 27
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  activities: [
-  {
-  activity: "transport",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  duration: 796,
-  distance: 3529
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T224355Z",
-  endTime: "20170618T225430Z",
-  place: {
-  id: 661396820,
-  type: "unknown",
-  location: {
-  lat: 40.658085,
-  lon: -73.960264
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T224842Z",
-  endTime: "20170618T224922Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T225430Z",
-  endTime: "20170619T011806Z",
-  place: {
-  id: 644368445,
-  type: "unknown",
-  location: {
-  lat: 40.657214,
-  lon: -73.960366
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011458Z",
-  endTime: "20170619T011544Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  duration: 1266,
-  distance: 2092,
-  steps: 2461,
-  calories: 130
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T013913Z",
-  endTime: "20170619T015837Z",
-  place: {
-  id: 661471766,
-  type: "unknown",
-  location: {
-  lat: 40.659731,
-  lon: -73.977205
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  duration: 603,
-  distance: 805,
-  steps: 1152,
-  calories: 50
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T020841Z",
-  endTime: "20170619T021104Z",
-  place: {
-  id: 661471768,
-  type: "unknown",
-  location: {
-  lat: 40.664754,
-  lon: -73.977445
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  duration: 393,
-  distance: 521,
-  steps: 945,
-  calories: 32
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T021738Z",
-  endTime: "20170619T023455Z",
-  place: {
-  id: 661471770,
-  type: "unknown",
-  location: {
-  lat: 40.667245,
-  lon: -73.981653
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021929Z",
-  endTime: "20170619T022009Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  duration: 239,
-  distance: 401,
-  steps: 334,
-  calories: 25
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T025516Z",
-  place: {
-  id: 661471772,
-  type: "unknown",
-  location: {
-  lat: 40.665089,
-  lon: -73.977725
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T024343Z",
-  duration: 288,
-  distance: 324,
-  steps: 432,
-  calories: 20
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T034824Z",
-  place: {
-  id: 661471773,
-  type: "unknown",
-  location: {
-  lat: 40.663934,
-  lon: -73.975446
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T025540Z",
-  duration: 23,
-  distance: 17,
-  steps: 35,
-  calories: 1
-  },
-  {
-  activity: "walking",
-  startTime: "20170619T031051Z",
-  endTime: "20170619T031440Z",
-  duration: 229,
-  distance: 258,
-  steps: 345,
-  calories: 16
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T041418Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T035959Z",
-  duration: 695,
-  distance: 977,
-  steps: 1510,
-  calories: 61
-  }
-  ]
-  }
-  ],
-  caloriesIdle: 1796
-},
-  {
-    date: "20170618",
-    segments: [
-  {
-    type: "place",
-    startTime: "20170618T010650Z",
-    endTime: "20170618T123909Z",
-    place: {
-      id: 644368445,
-      type: "unknown",
-      location: {
-        lat: 40.657214,
-        lon: -73.960366
-      }
-    }
-  },
-  {
-    type: "move",
-    startTime: "20170618T123909Z",
-    endTime: "20170618T130356Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T123909Z",
-        endTime: "20170618T130356Z",
-        duration: 1487,
-        distance: 2697,
-        steps: 3031,
-        calories: 168
-      }
-    ]
-  },
-  {
-    type: "place",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T194912Z",
-    place: {
-      id: 661385686,
-      type: "unknown",
-      location: {
-        lat: 40.669696,
-        lon: -73.979065
-    }
-  },
-  activities: [
-    {
-    activity: "walking",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T131117Z",
-    duration: 440,
-    distance: 495,
-    steps: 661,
-    calories: 31
+    activities: {
+      1511699530000: {activity: "walking", group: "walking", manual: false, startTime: 1511699530000, endTime: 1511699590000},
+      1511699590001: {startTime: 1511699590001, endTime: 1511713858999, duration: 14269000, activity: "idl", place: {}},
+      1511713859000: {activity: "walking", group: "walking", manual: false, startTime: 1511713859000, endTime: 1511713874000},
+      1511713874001: {startTime: 1511713874001, endTime: 1511713948999, duration: 75000, activity: "idl", place: {}},
+      1511713949000: {activity: "walking", group: "walking", manual: false, startTime: 1511713949000, endTime: 1511714117000},
+      1511714117000: {activity: "transport", group: "transport", manual: false, startTime: 1511714117000, endTime: 1511715550000},
+      1511714117001: {startTime: 1511714117001, endTime: 1511714116999, duration: 0, activity: "idl", place: {}},
+      1511715550000: {activity: "walking", group: "walking", manual: false, startTime: 1511715550000, endTime: 1511715750000},
+      1511715550001: {startTime: 1511715550001, endTime: 1511715549999, duration: 0, activity: "idl", place: {}},
+      1511715750000: {activity: "transport", group: "transport", manual: false, startTime: 1511715750000, endTime: 1511716053000},
+      1511715750001: {startTime: 1511715750001, endTime: 1511715749999, duration: 0, activity: "idl", place: {}},
+      1511716053001: {startTime: 1511716053001, endTime: 1511716053999, duration: 1000, activity: "idl", place: {}},
+      1511716054000: {activity: "walking", group: "walking", manual: false, startTime: 1511716054000, endTime: 1511716255000},
+      1511716255001: {startTime: 1511716255001, endTime: 1511716255999, duration: 1000, activity: "idl", place: {}},
+      1511716256000: {activity: "walking", group: "walking", manual: false, startTime: 1511716256000, endTime: 1511716338000},
+      1511716338001: {startTime: 1511716338001, endTime: 1511716627999, duration: 290000, activity: "idl", place: {}},
+      1511716628000: {activity: "walking", group: "walking", manual: false, startTime: 1511716628000, endTime: 1511717502000},
+      1511717502001: {startTime: 1511717502001, endTime: 1511717612999, duration: 111000, activity: "idl", place: {}},
+      1511717613000: {activity: "walking", group: "walking", manual: false, startTime: 1511717613000, endTime: 1511717891000},
+      1511717891001: {startTime: 1511717891001, endTime: 1511719199999, duration: 1309000, activity: "idl", place: {}},
+      1511719200000: {activity: "walking", group: "walking", manual: false, startTime: 1511719200000, endTime: 1511719827000},
+      1511719827001: {startTime: 1511719827001, endTime: 1511726039999, duration: 6213000, activity: "idl", place: {}},
+      1511726040000: {activity: "walking", group: "walking", manual: false, startTime: 1511726040000, endTime: 1511726069000},
+      1511726069001: {startTime: 1511726069001, endTime: 1511727023999, duration: 955000, activity: "idl", place: {}},
+      1511727024000: {activity: "walking", group: "walking", manual: false, startTime: 1511727024000, endTime: 1511727057000},
+      1511727057001: {startTime: 1511727057001, endTime: 1511727247999, duration: 191000, activity: "idl", place: {}},
+      1511727248000: {activity: "walking", group: "walking", manual: false, startTime: 1511727248000, endTime: 1511729373000},
+      1511729373000: {activity: "transport", group: "transport", manual: false, startTime: 1511729373000, endTime: 1511731389000},
+      1511729373001: {startTime: 1511729373001, endTime: 1511729372999, duration: 0, activity: "idl", place: {}},
+      1511731389000: {activity: "walking", group: "walking", manual: false, startTime: 1511731389000, endTime: 1511731778000},
+      1511731389001: {startTime: 1511731389001, endTime: 1511731388999, duration: 0, activity: "idl", place: {}},
+      1511731778001: {startTime: 1511731778001, endTime: 1511732704999, duration: 927000, activity: "idl", place: {}},
+      1511732705000: {activity: "walking", group: "walking", manual: false, startTime: 1511732705000, endTime: 1511732758000},
+      1511732758001: {startTime: 1511732758001, endTime: 1511733339999, duration: 582000, activity: "idl", place: {}},
+      1511733340000: {activity: "walking", group: "walking", manual: false, startTime: 1511733340000, endTime: 1511733818000},
+      1511733818000: {activity: "transport", group: "transport", manual: false, startTime: 1511733818000, endTime: 1511735572000},
+      1511733818001: {startTime: 1511733818001, endTime: 1511733817999, duration: 0, activity: "idl", place: {}},
+      1511735572000: {activity: "walking", group: "walking", manual: false, startTime: 1511735572000, endTime: 1511737170000},
+      1511735572001: {startTime: 1511735572001, endTime: 1511735571999, duration: 0, activity: "idl", place: {}},
+      1511737170001: {startTime: 1511737170001, endTime: 1511738395999, duration: 1226000, activity: "idl", place: {}},
+      1511738396000: {activity: "walking", group: "walking", manual: false, startTime: 1511738396000, endTime: 1511738886000},
+      1511738886001: {startTime: 1511738886001, endTime: 1511738972999, duration: 87000, activity: "idl", place: {}},
+      1511738973000: {activity: "walking", group: "walking", manual: false, startTime: 1511738973000, endTime: 1511739998000},
+      1511739998001: {startTime: 1511739998001, endTime: 1511740941999, duration: 944000, activity: "idl", place: {}},
+      1511740942000: {activity: "walking", group: "walking", manual: false, startTime: 1511740942000, endTime: 1511740958000},
+      1511740958001: {startTime: 1511740958001, endTime: 1511741147999, duration: 190000, activity: "idl", place: {}},
+      1511741148000: {activity: "walking", group: "walking", manual: false, startTime: 1511741148000, endTime: 1511741695000},
+      1511741695000: {activity: "transport", group: "transport", manual: false, startTime: 1511741695000, endTime: 1511743174000},
+      1511741695001: {startTime: 1511741695001, endTime: 1511741694999, duration: 0, activity: "idl", place: {}},
+      1511743174000: {activity: "walking", group: "walking", manual: false, startTime: 1511743174000, endTime: 1511743551000},
+      1511743174001: {startTime: 1511743174001, endTime: 1511743173999, duration: 0, activity: "idl", place: {}},
     },
-    {
-    activity: "walking",
-    startTime: "20170618T142800Z",
-    endTime: "20170618T142914Z",
-    duration: 74,
-    distance: 53,
-    steps: 107,
-    calories: 3
+    date: 1511654400000,
+    lastUpdate: 1511753600000,
+    locations: {
+      1511713949000: {lat: 40.65764, lon: -73.961013, time: 1511713949000},
+      1511714117000: {lat: 40.659901, lon: -73.960909, time: 1511714117000},
+      1511714167000: {lat: 40.660698, lon: -73.961081, time: 1511714167000},
+      1511714192000: {lat: 40.661053, lon: -73.962061, time: 1511714192000},
+      1511714411000: {lat: 40.661857, lon: -73.962299, time: 1511714411000},
+      1511714553000: {lat: 40.677111, lon: -73.972398, time: 1511714553000},
+      1511714588000: {lat: 40.677257, lon: -73.97249, time: 1511714588000},
+      1511715204000: {lat: 40.714302, lon: -73.994179, time: 1511715204000},
+      1511715550000: {lat: 40.734197, lon: -73.990947, time: 1511715550000},
+      1511715599000: {lat: 40.734577, lon: -73.990885, time: 1511715599000},
+      1511715600000: {lat: 40.734577, lon: -73.990885, time: 1511715600000},
+      1511715646000: {lat: 40.734933, lon: -73.990827, time: 1511715646000},
+      1511715661000: {lat: 40.735027, lon: -73.991121, time: 1511715661000},
+      1511715677000: {lat: 40.735084, lon: -73.991281, time: 1511715677000},
+      1511715750000: {lat: 40.735281, lon: -73.991752, time: 1511715750000},
+      1511715971000: {lat: 40.739727, lon: -74.002368, time: 1511715971000},
+      1511716005000: {lat: 40.739698, lon: -74.002229, time: 1511716005000},
+      1511716036000: {lat: 40.739693, lon: -74.002211, time: 1511716036000},
+      1511716054000: {lat: 40.739702, lon: -74.002202, time: 1511716054000},
+      1511716069000: {lat: 40.739703, lon: -74.002201, time: 1511716069000},
+      1511716099000: {lat: 40.740108, lon: -74.00218, time: 1511716099000},
+      1511716130000: {lat: 40.740514, lon: -74.001955, time: 1511716130000},
+      1511716170000: {lat: 40.740744, lon: -74.001645, time: 1511716170000},
+      1511716185000: {lat: 40.740778, lon: -74.001608, time: 1511716185000},
+      1511716255000: {lat: 40.740874, lon: -74.001566, time: 1511716255000},
+      1511716628000: {lat: 40.740874, lon: -74.001566, time: 1511716628000},
+      1511716842000: {lat: 40.746957, lon: -73.997806, time: 1511716842000},
+      1511716859000: {lat: 40.746987, lon: -73.998003, time: 1511716859000},
+      1511716895000: {lat: 40.746981, lon: -73.998306, time: 1511716895000},
+      1511717084000: {lat: 40.748524, lon: -74.000908, time: 1511717084000},
+      1511717104000: {lat: 40.74888, lon: -74.001199, time: 1511717104000},
+      1511717140000: {lat: 40.749121, lon: -74.001687, time: 1511717140000},
+      1511717336000: {lat: 40.750506, lon: -74.005168, time: 1511717336000},
+      1511717383000: {lat: 40.750761, lon: -74.005493, time: 1511717383000},
+      1511717502000: {lat: 40.751324, lon: -74.005889, time: 1511717502000},
+      1511727248000: {lat: 40.751324, lon: -74.005889, time: 1511727248000},
+      1511727395000: {lat: 40.749774, lon: -74.003759, time: 1511727395000},
+      1511727665000: {lat: 40.747915, lon: -74.000431, time: 1511727665000},
+      1511727682000: {lat: 40.747701, lon: -74.000184, time: 1511727682000},
+      1511727924000: {lat: 40.745626, lon: -73.998117, time: 1511727924000},
+      1511727940000: {lat: 40.745444, lon: -73.998234, time: 1511727940000},
+      1511728189000: {lat: 40.743696, lon: -73.995844, time: 1511728189000},
+      1511728211000: {lat: 40.743487, lon: -73.995995, time: 1511728211000},
+      1511728460000: {lat: 40.741321, lon: -73.994313, time: 1511728460000},
+      1511728476000: {lat: 40.741061, lon: -73.994359, time: 1511728476000},
+      1511728722000: {lat: 40.738673, lon: -73.99111, time: 1511728722000},
+      1511728739000: {lat: 40.738843, lon: -73.990745, time: 1511728739000},
+      1511728966000: {lat: 40.736289, lon: -73.990469, time: 1511728966000},
+      1511728981000: {lat: 40.736106, lon: -73.990477, time: 1511728981000},
+      1511729193000: {lat: 40.73604, lon: -73.990477, time: 1511729193000},
+      1511729373000: {lat: 40.735493, lon: -73.990632, time: 1511729373000},
+      1511729404000: {lat: 40.735357, lon: -73.990669, time: 1511729404000},
+      1511729419000: {lat: 40.735357, lon: -73.990669, time: 1511729419000},
+      1511729915000: {lat: 40.701945, lon: -73.987929, time: 1511729915000},
+      1511729999000: {lat: 40.699763, lon: -73.986508, time: 1511729999000},
+      1511730000000: {lat: 40.699763, lon: -73.986508, time: 1511730000000},
+      1511731389000: {lat: 40.664108, lon: -73.963295, time: 1511731389000},
+      1511731484000: {lat: 40.661037, lon: -73.961081, time: 1511731484000},
+      1511731502000: {lat: 40.660706, lon: -73.960825, time: 1511731502000},
+      1511731706000: {lat: 40.658124, lon: -73.960838, time: 1511731706000},
+      1511731778000: {lat: 40.65764, lon: -73.961013, time: 1511731778000},
+      1511733340000: {lat: 40.65764, lon: -73.961013, time: 1511733340000},
+      1511733593000: {lat: 40.660505, lon: -73.960779, time: 1511733593000},
+      1511733599000: {lat: 40.660539, lon: -73.960892, time: 1511733599000},
+      1511733600000: {lat: 40.660539, lon: -73.960892, time: 1511733600000},
+      1511733654000: {lat: 40.660803, lon: -73.96177, time: 1511733654000},
+      1511733818000: {lat: 40.6613, lon: -73.962116, time: 1511733818000},
+      1511733906000: {lat: 40.661659, lon: -73.962176, time: 1511733906000},
+      1511733922000: {lat: 40.661696, lon: -73.962277, time: 1511733922000},
+      1511734442000: {lat: 40.706528, lon: -73.986573, time: 1511734442000},
+      1511734462000: {lat: 40.706605, lon: -73.986732, time: 1511734462000},
+      1511734661000: {lat: 40.706632, lon: -73.98668, time: 1511734661000},
+      1511734676000: {lat: 40.706632, lon: -73.986681, time: 1511734676000},
+      1511734692000: {lat: 40.706631, lon: -73.986683, time: 1511734692000},
+      1511734908000: {lat: 40.705929, lon: -73.990066, time: 1511734908000},
+      1511735159000: {lat: 40.718341, lon: -74.000258, time: 1511735159000},
+      1511735542000: {lat: 40.722425, lon: -73.996909, time: 1511735542000},
+      1511735572000: {lat: 40.724622, lon: -73.995126, time: 1511735572000},
+      1511735634000: {lat: 40.725221, lon: -73.994774, time: 1511735634000},
+      1511735747000: {lat: 40.724974, lon: -73.994525, time: 1511735747000},
+      1511735765000: {lat: 40.724974, lon: -73.994628, time: 1511735765000},
+      1511736017000: {lat: 40.724316, lon: -73.992333, time: 1511736017000},
+      1511736034000: {lat: 40.724391, lon: -73.992061, time: 1511736034000},
+      1511736236000: {lat: 40.724827, lon: -73.990539, time: 1511736236000},
+      1511736252000: {lat: 40.725028, lon: -73.99043, time: 1511736252000},
+      1511736456000: {lat: 40.726742, lon: -73.9892, time: 1511736456000},
+      1511736720000: {lat: 40.728342, lon: -73.986908, time: 1511736720000},
+      1511736736000: {lat: 40.728222, lon: -73.986681, time: 1511736736000},
+      1511736942000: {lat: 40.727299, lon: -73.984484, time: 1511736942000},
+      1511736959000: {lat: 40.727236, lon: -73.984236, time: 1511736959000},
+      1511737170000: {lat: 40.726678, lon: -73.982411, time: 1511737170000},
+      1511738396000: {lat: 40.726678, lon: -73.982411, time: 1511738396000},
+      1511738628000: {lat: 40.727496, lon: -73.983604, time: 1511738628000},
+      1511738644000: {lat: 40.727637, lon: -73.983757, time: 1511738644000},
+      1511738886000: {lat: 40.727958, lon: -73.984856, time: 1511738886000},
+      1511738973000: {lat: 40.727958, lon: -73.984856, time: 1511738973000},
+      1511739125000: {lat: 40.727961, lon: -73.984884, time: 1511739125000},
+      1511739141000: {lat: 40.728075, lon: -73.984892, time: 1511739141000},
+      1511739271000: {lat: 40.728988, lon: -73.984153, time: 1511739271000},
+      1511739378000: {lat: 40.72999, lon: -73.983382, time: 1511739378000},
+      1511739394000: {lat: 40.730092, lon: -73.983334, time: 1511739394000},
+      1511739646000: {lat: 40.73191, lon: -73.9845, time: 1511739646000},
+      1511739663000: {lat: 40.732067, lon: -73.984681, time: 1511739663000},
+      1511739925000: {lat: 40.734175, lon: -73.98391, time: 1511739925000},
+      1511739998000: {lat: 40.73429, lon: -73.983897, time: 1511739998000},
+      1511741148000: {lat: 40.73429, lon: -73.983897, time: 1511741148000},
+      1511741346000: {lat: 40.735532, lon: -73.98719, time: 1511741346000},
+      1511741364000: {lat: 40.735601, lon: -73.987483, time: 1511741364000},
+      1511741619000: {lat: 40.735154, lon: -73.990401, time: 1511741619000},
+      1511741634000: {lat: 40.735215, lon: -73.99054, time: 1511741634000},
+      1511741695000: {lat: 40.735442, lon: -73.990578, time: 1511741695000},
+      1511741834000: {lat: 40.735759, lon: -73.990511, time: 1511741834000},
+      1511741856000: {lat: 40.735784, lon: -73.990508, time: 1511741856000},
+      1511742043000: {lat: 40.735562, lon: -73.99066, time: 1511742043000},
+      1511742081000: {lat: 40.724614, lon: -73.997821, time: 1511742081000},
+      1511742322000: {lat: 40.712046, lon: -73.993785, time: 1511742322000},
+      1511742984000: {lat: 40.677163, lon: -73.972586, time: 1511742984000},
+      1511743174000: {lat: 40.661257, lon: -73.962273, time: 1511743174000},
+      1511743202000: {lat: 40.660922, lon: -73.962059, time: 1511743202000},
+      1511743229000: {lat: 40.660728, lon: -73.961854, time: 1511743229000},
+      1511743266000: {lat: 40.660749, lon: -73.961204, time: 1511743266000},
+      1511743472000: {lat: 40.657904, lon: -73.960573, time: 1511743472000},
+      1511743491000: {lat: 40.658053, lon: -73.960973, time: 1511743491000},
+      1511743551000: {lat: 40.65764, lon: -73.961013, time: 1511743551000}
     }
-    ]
-    },
-    {
-    type: "move",
-    startTime: "20170618T194912Z",
-    endTime: "20170618T195316Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T194912Z",
-        endTime: "20170618T195316Z",
-        duration: 244,
-        distance: 382,
-        steps: 328,
-        calories: 24
-      }
-    ]
-  },
-    {
-    type: "place",
-    startTime: "20170618T195317Z",
-    endTime: "20170618T200503Z",
-    place: {
-      id: 661385687,
-      type: "unknown",
-      location: {
-        lat: 40.672278,
-        lon: -73.977078
-    }
-  },
-  activities: [
-    {
-      activity: "walking",
-      startTime: "20170618T195317Z",
-      endTime: "20170618T195959Z",
-      duration: 402,
-      distance: 456,
-      steps: 608,
-      calories: 28
-    },
-    {
-      activity: "walking",
-      startTime: "20170618T200149Z",
-      endTime: "20170618T200218Z",
-      duration: 29,
-      distance: 25,
-      steps: 50,
-      calories: 2
-    }
-    ]
-  },
-  {
-  type: "move",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  duration: 358,
-  distance: 471,
-  steps: 791,
-  calories: 29
   }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T201102Z",
-  endTime: "20170618T223038Z",
-  place: {
-  id: 661385686,
-  type: "unknown",
-  location: {
-  lat: 40.669696,
-  lon: -73.979065
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T201248Z",
-  endTime: "20170618T201334Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  },
-  {
-  activity: "walking",
-  startTime: "20170618T220750Z",
-  endTime: "20170618T221420Z",
-  duration: 390,
-  distance: 436,
-  steps: 581,
-  calories: 27
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  activities: [
-  {
-  activity: "transport",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  duration: 796,
-  distance: 3529
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T224355Z",
-  endTime: "20170618T225430Z",
-  place: {
-  id: 661396820,
-  type: "unknown",
-  location: {
-  lat: 40.658085,
-  lon: -73.960264
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T224842Z",
-  endTime: "20170618T224922Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T225430Z",
-  endTime: "20170619T011806Z",
-  place: {
-  id: 644368445,
-  type: "unknown",
-  location: {
-  lat: 40.657214,
-  lon: -73.960366
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011458Z",
-  endTime: "20170619T011544Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  duration: 1266,
-  distance: 2092,
-  steps: 2461,
-  calories: 130
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T013913Z",
-  endTime: "20170619T015837Z",
-  place: {
-  id: 661471766,
-  type: "unknown",
-  location: {
-  lat: 40.659731,
-  lon: -73.977205
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  duration: 603,
-  distance: 805,
-  steps: 1152,
-  calories: 50
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T020841Z",
-  endTime: "20170619T021104Z",
-  place: {
-  id: 661471768,
-  type: "unknown",
-  location: {
-  lat: 40.664754,
-  lon: -73.977445
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  duration: 393,
-  distance: 521,
-  steps: 945,
-  calories: 32
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T021738Z",
-  endTime: "20170619T023455Z",
-  place: {
-  id: 661471770,
-  type: "unknown",
-  location: {
-  lat: 40.667245,
-  lon: -73.981653
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021929Z",
-  endTime: "20170619T022009Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  duration: 239,
-  distance: 401,
-  steps: 334,
-  calories: 25
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T025516Z",
-  place: {
-  id: 661471772,
-  type: "unknown",
-  location: {
-  lat: 40.665089,
-  lon: -73.977725
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T024343Z",
-  duration: 288,
-  distance: 324,
-  steps: 432,
-  calories: 20
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T034824Z",
-  place: {
-  id: 661471773,
-  type: "unknown",
-  location: {
-  lat: 40.663934,
-  lon: -73.975446
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T025540Z",
-  duration: 23,
-  distance: 17,
-  steps: 35,
-  calories: 1
-  },
-  {
-  activity: "walking",
-  startTime: "20170619T031051Z",
-  endTime: "20170619T031440Z",
-  duration: 229,
-  distance: 258,
-  steps: 345,
-  calories: 16
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T041418Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T035959Z",
-  duration: 695,
-  distance: 977,
-  steps: 1510,
-  calories: 61
-  }
-  ]
-  }
-  ],
-  caloriesIdle: 1796
-},
-  {
-    date: "20170618",
-    segments: [
-  {
-    type: "place",
-    startTime: "20170618T010650Z",
-    endTime: "20170618T123909Z",
-    place: {
-      id: 644368445,
-      type: "unknown",
-      location: {
-        lat: 40.657214,
-        lon: -73.960366
-      }
-    }
-  },
-  {
-    type: "move",
-    startTime: "20170618T123909Z",
-    endTime: "20170618T130356Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T123909Z",
-        endTime: "20170618T130356Z",
-        duration: 1487,
-        distance: 2697,
-        steps: 3031,
-        calories: 168
-      }
-    ]
-  },
-  {
-    type: "place",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T194912Z",
-    place: {
-      id: 661385686,
-      type: "unknown",
-      location: {
-        lat: 40.669696,
-        lon: -73.979065
-    }
-  },
-  activities: [
-    {
-    activity: "walking",
-    startTime: "20170618T130357Z",
-    endTime: "20170618T131117Z",
-    duration: 440,
-    distance: 495,
-    steps: 661,
-    calories: 31
-    },
-    {
-    activity: "walking",
-    startTime: "20170618T142800Z",
-    endTime: "20170618T142914Z",
-    duration: 74,
-    distance: 53,
-    steps: 107,
-    calories: 3
-    }
-    ]
-    },
-    {
-    type: "move",
-    startTime: "20170618T194912Z",
-    endTime: "20170618T195316Z",
-    activities: [
-      {
-        activity: "walking",
-        startTime: "20170618T194912Z",
-        endTime: "20170618T195316Z",
-        duration: 244,
-        distance: 382,
-        steps: 328,
-        calories: 24
-      }
-    ]
-  },
-    {
-    type: "place",
-    startTime: "20170618T195317Z",
-    endTime: "20170618T200503Z",
-    place: {
-      id: 661385687,
-      type: "unknown",
-      location: {
-        lat: 40.672278,
-        lon: -73.977078
-    }
-  },
-  activities: [
-    {
-      activity: "walking",
-      startTime: "20170618T195317Z",
-      endTime: "20170618T195959Z",
-      duration: 402,
-      distance: 456,
-      steps: 608,
-      calories: 28
-    },
-    {
-      activity: "walking",
-      startTime: "20170618T200149Z",
-      endTime: "20170618T200218Z",
-      duration: 29,
-      distance: 25,
-      steps: 50,
-      calories: 2
-    }
-    ]
-  },
-  {
-  type: "move",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T200503Z",
-  endTime: "20170618T201101Z",
-  duration: 358,
-  distance: 471,
-  steps: 791,
-  calories: 29
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T201102Z",
-  endTime: "20170618T223038Z",
-  place: {
-  id: 661385686,
-  type: "unknown",
-  location: {
-  lat: 40.669696,
-  lon: -73.979065
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T201248Z",
-  endTime: "20170618T201334Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  },
-  {
-  activity: "walking",
-  startTime: "20170618T220750Z",
-  endTime: "20170618T221420Z",
-  duration: 390,
-  distance: 436,
-  steps: 581,
-  calories: 27
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  activities: [
-  {
-  activity: "transport",
-  startTime: "20170618T223038Z",
-  endTime: "20170618T224354Z",
-  duration: 796,
-  distance: 3529
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T224355Z",
-  endTime: "20170618T225430Z",
-  place: {
-  id: 661396820,
-  type: "unknown",
-  location: {
-  lat: 40.658085,
-  lon: -73.960264
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170618T224842Z",
-  endTime: "20170618T224922Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170618T225430Z",
-  endTime: "20170619T011806Z",
-  place: {
-  id: 644368445,
-  type: "unknown",
-  location: {
-  lat: 40.657214,
-  lon: -73.960366
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011458Z",
-  endTime: "20170619T011544Z",
-  duration: 46,
-  distance: 35,
-  steps: 70,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T011806Z",
-  endTime: "20170619T013912Z",
-  duration: 1266,
-  distance: 2092,
-  steps: 2461,
-  calories: 130
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T013913Z",
-  endTime: "20170619T015837Z",
-  place: {
-  id: 661471766,
-  type: "unknown",
-  location: {
-  lat: 40.659731,
-  lon: -73.977205
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T015837Z",
-  endTime: "20170619T020840Z",
-  duration: 603,
-  distance: 805,
-  steps: 1152,
-  calories: 50
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T020841Z",
-  endTime: "20170619T021104Z",
-  place: {
-  id: 661471768,
-  type: "unknown",
-  location: {
-  lat: 40.664754,
-  lon: -73.977445
-  }
-  }
-  },
-  {
-  type: "move",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021104Z",
-  endTime: "20170619T021737Z",
-  duration: 393,
-  distance: 521,
-  steps: 945,
-  calories: 32
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T021738Z",
-  endTime: "20170619T023455Z",
-  place: {
-  id: 661471770,
-  type: "unknown",
-  location: {
-  lat: 40.667245,
-  lon: -73.981653
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T021929Z",
-  endTime: "20170619T022009Z",
-  duration: 40,
-  distance: 30,
-  steps: 60,
-  calories: 2
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023455Z",
-  endTime: "20170619T023854Z",
-  duration: 239,
-  distance: 401,
-  steps: 334,
-  calories: 25
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T025516Z",
-  place: {
-  id: 661471772,
-  type: "unknown",
-  location: {
-  lat: 40.665089,
-  lon: -73.977725
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T023855Z",
-  endTime: "20170619T024343Z",
-  duration: 288,
-  distance: 324,
-  steps: 432,
-  calories: 20
-  }
-  ]
-  },
-  {
-  type: "place",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T034824Z",
-  place: {
-  id: 661471773,
-  type: "unknown",
-  location: {
-  lat: 40.663934,
-  lon: -73.975446
-  }
-  },
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T025517Z",
-  endTime: "20170619T025540Z",
-  duration: 23,
-  distance: 17,
-  steps: 35,
-  calories: 1
-  },
-  {
-  activity: "walking",
-  startTime: "20170619T031051Z",
-  endTime: "20170619T031440Z",
-  duration: 229,
-  distance: 258,
-  steps: 345,
-  calories: 16
-  }
-  ]
-  },
-  {
-  type: "move",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T041418Z",
-  activities: [
-  {
-  activity: "walking",
-  startTime: "20170619T034824Z",
-  endTime: "20170619T035959Z",
-  duration: 695,
-  distance: 977,
-  steps: 1510,
-  calories: 61
-  }
-  ]
-  }
-  ],
-  caloriesIdle: 1796
-  }
-  ]
-}
+];
 
-import {normalizeStorylineData, createActivitiesList} from '@lib/helpers/movesData';
-
-const normStories = normalizeStorylineData(incomingData.storylines);
-const activities = createActivitiesList(normStories);
-
-export default {
-  storylines: normStories,
-  activities
-};
 
 
 

@@ -1,7 +1,22 @@
 import {FETCH_ACTIVITIES} from '@actions/actionNames';
+import DB, {tableNames} from '@lib/DynamoDB';
+import {updateActivitiesList} from '@actions/activities/updateActivitiesList';
 
-import DB from '@lib/DynamoDB';
-
-export const fetchActivities = (userId) => {
-  DB.get('activities')
+export const fetchActivities = (userId) => (dispatch) => {
+  const queryParams = {
+    RequestItems: {
+      [tableNames.activities]: {
+        Keys: {userId}
+      }
+    }
+  }
+  DB.batchGet(queryParams, (error, result) => {
+    if(error || !result) {
+      console.log('error fetching activities', error);
+      reject({error, result});
+    } else {
+      console.log('fetch acts', result);
+      // dispatch(updateActivitiesList(result.Items));
+    }
+  });
 }

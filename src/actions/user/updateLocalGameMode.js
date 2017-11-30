@@ -10,7 +10,6 @@ export const updateLocalGameMode = () => (
       stats,
       user: {localMode}
     } = getStore();
-    console.log('update game mode', localMode);
     dispatch(toggleLocalGameMode(!localMode));
     if(localMode) { // if next mode is not local
       const lastStatTime = _findLastTime(stats);

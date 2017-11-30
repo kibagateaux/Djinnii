@@ -18,6 +18,7 @@ import {viewLocalStorage} from '@helpers/asyncStorage';
 import {updateStats} from '@actions/stats';
 
 import styles from './styles';
+import { updateActivitiesList } from '../../actions/activities/index';
 
 export default class App extends Component {
   constructor(props){
@@ -42,7 +43,7 @@ export default class App extends Component {
               refresh_token
             }
           };
-          console.log('auth', resource, tokenObj);          
+          console.log('auth service', resource, tokenObj);          
           props.updateTokens(tokenObj);
         }
       }
@@ -59,12 +60,30 @@ export default class App extends Component {
   async componentWillMount(e) {
     const {
       updateLocalStats,
+      updateActivitiesList,
       setDisplayStats,
       localStats,
+      updateDays,
       lastLiveStats,
       localMode,
+      user
     } = this.props;
     const lastLocalStats = await getLocalStats();
+    
+    // refreshes user's cloud data on app load
+    // if(user && user.userId) {
+    //   const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
+    //   if(!res.data) {
+    //     // handle error for whatevs
+    //     console.log("update data failed", res);
+    //   } else {
+    //     res.data.map((day) => {
+    //       console.log('update day', day);
+    //       updateActivitiesList(day.activities);
+    //       updateDays({[day.date]: day.summary})
+    //     })
+    //   }
+    // }
 
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);
@@ -92,61 +111,6 @@ export default class App extends Component {
         {profiles}
       </ScrollView>
     );
-  }
-
-
-  _renderLocalGame = () => {
-    const {
-      updateLocalStats,
-      localStats,
-      trackUserBehaviour,
-    } = this.props;
-
-    const onActivityPress = (activity) => {
-      userId = '0';
-      const eventData = {
-        userId,
-        event: 'Action Pressed',
-        properties: {
-          name: activity,
-          stats: localStats,
-        }
-      };
-      return () => {
-        trackUserBehaviour(eventData);      
-        updateLocalStats(localStatsAfterActivity(activity, localStats))
-      }
-    }
-    const actions= [
-      {action: 'Run',
-      onPress: onActivityPress('run')},
-      //  onPress: onPress(''),
-      {action: 'Dance',
-       onPress: viewLocalStorage},
-      {action: 'Sleep',
-       icon: "😴💤",
-       onPress: onActivityPress('sleep')},
-      {action: 'Eat',
-       onPress: onActivityPress('eat')}
-    ];
-    const actionButtons = actions.map(({action, onPress, icon}) => 
-      <ActionButton
-        key={action}
-        style={styles.localActionButtons}
-        buttonText={action}
-        onPress={onPress}
-        primaryColor
-        icon={icon}
-        Icon={<Image />}
-      />)
-    
-    return (
-      <ScrollView horizontal style={styles.localGameContainer}>
-        <View style={styles.localActionButtonContainer}>
-          {actionButtons}
-        </View>
-      </ScrollView>
-    )
   }
 
   _renderLowerPanel = () =>

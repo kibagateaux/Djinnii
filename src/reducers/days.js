@@ -1,13 +1,15 @@
 import {
-  SET_ACTIVE_ACTIVITY
+  UPDATE_DAYS
 } from '@actions/actionNames';
 
 const INITIAL_STATE = {
-  mood: 'lit',
+  days: {}
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {
-  switch(type){
+  switch(type) {
+    case UPDATE_DAYS:
+      return {...state, ...payload};
     default: return state;
   }
 };

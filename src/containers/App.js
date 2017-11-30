@@ -8,10 +8,12 @@ import {
   setDisplayStats
 } from '@actions/stats';
 import {setActiveActivity} from '@actions/activities';
+import {updateActivitiesList} from '@actions/activities';
 import {trackUserBehaviour} from '@actions/analytics/trackUserBehaviour';
 import {identifyUser} from '@actions/analytics/identifyUser';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {getLocalStats} from '@actions/stats/getLocalStats';
+import {updateDays} from '@actions/days';
 
 import {LOGIN, INTEGRATIONS} from '@constants/routes';
 
@@ -31,7 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
   setDisplayStats: (statsMap) => dispatch(setDisplayStats(statsMap)),
   setActiveActivity: (activity) => dispatch(setActiveActivity(activity)),
   updateLocalStats: (statsMap) => dispatch(updateLocalStats(statsMap)),
+  updateActivitiesList: (activities) => dispatch(updateActivitiesList(activities)),
   trackUserBehaviour: (eventData) => dispatch(trackUserBehaviour(eventData)),
+  updateDays: (days) => dispatch(updateDays(days))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

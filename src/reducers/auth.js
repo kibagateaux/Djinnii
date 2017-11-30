@@ -1,5 +1,6 @@
 import {
   GET_COGNITO_PROFILE,
+  SIGN_IN_USER
 } from '@actions/actionNames';
 
 const INITIAL_STATE = {
@@ -10,6 +11,8 @@ export default (state = INITIAL_STATE, {type, payload}) => {
   switch (type) {
     case GET_COGNITO_PROFILE:
       return {...state, cognitoProfile: {...payload}};
-    default: return {...state} ;
+    case SIGN_IN_USER: 
+      return {...state}
+    default: return state;
   }
 };

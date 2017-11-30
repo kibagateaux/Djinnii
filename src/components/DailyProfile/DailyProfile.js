@@ -1,23 +1,27 @@
 import React, {PureComponent} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
 import axios from 'axios';
+
+import {DB} from '@lib/DynamoDB';
+import {LAMBDA_CLIENT, DYNAMO_TABLES} from '@constants/AWS';
+import {COGNITO_ID} from '@constants/asyncStorage';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
+import mockData from '@lib/movesData';
 export default class extends PureComponent {
   
   constructor(props) {
     super(props);
-  
   }
 
-  async componentDidMount() {
-    // const id = await AsyncStorage.getItem(COGNITO_ID);
-    // const data = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${id || 0}`);
-    // console.log('aws res', data);
+  componentWillMount() {
+    const {fetchActivities, user: {userId}} = this.props;
+    console.log('DP fetch', fetchActivities, userId);
+    fetchActivities(userId);
   }
 
   playDay = async () => {

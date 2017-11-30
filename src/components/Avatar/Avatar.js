@@ -28,8 +28,6 @@ export default (props) => {
   };
 
   const medium = avatarSelector(activity);
-  console.log("avatar select", medium, activity);
-
 
   // Avatar layering Schema top -> down
   // switch mode + settings buttons
@@ -47,7 +45,7 @@ export default (props) => {
         <TouchableOpacity onPress={navigateToSettings}>
           <Icon name="settings" size={24} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {console.log('press swtich'); updateLocalGameMode()}}>
+        <TouchableOpacity onPress={updateLocalGameMode}>
           <Icon name="repeat" size={24}/>
         </TouchableOpacity>
       </View>

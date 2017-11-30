@@ -41,6 +41,7 @@ export default class Login extends PureComponent {
         navigateToHome();
       })
       .catch((error) => {
+        console.log('error on signin', error);
         this.setState({errorMessage: "Invalid login, please try again. We believe in you!"});
         this.setState({showActivityIndicator: false});
       })

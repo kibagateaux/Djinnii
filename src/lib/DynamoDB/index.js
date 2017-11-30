@@ -1,82 +1,15 @@
-export * from './DynamoDB';
+import AWS from 'aws-sdk';
+import {DYNAMO_TABLES} from '@constants/AWS';
 
-/* Sample Dynamo GET Requests
+// connect to local DB if running offline
+// https://github.com/serverless/examples/blob/master/aws-node-rest-api-with-dynamodb-and-offline/todos/dynamodb.js
+// if (process.env.IS_OFFLINE) {
+//   options = {
+//     region: 'localhost',
+//     endpoint: 'http://localhost:8000',
+//   };
+// }
 
-BATCHGET REQUEST :
-
-var params = {
-  RequestItems: { // required 
-    '<TableName>': {
-      Keys: [ // required
-        {
-          '<AttributeName>': someValue, // "str" | 10 | true | false | null | [1, "a"] | {a: "b"}
-          // '<AttributeName>': ... 
-        },
-        // more items 
-      ],
-      AttributesToGet: [
-        'STRING_VALUE',
-        // more items 
-      ],
-      ConsistentRead: true || false,
-      ExpressionAttributeNames: {
-        '<ExpressionAttributeNameVariable>': 'STRING_VALUE',
-        // '<ExpressionAttributeNameVariable>': ... 
-      },
-      ProjectionExpression: 'STRING_VALUE'
-    },
-  // '<TableName>': ... 
-  },
-  ReturnConsumedCapacity: INDEXES | TOTAL | NONE
-};
-
-*/
-
-
-
-/**
- * Sample DynamoDB Pust Request
- * 
- * {
-  RequestItems: {
-    [statsTable]: [
-      {
-        PutRequest: {
-          Item: {
-            userId: username,
-            time: 135235231241,
-            strength: 141, 
-            intelligence: 124
-          }
-        }
-      },
-      {
-        PutRequest: {
-          Item: {
-            userId: username,
-            time: 4235351,
-            timestamp: 4235351, 
-            strength: 3512, 
-            intelligence: 1354
-          }
-        }
-      },
-      {
-        PutRequest: {
-          Item: {
-            userId: username,
-            time: 9867456366,
-            timestamp: 9867456366, 
-            strength: 462, 
-            intelligence: 905
-          }
-        }
-      },
-    ]
-  }
-}
- * 
- * 
- * 
- * 
- */
+const DB = new AWS.DynamoDB.DocumentClient();
+export default DB;
+export const tableNames = DYNAMO_TABLES;
