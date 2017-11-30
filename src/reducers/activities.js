@@ -5,9 +5,12 @@ import {
   UPDATE_ACTIVITIES_LIST
 } from '@actions/actionNames';
 
+import mockData from '@lib/mockData';
+
+const activities = mockData.reduce((list, day) => ({...list, ...day.activities}), {});
+
 const INITIAL_STATE = {
-  storylines: [],
-  activities: {},
+  activities,
   activeActivity: {},
   avatarActivity: ''
 };
@@ -26,7 +29,7 @@ export default (state = INITIAL_STATE, {type, payload}) => {
     case SET_ACTIVE_SEGMENT:
       return {
         ...state,
-        activeActivity: state.storylines[0].segments[payload]
+        activeActivity: state.activities[payload]
       };
     case SET_AVATAR_ACTIVITY:
       return {...state, avatarActivity: payload}
