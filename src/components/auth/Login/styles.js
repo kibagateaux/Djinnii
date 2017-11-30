@@ -29,6 +29,9 @@ export default StyleSheet.create({
     width: width / 2,
     height: width / 10,
   },
+  inputStyles: {
+    height: height / 10
+  }
 });
 
 const inputStyles = {

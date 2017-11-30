@@ -9,8 +9,8 @@ export const statsToActivityMapping = {
 }
 
 export const localActivityMapping = {
-  'run': {stm: 2, agy: 1},
-  'dance': {str: 1, agy: 2, int: -1},
-  'sleep': {stm: -2, str: -1, int: 3},
-  'eat': {stm: 2, agy: -1}
+  'running': {stm: 2, agy: 1},
+  'dancing': {str: 1, agy: 2, int: -1},
+  'sleeping': {stm: -2, str: -1, int: 3},
+  'eating': {stm: 2, agy: -1}
 }

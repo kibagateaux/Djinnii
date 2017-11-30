@@ -11,9 +11,8 @@ import {SETTINGS} from '@constants/routes';
 
 
 
-const mapStateToProps = (state, ownProps) => ({
-  style: ownProps.style,
-  activeActivity: state.activities.activeActivity,
+const mapStateToProps = (state) => ({
+  activity: state.activities.avatarActivity,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -11,19 +11,19 @@ import {
   MKButton,
 } from 'react-native-material-kit';
 
-import MFAPrompt from '@lib/Auth/MFAPrompt';
-import WithAuth from '@lib/Auth/WithAuth';
+import {Auth} from 'aws-amplify-react-native';
+import {checkPhoneNumberLength} from '@helpers/validation';
+
 import styles, {inputStyles} from './styles';
 
-
-class Login extends PureComponent {
+export default class Login extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       showActivityIndicator: false,
-      username: '',
-      password: '',
+      phoneNumber: null,
+      password: null,
       showMFAPrompt: false,
       errorMessage: null,
     };
@@ -31,91 +31,24 @@ class Login extends PureComponent {
     this.baseState = this.state;
   }
 
-   doLogin = async () => {
-    const {auth} = this.props;
-    const {username, password} = this.state;
-    const awsPhoneNumber = '+1' + username
-    let showMFAPrompt = false;
-    // let session = null;
-    attemptLogin = new Promise((resolve, reject) => {
-      const user = auth.handleSignIn(awsPhoneNumber, password, auth.loginCallbackFactory({
-        onSuccess(session) {
-          console.log('loginCallbacks.onSuccess', session);
-          // resolve(session);
-        },
-        onFailure(exception) {
-          console.log('loginCallbacks.onFailure', exception);
-          // reject(exception);
-        },
-        newPasswordRequired(data) {
-          console.log('loginCallbacks.newPasswordRequired', data);
-          reject('newPasswordRequired');
-        },
-        mfaRequired(challengeName, challengeParameters) {
-          console.log('loginCallbacks.mfaRequired', challengeName, challengeParameters);
-          resolve({showMFAPrompt: true});
-        },
-      }, this));
-      resolve(user);
-    })
-    attemptLogin
-    .then((userData) => {
-      // session.showMFAPrompt && formerly
-      console.log('login succ sess', userData);
-      this.props.updateUser({userId: userData.username})
-      this.setState({
-        userData,
-        showMFAPrompt,
-        showActivityIndicator: false,
-        errorMessage: null
-      });
-      this.props.navigateToHome();
-    })
-    .catch((err) => {
-     console.log('login err', err)
-      const errorMessage = err.invalidCredentialsMessage || err.message || err
-      this.setState({errorMessage, showActivityIndicator: false})
-    });
-  }
+  doLogin() {
+    const {phoneNumber, password} = this.state;
+    Auth.signIn(phoneNumber, password)
+      .then(async ({username}) => {
+        this.setState({showActivityIndicator: false})
+        const {signInUser, navigateToHome} = this.props;
+        signInUser({username});
+        navigateToHome();
+      })
+      .catch((error) => {
+        this.setState({errorMessage: "Invalid login, please try again. We believe in you!"});
+        this.setState({showActivityIndicator: false});
+      })
+  };
 
   handleLogInClick = (e) => {
     this.setState({...this.baseState, showActivityIndicator: true});
     this.doLogin();
-  }
-
-  handleMFAValidate = async (code) => {
-    const {auth } = this.props;
-
-    try {
-      const session = await new Promise((resolve, reject) => {
-        auth.sendMFAVerificationCode(code, {
-          onFailure(err) {
-            reject(err);
-          },
-          onSuccess(result) {
-            resolve(result);
-          },
-        }, this);
-      });
-
-      this.setState({session});
-    } catch (exception) {
-      return exception.message;
-    }
-
-    return true;
-  }
-
-  handleMFACancel = () => {
-    this.setState({showMFAPrompt: false});
-  }
-
-  handleMFASuccess = () => {
-    this.setState({
-      showMFAPrompt: false,
-    }, () => {
-      this.onLogIn();
-    });
   }
 
   render() {
@@ -123,17 +56,11 @@ class Login extends PureComponent {
       showActivityIndicator,
       errorMessage,
       showMFAPrompt,
-      username,
+      phoneNumber,
       password
     } = this.state;
     return (
       <View style={styles.loginContainer}>
-        {showMFAPrompt &&
-          <MFAPrompt
-            onValidate={this.handleMFAValidate}
-            onCancel={this.handleMFACancel}
-            onSuccess={this.handleMFASuccess}
-          />} 
         <Modal
           visible={showActivityIndicator}
           onRequestClose={() => null}
@@ -151,10 +78,10 @@ class Login extends PureComponent {
             selectionColor={'purple'}
             autoCapitalize="none"
             underlineColorAndroid="transparent"
-            placeholder="username"
+            placeholder="212-836-0297"
             returnKeyType="next"
-            onChangeText={(username) => this.setState({username})}
-            value={username}
+            onChangeText={(phoneNumber) => this.setState({phoneNumber})}
+            value={phoneNumber}
           />
           <MKTextField
             {...inputStyles}
@@ -189,6 +116,3 @@ class Login extends PureComponent {
     );
   }
 }
-
-
-export default WithAuth(Login);

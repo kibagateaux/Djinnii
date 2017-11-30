@@ -6,7 +6,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 import ActionButton from '@components/common/ActionButton/ActionButton';
-import {Auth, WithAuth} from '@lib/Auth';
 import styles from './styles';
 
 // default background, centered card with app name,

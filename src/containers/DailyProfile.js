@@ -1,9 +1,10 @@
 import DailyProfile from '@components/DailyProfile/DailyProfile';
-import { setDisplayStats } from '@actions/stats';
-import { setActiveActivity, setActiveSegment } from '@actions/activities';
-import { connect } from 'react-redux';
 
-const mapStateToProps = ({ stats, activities }) => {
+import {setDisplayStats} from '@actions/stats';
+import {setActiveActivity, setActiveSegment} from '@actions/activities';
+import {connect} from 'react-redux';
+
+const mapStateToProps = ({stats, activities}) => {
   return ({
     stats: stats,
     activities: activities.activities,

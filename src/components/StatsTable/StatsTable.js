@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
-import {Text, ScrollView, Animated, Easing, Dimensions} from 'react-native';
-const {height, width} = Dimensions.get('window');
+import {Text, ScrollView, Animated, Easing} from 'react-native';
 import FadeComponent from '@components/common/animations/fadeComponent';
 import styles from './styles';
 

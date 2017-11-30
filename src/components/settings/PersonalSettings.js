@@ -25,7 +25,8 @@ export default (props) => {
       label: "Moves",
       onPress: () => props.navigateToOAuth({
         appName:"Moves",
-        description: "blahb lasfb;a jafkna j",
+        logo: "",
+        description: "A beautifulyl designed activity monitoring app.",
         onMainButtonPress: () => {
           Linking.openURL(movesAuthLink)
         },

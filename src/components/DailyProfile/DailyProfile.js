@@ -1,15 +1,12 @@
 import React, {PureComponent} from 'react';
-import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import axios from 'axios';
-
-import {DB} from '@lib/DynamoDB';
-import {LAMBDA_CLIENT, DYNAMO_TABLES} from '@constants/AWS';
-import {COGNITO_ID} from '@constants/asyncStorage';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
+
 export default class extends PureComponent {
   
   constructor(props) {

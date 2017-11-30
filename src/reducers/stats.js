@@ -6,29 +6,11 @@ import {
   SWITCH_LOCAL_GAME_MODE
 } from '@actions/actionNames';
 
-/* Mock data for testing and dev
-const initStats = () => Object.keys(activities)
-.reduce((timeline, key) => {
-  const history = Object.keys(timeline);
-  const lastInHistory = history[history.length - 1];
-  const lastStats = timeline[lastInHistory] || {};
-  const thisAct = activities[key];
-  const thisStats = statsAfterActivity(thisAct, lastStats);
-  return {...timeline, [thisAct.startTime]: thisStats};
-}, {});
-
-const initialStats = initStats();
-const lastStat = initialStats[Object.keys(initialStats)[Object.keys(initialStats).length - 1]]
-*/ 
 const INITIAL_STATE = {
   activeStats: {},
   lastLiveStats: {},
   localStats: {},
 };
-
-/* TODO 
-
-*/
 
 export default (state = INITIAL_STATE, {type, payload}) => {
   const lastStat = state[Object.keys(state)[Object.keys(state).length - 1]]

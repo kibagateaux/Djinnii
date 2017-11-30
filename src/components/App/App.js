@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
-import {ScrollView, View, TouchableOpacity, Linking, AsyncStorage , Image} from 'react-native';
+import {ScrollView, View, Image} from 'react-native';
 import axios from 'axios';
 import branch from 'react-native-branch';
 import uuid from 'uuid';
 
 // import {_handleBranchRouting} from '@lib/analytics';
 
-
 import DailyProfile from '@containers/DailyProfile';
 import HomeProfile from '@containers/HomeProfile';
 import ActionButton from '@components/common/ActionButton/ActionButton';
 import EmptyFiller from '@components/common/EmptyFiller';
+import LocalGame from '@containers/LocalGame';
 
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
@@ -87,11 +87,11 @@ export default class App extends Component {
         mainButtonText="Connect Apps"
         maingButtonFunc={navigateToIntegrations}
       />
-  return (
-    <ScrollView>
-      {profiles}
-    </ScrollView>
-  )
+    return (
+      <ScrollView>
+        {profiles}
+      </ScrollView>
+    );
   }
 
 
@@ -151,7 +151,7 @@ export default class App extends Component {
 
   _renderLowerPanel = () =>
     this.props.localMode ?
-      this._renderLocalGame() :
+      <LocalGame /> :
       this._renderDailyProfiles();
   
   render() {

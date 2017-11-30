@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Linking } from 'react-native';
+import {View} from 'react-native';
 import Avatar from '@containers/Avatar';
 import StatsTable from '@containers/StatsTable';
 import styles from './styles';

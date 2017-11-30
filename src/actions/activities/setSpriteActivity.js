@@ -1,7 +1,7 @@
 
-import { _formatToUnix } from '@helpers/time';
-import { updateStats } from '@actions/stats';
-import { setActiveActivity } from '@actions/activities';
+import {_formatToUnix} from '@helpers/time';
+import {updateStats} from '@actions/stats';
+import {setActiveActivity} from '@actions/activities';
 
 export const setSpriteDisplay = (activity, stats, uid = 0, shouldUpdate) => {
   return async (dispatch) => {

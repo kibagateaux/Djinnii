@@ -29,9 +29,9 @@ aws_project_region : 'us-east-1',
 aws_resource_name_prefix : 'djinii-mobilehub-1897344653',
 aws_sign_in_enabled : 'enable',
 aws_user_pools : 'enable',
-aws_user_pools_id : 'us-east-1_MUC9AKZzG',
+aws_user_pools_id : 'us-east-1_ZrFqbUZBM',
 aws_user_pools_mfa_type : 'OPTIONAL',
-aws_user_pools_web_client_id : '2jli2qjouahc4f5q03rtondl32',
+aws_user_pools_web_client_id : 'a2bni0c2g13ne9pou28queolv',
 }
 
 export default awsmobile;
