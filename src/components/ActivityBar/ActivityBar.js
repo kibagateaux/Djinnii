@@ -36,10 +36,7 @@ export default ({onPress, activity}) => {
 
     // console.log('rend act bars', activity, duration);
     return(
-      <TouchableWithoutFeedback 
-        key={startTime * duration}
-        onPress={() => onPress(startTime)} 
-      >
+      <TouchableWithoutFeedback onPress={() => onPress(startTime)}>
         <View style={[styles.bar, {width: `${width}%`, backgroundColor: color}]}/>
       </TouchableWithoutFeedback>
     )

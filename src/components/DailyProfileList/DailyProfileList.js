@@ -22,15 +22,15 @@ export default class extends PureComponent {
       return null;
     } else {
       return _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
-        _.map(days, ({date, activities, overview}) => { console.log('overview' + date, overview); return (
+        _.map(days, ({date, activities, overview}) =>
           _.isEmpty(activities) ? null : // motivational thing or something not null
             (<DailyProfile 
-              key={date}
-              date={date}
-              daysActivities={activities}
-              summary={overview}
-            />));
-        })}
+                key={date}
+                date={date}
+                daysActivities={activities}
+                summary={overview}
+              />));
+    }
   }
 
   render() {

@@ -61,11 +61,11 @@ export default class extends PureComponent {
       setDisplayStats
     } = this.props;
     const today = date, tomorrow = today + dayInMicroSecs;
-    const activityList = _.filter(activities, (act, time) => daysActivities.includes(time))
+    const activityList = _.filter(activities, (act, time) => _.includes(daysActivities, time))
 
     return _.isEmpty(activityList) ? null :
       activityList.map((act) => (
-        <ActivityBar 
+        <ActivityBar
           key={act.startTime} 
           activity={act}
           onPress={setActiveActivity}
@@ -76,7 +76,7 @@ export default class extends PureComponent {
 
   render() {
     return (
-      <View>
+      <View style={styles.profileContainer}>
         { this._renderDayActivityBars() }
       </View>
     )
