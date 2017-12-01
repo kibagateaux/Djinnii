@@ -10,13 +10,13 @@ export const fetchActivities = (userId) => (dispatch) => {
       }
     }
   }
+  console.log('fetch acts', userId);
   DB.batchGet(queryParams, (error, result) => {
     if(error || !result) {
       console.log('error fetching activities', error);
-      reject({error, result});
     } else {
       console.log('fetch acts', result);
-      // dispatch(updateActivitiesList(result.Items));
+      dispatch(updateActivitiesList(result.Items));
     }
   });
 }

@@ -5,12 +5,9 @@ import branch from 'react-native-branch';
 import uuid from 'uuid';
 
 // import {_handleBranchRouting} from '@lib/analytics';
-
-import DailyProfile from '@containers/DailyProfile';
 import HomeProfile from '@containers/HomeProfile';
-import ActionButton from '@components/common/ActionButton/ActionButton';
-import EmptyFiller from '@components/common/EmptyFiller';
 import LocalGame from '@containers/LocalGame';
+import DailyProfileList from '@containers/DailyProfileList';
 
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import {navigateTo} from '@actions/navigation/navigateTo';
@@ -96,27 +93,10 @@ export default class App extends Component {
     (this.branchUnsubcription && this.branchUnsubcription());    
   }
 
-  _renderDailyProfiles = () => {
-    const {storylines, navigateToIntegrations} = this.props
-    const profiles = this.props.storylines ? this.props.storylines.map((story,i) =>
-      // key=story.date with real data
-      <DailyProfile key={i} storyline={story}/>) : 
-      <EmptyFiller
-        mainText="To train your Jinni connect your favorite activity tracking app"
-        mainButtonText="Connect Apps"
-        maingButtonFunc={navigateToIntegrations}
-      />
-    return (
-      <ScrollView>
-        {profiles}
-      </ScrollView>
-    );
-  }
-
   _renderLowerPanel = () =>
     this.props.localMode ?
       <LocalGame /> :
-      this._renderDailyProfiles();
+      <DailyProfileList />;
   
   render() {
     return (

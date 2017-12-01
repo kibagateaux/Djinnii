@@ -1,28 +1,19 @@
 import React, {PureComponent} from 'react';
 import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
-import axios from 'axios';
-
-import {DB} from '@lib/DynamoDB';
-import {LAMBDA_CLIENT, DYNAMO_TABLES} from '@constants/AWS';
-import {COGNITO_ID} from '@constants/asyncStorage';
+import _ from 'lodash';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
+import {dayInMicroSecs} from '../../lib/constants/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
-import mockData from '@lib/movesData';
 export default class extends PureComponent {
   
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    const {fetchActivities, user: {userId}} = this.props;
-    console.log('DP fetch', fetchActivities, userId);
-    fetchActivities(userId);
-  }
 
   playDay = async () => {
     const {
@@ -61,54 +52,32 @@ export default class extends PureComponent {
     })
   }
 
-  renderDailyGoals = () => {
-    const {goals} = this.props;
-    return goals.map((goal) => {
-      <View key={goal.id}>
-        <Text> {goal.text} </Text>
-      </View>
-    })
-  }
-
-  vizStorySegments = () => { 
+  _renderDayActivityBars = () => {
     const {
+      date,
       activities,
-      stats,
-      goals,
-      storyline,
-      displayDailyGoals,
+      daysActivities,
       setActiveActivity,
-      setActiveSegment,
-      toggleDailyGoalsDisplay,
       setDisplayStats
     } = this.props;
-    const { segments, date, key } = storyline;
-    return (
-      <View style={styles.dailyProfileContainer}>
-        <ActivityBar 
-          key={key} 
-          date={date} 
-          segments={segments}
-          activities={activities}
-          setActiveActivity={setActiveActivity}
-          setActiveSegment={setActiveSegment}
-          stats={stats}
-        />
-      </View>
-    )
-  }
+    const today = date, tomorrow = today + dayInMicroSecs;
+    const activityList = _.filter(activities, (act, time) => daysActivities.includes(time))
 
-  toggleShowGoals = (date) => {
-    const {goals} = this.props
-    this.setState({showGoals: true, goals: goals[date]});
+    return _.isEmpty(activityList) ? null :
+      activityList.map((act) => (
+        <ActivityBar 
+          key={act.startTime} 
+          activity={act}
+          onPress={setActiveActivity}
+        />
+      ));
+
   }
 
   render() {
     return (
-      <View>        
-        <View>
-          { this.vizStorySegments() }
-        </View>
+      <View>
+        { this._renderDayActivityBars() }
       </View>
     )
   }

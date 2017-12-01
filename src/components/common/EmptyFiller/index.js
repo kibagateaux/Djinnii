@@ -3,7 +3,9 @@ import {
   View,
   Text,
   TouchableOpacity
-} from 'react-native'
+} from 'react-native';
+import styles from './styles';
+
 export default (props) => {
   const {
     mainText,
