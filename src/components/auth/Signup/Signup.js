@@ -47,11 +47,9 @@ export default class SignUp extends React.Component {
   signUpUser(username, password, email, number) {
     Auth.signUp(username, password, email, number)
       .then((user) => {
-        console.log("signup user", user);
         this.props.navigateToLogin();
       })
       .catch((error) => {
-        console.log("signup error", error.error, error.message);
         this.setState({errorMessage: error.message});
       })
   }

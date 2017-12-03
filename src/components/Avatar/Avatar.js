@@ -26,7 +26,7 @@ export default (props) => {
       default:                return {type: "gif", src:require("@media/GIFS/running-bebo.gif")};
     }
   };
-
+  console.log('avatar activity', activity);
   const medium = avatarSelector(activity);
 
   // Avatar layering Schema top -> down

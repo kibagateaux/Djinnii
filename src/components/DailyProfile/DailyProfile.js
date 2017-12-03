@@ -68,7 +68,7 @@ export default class extends PureComponent {
         <ActivityBar
           key={act.startTime} 
           activity={act}
-          onPress={setActiveActivity}
+          onPress={() => setActiveActivity(act.startTime)}
         />
       ));
 

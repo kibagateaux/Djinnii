@@ -19,11 +19,10 @@ export default (state = INITIAL_STATE, {type, payload}) => {
   switch(type){
     case SET_ACTIVE_ACTIVITY: {
       const activeActivity = state.activities[payload];
-      console.log('set act', activeActivity);
       return {
         ...state,
         activeActivity,
-        avatarActvity: activeActivity.activity
+        avatarActivity: activeActivity.activity
       };
     }
     case SET_ACTIVE_SEGMENT:
