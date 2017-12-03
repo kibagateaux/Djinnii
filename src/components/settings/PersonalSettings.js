@@ -5,32 +5,39 @@ import {
 } from 'react-native';
 import Settings from '@components/settings/';
 import styles from './styles';
-import {movesAuthLink} from '@lib/helpers/movesData';
+import {integrationServices} from '@constants/integrations';
 
 export default (props) => {
+  const {
+    navigateToIntegrations,
+    navigateToLogin,
+    navigateToOAuth,
+    navigateToSignUp,
+    initIntegrationAuth
+  } = props;
   const _getSettingsList = () => ([
     {
       label: "Integrations",
-      onPress: () => props.navigateToIntegrations({})
+      onPress: () => navigateToIntegrations({})
     },
     {
       label: "Login",
-      onPress: () =>  props.navigateToLogin()
+      onPress: () =>  navigateToLogin()
     },
     {
       label: "SignUp",
-      onPress: () => props.navigateToSignUp()
+      onPress: () => navigateToSignUp()
     },
     {
       label: "Moves",
-      onPress: () => props.navigateToOAuth({
+      onPress: () => navigateToOAuth({
         appName:"Moves",
         logo: "",
         description: "A beautifulyl designed activity monitoring app.",
         onMainButtonPress: () => {
-          Linking.openURL(movesAuthLink)
+          initIntegrationAuth(integrationServices.moves)
         },
-        onAltButtonPress: () => props.navigateToIntegrations()
+        onAltButtonPress: () => navigateToIntegrations()
       })
     }
   ])

@@ -51,7 +51,8 @@ export default class SignUp extends React.Component {
         this.props.navigateToLogin();
       })
       .catch((error) => {
-        console.log("signup error", error)
+        console.log("signup error", error.error, error.message);
+        this.setState({errorMessage: error.message});
       })
   }
 

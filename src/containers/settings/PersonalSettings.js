@@ -6,10 +6,13 @@ import {
 import PersonalSettings from '@components/settings/PersonalSettings';
 import {connect} from 'react-redux';
 import {navigateTo} from '@actions/navigation/navigateTo';
+import {initIntegrationAuth} from '@actions/auth';
+
 import {
   OAUTH,
   LOGIN,
-  SIGNUP
+  SIGNUP,
+  SETTINGS
 } from '@lib/constants/routes';
 
 mapStateToProps = (state) => {
@@ -22,6 +25,9 @@ mapDispatchToProps = (dispatch) => ({
   navigateToOAuth: (options) => dispatch(navigateTo(OAUTH, options)),
   navigateToLogin: (options) => dispatch(navigateTo(LOGIN, options)),
   navigateToSignUp: (options) => dispatch(navigateTo(SIGNUP, options)),
+  navigateToIntegratons: (options) => dispatch(navigateTo(SETTINGS, options)),
+  initIntegrationAuth: (serviceName) => dispatch(initIntegrationAuth(serviceName))
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalSettings)

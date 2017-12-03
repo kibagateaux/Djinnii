@@ -1,10 +1,13 @@
 import {
   GET_COGNITO_PROFILE,
-  SIGN_IN_USER
+  SIGN_IN_USER,
+  UPDATE_INTEGRATION_REQUEST_IDS
 } from '@actions/actionNames';
 
 const INITIAL_STATE = {
-  username: '3b844f5f-fccb-4783-b009-82352b782a4c'
+  username: null,
+  tokens: {},
+  requestIds: {}
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {
@@ -13,6 +16,8 @@ export default (state = INITIAL_STATE, {type, payload}) => {
       return {...state, cognitoProfile: {...payload}};
     case SIGN_IN_USER: 
       return {...state}
+    case UPDATE_INTEGRATION_REQUEST_IDS:
+      return {...state, requestIds: payload};
     default: return state;
   }
 };
