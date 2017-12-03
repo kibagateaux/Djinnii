@@ -28,9 +28,6 @@ export default ({onPress, activity}) => {
     const duration = _durationUnix(startTime, endTime);
     const width = (duration * 180) / dayInMicroSecs; // percentage of activity time over total seconds in day = percentage of screen width
     const color = colorSelector(activity.activity);
-    
-
-
     return(
       <TouchableOpacity
         onPress={onPress}
@@ -41,11 +38,5 @@ export default ({onPress, activity}) => {
     )
   }
 
-  return (
-    <View style={{
-      flexDirection: 'row',
-    }}>
-      { renderActivityBar() }
-    </View>
-  )
+  return renderActivityBar();
 };
