@@ -22,7 +22,6 @@ export default ({onPress, activity}) => {
     }
   }
 
-  // FIXMe edit styles so days are in one row in DailyProfile 
   const renderActivityBar = () => {
     const {startTime, endTime} = activity;
     const duration = _durationUnix(startTime, endTime);

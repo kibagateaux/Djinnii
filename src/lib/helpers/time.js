@@ -1,7 +1,7 @@
 'use strict'
 import moment from 'moment';
 import {dayInMicroSecs}  from '@constants/time';
-const twoDigitChunk = /{d, 2}/;
+import _ from 'lodash';
 
 export const _formatToUnix = dateString => moment(dateString).valueOf()
 export const _durationUnix = (start, end) => ( _formatToUnix(end) - _formatToUnix(start));
@@ -12,9 +12,12 @@ export const  _getTimesInUnix = (start, end) => ({
   duration: _durationUnix(start, end)
 });
 
-export const _sortByTime = (obj) => Object.keys(obj)
+export const _sortObjByTime = (obj) => obj ? Object.keys(obj)
   .sort((x, y) => x - y)
-  .reduce((a, b) => (isNaN(b) ? a : {...a, [b]: obj[b]}), {});
+  .reduce((a, b) => (isNaN(b) ? a : {...a, [b]: obj[b]}), {}) : {};
+
+export const _sortArrByTime = (arr) => arr ? 
+  arr.sort((x, y) => x - y).filter((z) => isNaN(z)) : [];
 
 export const _getFirstMSInDay = (timeMS) =>
   // First MS at GMT not local time - add second param localRegion or moment prob has way
@@ -24,9 +27,10 @@ export const _getFirstMSInDay = (timeMS) =>
 export const _getFirstActivityInDay = (time, obj) => {
   const startTime = _getFirstMSInDay(time);
   const endTime = startTime + dayInMicroSecs;
-  const sortedActs = _sortByTime(obj);
+  const sortedActs = _sortObjByTime(obj);
   const times = Object.keys(sortedActs);
   let firstAct, i = 0;
+
   // FIXME loop because lazy
   while(!firstAct || i <= times.length) {
     const actTime = times[i];
@@ -50,4 +54,4 @@ export const _filterObjBetweenTimes = (startTime, endTime, obj) =>
     .reduce((timeline, time) => ({...timeline, [time]: obj[time]}), {});
 
 
-export const _findLastTime = (data) => Object.keys(_sortByTime(data))[0];
+export const _findLastTime = (data) => Object.keys(_sortObjByTime(data))[0];

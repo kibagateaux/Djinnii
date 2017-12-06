@@ -20,13 +20,13 @@ export default (props) => {
       case "walking":         return {type: "gif", src:require("@media/GIFS/running-bebo.gif")};
       case "sleeping":        return {type: "gif", src:require("@media/GIFS/tiredblob.gif")};
       case "transport":       return {type: "gif", src:require("@media/GIFS/Panda-Blob.gif")};
+      case "dancing":         return {type: "gif", src: require("@media/GIFS/shrinking.gif")}
       case "eating":          return {type: "gif", src: require("@media/GIFS/eating-apple.gif")}
       case "idl":             return {type: "gif", src: require("@media/GIFS/shrinking.gif")};
       case "weight-lifting":  return {type: "video", src: require("@media/MP4S/Growing-stronger-arms.mp4")};
       default:                return {type: "gif", src:require("@media/GIFS/running-bebo.gif")};
     }
   };
-  console.log('avatar activity', activity);
   const medium = avatarSelector(activity);
 
   // Avatar layering Schema top -> down

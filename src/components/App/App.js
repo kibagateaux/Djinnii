@@ -68,19 +68,19 @@ export default class App extends Component {
     const lastLocalStats = await getLocalStats();
     
     // refreshes user's cloud data on app load
-    // if(user && user.userId) {
-    //   const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
-    //   if(!res.data) {
-    //     // handle error for whatevs
-    //     console.log("update data failed", res);
-    //   } else {
-    //     res.data.map((day) => {
-    //       console.log('update day', day);
-    //       updateActivitiesList(day.activities);
-    //       updateDays({[day.date]: day.summary})
-    //     })
-    //   }
-    // }
+    if(user && user.userId) {
+      const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
+      if(!res.data) {
+        // handle error for whatevs
+        console.log("update data failed", res);
+      } else {
+        res.data.map((day) => {
+          console.log('update day', day);
+          updateActivitiesList(day.activities);
+          updateDays({[day.date]: day.summary})
+        })
+      }
+    }
 
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);

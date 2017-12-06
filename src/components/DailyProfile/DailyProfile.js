@@ -3,8 +3,10 @@ import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
 import _ from 'lodash';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
-import {_getFirstTimestampInDay, _getFirstMSInDay, _sortByTime} from '@helpers/time';
-import {dayInMicroSecs} from '../../lib/constants/time';
+import FillerBox from '@components/common/FillerBox/FillerBox'; 
+
+import {_getFirstTimestampInDay, _getFirstMSInDay, _sortArrByTime} from '@helpers/time';
+import {dayInMicroSecs} from '@lib/constants/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
@@ -52,7 +54,9 @@ export default class extends PureComponent {
     })
   }
 
-  _renderDayActivityBars = () => {
+
+
+  _renderDayActivityBars() {
     const {
       date,
       activities,
@@ -64,7 +68,7 @@ export default class extends PureComponent {
     const activityList = _.filter(activities, (act, time) => _.includes(daysActivities, time))
 
     return _.isEmpty(activityList) ? null :
-      activityList.map((act) => (
+      _sortArrByTime(activityList).map((act) => (
         <ActivityBar
           key={act.startTime} 
           activity={act}

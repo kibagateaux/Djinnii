@@ -5,19 +5,19 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    flexDireaction: 'column',
+    flexDirection: 'column',
     justifyContent: 'center',
   },
   mainText: {
-
+    flex: 2
   },
   mainButton: {
-
+    flex: 2
   },
   subText: {
-
+    flex: 1
   },
   subButton: {
-
+    flex: 1
   },
 });

@@ -15,6 +15,32 @@ export default class extends PureComponent {
     }
   }
 
+  _renderFillerBox() {
+    const {
+      user: {userId},
+      navigateToIntegations,
+      navigateToLogin,
+    
+    } = this.props;
+    const mainText = userId ? 
+      "No data available, connect more apps to see your Jinni's training regimine" :
+      "You must sign in in order to see your Jinni's activity";
+    const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
+    const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
+    // Should th
+    // const subText;
+    // const subButtonFunc ;
+    // const subButtonText; 
+
+    return (
+      <FillerBox
+        mainText={mainText}
+        mainButtonFunc={mainButtonFunc}
+        mainButtonText={mainButtonText}
+      />
+    )
+  }
+
   _renderDailyProfiles() {
     const {days, user} = this.props;
     if(!user) {
@@ -36,7 +62,7 @@ export default class extends PureComponent {
   render() {
     return (
       <ScrollView> 
-        {this._renderDailyProfiles()}
+        {_.isEmpty(this.props.activities) ? this._renderFillerBox() : this._renderDailyProfiles()}
       </ScrollView>
     );
   }
