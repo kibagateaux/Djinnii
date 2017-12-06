@@ -3,7 +3,6 @@ import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
 import _ from 'lodash';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
-import FillerBox from '@components/common/FillerBox/FillerBox'; 
 
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortArrByTime} from '@helpers/time';
 import {dayInMicroSecs} from '@lib/constants/time';

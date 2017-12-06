@@ -15,6 +15,7 @@ export default (props) => {
     subButtonFunc,
     subButtonText,
   } = props;
+  console.log('filler box', mainButtonFunc);
   return (
     <View style={styles.container}>
       {(mainText && <Text style={styles.mainText}> {mainText} </Text>)}

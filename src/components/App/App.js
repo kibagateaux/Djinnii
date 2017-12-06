@@ -75,7 +75,6 @@ export default class App extends Component {
         console.log("update data failed", res);
       } else {
         res.data.map((day) => {
-          console.log('update day', day);
           updateActivitiesList(day.activities);
           updateDays({[day.date]: day.summary})
         })

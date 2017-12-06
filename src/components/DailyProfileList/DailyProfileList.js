@@ -1,7 +1,10 @@
 import React, {PureComponent} from 'react';
-import {ScrollView} from 'react-native';
-import DailyProfile from '@containers/DailyProfile';
+import {ScrollView, View} from 'react-native';
 import _ from 'lodash';
+
+import DailyProfile from '@containers/DailyProfile';
+import FillerBox from '@components/common/FillerBox/FillerBox'; 
+import styles from './styles';
 
 export default class extends PureComponent {
   constructor(props){
@@ -33,11 +36,13 @@ export default class extends PureComponent {
     // const subButtonText; 
 
     return (
-      <FillerBox
-        mainText={mainText}
-        mainButtonFunc={mainButtonFunc}
-        mainButtonText={mainButtonText}
-      />
+      <View style={styles.fillerBoxContainer}>
+        <FillerBox
+          mainText={mainText}
+          mainButtonFunc={mainButtonFunc}
+          mainButtonText={mainButtonText}
+        />
+      </View>
     )
   }
 
@@ -60,9 +65,15 @@ export default class extends PureComponent {
   }
 
   render() {
+    const {
+      activities: {
+        activities,
+        activeActivity
+      }
+    } = this.props;
     return (
       <ScrollView> 
-        {_.isEmpty(this.props.activities) ? this._renderFillerBox() : this._renderDailyProfiles()}
+        {_.isEmpty(activities) ? this._renderFillerBox() : this._renderDailyProfiles()}
       </ScrollView>
     );
   }

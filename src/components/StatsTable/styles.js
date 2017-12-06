@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native';
-import { height, width, fontWeight, fontSize } from '@lib/constants/style';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const {height, width} = Dimensions.get("window");
+import {font} from '@constants/style';
 
 export default StyleSheet.create({
   container: {
@@ -11,8 +13,8 @@ export default StyleSheet.create({
     overflow: 'hidden',
   },
   statText: {
-    fontWeight: fontWeight.normal,
-    fontSize: fontSize.normal
+    fontWeight: font.weight.normal,
+    fontSize: font.size.normal
   },
   statTextContainer: {
     height: height / 30,

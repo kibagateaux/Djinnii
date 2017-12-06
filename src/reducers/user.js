@@ -7,8 +7,8 @@ import {
 
 INITIAL_STATE = {
   localMode: true,
-  user: {userId: "3472418464"},
-  userId: "3472418464"
+  user: null,
+  userId: null
 };
 
 export default (state = INITIAL_STATE, {type, payload}) => {
