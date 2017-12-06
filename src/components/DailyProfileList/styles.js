@@ -7,6 +7,8 @@ export default StyleSheet.create({
     flex: 1
   },
   fillerBoxContainer: {
+    height: height / 5,
+    marginTop: height / 10,
     justifyContent: 'center',
     alignItems: 'center',
   }

@@ -5,7 +5,7 @@ import {
 import mockData from '@lib/movesData';
 
 const days = mockData.reduce((list, day) => ({...list, [day.date]: day.summary}), {});
-const INITIAL_STATE = {} //{...days}
+const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, {type, payload}) => {
   switch(type) {

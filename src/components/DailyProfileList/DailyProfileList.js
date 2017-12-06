@@ -20,19 +20,18 @@ export default class extends PureComponent {
 
   _renderFillerBox() {
     const {
-      user: {userId},
+      userId,
       navigateToIntegations,
       navigateToLogin,
-    
     } = this.props;
+    // first check if they have integrations and call updateData
     const mainText = userId ? 
       "No data available, connect more apps to see your Jinni's training regimine" :
       "You must sign in in order to see your Jinni's activity";
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
-    // Should th
     // const subText;
-    // const subButtonFunc ;
+    // const subButtonFunc;
     // const subButtonText; 
 
     return (
@@ -47,33 +46,26 @@ export default class extends PureComponent {
   }
 
   _renderDailyProfiles() {
-    const {days, user} = this.props;
-    if(!user) {
-      // return component telling them to login and connect apps
-      return null;
-    } else {
-      return _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
-        _.map(days, ({date, activities, overview}) =>
-          _.isEmpty(activities) ? null : // motivational thing or something not null
-            (<DailyProfile 
-                key={date}
-                date={date}
-                daysActivities={activities}
-                summary={overview}
-              />));
-    }
+    const {days} = this.props;
+    return _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
+      _.map(days, ({date, activities, overview}) =>
+        _.isEmpty(activities) ? null : // motivational thing or something not null
+          (<DailyProfile 
+              key={date}
+              date={date}
+              daysActivities={activities}
+              summary={overview}
+            />));
   }
 
   render() {
     const {
-      activities: {
-        activities,
-        activeActivity
-      }
+      userId,
+      activities: {activities},
     } = this.props;
     return (
       <ScrollView> 
-        {_.isEmpty(activities) ? this._renderFillerBox() : this._renderDailyProfiles()}
+        {(_.isEmpty(activities) || !userId) ? this._renderFillerBox() : this._renderDailyProfiles()}
       </ScrollView>
     );
   }

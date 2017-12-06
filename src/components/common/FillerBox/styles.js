@@ -2,21 +2,40 @@ import {Dimensions, StyleSheet} from 'react-native';
 import styleGuide from '@constants/style';
 const {height, width} = Dimensions.get('window');
 
-export default StyleSheet.create({
+export default {
   container: {
     flex: 1,
     backgroundColor: 'gold',
+    justifyContent: "center",
     alignSelf: "center",
+    alignItems: "center"
+  },
+  centerText: {
+    textAlign: "center",
+  },
+  button: {
+    shadowRadius: 1,
+    shadowOffset: { width: 0, height: 0.5 },
+    shadowOpacity: 0.4,
+    shadowColor: 'black',
+    elevation: 4,
   },
   mainText: {
     flex: 2,
     fontSize: styleGuide.font.size.large
   },
-  mainButton: {
-    flex: 2
+  get mainButton () {
+    return ({
+      ...this.button,
+      // height: height / 20,
+      margin: height / 20,
+      width: width / 3,
+      justifyContent: 'center',
+      alignItems: 'center'
+    })
   },
   mainButtonText: {
-    flex: 2,
+    // flex: 2,
     fontSize: styleGuide.font.size.large
   },
   subText: {
@@ -26,4 +45,4 @@ export default StyleSheet.create({
   subButton: {
     flex: 1
   },
-});
+};

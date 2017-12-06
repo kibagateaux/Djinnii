@@ -6,7 +6,7 @@ import {
 
 
 INITIAL_STATE = {
-  localMode: true,
+  localMode: false,
   user: null,
   userId: null
 };

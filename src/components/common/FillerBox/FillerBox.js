@@ -4,6 +4,9 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import {
+  MKButton
+} from 'react-native-material-kit';
 import styles from './styles';
 
 export default (props) => {
@@ -15,19 +18,34 @@ export default (props) => {
     subButtonFunc,
     subButtonText,
   } = props;
-  console.log('filler box', mainButtonFunc);
+
+  const _renderButton = (onPress, text, styleObj) => (
+    MKButton.coloredButton()
+      .withText(text)
+      .withOnPress(onPress)
+      .withStyle(styleObj)
+      .build()
+  );
   return (
     <View style={styles.container}>
       {(mainText && <Text style={styles.mainText}> {mainText} </Text>)}
-      {(mainButtonFunc && 
-        <TouchableOpacity
+      {(mainButtonFunc &&
+        (<MKButton
           onPress={mainButtonFunc}
-          style={styles.mainButton}> {mainButtonText} </TouchableOpacity>)}
+          {...styles.mainButton}
+        > 
+          <Text style={styles.centerText}>{mainButtonText} </Text>
+        </MKButton>)
+      )}
       {(subText && <Text style={styles.subText}> {subText} </Text>)}
       {(subButtonFunc && 
-        <TouchableOpacity
+        (<MKButton
           onPress={subButtonFunc}
-          style={styles.subButton}> {subButton} </TouchableOpacity>)}
+          style={styles.subButton}
+        >
+          <Text> {subButton} </Text> 
+        </MKButton>)
+      )}
     </View>
   );
 };

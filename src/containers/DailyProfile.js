@@ -5,14 +5,9 @@ import DailyProfile from '@components/DailyProfile/DailyProfile';
 import {setDisplayStats} from '@actions/stats';
 import {setActiveActivity, setActiveSegment} from '@actions/activities';
 import {fetchActivities} from '@actions/activities/fetchActivities';
-import {navigateTo} from '@actions/navigation';
-import {
-  INTEGRATIONS,
-  LOGIN
-} from '@constants/routes';
+
 const mapStateToProps = ({user, stats, activities}) => {
   return ({
-    user,
     stats,
     activities: activities.activities,
     activeActivity: activities.activeActivity,
@@ -28,8 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setActiveSegment(timeStamp, uid)),
   fetchActivities: (userId) =>
     dispatch(fetchActivities(userId)),
-  navigateToLogin: () => dispatch(navigateTo(LOGIN)),
-  navigateToIntegrations: () => dispatch(navigateTo(INTEGRATIONS))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DailyProfile); 

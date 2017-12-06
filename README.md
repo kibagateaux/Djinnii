@@ -43,6 +43,9 @@ Code Features :
   Very important to add geolocation to all possible data, even double checking Moves data
 
 
+  Design Patterns:
+    - Invoking Lambdas that only update DB and returns empty to caller, Components call data straight from DB as single source of truth. This is because more things than just the resource updated will be affected (e.g. running to stats, eating to emotion, emotion to relationships) so we will save pulling in all updates at once and wait for the data to be called when needed. When using Apollo this will be optimized further with GraphQL, frameowork, caching, etc.
+    - 
 
 
 Data :
