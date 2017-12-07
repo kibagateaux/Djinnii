@@ -6,6 +6,7 @@ import ActivityBar from '@components/ActivityBar/ActivityBar';
 
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortArrByTime} from '@helpers/time';
 import {dayInMicroSecs} from '@lib/constants/time';
+import {getDayOfWeekFromTimestamp} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
@@ -20,12 +21,7 @@ export default class extends PureComponent {
     const {
       activities,
       stats,
-      goals,
-      storyline,
-      displayDailyGoals,
       setActiveActivity,
-      setActiveSegment,
-      toggleDailyGoalsDisplay,
       setDisplayStats
     } = this.props;
     
@@ -54,16 +50,20 @@ export default class extends PureComponent {
   }
 
 
-
+  _renderDayLabel(date) {
+    return (
+      <Text style={styles.dayLabel}>
+        {getDayOfWeekFromTimestamp(date)}
+      </Text>
+    )
+  }
   _renderDayActivityBars() {
     const {
-      date,
       activities,
       daysActivities,
       setActiveActivity,
       setDisplayStats
     } = this.props;
-    const today = date, tomorrow = today + dayInMicroSecs;
     const activityList = _.filter(activities, (act, time) => _.includes(daysActivities, time))
 
     return _.isEmpty(activityList) ? null :
@@ -80,7 +80,10 @@ export default class extends PureComponent {
   render() {
     return (
       <View style={styles.profileContainer}>
-        { this._renderDayActivityBars() }
+        { this._renderDayLabel(this.props.date) }
+        <View style={styles.activityGraph}>
+          { this._renderDayActivityBars() }
+        </View>
       </View>
     )
   }

@@ -55,3 +55,18 @@ export const _filterObjBetweenTimes = (startTime, endTime, obj) =>
 
 
 export const _findLastTime = (data) => Object.keys(_sortObjByTime(data))[0];
+
+const dayNameFromISOCode = (ISOday) => {
+  switch(ISOday) {
+    case 1: return "Monday";
+    case 2: return "Tuesday";
+    case 3: return "Wednesday";
+    case 4: return "Thursday";
+    case 5: return "Friday";
+    case 6: return "Saturday";
+    case 7: return "Sunday";
+  }
+};
+
+export const getDayOfWeekFromTimestamp = (ts) =>
+  _.isFinite(ts) ? dayNameFromISOCode(moment(ts).isoWeekday()) : null;

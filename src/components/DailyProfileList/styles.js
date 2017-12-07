@@ -11,5 +11,9 @@ export default StyleSheet.create({
     marginTop: height / 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  legendItem: {
+    flexDirection: 'column',
+    margin: 20
   }
 });

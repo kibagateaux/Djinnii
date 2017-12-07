@@ -1,4 +1,6 @@
-export const font = {
+import {MKColor as colors} from 'react-native-material-kit';
+
+const font = {
   size: {
     normal: 14,
     large: 21,
@@ -6,9 +8,10 @@ export const font = {
   weight: {
     light: '200',
     normal: '500',
-    bold: '600',
+    heavy: '600',
     sumo: '800'
   }
 };
 
-export default {font};
+
+  export {font, colors};

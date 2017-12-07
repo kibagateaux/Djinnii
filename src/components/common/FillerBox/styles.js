@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import styleGuide from '@constants/style';
+import {font} from '@constants/style';
 const {height, width} = Dimensions.get('window');
 
 export default {
@@ -22,7 +22,7 @@ export default {
   },
   mainText: {
     flex: 2,
-    fontSize: styleGuide.font.size.large
+    fontSize: font.size.large
   },
   get mainButton () {
     return ({
@@ -36,11 +36,11 @@ export default {
   },
   mainButtonText: {
     // flex: 2,
-    fontSize: styleGuide.font.size.large
+    fontSize: font.size.large
   },
   subText: {
     flex: 1,
-    fontSize: styleGuide.font.size.normal
+    fontSize: font.size.normal
   },
   subButton: {
     flex: 1

@@ -34,10 +34,16 @@ export default class Login extends PureComponent {
   doLogin() {
     const {phoneNumber, password} = this.state;
     Auth.signIn(phoneNumber, password)
-      .then(async ({username}) => {
+      .then(async (user) => {
         this.setState({showActivityIndicator: false})
-        const {signInUser, navigateToHome} = this.props;
-        signInUser({username});
+        const {
+          signInUser,
+          navigateToHome,
+          aliasAnonToUser,
+          anonymousId
+        } = this.props;
+        signInUser({username: user.username});
+        aliasAnonToUser(anonymousId, user.username);
         navigateToHome();
       })
       .catch((error) => {

@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 import _ from 'lodash';
 
 import DailyProfile from '@containers/DailyProfile';
 import FillerBox from '@components/common/FillerBox/FillerBox'; 
+import Label from '@components/common/Label/Label';
+
 import styles from './styles';
 
 export default class extends PureComponent {
@@ -45,9 +47,33 @@ export default class extends PureComponent {
     )
   }
 
+
+  _renderActivityLegend() {
+    const legend = [
+      {
+        color: "yellow",
+        text: "In Transport"
+      },
+      {
+        color: "red",
+        text: "Sitting Idle"
+      },
+      {
+        color: "green",
+        text: "Walking"
+      },
+    ];
+    return legend.map(({color, text}) => (
+      <View style={styles.legendItem} key={text}>
+        <View style={{height: 10, width: 10, backgroundColor: color, alignSelf: "center"}}/>
+        <Text> {text} </Text>
+      </View>
+    ))
+  }
+
   _renderDailyProfiles() {
     const {days} = this.props;
-    return _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
+    const profiles = _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
       _.map(days, ({date, activities, overview}) =>
         _.isEmpty(activities) ? null : // motivational thing or something not null
           (<DailyProfile 
@@ -56,6 +82,14 @@ export default class extends PureComponent {
               daysActivities={activities}
               summary={overview}
             />));
+    return (
+      <View>
+        <Label>
+          {this._renderActivityLegend()}
+        </Label>
+        {profiles}
+      </View>
+    )
   }
 
   render() {
@@ -65,7 +99,9 @@ export default class extends PureComponent {
     } = this.props;
     return (
       <ScrollView> 
-        {(_.isEmpty(activities) || !userId) ? this._renderFillerBox() : this._renderDailyProfiles()}
+        {(_.isEmpty(activities) 
+          // || !userId
+        ) ? this._renderFillerBox() : this._renderDailyProfiles()}
       </ScrollView>
     );
   }

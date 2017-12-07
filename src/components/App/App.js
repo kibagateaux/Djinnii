@@ -31,7 +31,7 @@ export default class App extends Component {
         const tokens = tokenRegex.exec(url);
         const access_token = tokens ? tokens[1] : 'a';
         const refresh_token = tokens ? tokens[2] : 'b';    
-        const [_, __, service, resource, id] = resources = ((params['+non_branch_link'] && params['+non_branch_link'].split('/')) || []);
+        const [_, __, service, resource, id] = resources = params['+non_branch_link'].split('/');
         console.log('non branch link', service + '/' + resource + '/' + id);
         if(service === 'auth'){
           const tokenObj = {
@@ -53,7 +53,7 @@ export default class App extends Component {
     props.identifyUser(trackingData);
   }
 
-  // initializes UI for selected game mode
+  // Updates data and initializes UI for default game mode
   async componentWillMount(e) {
     const {
       updateLocalStats,
