@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-import Video from 'react-native-video'
+// import Video from 'react-native-video';
 
 import Icon from 'react-native-vector-icons/Feather';
 import styles from './styles';
@@ -41,10 +41,12 @@ export default (props) => {
     <View style={styles.container}>
       <Text style={styles.avatarTitleName}> {avatarName || "Faqir"} </Text>
       {(medium.type === "video") ?
-        <Video
-          source={medium.src}
-          style={styles.avatar}
-        /> :
+        null
+        // <Video
+        //   source={medium.src}
+        //   style={styles.avatar}
+        // /> 
+        :
         <Image
           source={medium.src}
           style={styles.avatar} 

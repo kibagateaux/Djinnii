@@ -7,14 +7,15 @@ import {
   TouchableOpacity
 } from 'react-native';
 import {
-  MKTextField,
-  MKButton,
-} from 'react-native-material-kit';
+  FormLabel,
+  FormInput,
+  Button,
+} from 'react-native-elements';
 
 import {Auth} from 'aws-amplify-react-native';
 import {checkPhoneNumberLength} from '@helpers/validation';
 
-import styles, {inputStyles} from './styles';
+import styles from './styles';
 
 export default class Login extends PureComponent {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class Login extends PureComponent {
       })
       .catch((error) => {
         console.log('error on signin', error);
-        this.setState({errorMessage: "Invalid login, please try again. We believe in you!"});
+        this.setState({errorMessage: "Invalid login - " + error});
         this.setState({showActivityIndicator: false});
       })
   };
@@ -79,10 +80,10 @@ export default class Login extends PureComponent {
         </Modal>
         <View style={styles.formContainer}>
           {errorMessage && <Text style={styles.validationText}> {errorMessage} </Text>}
-
-          <MKTextField
-            {...inputStyles}
-            selectionColor={'purple'}
+          <FormLabel> Phone Number </FormLabel>
+          <FormInput
+            inputStyle={styles.inputStyles}
+            selectionColor={styles.signInButton.backgroundColor}
             autoCapitalize="none"
             underlineColorAndroid="transparent"
             placeholder="212-836-0297"
@@ -90,9 +91,10 @@ export default class Login extends PureComponent {
             onChangeText={(phoneNumber) => this.setState({phoneNumber})}
             value={phoneNumber}
           />
-          <MKTextField
-            {...inputStyles}
-            selectionColor={'purple'}
+          <FormLabel> Password </FormLabel>
+          <FormInput
+            inputStyle={styles.inputStyles}
+            selectionColor={styles.signInButton.backgroundColor}
             underlineColorAndroid="transparent"
             secureTextEntry={true}
             placeholder="Password"
@@ -101,23 +103,37 @@ export default class Login extends PureComponent {
             value={password}
           />
           
-          <TouchableOpacity
-            style={styles.signIn}
+          <Button
+            raised
+            containerViewStyle={styles.signInButton}
+            buttonStyle={styles.signInButton}
             onPress={this.handleLogInClick}
-            activeOpacity={1}
-          >
-            <Text> SIGN IN </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.props.navigateToHome}
-          >
-            <Text> Forgot your password? </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.props.navigateToSignup}
-          >
-            <Text> Create Account! </Text>
-          </TouchableOpacity>
+            title="SIGN IN"
+          />
+          
+          <View style={styles.altActionsContainer}>
+            <Button
+              raised
+              buttonStyle={styles.altButton}
+              containerViewStyle={styles.altButton}
+              onPress={this.props.navigateToHome}
+              title="Forgot Password"
+            />
+            <Button
+              raised
+              buttonStyle={styles.altButton}
+              containerViewStyle={styles.altButton}
+              onPress={this.props.navigateToSignup}
+              title="Signup"
+            />
+            <Button
+              raised
+              buttonStyle={styles.altButton}
+              containerViewStyle={styles.altButton}
+              onPress={this.props.navigateToHome}
+              title="Skip Login"
+            />
+          </View>
         </View>
       </View>
     );

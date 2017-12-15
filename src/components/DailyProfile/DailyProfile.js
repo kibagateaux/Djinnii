@@ -53,7 +53,11 @@ export default class extends PureComponent {
   _renderDayLabel(date) {
     return (
       <Text style={styles.dayLabel}>
-        {getDayOfWeekNameFromTimestamp(date) + ", " + getDayofWeekDateFromTimestamp(date)}
+        {date ? (
+          getDayOfWeekNameFromTimestamp(date)
+            + ", "
+            + getDayofWeekDateFromTimestamp(date)) 
+          : null}
       </Text>
     )
   }

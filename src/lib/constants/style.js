@@ -1,4 +1,5 @@
-import {MKColor as colors} from 'react-native-material-kit';
+import {Dimensions} from 'react-native';
+const {height, width} = Dimensions.get('window');
 
 const font = {
   size: {
@@ -13,5 +14,10 @@ const font = {
   }
 };
 
+const colors = {
+  primary: '#14b9d6',
+  secondary: '#fab050',
+  white: '#ffffff'
+};
 
-  export {font, colors};
+export {font, colors};
