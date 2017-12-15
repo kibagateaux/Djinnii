@@ -3,21 +3,24 @@ const {height, width} = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
-    flex: 1, // Sprite height + width must be manually set in component
+    flex: 1,
     flexDirection: "column"
   },
   avatar: {
-    // flex: 1,
-    width: 3 * (width / 4) ,
-    height: height / 3
+    width: height / 3,
+    height: height / 3,
+    alignSelf: "center",
   },
   iconContainer: {
     flexDirection: "row",
     justifyContent: "space-between"
   },
   icon: {
-
     height: height / 30,
-    width: height / 30
+    width: height / 30,
+  },
+  avatarTitleName: {
+    alignSelf: "center",
+    textAlign: "center"
   }
 });

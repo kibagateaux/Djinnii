@@ -6,7 +6,7 @@ import ActivityBar from '@components/ActivityBar/ActivityBar';
 
 import {_getFirstTimestampInDay, _getFirstMSInDay, _sortArrByTime} from '@helpers/time';
 import {dayInMicroSecs} from '@lib/constants/time';
-import {getDayOfWeekFromTimestamp} from '@helpers/time';
+import {getDayOfWeekNameFromTimestamp, getDayofWeekDateFromTimestamp} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
@@ -53,7 +53,7 @@ export default class extends PureComponent {
   _renderDayLabel(date) {
     return (
       <Text style={styles.dayLabel}>
-        {getDayOfWeekFromTimestamp(date)}
+        {getDayOfWeekNameFromTimestamp(date) + ", " + getDayofWeekDateFromTimestamp(date)}
       </Text>
     )
   }

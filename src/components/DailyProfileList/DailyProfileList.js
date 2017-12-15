@@ -52,11 +52,11 @@ export default class extends PureComponent {
     const legend = [
       {
         color: "yellow",
-        text: "In Transport"
+        text: "In Transit"
       },
       {
         color: "red",
-        text: "Sitting Idle"
+        text: "Sitting"
       },
       {
         color: "green",
@@ -65,7 +65,7 @@ export default class extends PureComponent {
     ];
     return legend.map(({color, text}) => (
       <View style={styles.legendItem} key={text}>
-        <View style={{height: 10, width: 10, backgroundColor: color, alignSelf: "center"}}/>
+        <View style={[styles.legendItemIcon, {backgroundColor: color}]}/>
         <Text> {text} </Text>
       </View>
     ))

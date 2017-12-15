@@ -45,7 +45,7 @@ Code Features :
 
   Design Patterns:
     - Invoking Lambdas that only update DB and returns empty to caller, Components call data straight from DB as single source of truth. This is because more things than just the resource updated will be affected (e.g. running to stats, eating to emotion, emotion to relationships) so we will save pulling in all updates at once and wait for the data to be called when needed. When using Apollo this will be optimized further with GraphQL, frameowork, caching, etc.
-    - 
+    - All calculations should be base 6 to align with time. (e.g. margins are base 6 or divisible by 6)
 
 
 Data :

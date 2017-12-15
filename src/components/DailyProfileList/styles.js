@@ -14,6 +14,12 @@ export default StyleSheet.create({
   },
   legendItem: {
     flexDirection: 'column',
-    margin: 20
-  }
+    margin: 20,
+  },
+  legendItemIcon: {
+    height: 10,
+    width: 10, 
+    borderRadius: 5,
+    alignSelf: "center"
+  }    
 });

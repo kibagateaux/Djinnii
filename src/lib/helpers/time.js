@@ -68,5 +68,8 @@ const dayNameFromISOCode = (ISOday) => {
   }
 };
 
-export const getDayOfWeekFromTimestamp = (ts) =>
+export const getDayOfWeekNameFromTimestamp = (ts) =>
   _.isFinite(ts) ? dayNameFromISOCode(moment(ts).isoWeekday()) : null;
+
+export const getDayofWeekDateFromTimestamp = ts =>
+  _.isFinite(ts) ? moment(ts).format('L') : null;
