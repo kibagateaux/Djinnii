@@ -6,10 +6,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import {
-  MKTextField,
-  MKButton
-} from 'react-native-material-kit';
-
+  FormLabel,
+  FormInput,
+  Button,
+  Icon,
+  SocialIcon,
+} from 'react-native-elements';
 import {Auth} from 'aws-amplify-react-native';
 import styles from './styles';
 import {checkPhoneNumberLength} from '@helpers/validation';
@@ -22,7 +24,7 @@ export default class SignUp extends React.Component {
       showMFAPrompt: false,
       username: '',
       password: '',
-      email: null,
+      email: '',
       phoneNumber: '',
       errorMessage: 'Sign up with just your phone number and a password',
     };
@@ -65,32 +67,67 @@ export default class SignUp extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
-          <View style={styles.inputContainer}>
-            <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
-            <MKTextField
-              style={styles.inputStyles}
-              keyboardType="phone-pad"
-              underlineColorAndroid="purple"
-              placeholder="Enter your Phone Number"
-              returnKeyType="next"
-              value={this.state.phoneNumber}
-              onChangeText={phoneNumber => this.setState({phoneNumber})} />
-            <MKTextField
-              style={styles.inputStyles}
-              underlineColorAndroid="purple"
-              placeholder="Enter your Password"
-              returnKeyType="next"
-              secureTextEntry
-              value={this.state.password}
-              onChangeText={password => this.setState({password})}
-            />
-          </View>
-            <TouchableOpacity style={styles.signupButton} onPress={this.validateFields}>
-              <Text> SIGNUP </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.loginButton} onPress={this.props.navigateToLogin}>
-              <Text> Go to login </Text>
-            </TouchableOpacity>
+          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
+          <FormLabel> 
+            <Icon
+              name="phone" 
+              iconStyle={styles.labelIcon}
+              containerStyle={styles.labelIcon}
+            /> 
+            Phone Number
+          </FormLabel>
+          <FormInput
+            style={styles.inputStyles}
+            keyboardType="phone-pad"
+            underlineColorAndroid="purple"
+            placeholder="Enter your Phone Number"
+            returnKeyType="next"
+            value={this.state.phoneNumber}
+            onChangeText={phoneNumber => this.setState({phoneNumber})} />
+          <FormLabel>
+            <Icon
+              name="lock-open" 
+              iconStyle={styles.labelIcon}
+              containerStyle={styles.labelIcon}
+            /> 
+            New Password
+          </FormLabel>
+          <FormInput
+            style={styles.inputStyles}
+            underlineColorAndroid="purple"
+            placeholder="Enter your Password"
+            returnKeyType="next"
+            secureTextEntry
+            value={this.state.password}
+            onChangeText={password => this.setState({password})}
+          />
+          
+          <View style={styles.divider}/>
+          
+          <Button
+            containerViewStyle={styles.signupButton}
+            buttonStyle={styles.signupButton}
+            onPress={this.validateFields}
+            title="Sign Up"
+          />
+
+          <View style={styles.divider}/>
+          
+          <SocialIcon
+            title='Sign In With Facebook'
+            button
+            type='facebook'
+            style={styles.facebookButton}
+          />
+
+          <View style={styles.divider} />
+
+          <Button
+            containerViewStyle={styles.loginButton}
+            buttonStyle={styles.loginButton}
+            onPress={this.props.navigateToLogin}
+            title="Login"
+          />
         </View>
       </View>
     );

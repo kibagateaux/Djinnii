@@ -10,6 +10,7 @@ import {
   FormLabel,
   FormInput,
   Button,
+  Icon,
 } from 'react-native-elements';
 
 import {Auth} from 'aws-amplify-react-native';
@@ -23,10 +24,10 @@ export default class Login extends PureComponent {
 
     this.state = {
       showActivityIndicator: false,
-      phoneNumber: null,
-      password: null,
+      phoneNumber: '',
+      password: '',
       showMFAPrompt: false,
-      errorMessage: null,
+      errorMessage: '',
     };
 
     this.baseState = this.state;
@@ -68,7 +69,7 @@ export default class Login extends PureComponent {
       password
     } = this.state;
     return (
-      <View style={styles.loginContainer}>
+      <View style={styles.container}>
         <Modal
           visible={showActivityIndicator}
           onRequestClose={() => null}
@@ -79,8 +80,15 @@ export default class Login extends PureComponent {
           />
         </Modal>
         <View style={styles.formContainer}>
-          {errorMessage && <Text style={styles.validationText}> {errorMessage} </Text>}
-          <FormLabel> Phone Number </FormLabel>
+          <Text style={styles.validationText}> {errorMessage} </Text>
+          <FormLabel> 
+            <Icon
+              name="phone" 
+              iconStyle={styles.labelIcon}
+              containerStyle={styles.labelIcon}
+            /> 
+            Phone Number
+          </FormLabel>
           <FormInput
             inputStyle={styles.inputStyles}
             selectionColor={styles.signInButton.backgroundColor}
@@ -91,7 +99,14 @@ export default class Login extends PureComponent {
             onChangeText={(phoneNumber) => this.setState({phoneNumber})}
             value={phoneNumber}
           />
-          <FormLabel> Password </FormLabel>
+          <FormLabel>
+            <Icon
+              name="lock-open" 
+              iconStyle={styles.labelIcon}
+              containerStyle={styles.labelIcon}
+            /> 
+            Password
+          </FormLabel>
           <FormInput
             inputStyle={styles.inputStyles}
             selectionColor={styles.signInButton.backgroundColor}

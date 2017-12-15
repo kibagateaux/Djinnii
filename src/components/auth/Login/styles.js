@@ -5,7 +5,7 @@ import {colors, font} from '@constants/style';
 const itemHeight = height / 18;
 
 export default StyleSheet.create({
-  loginContainer: {
+  container: {
     width,
     flex: 1,
     alignSelf: 'center',
@@ -25,6 +25,11 @@ export default StyleSheet.create({
   inputStyles: {
     height: itemHeight / 2,
     margin: itemHeight / 4
+  },
+  labelIcon: {
+    height: height / 30,
+    width: height / 30,
+    paddingRight: width / 36
   },
   signInButton: {
     alignSelf: 'center',
