@@ -4,7 +4,7 @@ import {
   Text,
   ActivityIndicator,
   Modal,
-  TouchableOpacity
+  Image
 } from 'react-native';
 import {
   FormLabel,
@@ -79,6 +79,11 @@ export default class Login extends PureComponent {
             size="large"
           />
         </Modal>
+        <Image 
+          style={styles.heroImage}
+          source={require('@media/image/orangeMountains.png')}
+          resizeMode="stretch"
+        />
         <View style={styles.formContainer}>
           <Text style={styles.validationText}> {errorMessage} </Text>
           <FormLabel> 

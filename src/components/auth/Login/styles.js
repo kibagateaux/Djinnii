@@ -18,8 +18,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  heroImage: {
+    flex: 0.75
+  },
   formContainer: {
-    flex: 0.5,
+    flex: 1,
     justifyContent: 'space-around',
   },
   inputStyles: {

@@ -7,17 +7,21 @@ const itemHeight = height / 12;
 // const buttonWidth = width / 3;
 
 export default StyleSheet.create({
-  container: {
+  backgroundImage: {
     width,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
   },
   formContainer: {
-    flex: 1,
-    justifyContent: 'space-around'
+    // flex: 1,
+    width: width / 1.2,
+    backgroundColor: 'rgba(255,255,255,0.8)',
+    paddingVertical: height / 24,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   labelContainer: {
     flexDirection: 'row',
@@ -30,7 +34,7 @@ export default StyleSheet.create({
   },
   inputStyles: {
     height: itemHeight / 2,
-    margin: itemHeight / 4
+    width: width / 1.5,
   },
   errorMessage: {
     color: 'red',
@@ -42,19 +46,22 @@ export default StyleSheet.create({
   signupButton: {
     backgroundColor: colors.primary,
     height: itemHeight,
+    width: width / 1.5
   },
   facebookButton: {
     borderRadius: 0,
+    margin: 0,
     height: itemHeight,
-    width
+    width: width / 1.5
+
   },
   altButtonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-around'
+    flexDirection: 'row',
+    justifyContent: 'space-around', 
   },
-  loginButton: {
-    height: itemHeight,
-    backgroundColor: colors.primary,    
+  altButton: {
+    flex: 1,
+    backgroundColor: colors.primary,
   },
   divider: {
     marginVertical: itemHeight / 4

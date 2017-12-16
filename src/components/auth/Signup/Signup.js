@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
-  Image,
+  ImageBackground,
   TouchableOpacity
 } from 'react-native';
 import {
@@ -65,9 +65,13 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground
+        style={styles.backgroundImage}
+        source={require("@media/image/goldenField.png")}
+      >
         <View style={styles.formContainer}>
           <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
+          
           <FormLabel> 
             <Icon
               name="phone" 
@@ -77,13 +81,14 @@ export default class SignUp extends React.Component {
             Phone Number
           </FormLabel>
           <FormInput
-            style={styles.inputStyles}
+            inputStyle={styles.inputStyles}
+            containerStyle={styles.inputStyles}
             keyboardType="phone-pad"
-            underlineColorAndroid="purple"
-            placeholder="Enter your Phone Number"
+            placeholder="212-039-7463"
             returnKeyType="next"
             value={this.state.phoneNumber}
             onChangeText={phoneNumber => this.setState({phoneNumber})} />
+          
           <FormLabel>
             <Icon
               name="lock-open" 
@@ -93,10 +98,10 @@ export default class SignUp extends React.Component {
             New Password
           </FormLabel>
           <FormInput
-            style={styles.inputStyles}
-            underlineColorAndroid="purple"
-            placeholder="Enter your Password"
-            returnKeyType="next"
+            inputStyle={styles.inputStyles}
+            containerStyle={styles.inputStyles}
+            placeholder="**********"
+            returnKeyType="done"
             secureTextEntry
             value={this.state.password}
             onChangeText={password => this.setState({password})}
@@ -114,22 +119,30 @@ export default class SignUp extends React.Component {
           <View style={styles.divider}/>
           
           <SocialIcon
-            title='Sign In With Facebook'
+            title='Sign Up With Facebook'
             button
             type='facebook'
             style={styles.facebookButton}
+            onPress={() => console.warn ('implement log in with facebook')}
           />
 
           <View style={styles.divider} />
-
-          <Button
-            containerViewStyle={styles.loginButton}
-            buttonStyle={styles.loginButton}
-            onPress={this.props.navigateToLogin}
-            title="Login"
-          />
+          <View style={styles.altButtonContainer}> 
+            <Button
+              containerViewStyle={styles.altButton}
+              buttonStyle={styles.altButton}
+              onPress={this.props.navigateToLogin}
+              title="Login"
+            />
+            <Button
+              containerViewStyle={styles.altButton}
+              buttonStyle={styles.altButton}
+              onPress={this.props.navigateToHome}
+              title="Home"
+            />
+          </View>
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
