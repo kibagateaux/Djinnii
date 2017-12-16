@@ -31,26 +31,36 @@ export default (props) => {
   };
   
   const actions= [
-    {action: 'Run',
-    onPress: onActivityPress('running')},
-    {action: 'Dance',
-     onPress: onActivityPress('dancing')},
-    {action: 'Sleep',
-     icon: "😴💤",
-     onPress: onActivityPress('sleeping')},
-    {action: 'Eat',
-     onPress: onActivityPress('eating')}
+    {
+      action: "Run",
+      onPress: onActivityPress("running"),
+      icon: "🏃‍♀️"
+    },
+    {
+      action: "Dance",
+      onPress: onActivityPress("dancing"),
+      icon: "💃"
+    },
+    {
+      action: "Sleep",
+      onPress: onActivityPress("sleeping"),
+      icon: "💤"
+    },
+    {
+      action: "Eat",
+      onPress: onActivityPress("eating"),
+      icon: "🍎"
+    }
   ];
 
   const actionButtons = actions.map(({action, onPress, icon}) => 
     <ActionButton
       key={action}
       style={styles.localActionButtons}
+      secondaryColor
       buttonText={action}
       onPress={onPress}
-      primaryColor
       icon={icon}
-      Icon={<Image />}
     />)
   
   return (

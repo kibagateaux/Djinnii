@@ -12,6 +12,8 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   localActionButtons: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     height: actionButtonSize,
     width: actionButtonSize,
     shadowColor: 'black',

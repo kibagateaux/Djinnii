@@ -1,31 +1,24 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {MKButton, MKColor} from 'react-native-material-kit';
+import {Text, TouchableOpacity} from 'react-native';
+import {Icon} from 'react-native-elements';
+
+import {colors} from '@constants/style';
 import styles from './styles'
+
 export default (props) => {
   const {
     buttonText,
-    primaryColor,
+    secondaryColor,
     onPress,
     icon,
-    Icon,
-    Sprite,
     style
   } = props;
 
-  const backgroundColor = primaryColor ? MKColor.Yellow : MKColor.Purple;
-  
-  const renderIcon = () => (
-    typeof icon === 'string' && (<Text style={styles.icon}> {icon} </Text>) ||
-    typeof icon === 'object' && (<Icon style={syles.icon}/>) ||
-    null
-  );
-
+  const backgroundColor = secondaryColor ? colors.secondary : colors.primary;
   return (
-    <MKButton style={[{backgroundColor}, style]} onPress={onPress}>
-      {props.children}
+    <TouchableOpacity style={[{backgroundColor}, style]} onPress={onPress}>
       <Text> {buttonText} </Text>
-      {Sprite ? <Sprite style={styles.sprite} /> : renderIcon()}
-    </MKButton>
+      <Text> {icon} </Text>
+    </TouchableOpacity>
   )
 }
