@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   localActionButtons: {
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     height: actionButtonSize,
     width: actionButtonSize,
     shadowColor: 'black',

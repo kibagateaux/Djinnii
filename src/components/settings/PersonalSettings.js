@@ -16,10 +16,10 @@ export default (props) => {
     initIntegrationAuth
   } = props;
   const _getSettingsList = () => ([
-    {
-      label: "Integrations",
-      onPress: () => navigateToIntegrations({})
-    },
+    // {
+    //   label: "Integrations",
+    //   onPress: () => navigateToIntegrations({})
+    // },
     {
       label: "Login",
       onPress: () =>  navigateToLogin()
