@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import DailyProfile from '@containers/DailyProfile';
 import FillerBox from '@components/common/FillerBox/FillerBox'; 
-import Label from '@components/common/Label/Label';
+import {Icon} from 'react-native-elements';
 
 import styles from './styles';
 
@@ -52,21 +52,25 @@ export default class extends PureComponent {
     const legend = [
       {
         color: "yellow",
-        text: "In Transit"
+        text: "In Transit",
+        icon: "directions-transit"
       },
       {
         color: "red",
-        text: "Sitting"
+        text: "Sitting",
+        icon: "weekend"
       },
       {
         color: "green",
-        text: "Walking"
+        text: "Walking",
+        icon: "directions-walk"
       },
     ];
-    return legend.map(({color, text}) => (
+    return legend.map(({color, text, icon}) => (
       <View style={styles.legendItem} key={text}>
         <View style={[styles.legendItemIcon, {backgroundColor: color}]}/>
         <Text> {text} </Text>
+        <Icon name={icon} />
       </View>
     ))
   }
@@ -84,9 +88,9 @@ export default class extends PureComponent {
             />));
     return (
       <View>
-        <Label>
+        <View style={styles.legendContainer}>
           {this._renderActivityLegend()}
-        </Label>
+        </View>
         {profiles}
       </View>
     )

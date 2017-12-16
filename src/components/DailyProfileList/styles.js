@@ -21,5 +21,11 @@ export default StyleSheet.create({
     width: 10, 
     borderRadius: 5,
     alignSelf: "center"
-  }    
+  },
+  legendContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 10
+  }
 });

@@ -26,7 +26,7 @@ export default Actions.create(
     <Scene hideNavBar key="index" component={App} />  
     <Scene hideNavBar key={HOME} component={App} />  
     <Scene hideNavBar key={LOGIN} title='Login Screen' component={LoginScreen} />
-    <Scene initial hideNavBar key={SIGNUP} title='Signup Screen' component={SignupScreen} />
+    <Scene hideNavBar key={SIGNUP} title='Signup Screen' component={SignupScreen} />
     <Scene hideNavBar key={SETTINGS} title='Settings Screen' component={PersonalSettingsScreen} />
     <Scene hideNavBar key={INTEGRATIONS} title='Integrations Screen' component={PersonalSettingsScreen} />
     <Scene hideNavBar key={OAUTH} title="Portal for integrating other apps" component={OAuthScreen} />
