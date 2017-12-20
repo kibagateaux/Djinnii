@@ -22,7 +22,6 @@ export default class App extends Component {
     super(props);
     // branch.subscribe(props.handleBranchRouting);
     this.branchUnsubcription = branch.subscribe(({params, error}) => {
-      console.log('branch params err', params, error);
       const url = params['+url'] || params['+non_branch_link'];
       console.log('deepl link url', url);
       if(params['+non_branch_link']) {
@@ -41,7 +40,7 @@ export default class App extends Component {
             }
           };
           console.log('auth service', resource, tokenObj);          
-          props.updateTokens(tokenObj);
+          // props.updateTokens(tokenObj); // shouldn't update tokens outside server, will be handled in callback Lambda
         }
       }
     });
@@ -49,7 +48,6 @@ export default class App extends Component {
     const trackingId = props.user.userId ? 
       {userId: props.user.userId} : {anonymousId: uuid.v4()}
     const trackingData = {...trackingId, traits: {...props.user}};
-    console.log('app cons', trackingId, trackingData);
     props.identifyUser(trackingData);
   }
 
@@ -68,18 +66,22 @@ export default class App extends Component {
     const lastLocalStats = await getLocalStats();
     
     // refreshes user's cloud data on app load
-    if(user && user.userId) {
-      const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
-      if(!res.data) {
-        // handle error for whatevs
-        console.log("update data failed", res);
-      } else {
-        res.data.map((day) => {
-          updateActivitiesList(day.activities);
-          updateDays({[day.date]: day.summary})
-        })
-      }
-    }
+    // if(user && user.userId) {
+    //   const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
+    //   if(!res.data) {
+    //     // handle error for whatevs
+    //     console.log("update data failed", res);
+    //   } else {
+    //     res.data.map((day) => {
+            // This is incorrect for many reasons
+              // - "Days" only exist for moves api call
+              // - Everything is down to the millisecond so can easily cluster activities with reducer func if needed
+              // - Doesn't use DynamoDB as single source of truth
+    //       updateActivitiesList(day.activities);
+    //       updateDays({[day.date]: day.summary})
+    //     })
+    //   }
+    // }
 
     // instantiate local stats so not overwritten on first press. 
     updateLocalStats(lastLocalStats);

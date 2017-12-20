@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {
   MKButton
-} from 'react-native-material-kit';
+} from 'react-native-material-kit'; // FIXME replace with rn-elements to remove MK
 import styles from './styles';
 
 export default (props) => {

@@ -43,7 +43,6 @@ export default class Login extends PureComponent {
           aliasAnonToUser,
           anonymousId
         } = this.props;
-        console.log('dologin', this.props, user);
         signInUser({username: user.username});
         aliasAnonToUser(anonymousId, user.username);
         navigateToHome();

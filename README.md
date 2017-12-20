@@ -6,20 +6,20 @@ https://github.com/kibagateaux/node-moves
 
 
 Ideas : 
-  How to incorporate dietary habits into game?
-    Does how they feed imaginary Djinn reflect how they feed themmselves?
-    Ping them at "eating' times and ask to be fed what player is eating, only works if we know theyre eating habits or they follow general pattern
-    Health stats affect both character and activity stats
-
+  -How to incorporate dietary habits into game?
+  -Does how they feed imaginary Djinn reflect how they feed themmselves?
+  -Ping them at "eating' times and ask to be fed what player is eating, only works if we know theyre eating habits or they follow general pattern
+  -Health stats affect both character and activity stats
+  -What if all users contribute to a universal Avatar? A universal psyche essentially a mrker for how healthy society a whole is
 
 Make more game-y / active :
-  find a genie sprite or something to make it seem less like a real person
-  turn activity into stats, avg calories / day = stamina, total time active per week = intelligence, etc
-  Djinn gets restless if 1 hour without Moves API notif so they tells you to bring them for a walk
+  -Find a genie sprite or something to make it seem less like a real person
+  -Turn activity into stats, avg calories / day = stamina, total time active per week = intelligence, etc
+  -Djinn gets restless if 1 hour without Moves API notif so they tells you to bring them for a walk
   "Feed" it with cake, meat, fruit which affect health stats
-  Rewarded for going to new places in the world
-  Adapt it into existing games like soccer. Each player is wearing their Djinn on their arm, playing like a regular game. E.g. They have all paired to say they are playing together. Random timer (or goal) happens and Djinns notify players of rule/team/objective change in the game. 
-  App pings you motivationally during exercise. "Your Djinn is working out too, blah blah blah, yay teamwork!" 
+  -Rewarded for going to new places in the world
+  -Adapt it into existing games like soccer. Each player is wearing their Djinn on their arm, playing like a regular game. E.g. They have all paired to say they are playing together. Random timer (or goal) happens and Djinns notify players of rule/team/objective change in the game. 
+  -App pings you motivationally during exercise. "Your Djinn is working out too, blah blah blah, yay teamwork!" 
 
 $ "Play Day" serves 2 functions:
   Review each event and alter stats table, etc
