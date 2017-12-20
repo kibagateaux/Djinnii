@@ -49,7 +49,7 @@ export default class App extends Component {
     const trackingId = props.user.userId ? 
       {userId: props.user.userId} : {anonymousId: uuid.v4()}
     const trackingData = {...trackingId, traits: {...props.user}};
-
+    console.log('app cons', trackingId, trackingData);
     props.identifyUser(trackingData);
   }
 

@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
   aliasAnonToUser: (anonId, userId) => dispatch(aliasAnonToUser(anonId, userId)),
 });
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

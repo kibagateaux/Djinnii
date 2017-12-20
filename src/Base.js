@@ -16,7 +16,6 @@ AWS.config.update({
 });
 Amplify.configure(AWS_CONFIG);
 
-
 export default (props) => (
   <Provider store={store}>
     <Router />

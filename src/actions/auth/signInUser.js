@@ -7,7 +7,6 @@ import {SIGN_IN_USER} from '@actions/actionNames';
 export const signInUser = (userInfo) => {
   AsyncStorage.setItem(IS_LOGGED_IN, JSON.stringify("true"));
   AsyncStorage.setItem(USER_PROFILE, JSON.stringify(userInfo));
-  console.log('sign in ', userInfo);
   return {
     type: SIGN_IN_USER,
     payload: userInfo

@@ -33,8 +33,7 @@ export default class Login extends PureComponent {
     this.baseState = this.state;
   }
 
-  doLogin() {
-    const {phoneNumber, password} = this.state;
+  doLogin(phoneNumber, password) {
     Auth.signIn(phoneNumber, password)
       .then(async (user) => {
         this.setState({showActivityIndicator: false})
@@ -44,6 +43,7 @@ export default class Login extends PureComponent {
           aliasAnonToUser,
           anonymousId
         } = this.props;
+        console.log('dologin', this.props, user);
         signInUser({username: user.username});
         aliasAnonToUser(anonymousId, user.username);
         navigateToHome();
@@ -56,8 +56,9 @@ export default class Login extends PureComponent {
   };
 
   handleLogInClick = (e) => {
+    const {phoneNumber, password} = this.state;    
     this.setState({...this.baseState, showActivityIndicator: true});
-    this.doLogin();
+    this.doLogin(phoneNumber, password);
   }
 
   render() {
