@@ -15,7 +15,6 @@ import {
 
 import {Auth} from 'aws-amplify-react-native';
 import {checkPhoneNumberLength} from '@helpers/validation';
-
 import styles from './styles';
 
 export default class Login extends PureComponent {
@@ -39,13 +38,15 @@ export default class Login extends PureComponent {
         this.setState({showActivityIndicator: false})
         const {
           signInUser,
+          nextScreen,
+          nextScreenProps,
           navigateToHome,
           aliasAnonToUser,
-          anonymousId
+          anonymousId,
         } = this.props;
         signInUser({username: user.username});
         aliasAnonToUser(anonymousId, user.username);
-        navigateToHome();
+        nextScreen ? nextScreen(nextScreenProps) : navigateToHome();
       })
       .catch((error) => {
         console.log('error on signin', error);
@@ -86,12 +87,12 @@ export default class Login extends PureComponent {
         />
         <View style={styles.formContainer}>
           <Text style={styles.validationText}> {errorMessage} </Text>
-          <FormLabel> 
-            <Icon
+          <FormLabel> {/* Icons through error on Android*/} 
+            {/* <Icon
               name="phone" 
               iconStyle={styles.labelIcon}
               containerStyle={styles.labelIcon}
-            /> 
+            />  */}
             Phone Number
           </FormLabel>
           <FormInput
@@ -105,11 +106,11 @@ export default class Login extends PureComponent {
             value={phoneNumber}
           />
           <FormLabel>
-            <Icon
+            {/* <Icon
               name="lock-open" 
               iconStyle={styles.labelIcon}
               containerStyle={styles.labelIcon}
-            /> 
+            />  */}
             Password
           </FormLabel>
           <FormInput

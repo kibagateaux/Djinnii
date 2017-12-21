@@ -44,8 +44,6 @@ export default StyleSheet.create({
     width: width / 3,
     height: itemHeight,
   },
-  largeFontSize: font.large,
-  smallFontSize: font.normal,
   altActionsContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -53,7 +51,7 @@ export default StyleSheet.create({
     marginTop: height / 12,
   },
   altButton: {
-    height: itemHeight / 2,
+    height: itemHeight / 1.5,
     backgroundColor: colors.primary,
   },
 });

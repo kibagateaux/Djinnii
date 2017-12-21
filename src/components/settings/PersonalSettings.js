@@ -32,7 +32,7 @@ export default (props) => {
       label: "Moves",
       onPress: () => navigateToOAuth({
         appName:"Moves",
-        logo: "",
+        appLogo: require("@media/image/logos/moves-app-logo.png"),
         description: "A beautifulyl designed activity monitoring app.",
         onMainButtonPress: () => {
           initIntegrationAuth(integrationServices.moves)

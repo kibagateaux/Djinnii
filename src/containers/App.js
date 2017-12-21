@@ -8,11 +8,11 @@ import {
   setDisplayStats
 } from '@actions/stats';
 import {setActiveActivity} from '@actions/activities';
-import {updateActivitiesList} from '@actions/activities';
 import {trackUserBehaviour} from '@actions/analytics/trackUserBehaviour';
 import {identifyUser} from '@actions/analytics/identifyUser';
 import {navigateTo} from '@actions/navigation/navigateTo';
 import {getLocalStats} from '@actions/stats/getLocalStats';
+import {updateActivitiesList} from '@actions/activities';
 import {updateDays} from '@actions/days';
 
 import {LOGIN, INTEGRATIONS} from '@constants/routes';

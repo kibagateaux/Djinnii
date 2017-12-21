@@ -7,8 +7,8 @@ import {_durationUnix} from '@helpers/time';
 import {dayInMicroSecs} from '@constants/time';
 import styles from './styles';
 
+
 export default ({onPress, activity}) => {
-  // why is there a descrepencies in the color scheme? specifically "wlk" being black on occasion
   const colorSelector = (activity) => {
     switch(activity){
       case 'place': return 'black';
@@ -25,8 +25,9 @@ export default ({onPress, activity}) => {
   const renderActivityBar = () => {
     const {startTime, endTime} = activity;
     const duration = _durationUnix(startTime, endTime);
-    const width = (duration * 180) / dayInMicroSecs; // percentage of activity time over total seconds in day = percentage of screen width
+    const width = (duration * 100) / dayInMicroSecs; // percentage of activity time over total seconds in day = percentage of screen width
     const color = colorSelector(activity.activity);
+    // Feel like something is wrong with rendering. Walking isn't as long as it should be and math for width is wrong
     return(
       <TouchableOpacity
         onPress={onPress}

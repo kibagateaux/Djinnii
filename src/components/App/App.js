@@ -10,12 +10,7 @@ import LocalGame from '@containers/LocalGame';
 import DailyProfileList from '@containers/DailyProfileList';
 
 import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
-import {navigateTo} from '@actions/navigation/navigateTo';
-import {viewLocalStorage} from '@helpers/asyncStorage';
-import {updateStats} from '@actions/stats';
-
 import styles from './styles';
-import { updateActivitiesList } from '../../actions/activities/index';
 
 export default class App extends Component {
   constructor(props){
