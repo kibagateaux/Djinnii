@@ -9,15 +9,16 @@ export default (props) => {
   const {
     userId,
     localStats,
+    anonymousId,
     updateLocalStats,
     setAvatarActivity,
     trackUserBehaviour,
   } = props;
-
+  const id = userId ? {userId} : {anonymousId};
   const onActivityPress = (activity) => {
     const eventData = {
-      userId: userId || "0",
-      event: 'Action Pressed',
+      ...id,
+      event: 'Local_Game_Action_Pressed',
       properties: {
         name: activity,
         stats: localStats,

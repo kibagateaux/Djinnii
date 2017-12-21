@@ -9,7 +9,6 @@ import HomeProfile from '@containers/HomeProfile';
 import LocalGame from '@containers/LocalGame';
 import DailyProfileList from '@containers/DailyProfileList';
 
-import {getLocalStats, localStatsAfterActivity} from '@helpers/stats';
 import styles from './styles';
 
 export default class App extends Component {
@@ -52,10 +51,10 @@ export default class App extends Component {
       updateLocalStats,
       updateActivitiesList,
       setDisplayStats,
-      localStats,
       updateDays,
       lastLiveStats,
       localMode,
+      getLocalStats,
       user
     } = this.props;
     const lastLocalStats = await getLocalStats();

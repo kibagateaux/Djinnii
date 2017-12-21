@@ -5,9 +5,10 @@ import {setAvatarActivity} from '@actions/activities';
 import {updateLocalStats} from '@actions/stats';
 import {trackUserBehaviour} from '@actions/analytics/trackUserBehaviour';
 
-const mapStateToProps = (state) => ({
-  userId: state.user.userId,
-  localStats: state.stats.localStats
+const mapStateToProps = ({user, stats}) => ({
+  userId: user.userId,
+  anonymousId: user.anonymousId,
+  localStats: stats.localStats
 });
 
 const mapDispatchToProps = (dispatch) => ({

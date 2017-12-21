@@ -7,7 +7,7 @@ import {
 
 
 INITIAL_STATE = {
-  localMode: false,
+  localMode: true,
   user: null,
   userId: null,
   anonymousId: null
