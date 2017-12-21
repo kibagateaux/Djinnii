@@ -67,9 +67,9 @@ export default class extends PureComponent {
       },
     ];
     return legend.map(({color, text, icon}) => (
-      <View style={styles.legendItem} key={text}>
-        <View style={[styles.legendItemIcon, {backgroundColor: color}]}/>
-        <Text> {text} </Text>
+      <View style={[styles.legendItem, {backgroundColor: color}]} key={text}>
+        <View style={styles.legendItemIcon}/>
+        <Text style={styles.centerText}> {text} </Text>
         <Icon name={icon} />
       </View>
     ))

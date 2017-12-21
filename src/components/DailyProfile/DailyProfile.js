@@ -4,10 +4,16 @@ import _ from 'lodash';
 
 import ActivityBar from '@components/ActivityBar/ActivityBar';
 
-import {_getFirstTimestampInDay, _getFirstMSInDay, _sortArrByTime} from '@helpers/time';
-import {dayInMicroSecs} from '@lib/constants/time';
-import {getDayOfWeekNameFromTimestamp, getDayofWeekDateFromTimestamp} from '@helpers/time';
+import {
+  _getFirstTimestampInDay,
+  _getFirstMSInDay,
+  _sortArrByTime,
+  getDayOfWeekNameFromTimestamp,
+  getDayofWeekDateFromTimestamp
+} from '@helpers/time';
 import {statsAfterActivity} from '@helpers/stats';
+
+import {dayInMicroSecs} from '@lib/constants/time';
 import styles from './styles';
 
 export default class extends PureComponent {

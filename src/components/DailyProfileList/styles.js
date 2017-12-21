@@ -6,6 +6,10 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
+  centerText: {
+    textAlign: 'center',
+    fontWeight: font.weight.bold  
+  },
   fillerBoxContainer: {
     height: height / 5,
     marginTop: height / 10,
@@ -14,7 +18,8 @@ export default StyleSheet.create({
   },
   legendItem: {
     flexDirection: 'column',
-    margin: 20,
+    flex: 1,
+    padding: 6
   },
   legendItemIcon: {
     height: 10,
@@ -24,8 +29,7 @@ export default StyleSheet.create({
   },
   legendContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 10
   }
 });

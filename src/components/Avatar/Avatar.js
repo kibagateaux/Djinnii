@@ -5,7 +5,7 @@ import {View, Image, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
-
+// TODO get video component working
 // TODO Convert all GIFs to mp4 and utilize {loop} prop
 const avatarSelector = (activity) => {
   switch(activity) {

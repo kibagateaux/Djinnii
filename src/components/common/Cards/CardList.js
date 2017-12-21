@@ -5,24 +5,20 @@ import {
   ScrollView,
   TouchableOpacity
 } from 'react-native';
-import {getTheme} from 'react-native-material-kit'; // FIXME replace with rn-elements to remove MK
 import styles from './styles';
 
 export default (props) => {
   const _renderCards = () => {
     const {cards} = props;
-    const theme = getTheme();
     return cards ? cards.map((item) => (
       <TouchableOpacity
         key={item.label}
         style={styles.cardContainer}
-        /* style={[theme.cardStyle, styles.cardContainer]} */
         onPress={item.onPress}
       >
-        {(false && <View style={[styles.cardImage, theme.cardImageStyle]} />)}
+        {(false && <View style={[styles.cardImage]} />)}
         <Text 
           style={styles.label}
-          /* style={[theme.cardTitleStyle, styles.label]} */
         >
           {item.label}
         </Text>
