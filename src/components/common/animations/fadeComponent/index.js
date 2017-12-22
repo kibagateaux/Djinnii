@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Animated} from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import styles from '../styles';
 
 export default class FadingView extends Component {

@@ -1,24 +1,26 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {font} from '@constants/style';
+import {font, colors} from '@constants/style';
 const {height, width} = Dimensions.get('window');
 
 export default {
   container: {
     flex: 1,
-    backgroundColor: 'gold',
+    backgroundColor: colors.secondary,
     justifyContent: "center",
     alignSelf: "center",
-    alignItems: "center"
+    alignItems: "center",
+    paddingVertical: height / 50
   },
   centerText: {
     textAlign: "center",
   },
   button: {
+    flex: 1,    
     shadowRadius: 1,
-    shadowOffset: { width: 0, height: 0.5 },
-    shadowOpacity: 0.4,
+    shadowOffset: { width: 0.2, height: 1 },
+    shadowOpacity: 0.6,
     shadowColor: 'black',
-    elevation: 4,
+    elevation: 5,
   },
   mainText: {
     flex: 2,
@@ -27,8 +29,6 @@ export default {
   get mainButton () {
     return ({
       ...this.button,
-      // height: height / 20,
-      margin: height / 20,
       width: width / 3,
       justifyContent: 'center',
       alignItems: 'center'

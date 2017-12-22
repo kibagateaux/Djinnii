@@ -4,9 +4,6 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import {
-  MKButton
-} from 'react-native-material-kit'; // FIXME replace with rn-elements to remove MK
 import styles from './styles';
 
 export default (props) => {
@@ -30,21 +27,21 @@ export default (props) => {
     <View style={styles.container}>
       {(mainText && <Text style={styles.mainText}> {mainText} </Text>)}
       {(mainButtonFunc &&
-        (<MKButton
+        (<TouchableOpacity
           onPress={mainButtonFunc}
-          {...styles.mainButton}
+          style={styles.mainButton}
         > 
           <Text style={styles.centerText}>{mainButtonText} </Text>
-        </MKButton>)
+        </TouchableOpacity>)
       )}
       {(subText && <Text style={styles.subText}> {subText} </Text>)}
       {(subButtonFunc && 
-        (<MKButton
+        (<TouchableOpacity
           onPress={subButtonFunc}
           style={styles.subButton}
         >
           <Text> {subButton} </Text> 
-        </MKButton>)
+        </TouchableOpacity>)
       )}
     </View>
   );

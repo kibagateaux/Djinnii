@@ -20,7 +20,6 @@ import styles from './styles';
 export default class Login extends PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       showActivityIndicator: false,
       phoneNumber: '',
@@ -28,7 +27,6 @@ export default class Login extends PureComponent {
       showMFAPrompt: false,
       errorMessage: '',
     };
-
     this.baseState = this.state;
   }
 
@@ -87,7 +85,7 @@ export default class Login extends PureComponent {
         />
         <View style={styles.formContainer}>
           <Text style={styles.validationText}> {errorMessage} </Text>
-          <FormLabel> {/* Icons through error on Android*/} 
+          <FormLabel> {/* Icons throw error on Android*/} 
             {/* <Icon
               name="phone" 
               iconStyle={styles.labelIcon}

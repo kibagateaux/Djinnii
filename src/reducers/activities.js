@@ -10,7 +10,7 @@ import mockData from '@lib/movesData';
 const activities = mockData.reduce((list, day) => ({...list, ...day.activities}), {});
 
 const INITIAL_STATE = {
-  activities: activities,
+  activities: {},
   activeActivity: {},
   avatarActivity: ''
 };

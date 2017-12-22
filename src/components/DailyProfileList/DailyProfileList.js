@@ -29,7 +29,7 @@ export default class extends PureComponent {
     // first check if they have integrations and call updateData
     const mainText = userId ? 
       "No data available, connect more apps to see your Jinni's training regimine" :
-      "You must sign in in order to see your Jinni's activity";
+      "You must sign in in order to see your pet's activity";
     const mainButtonFunc = userId ? navigateToIntegations : navigateToLogin;
     const mainButtonText = userId ? "CONNECT APPS" : "LOGIN";
     // const subText;
