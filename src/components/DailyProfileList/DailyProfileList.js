@@ -77,14 +77,15 @@ export default class extends PureComponent {
 
   _renderDailyProfiles() {
     const {days} = this.props;
+    console.log('rend days', days);
     const profiles = _.isEmpty(days) ? null : // no data, tell them to add to apps or integrate new ones
-      _.map(days, ({date, activities, overview}) =>
+      _.map(days, ({date, activities, summary}) =>
         _.isEmpty(activities) ? null : // motivational thing or something not null
           (<DailyProfile 
               key={date}
               date={date}
               daysActivities={activities}
-              summary={overview}
+              summary={summary}
             />));
     return (
       <View>

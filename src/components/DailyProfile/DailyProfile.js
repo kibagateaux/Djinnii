@@ -76,6 +76,7 @@ export default class extends PureComponent {
     } = this.props;
     const activityList = _.filter(activities, (act, time) => _.includes(daysActivities, time))
 
+    // console.log('daily Profile acts', activityList);
     return _.isEmpty(activityList) ? null :
       _sortArrByTime(activityList).map((act) => (
         <ActivityBar
@@ -84,7 +85,6 @@ export default class extends PureComponent {
           onPress={() => setActiveActivity(act.startTime)}
         />
       ));
-
   }
 
   render() {

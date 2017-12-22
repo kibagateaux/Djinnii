@@ -61,7 +61,7 @@ export default class App extends Component {
     
     // refreshes user's cloud data on app load
     if(user && user.userId) {
-      const res = await axios.get(`https://og1pdgpgji.execute-api.us-east-1.amazonaws.com/dev/moves/storyline/${user.userId}`);
+      const res = await axios.get(`http://localhost:3000/moves/storyline/${user.userId}`);
       if(!res.data) {
         // handle error for whatevs
         console.log("update data failed", res);

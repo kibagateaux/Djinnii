@@ -93,7 +93,8 @@ App Rules :
   |_________|____________|___________|
   |Cherbroni Myerson| Started using it school through his gym class. She and her friends picked up on it and use it outside of school when playing in the park and at basketball practice| **blah blah blah**|
 
-
+# Degbugging Help
+Do not use `awsmobile pull` it does not have all the right resources configured
 TODOS:
 ------
 
